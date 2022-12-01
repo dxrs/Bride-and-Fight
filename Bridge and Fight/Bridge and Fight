@@ -1,0 +1,27 @@
+Bridge and Fight
+
+Gameplay : - auto movement (sudah)
+		   - spawn musuh 
+		   - konektor p1 dan p2 (sudah)
+		   - musuh sistem
+		   - camera sistem
+		   - timer
+		   - menu
+		   - audio sistem
+		   - dbms
+
+art      : - player
+		   - 3 enemy
+		   - boss
+		   - background (sudah)
+		   - batas pingginr
+		   - konektor (sudah)
+		   - animasi
+		   - post proc	
+
+audio	 : - bgm
+           - p1 dan p2 movement
+           - enemy destroy
+           - ui sfx
+           - player destroy
+
