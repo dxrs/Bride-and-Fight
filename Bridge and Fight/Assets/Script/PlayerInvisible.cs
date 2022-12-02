@@ -121,11 +121,8 @@ public class PlayerInvisible : MonoBehaviour
 
     IEnumerator test() 
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         isInvisible = false;
-        if (isInvisible) 
-        {
-            
-        }
+      
     }
 }
