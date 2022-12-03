@@ -14,6 +14,8 @@ public class PlayerInvisible : MonoBehaviour
 
     public bool isInvisible;
 
+
+
     public SpriteRenderer spriteRendererp1,spriteRendererp2;
 
 
@@ -32,8 +34,10 @@ public class PlayerInvisible : MonoBehaviour
        
         if (!PlayerDestroy.playerDestroy.isGameOver) 
         {
-            panggilwarna();
+            //panggilwarna();
         }
+
+        //print(waktuHantu);
        
        
     }
@@ -54,54 +58,27 @@ public class PlayerInvisible : MonoBehaviour
                 curColorP2 = new Color(0.8784314f, 0.4823529f, 0.2039216f, 1);
                 spriteRendererp2.color = curColorP2;
                 waktuHantu = 0;
-                isInvisible = false;
+                //isInvisible = false;
+                StartCoroutine(test());
             }
         }
-        if (!LineOfRay.lineOfRay.isTouchObstcale && BulletConnect.bulletConnect.isConnected)
+        if (waktuHantu<=0)
         {
-            isInvisible = false;
+            //isInvisible = false;
             waktuHantu = 5;
-            if (waktuHantu >= 5) 
-            {
-                
-                curColorP1 = new Color(0.2f, 0.8235294f, 0.8784314f, 1);
-                spriteRendererp1.color = curColorP1;
-                curColorP2 = new Color(0.8784314f, 0.4823529f, 0.2039216f, 1);
-                spriteRendererp2.color = curColorP2;
-            }
+            
+        }
+        if (waktuHantu >= 5)
+        {
+
+            curColorP1 = new Color(0.2f, 0.8235294f, 0.8784314f, 1);
+            spriteRendererp1.color = curColorP1;
+            curColorP2 = new Color(0.8784314f, 0.4823529f, 0.2039216f, 1);
+            spriteRendererp2.color = curColorP2;
         }
     }
 
-    void warnaAsli()
-    {
-        if (!isInvisible) 
-        {
-            if (LineOfRay.lineOfRay.isTouchObstcale) 
-            {
-                curColorP1 = new Color(0.2f, 0.8235294f, 0.8784314f, 1);
-                spriteRendererp1.color = curColorP1;
-                curColorP2 = new Color(0.8784314f, 0.4823529f, 0.2039216f, 1);
-                spriteRendererp2.color = curColorP2;
-            }
-          
-        }
-      
-        
-    }
-
-    void warnaPalsu()
-    {
-        if (isInvisible) 
-        {
-            if (LineOfRay.lineOfRay.isTouchObstcale) 
-            {
-                spriteRendererp1.color = invisibleColor;
-                spriteRendererp2.color = invisibleColor;
-            }
-           
-        }
-       
-    }
+   
 
     void tampungan()
     {

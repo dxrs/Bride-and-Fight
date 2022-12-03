@@ -12,7 +12,8 @@ public class Bullet : MonoBehaviour
     }
     private void Update()
     {
-        if (!PlayerDestroy.playerDestroy.isGameOver && !GameFinish.gameFinish.isGameFinished) 
+        if (!PlayerDestroy.playerDestroy.isGameOver && !GameFinish.gameFinish.isGameFinished
+            &&!PlayerInvisible.playerInvisible.isInvisible) 
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPlayer.transform.position, 10 * Time.deltaTime);
             if(Vector2.Distance(transform.position, targetPlayer.transform.position) <= 0.1)
@@ -21,7 +22,8 @@ public class Bullet : MonoBehaviour
             }
         }
        
-        if(PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished)
+        if(PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished
+            || PlayerInvisible.playerInvisible.isInvisible)
         {
             Destroy(this.gameObject);
         }

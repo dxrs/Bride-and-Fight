@@ -6,6 +6,6 @@ public class DestroyOutsideScreen : MonoBehaviour
 {
     private void OnBecameInvisible()
     {
-        PlayerDestroy.playerDestroy.isGameOver = true;
+        //PlayerDestroy.playerDestroy.isGameOver = true;
     }
 }

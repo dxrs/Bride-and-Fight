@@ -171,12 +171,12 @@ public class PlayerMovement : MonoBehaviour
             
             if (numbOfPlayer == 1) 
             {
-                print("kena p1");
+               // print("kena p1");
                 movementSpeedP1 = slowMove;
             }
             if (numbOfPlayer == 2) 
             {
-                print("kena p2");
+                //print("kena p2");
                 movementSpeedP2 = slowMove;
             }
             
@@ -184,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag=="tembok")
         {
-            
+            //if()
             PlayerDestroy.playerDestroy.isGameOver = true;
             Instantiate(playerParticle, transform.position, Quaternion.identity);
         }
