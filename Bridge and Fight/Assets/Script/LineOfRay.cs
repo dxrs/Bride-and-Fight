@@ -12,7 +12,7 @@ public class LineOfRay : MonoBehaviour
     public bool isTouchObstcale;
     public Transform target;
     public LayerMask layerMask;
-    public EnemyStat estat;
+    EnemyStat estat;
     private void Awake()
     {
         if (lineOfRay == null) { lineOfRay = this; }
@@ -29,12 +29,17 @@ public class LineOfRay : MonoBehaviour
                 Debug.DrawLine(transform.position, target.position, Color.red);
                 isTouchObstcale = true;
             }
-            else if(hit.collider.gameObject.tag == "Enemy" && BulletConnect.bulletConnect.isConnected)
+            else if(hit.collider.gameObject.tag == "Medium Enemy" && BulletConnect.bulletConnect.isConnected)
             {
                 Debug.DrawLine(transform.position, target.position, Color.blue);
                 estat = hit.collider.gameObject.GetComponent<EnemyStat>();
-                estat.health -= 10 * Time.deltaTime;
+                estat.health -= 10*Time.deltaTime;
                 //Instantiate(laserParticle, hit.collider.transform.position, Quaternion.identity);
+            }
+            else if(hit.collider.gameObject.tag=="Normal Enemy" && BulletConnect.bulletConnect.isConnected) 
+            {
+                estat = hit.collider.gameObject.GetComponent<EnemyStat>();
+                estat.health -= 10;
             }
             else
             {

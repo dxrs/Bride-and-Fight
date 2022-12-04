@@ -9,6 +9,8 @@ TagManager:
   - obstacle
   - Enemy
   - tembok
+  - Normal Enemy
+  - Medium Enemy
   layers:
   - Default
   - TransparentFX

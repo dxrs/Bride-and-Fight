@@ -58,10 +58,14 @@ public class CameraZoom : MonoBehaviour
         {
             bounds.Encapsulate(camTarget[j].position);
         }
-        return bounds.size.x;
+
+
+
+        return bounds.size.x+bounds.size.y;
+        
     }
 
-    Vector2 getCenterPoint() 
+    Vector3 getCenterPoint() 
     {
         if (camTarget.Count == 1) 
         {
@@ -70,7 +74,12 @@ public class CameraZoom : MonoBehaviour
         var bounds = new Bounds(camTarget[0].position, Vector2.zero);
         for(int j = 0; j < camTarget.Count; j++) 
         {
+
+
+
             bounds.Encapsulate(camTarget[j].position);
+
+
         }
         return bounds.center;
     }
