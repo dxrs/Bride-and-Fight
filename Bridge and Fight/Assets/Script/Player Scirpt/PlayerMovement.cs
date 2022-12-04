@@ -182,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag=="tembok")
+        if(collision.gameObject.tag == "Normal Enemy" || collision.gameObject.tag=="tembok")
         {
             //if()
             PlayerDestroy.playerDestroy.isGameOver = true;
