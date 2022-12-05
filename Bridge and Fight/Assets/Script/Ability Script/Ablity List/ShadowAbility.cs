@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class ShadowAbility : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Color curPlayerColor_1;
+    public Color curPlayerColor_2;
+    [SerializeField] CircleCollider2D[] cc;
+    [SerializeField] SpriteRenderer[] sr;
 }

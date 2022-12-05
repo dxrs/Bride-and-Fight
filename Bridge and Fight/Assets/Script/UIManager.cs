@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
     {
         inGameStatus();
         timerEnd();
+        if (GameStarting.gameStarting.isGameStarted) 
+        {
+            inGamePopUp[1].SetActive(false);
+        }
     }
     void inGameStatus() 
     {

@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (!GameFinish.gameFinish.isGameFinished) 
+        if (!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted) 
         {
             inputPlayer();
         }
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A)
             || Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.DownArrow)|| Input.GetKey(KeyCode.RightArrow))
         {
-            GameStarting.gameStarting.isGameStarted = true;
+            //GameStarting.gameStarting.isGameStarted = true;
         
         }
         if (PlayerInvisible.playerInvisible.isInvisible) 
