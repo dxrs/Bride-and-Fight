@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI tmpOverFinish;
     public TextMeshProUGUI tmpLevelMenu;
     public float timerValue;
-    [SerializeField] GameObject popup;
+    [SerializeField] GameObject[] inGamePopUp;
     [SerializeField] bool isTimeCountDown;
     TimeSpan timePlay;
     
@@ -32,19 +32,24 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if (PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished) 
+        inGameStatus();
+        timerEnd();
+    }
+    void inGameStatus() 
+    {
+        if (PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
-            StartCoroutine(popShow());
-            if (popup.activeSelf) 
+            StartCoroutine(popUpEndGameShow());
+            if (inGamePopUp[0].activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.Escape)) 
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     SceneManager.LoadScene("Scene Menu");
                 }
-               
+
             }
         }
-        if (PlayerDestroy.playerDestroy.isGameOver) 
+        if (PlayerDestroy.playerDestroy.isGameOver)
         {
             tmpOverFinish.text = "GAME OVER";
             tmpLevelMenu.text = "ENTER - RESTART";
@@ -53,24 +58,23 @@ public class UIManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-        if (GameFinish.gameFinish.isGameFinished) 
+        if (GameFinish.gameFinish.isGameFinished)
         {
             tmpOverFinish.text = "GAME FINISH";
             tmpLevelMenu.text = "ENTER - NEXT LEVEL";
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
-        if (GameStarting.gameStarting.isGameStarted && !PlayerDestroy.playerDestroy.isGameOver) 
-        { 
-            timerStart(); 
+        if (GameStarting.gameStarting.isGameStarted && !PlayerDestroy.playerDestroy.isGameOver)
+        {
+            timerStart();
         }
-        if (PlayerDestroy.playerDestroy.isGameOver||GameFinish.gameFinish.isGameFinished) 
+        if (PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
             isTimeCountDown = false;
         }
-        timerEnd();
     }
     public void timerStart() 
     {
@@ -104,10 +108,10 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator popShow() 
+    IEnumerator popUpEndGameShow() 
     {
         yield return new WaitForSeconds(1);
-        popup.SetActive(true);
+        inGamePopUp[0].SetActive(true);
         tmpTimer.enabled = false;
     }
 }
