@@ -6,6 +6,7 @@ public class PMove : MonoBehaviour
 {
     public int PlayerNumber;
     public float movePower;
+    float speedInUnitPerSecond;
 
     Rigidbody2D rb;
     // Start is called before the first frame update
@@ -17,6 +18,12 @@ public class PMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speedInUnitPerSecond = rb.velocity.magnitude;
+        print(speedInUnitPerSecond);
+    }
+
+    void FixedUpdate()
+    {
         movementInput();
     }
 
@@ -26,6 +33,7 @@ public class PMove : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.D))
             {
+                //if(speedInUnitPerSecond <= 10)
                 rb.AddForce(transform.right * movePower);
             }
             if(Input.GetKey(KeyCode.A))
