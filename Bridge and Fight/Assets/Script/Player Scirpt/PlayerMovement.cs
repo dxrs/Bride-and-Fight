@@ -7,15 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement playerMovement;
 
 
-    public int numbOfPlayer;
+    
 
-    public ParticleSystem playerParticle;
+    
 
-    public float slowMove = 1;
-    public float curSpeed = 3;
-
-    [SerializeField] float movementSpeedP1;
-    [SerializeField] float movementSpeedP2;
+   
+    [SerializeField] int numbOfPlayer;
+    public float movementSpeedP1;
+    public float movementSpeedP2;
 
     int dir;
    
@@ -29,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
     {
 
         cc = GetComponent<CircleCollider2D>();
-        movementSpeedP1 = curSpeed;
-        movementSpeedP1 = curSpeed;
+        movementSpeedP1 = PlayerTrigger.playerTrigger.curSpeed;
+        movementSpeedP2 = PlayerTrigger.playerTrigger.curSpeed;
         
     }
     private void Update()
@@ -43,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A)
             || Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.DownArrow)|| Input.GetKey(KeyCode.RightArrow))
         {
-            //GameStarting.gameStarting.isGameStarted = true;
+     
         
         }
         if (ShadowAbility.shadowAbility.isShadowActivated) 
@@ -158,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
        
@@ -178,12 +177,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        if(collision.gameObject.tag == "Normal Enemy" || collision.gameObject.tag=="tembok")
-        {
-            //if()
-            PlayerDestroy.playerDestroy.isGameOver = true;
-            Instantiate(playerParticle, transform.position, Quaternion.identity);
-        }
+        
        
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -203,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
+    */
 
 
    

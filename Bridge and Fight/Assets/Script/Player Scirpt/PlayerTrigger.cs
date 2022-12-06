@@ -6,7 +6,13 @@ public class PlayerTrigger : MonoBehaviour
 {
     public static PlayerTrigger playerTrigger;
 
-    public bool p1, p2;
+    public bool isP1_ColtoCamEdge, isP2_ColtoCamEdge;
+
+    public ParticleSystem playerParticle;
+
+    public float curSpeed = 3;
+    float slowSpeed=1;
+
     [SerializeField] int numbPlayer;
     private void Awake()
     {
@@ -18,12 +24,29 @@ public class PlayerTrigger : MonoBehaviour
         {
             if (numbPlayer == 1) 
             {
-                p1 = true;
+                isP1_ColtoCamEdge = true;
             }
             if (numbPlayer == 2) 
             {
-                p2 = true;
+                isP2_ColtoCamEdge = true;
             }
+        }
+        if (collision.gameObject.tag == "obstacle") 
+        {
+            if (numbPlayer == 1) 
+            {
+                PlayerMovement.playerMovement.movementSpeedP1 = slowSpeed;
+            }
+            if (numbPlayer == 2) 
+            {
+                PlayerMovement.playerMovement.movementSpeedP2 = slowSpeed;
+            }
+        }
+        if (collision.gameObject.tag == "Normal Enemy")
+        {
+
+            PlayerDestroy.playerDestroy.isGameOver = true;
+            Instantiate(playerParticle, transform.position, Quaternion.identity);
         }
     }
 
@@ -33,11 +56,22 @@ public class PlayerTrigger : MonoBehaviour
         {
             if (numbPlayer == 1)
             {
-                p1 = false;
+                isP1_ColtoCamEdge = false;
             }
             if (numbPlayer == 2)
             {
-                p2 = false;
+                isP2_ColtoCamEdge = false;
+            }
+        }
+        if (collision.gameObject.tag == "obstacle")
+        {
+            if (numbPlayer == 1)
+            {
+                PlayerMovement.playerMovement.movementSpeedP1 = curSpeed;
+            }
+            if (numbPlayer == 2)
+            {
+                PlayerMovement.playerMovement.movementSpeedP2 = curSpeed;
             }
         }
     }

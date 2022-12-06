@@ -26,7 +26,7 @@ public class AbilitySelector : MonoBehaviour
         GameStarting.gameStarting.isGameStarted=true;
         curSkill_1 = AbilityInventory.abilityInventory.skill_1;
         abilitySelected = curSkill_1;
-        print(curSkill_1);
+        //print(curSkill_1);
         
     }
 
@@ -35,6 +35,6 @@ public class AbilitySelector : MonoBehaviour
         GameStarting.gameStarting.isGameStarted = true;
         curSkill_2 = AbilityInventory.abilityInventory.skill_2;
         abilitySelected = curSkill_2;
-        print(curSkill_2);
+        //print(curSkill_2);
     }
 }

@@ -36,7 +36,7 @@ public class CameraZoom : MonoBehaviour
         {
             
             cameraZoom();
-            if (!PlayerTrigger.playerTrigger.p1 && !PlayerTrigger.playerTrigger.p2) 
+            if (!PlayerTrigger.playerTrigger.isP1_ColtoCamEdge && !PlayerTrigger.playerTrigger.isP2_ColtoCamEdge) 
             {
                 cameraMovement();
             }
