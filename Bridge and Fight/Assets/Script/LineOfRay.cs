@@ -42,17 +42,17 @@ public class LineOfRay : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "obstacle")
             {
-                //Debug.DrawLine(transform.position, target.position, Color.red);
+                
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.red);
                 isTouchObstcale = true;
             }
             else if (hit.collider.gameObject.tag == "Medium Enemy" && BulletConnect.bulletConnect.isConnected)
             {
-                //Debug.DrawLine(transform.position, target.position, Color.blue);
+                
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.blue);
                 estat = hit.collider.gameObject.GetComponent<EnemyStat>();
                 estat.health -= 10 * Time.deltaTime;
-                //Instantiate(laserParticle, hit.collider.transform.position, Quaternion.identity);
+               
             }
             else if (hit.collider.gameObject.tag == "Normal Enemy" && BulletConnect.bulletConnect.isConnected)
             {
@@ -62,7 +62,7 @@ public class LineOfRay : MonoBehaviour
           
             else
             {
-                //Debug.DrawLine(transform.position, target.position, Color.green);
+                
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.green);
                 isTouchObstcale = false;
                 
