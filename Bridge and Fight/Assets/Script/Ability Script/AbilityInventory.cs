@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AbilityInventory : MonoBehaviour
 {
     public static AbilityInventory abilityInventory;
@@ -11,6 +12,8 @@ public class AbilityInventory : MonoBehaviour
     public int skill_1;
     public int skill_2;
 
+   
+
     private void Awake()
     {
         abilityInventory = this;
@@ -18,15 +21,16 @@ public class AbilityInventory : MonoBehaviour
 
     private void Start()
     {
-        skill_1 = Random.Range(0, maxTotalSkill); //cok
+        skill_1 = Random.Range(0, maxTotalSkill);
         skill_2 = Random.Range(0, maxTotalSkill);
+
 
     }
     private void Update()
     {
         if (skill_1 == skill_2)
         {
-            skill_2 = Random.Range(1, 3);
+            skill_2 = Random.Range(0, maxTotalSkill);
             
         }
         else { return; }
