@@ -19,7 +19,6 @@ public class PMove : MonoBehaviour
     void Update()
     {
         speedInUnitPerSecond = rb.velocity.magnitude;
-        print(speedInUnitPerSecond);
     }
 
     void FixedUpdate()
@@ -33,7 +32,6 @@ public class PMove : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.D))
             {
-                //if(speedInUnitPerSecond <= 10)
                 rb.AddForce(transform.right * movePower);
             }
             if(Input.GetKey(KeyCode.A))
@@ -45,6 +43,25 @@ public class PMove : MonoBehaviour
                 rb.AddForce(transform.up * movePower);
             }
             if(Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(-transform.up * movePower);
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                rb.AddForce(transform.right * movePower);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                rb.AddForce(-transform.right * movePower);
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.AddForce(transform.up * movePower);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 rb.AddForce(-transform.up * movePower);
             }
