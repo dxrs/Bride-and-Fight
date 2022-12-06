@@ -13,9 +13,11 @@ public class PlayerMovement : MonoBehaviour
 
    
     [SerializeField] int numbOfPlayer;
-    public float movementSpeedP1;
-    public float movementSpeedP2;
+    [SerializeField] float movementSpeedP1;
+    [SerializeField] float movementSpeedP2;
 
+    float curSpeed = 3;
+    float slowSpeed = 1;
     int dir;
    
     CircleCollider2D cc;
@@ -28,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
     {
 
         cc = GetComponent<CircleCollider2D>();
-        movementSpeedP1 = PlayerTrigger.playerTrigger.curSpeed;
-        movementSpeedP2 = PlayerTrigger.playerTrigger.curSpeed;
+        movementSpeedP1 = curSpeed;
+        movementSpeedP2 = curSpeed;
         
     }
     private void Update()
@@ -53,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             cc.enabled = true;
         }
+        
        
     }
     private void inputPlayer() 
@@ -157,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
-    /*
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
        
@@ -167,12 +170,12 @@ public class PlayerMovement : MonoBehaviour
             if (numbOfPlayer == 1) 
             {
                // print("kena p1");
-                movementSpeedP1 = slowMove;
+                movementSpeedP1 = slowSpeed;
             }
             if (numbOfPlayer == 2) 
             {
                 //print("kena p2");
-                movementSpeedP2 = slowMove;
+                movementSpeedP2 = slowSpeed;
             }
             
         }
@@ -197,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
-    */
+    
 
 
    

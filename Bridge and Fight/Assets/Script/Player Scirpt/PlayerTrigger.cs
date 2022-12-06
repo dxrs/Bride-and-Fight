@@ -7,11 +7,11 @@ public class PlayerTrigger : MonoBehaviour
     public static PlayerTrigger playerTrigger;
 
     public bool isP1_ColtoCamEdge, isP2_ColtoCamEdge;
+    public bool colObstacle_p1, colObstacle_p2;
 
     public ParticleSystem playerParticle;
 
-    public float curSpeed = 3;
-    float slowSpeed=1;
+  
 
     [SerializeField] int numbPlayer;
     private void Awake()
@@ -33,14 +33,7 @@ public class PlayerTrigger : MonoBehaviour
         }
         if (collision.gameObject.tag == "obstacle") 
         {
-            if (numbPlayer == 1) 
-            {
-                PlayerMovement.playerMovement.movementSpeedP1 = slowSpeed;
-            }
-            if (numbPlayer == 2) 
-            {
-                PlayerMovement.playerMovement.movementSpeedP2 = slowSpeed;
-            }
+          
         }
         if (collision.gameObject.tag == "Normal Enemy")
         {
@@ -65,14 +58,7 @@ public class PlayerTrigger : MonoBehaviour
         }
         if (collision.gameObject.tag == "obstacle")
         {
-            if (numbPlayer == 1)
-            {
-                PlayerMovement.playerMovement.movementSpeedP1 = curSpeed;
-            }
-            if (numbPlayer == 2)
-            {
-                PlayerMovement.playerMovement.movementSpeedP2 = curSpeed;
-            }
+           
         }
     }
 }
