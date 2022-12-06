@@ -34,11 +34,16 @@ public class CameraZoom : MonoBehaviour
         if (!PlayerDestroy.playerDestroy.isGameOver
             &&GameStarting.gameStarting.isGameStarted)
         {
-            cameraMovement();
+            
             cameraZoom();
+            if (!PlayerTrigger.playerTrigger.p1 && !PlayerTrigger.playerTrigger.p2) 
+            {
+                cameraMovement();
+            }
         }
-        
-        
+       
+
+
     }
 
     void cameraMovement() 

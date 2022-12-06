@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class AbilitySelector : MonoBehaviour
 {
+    public static AbilitySelector abilitySelector;
+
+    public int abilitySelected;
+
     int curSkill_1, curSkill_2;
+
+
+    private void Awake()
+    {
+        abilitySelector = this;
+    }
 
     private void Start()
     {
@@ -15,6 +25,7 @@ public class AbilitySelector : MonoBehaviour
     {
         GameStarting.gameStarting.isGameStarted=true;
         curSkill_1 = AbilityInventory.abilityInventory.skill_1;
+        abilitySelected = curSkill_1;
         print(curSkill_1);
         
     }
@@ -23,6 +34,7 @@ public class AbilitySelector : MonoBehaviour
     {
         GameStarting.gameStarting.isGameStarted = true;
         curSkill_2 = AbilityInventory.abilityInventory.skill_2;
+        abilitySelected = curSkill_2;
         print(curSkill_2);
     }
 }

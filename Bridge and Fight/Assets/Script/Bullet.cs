@@ -21,7 +21,8 @@ public class Bullet : MonoBehaviour
             }
         }
        
-        if(PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished)
+        if(PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished 
+            || ShadowAbility.shadowAbility.isShadowActivated)
         {
             Destroy(this.gameObject);
         }

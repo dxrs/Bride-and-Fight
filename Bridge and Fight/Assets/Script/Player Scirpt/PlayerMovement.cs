@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
     public ParticleSystem playerParticle;
 
+    public float slowMove = 1;
+    public float curSpeed = 3;
 
     [SerializeField] float movementSpeedP1;
     [SerializeField] float movementSpeedP2;
 
     int dir;
-    float slowMove = 1;
-    float curSpeed = 3;
+   
     CircleCollider2D cc;
 
     private void Awake()
@@ -45,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             //GameStarting.gameStarting.isGameStarted = true;
         
         }
-        if (PlayerInvisible.playerInvisible.isInvisible) 
+        if (ShadowAbility.shadowAbility.isShadowActivated) 
         {
             cc.enabled = false;
         }
@@ -156,16 +157,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        if (PlayerDestroy.playerDestroy.isGameOver) 
-        {
-            
-        }
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       
         if (collision.gameObject.tag == "obstacle") 
         {
             
@@ -192,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+       
         if (collision.gameObject.tag == "obstacle") 
         {
             
