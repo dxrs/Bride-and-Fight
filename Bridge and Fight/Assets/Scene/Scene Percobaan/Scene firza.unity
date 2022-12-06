@@ -226,8 +226,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isP1_ColtoCamEdge: 0
   isP2_ColtoCamEdge: 0
+  colObstacle_p1: 0
+  colObstacle_p2: 0
   playerParticle: {fileID: 4010479885397470980, guid: ed8762de807931e47accf0be95dc6426, type: 3}
-  curSpeed: 3
   numbPlayer: 1
 --- !u!1 &83320482
 GameObject:
@@ -4553,8 +4554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isP1_ColtoCamEdge: 0
   isP2_ColtoCamEdge: 0
+  colObstacle_p1: 0
+  colObstacle_p2: 0
   playerParticle: {fileID: 4376017807099830539, guid: f42bec4734d242642898c9de67ba547a, type: 3}
-  curSpeed: 3
   numbPlayer: 2
 --- !u!1 &2117222840
 GameObject:
