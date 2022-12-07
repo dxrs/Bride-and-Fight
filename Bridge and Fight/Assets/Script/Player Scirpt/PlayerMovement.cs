@@ -6,20 +6,18 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement playerMovement;
 
-
-    
-
-    
-
+    public float movePower;
    
     [SerializeField] int numbOfPlayer;
     [SerializeField] float movementSpeedP1;
     [SerializeField] float movementSpeedP2;
 
+    float speedInUnitPerSecond;
     float curSpeed = 3;
     float slowSpeed = 1;
     int dir;
-   
+
+    Rigidbody2D rb;
     CircleCollider2D cc;
 
     private void Awake()
@@ -30,15 +28,16 @@ public class PlayerMovement : MonoBehaviour
     {
 
         cc = GetComponent<CircleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
         movementSpeedP1 = curSpeed;
         movementSpeedP2 = curSpeed;
         
     }
     private void Update()
     {
-        if (!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted) 
+        if (GameFinish.gameFinish.isGameFinished) 
         {
-            inputPlayer();
+            rb.drag =10;
         }
         
         if(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A)
@@ -57,6 +56,14 @@ public class PlayerMovement : MonoBehaviour
         }
         
        
+    }
+    private void FixedUpdate()
+    {
+        if (!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted)
+        {
+
+            physicsControl();
+        }
     }
     private void inputPlayer() 
     {
@@ -159,8 +166,50 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
-    
+    void physicsControl()
+    {
+        if (numbOfPlayer == 1)
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(transform.right * movePower);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(-transform.right * movePower);
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(transform.up * movePower);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(-transform.up * movePower);
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                rb.AddForce(transform.right * movePower);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                rb.AddForce(-transform.right * movePower);
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.AddForce(transform.up * movePower);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                rb.AddForce(-transform.up * movePower);
+            }
+        }
+    }
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
        
@@ -169,13 +218,15 @@ public class PlayerMovement : MonoBehaviour
             
             if (numbOfPlayer == 1) 
             {
-               // print("kena p1");
-                movementSpeedP1 = slowSpeed;
+                // print("kena p1");
+                //movementSpeedP1 = slowSpeed;
+                rb.drag = 5;
             }
             if (numbOfPlayer == 2) 
             {
                 //print("kena p2");
-                movementSpeedP2 = slowSpeed;
+                //movementSpeedP2 = slowSpeed;
+                rb.drag = 5;
             }
             
         }
@@ -191,11 +242,13 @@ public class PlayerMovement : MonoBehaviour
             
             if (numbOfPlayer == 1) 
             {
-                movementSpeedP1 = curSpeed;
+                //movementSpeedP1 = curSpeed;
+                rb.drag = 0;
             }
             if (numbOfPlayer == 2) 
             {
-                movementSpeedP2 = curSpeed;
+                //movementSpeedP2 = curSpeed;
+                rb.drag = 0;
             }
             
         }
