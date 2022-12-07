@@ -11,6 +11,7 @@ TagManager:
   - tembok
   - Normal Enemy
   - Medium Enemy
+  - Camera Edge
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - UI
   - Obstacle
   - postPro
-  - 
+  - Camera Edge
   - 
   - 
   - 

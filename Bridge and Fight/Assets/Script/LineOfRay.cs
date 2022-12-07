@@ -10,9 +10,11 @@ public class LineOfRay : MonoBehaviour
     public ParticleSystem laserParticle;
 
     public bool isTouchObstcale;
+
     public Transform target;
     public Transform[] lineTargets;
     public LayerMask layerMask;
+
     EnemyStat estat;
     private void Awake()
     {
@@ -22,10 +24,14 @@ public class LineOfRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PlayerDestroy.playerDestroy.isGameOver) 
+        if (!PlayerDestroy.playerDestroy.isGameOver&& !ShadowAbility.shadowAbility.isShadowActivated) 
         {
             lineConnector();
         }
+
+      
+
+
        
     }
 
@@ -52,13 +58,19 @@ public class LineOfRay : MonoBehaviour
             {
                 estat = hit.collider.gameObject.GetComponent<EnemyStat>();
                 estat.health -= 10;
-            }
+            } 
+          
             else
             {
                 //Debug.DrawLine(transform.position, target.position, Color.green);
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.green);
                 isTouchObstcale = false;
+                
             }
+
+           
         }
     }
+
+
 }

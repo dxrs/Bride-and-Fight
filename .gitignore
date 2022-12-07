@@ -8,7 +8,7 @@
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
-/[Mm]emoryCaptures/
+[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -59,7 +59,10 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.log
+<<<<<<< HEAD
+=======
 Bridge and Fight/Logs/shadercompiler-AssetImportWorker0.log
 Bridge and Fight/Logs/shadercompiler-AssetImportWorker0.log
 Bridge and Fight/Logs/shadercompiler-AssetImportWorker0.log
 *.log
+>>>>>>> dr

@@ -31,13 +31,19 @@ public class CameraZoom : MonoBehaviour
     {
         if (camTarget == null) { return; }
 
-        if (!PlayerDestroy.playerDestroy.isGameOver)
+        if (!PlayerDestroy.playerDestroy.isGameOver
+            &&GameStarting.gameStarting.isGameStarted)
         {
-            cameraMovement();
+            
             cameraZoom();
+            if (!PlayerTrigger.playerTrigger.isP1_ColtoCamEdge && !PlayerTrigger.playerTrigger.isP2_ColtoCamEdge) 
+            {
+                cameraMovement();
+            }
         }
-        
-        
+       
+
+
     }
 
     void cameraMovement() 

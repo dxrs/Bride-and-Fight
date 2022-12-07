@@ -4,15 +4,61 @@ using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static PlayerTrigger playerTrigger;
+
+    public bool isP1_ColtoCamEdge, isP2_ColtoCamEdge;
+    public bool colObstacle_p1, colObstacle_p2;
+
+    public ParticleSystem playerParticle;
+
+  
+
+    [SerializeField] int numbPlayer;
+    private void Awake()
     {
-        
+        if (playerTrigger == null) { playerTrigger = this; }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag=="Camera Edge") 
+        {
+            if (numbPlayer == 1) 
+            {
+                isP1_ColtoCamEdge = true;
+            }
+            if (numbPlayer == 2) 
+            {
+                isP2_ColtoCamEdge = true;
+            }
+        }
+        if (collision.gameObject.tag == "obstacle") 
+        {
+          
+        }
+        if (collision.gameObject.tag == "Normal Enemy")
+        {
+
+            PlayerDestroy.playerDestroy.isGameOver = true;
+            Instantiate(playerParticle, transform.position, Quaternion.identity);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Camera Edge")
+        {
+            if (numbPlayer == 1)
+            {
+                isP1_ColtoCamEdge = false;
+            }
+            if (numbPlayer == 2)
+            {
+                isP2_ColtoCamEdge = false;
+            }
+        }
+        if (collision.gameObject.tag == "obstacle")
+        {
+           
+        }
     }
 }
