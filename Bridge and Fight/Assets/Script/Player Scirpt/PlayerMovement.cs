@@ -218,16 +218,18 @@ public class PlayerMovement : MonoBehaviour
        
         if (collision.gameObject.tag == "obstacle") 
         {
-            movePower = slowSpeed;
-            speedInUnitPerSecond = 1;
+            //movePower = slowSpeed;
+            //speedInUnitPerSecond = 1;
             if (numbOfPlayer == 1) 
             {
                 //speedInUnitPerSecond = slowSpeed;
+                rb.drag = 3;
             }
             if (numbOfPlayer == 2) 
             {
                 //print("kena p2");
-                speedInUnitPerSecond = slowSpeed;
+                //speedInUnitPerSecond = slowSpeed;
+                rb.drag = 3;
             }
             
         }
@@ -243,11 +245,13 @@ public class PlayerMovement : MonoBehaviour
             movePower = curSpeed;
             if (numbOfPlayer == 1) 
             {
-                movementSpeedP1 = curSpeed;
+                //movementSpeedP1 = curSpeed;
+                rb.drag = 0;
             }
             if (numbOfPlayer == 2) 
             {
-                movementSpeedP2 = curSpeed;
+                //movementSpeedP2 = curSpeed;
+                rb.drag = 0;
             }
             
         }
