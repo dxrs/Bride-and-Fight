@@ -1351,7 +1351,7 @@ MonoBehaviour:
   tmpOverFinish: {fileID: 1591905979}
   tmpLevelMenu: {fileID: 244139242}
   timerValue: 100
-  popup: {fileID: 1205634778}
+  inGamePopUp: []
   isTimeCountDown: 0
 --- !u!4 &849106040
 Transform:
@@ -2162,8 +2162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePower: 0
   numbOfPlayer: 2
-  playerParticle: {fileID: 4376017807099830539, guid: f42bec4734d242642898c9de67ba547a, type: 3}
   movementSpeedP1: 3
   movementSpeedP2: 3
 --- !u!114 &1268620931
@@ -2820,8 +2820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePower: 3
   numbOfPlayer: 1
-  playerParticle: {fileID: 4010479885397470980, guid: ed8762de807931e47accf0be95dc6426, type: 3}
   movementSpeedP1: 3
   movementSpeedP2: 3
 --- !u!114 &1585004821

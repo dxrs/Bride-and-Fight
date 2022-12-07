@@ -8,6 +8,8 @@ public class PMove : MonoBehaviour
     public float movePower;
     float speedInUnitPerSecond;
 
+    public float slowAmount;
+
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,10 @@ public class PMove : MonoBehaviour
     void Update()
     {
         speedInUnitPerSecond = rb.velocity.magnitude;
+        if(PlayerNumber == 1)
+        {
+            //print(speedInUnitPerSecond);
+        }
     }
 
     void FixedUpdate()
@@ -65,6 +71,22 @@ public class PMove : MonoBehaviour
             {
                 rb.AddForce(-transform.up * movePower);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "obstacle") 
+        {
+            rb.drag = slowAmount;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+       
+        if (collision.gameObject.tag == "obstacle") 
+        {
+            rb.drag = 0;
         }
     }
 }

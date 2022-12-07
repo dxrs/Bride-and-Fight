@@ -219,10 +219,10 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "obstacle") 
         {
             movePower = slowSpeed;
+            speedInUnitPerSecond = 1;
             if (numbOfPlayer == 1) 
             {
-                
-                speedInUnitPerSecond = slowSpeed;
+                //speedInUnitPerSecond = slowSpeed;
             }
             if (numbOfPlayer == 2) 
             {
