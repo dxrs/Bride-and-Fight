@@ -29,4 +29,8 @@ public class EnemyStat : MonoBehaviour
         Destroy(this.gameObject);
         Instantiate(enemyParticle, transform.position, Quaternion.identity);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag)
+    }
 }
