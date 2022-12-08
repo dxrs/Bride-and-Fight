@@ -8,7 +8,7 @@ public class PlayerDestroy : MonoBehaviour
 
     public GameObject p1, p2;
     public bool isGameOver;
-    public ParticleSystem playerParticle1,playerParticle2;
+    public ParticleSystem destroyParticle;
 
     private void Awake()
     {

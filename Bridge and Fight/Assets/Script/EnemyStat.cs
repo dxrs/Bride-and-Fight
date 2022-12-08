@@ -26,11 +26,14 @@ public class EnemyStat : MonoBehaviour
     public void enemyMati()
     {
         audioManager.amanager.enemySound();
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         Instantiate(enemyParticle, transform.position, Quaternion.identity);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag)
+        if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2") 
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -35,7 +35,7 @@ public class PlayerTrigger : MonoBehaviour
         {
           
         }
-        if (collision.gameObject.tag == "Normal Enemy")
+        if (collision.gameObject.tag == "Normal Enemy" || collision.gameObject.tag=="Medium Enemy")
         {
 
             PlayerDestroy.playerDestroy.isGameOver = true;

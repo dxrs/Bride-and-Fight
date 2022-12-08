@@ -8,4 +8,9 @@ public class PlayerStatus : MonoBehaviour
 
     public int p1Health;
     public int p2Health;
+
+    private void Awake()
+    {
+        if (playerStatus == null) { playerStatus = this; }
+    }
 }
