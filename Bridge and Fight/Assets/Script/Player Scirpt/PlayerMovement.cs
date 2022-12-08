@@ -7,15 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement playerMovement;
 
     public float movePower;
-
+   
     [SerializeField] int numbOfPlayer;
     [SerializeField] float movementSpeedP1;
     [SerializeField] float movementSpeedP2;
-    
-    float speedInUnitPerSecond;
-    float curSpeed = 4;
-    float slowSpeed = 1;
 
+    float speedInUnitPerSecond;
+    float curSpeed = 3;
+    float slowSpeed = 1;
     int dir;
 
     Rigidbody2D rb;
@@ -36,14 +35,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        speedInUnitPerSecond = rb.velocity.magnitude;
-        if (!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted) 
+        if (GameFinish.gameFinish.isGameFinished) 
         {
-            //inputPlayer();
-            
+            rb.drag =10;
         }
-       
-        if (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A)
+        
+        if(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A)
             || Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.DownArrow)|| Input.GetKey(KeyCode.RightArrow))
         {
      
@@ -56,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
         else 
         {
             cc.enabled = true;
+        }
+        if (Input.GetButton("Abutton")) 
+        {
+            print("bisa");
         }
         
        
@@ -169,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void physicsControl() 
+    void physicsControl()
     {
         if (numbOfPlayer == 1)
         {
@@ -192,44 +193,59 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (PlayerNumber.playerNumber.isSoloMode)
             {
-                rb.AddForce(transform.right * movePower);
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    rb.AddForce(transform.right * movePower);
+                }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    rb.AddForce(-transform.right * movePower);
+                }
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    rb.AddForce(transform.up * movePower);
+                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    rb.AddForce(-transform.up * movePower);
+                }
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            else 
             {
-                rb.AddForce(-transform.right * movePower);
+                Vector2 inputDir = Vector2.zero;
+                inputDir.x = Input.GetAxis("AnalogLeftHorizontal");
+                inputDir.y = -Input.GetAxis("AnalogLeftVertical");
+                rb.AddForce(inputDir * movePower);
             }
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                rb.AddForce(transform.up * movePower);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                rb.AddForce(-transform.up * movePower);
-            }
+            
+            
+            
+          
+            
         }
     }
 
-    
-    
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
        
         if (collision.gameObject.tag == "obstacle") 
         {
-            //movePower = slowSpeed;
-            //speedInUnitPerSecond = 1;
+            
             if (numbOfPlayer == 1) 
             {
-                //speedInUnitPerSecond = slowSpeed;
-                rb.drag = 3;
+                // print("kena p1");
+                //movementSpeedP1 = slowSpeed;
+                rb.drag = 5;
             }
             if (numbOfPlayer == 2) 
             {
                 //print("kena p2");
-                //speedInUnitPerSecond = slowSpeed;
-                rb.drag = 3;
+                //movementSpeedP2 = slowSpeed;
+                rb.drag = 5;
             }
             
         }
@@ -242,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
        
         if (collision.gameObject.tag == "obstacle") 
         {
-            movePower = curSpeed;
+            
             if (numbOfPlayer == 1) 
             {
                 //movementSpeedP1 = curSpeed;
