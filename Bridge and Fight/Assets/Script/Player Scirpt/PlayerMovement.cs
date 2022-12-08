@@ -54,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
         {
             cc.enabled = true;
         }
+        if (Input.GetButton("Abutton")) 
+        {
+            print("bisa");
+        }
         
        
     }
@@ -189,22 +193,37 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (PlayerNumber.playerNumber.isSoloMode)
             {
-                rb.AddForce(transform.right * movePower);
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    rb.AddForce(transform.right * movePower);
+                }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    rb.AddForce(-transform.right * movePower);
+                }
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    rb.AddForce(transform.up * movePower);
+                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    rb.AddForce(-transform.up * movePower);
+                }
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            else 
             {
-                rb.AddForce(-transform.right * movePower);
+                Vector2 inputDir = Vector2.zero;
+                inputDir.x = Input.GetAxis("AnalogLeftHorizontal");
+                inputDir.y = -Input.GetAxis("AnalogLeftVertical");
+                rb.AddForce(inputDir * movePower);
             }
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                rb.AddForce(transform.up * movePower);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                rb.AddForce(-transform.up * movePower);
-            }
+            
+            
+            
+          
+            
         }
     }
 
