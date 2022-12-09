@@ -36,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished) 
+        if(GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished) 
         {
             e_destroyed = true;
 

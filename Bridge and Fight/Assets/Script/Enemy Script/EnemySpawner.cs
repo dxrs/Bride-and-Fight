@@ -10,9 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyNormal;
     public GameObject enemyFast;
     public GameObject enemySlow;
-    public GameObject player;
-    //public TimerScript timer;
-    // Start is called before the first frame update
+    [SerializeField] GameObject radiusObj;
+    
     void Start()
     {
         StartCoroutine(spawnEnemyNormal());
@@ -24,11 +23,11 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            if (player.gameObject != null&&GameStarting.gameStarting.isGameStarted&&
-                !PlayerDestroy.playerDestroy.isGameOver
-                &&!GameFinish.gameFinish.isGameFinished)
+            if (GameStarting.gameStarting.isGameStarted&&
+                !GameOver.gameOver.isGameOver
+                && !GameFinish.gameFinish.isGameFinished)
             {
-                Vector2 spawnPos = player.transform.position;
+                Vector2 spawnPos = radiusObj.transform.position;
                 spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
                 Instantiate(enemyNormal, spawnPos, Quaternion.identity);
             }
@@ -42,11 +41,11 @@ public class EnemySpawner : MonoBehaviour
         {
             if (UIManager.uIManager.timerValue <= 80) 
             {
-                if (player.gameObject != null && GameStarting.gameStarting.isGameStarted &&
-              !PlayerDestroy.playerDestroy.isGameOver
+                if (GameStarting.gameStarting.isGameStarted &&
+              !GameOver.gameOver.isGameOver
               && !GameFinish.gameFinish.isGameFinished)
                 {
-                    Vector2 spawnPos = player.transform.position;
+                    Vector2 spawnPos = radiusObj.transform.position;
                     spawnPos += Random.insideUnitCircle.normalized * spawnRadiusSpecial;
                     Instantiate(enemySlow, spawnPos, Quaternion.identity);
                 }
@@ -62,11 +61,11 @@ public class EnemySpawner : MonoBehaviour
         {
             if (UIManager.uIManager.timerValue <= 60) 
             {
-                if (player.gameObject != null && GameStarting.gameStarting.isGameStarted &&
-                !PlayerDestroy.playerDestroy.isGameOver
+                if (GameStarting.gameStarting.isGameStarted &&
+                !GameOver.gameOver.isGameOver
                 && !GameFinish.gameFinish.isGameFinished)
                 {
-                    Vector2 spawnPos = player.transform.position;
+                    Vector2 spawnPos = radiusObj.transform.position;
                     spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
                     Instantiate(enemyFast, spawnPos, Quaternion.identity);
                 }

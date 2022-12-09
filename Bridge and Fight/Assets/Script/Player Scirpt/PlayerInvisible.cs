@@ -32,12 +32,7 @@ public class PlayerInvisible : MonoBehaviour
     private void Update()
     {
        
-        if (!PlayerDestroy.playerDestroy.isGameOver) 
-        {
-            //panggilwarna();
-        }
-
-        //print(waktuHantu);
+      
        
        
     }

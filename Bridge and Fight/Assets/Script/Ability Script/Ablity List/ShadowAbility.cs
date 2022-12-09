@@ -27,8 +27,8 @@ public class ShadowAbility : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerDestroy.playerDestroy.isGameOver
-            &&AbilitySelector.abilitySelector.abilitySelected==0) 
+        if (!GameOver.gameOver.isGameOver
+            && AbilitySelector.abilitySelector.abilitySelected==0) 
         {
             abilityInput();
         }

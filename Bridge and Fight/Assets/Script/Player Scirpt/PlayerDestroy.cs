@@ -6,27 +6,29 @@ public class PlayerDestroy : MonoBehaviour
 {
     public static PlayerDestroy playerDestroy;
 
-    public GameObject p1, p2;
-    public bool isGameOver;
-    public ParticleSystem playerParticle1,playerParticle2;
+    public GameObject player;
+    
+    public ParticleSystem destroyParticle;
 
     private void Awake()
     {
-        playerDestroy = this;
+        if (playerDestroy == null) { playerDestroy = this; }
     }
 
     private void Update()
     {
-        if (isGameOver)  
+        if (GameOver.gameOver.isGameOver) 
         {
-            Destroy(p1);
-            Destroy(p2);
+            Destroy(player);
         }
     }
 
     private void OnDestroy()
     {
-        
+        if (GameOver.gameOver.isGameOver) 
+        {
+            Instantiate(destroyParticle, player.transform.position, Quaternion.identity);
+        }
     }
 
 }

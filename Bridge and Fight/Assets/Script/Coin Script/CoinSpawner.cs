@@ -5,9 +5,10 @@ using UnityEngine;
 public class CoinSpawner : MonoBehaviour
 {
     public GameObject coin;
-    public GameObject player;
+    
     public float spawnTime;
     public float spawnRadius;
+    [SerializeField] GameObject radiusObj;
     void Start()
     {
         StartCoroutine(spawnCoin());
@@ -17,9 +18,14 @@ public class CoinSpawner : MonoBehaviour
     {
         while (true)
         {
-            Vector2 spawnPos = player.transform.position;
-            spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
-            Instantiate(coin, spawnPos, Quaternion.identity);
+            if(GameStarting.gameStarting.isGameStarted &&
+                !GameOver.gameOver.isGameOver) 
+            {
+                Vector2 spawnPos = radiusObj.transform.position;
+                spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
+                Instantiate(coin, spawnPos, Quaternion.identity);
+            }
+           
             yield return new WaitForSeconds(spawnTime);
         }
     }
