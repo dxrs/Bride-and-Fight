@@ -25,7 +25,7 @@ public class EnemyStat : MonoBehaviour
 
     public void enemyMati()
     {
-        audioManager.amanager.enemySound();
+        //audioManager.amanager.enemySound();
         Destroy(gameObject);
         Instantiate(enemyParticle, transform.position, Quaternion.identity);
     }
@@ -34,6 +34,7 @@ public class EnemyStat : MonoBehaviour
         if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2") 
         {
             Destroy(gameObject);
+            Instantiate(enemyParticle, transform.position, Quaternion.identity);
         }
     }
 }

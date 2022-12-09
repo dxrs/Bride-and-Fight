@@ -19,7 +19,7 @@ public class CoinSpawner : MonoBehaviour
         while (true)
         {
             if(GameStarting.gameStarting.isGameStarted &&
-                !PlayerDestroy.playerDestroy.isGameOver) 
+                !GameOver.gameOver.isGameOver) 
             {
                 Vector2 spawnPos = radiusObj.transform.position;
                 spawnPos += Random.insideUnitCircle.normalized * spawnRadius;

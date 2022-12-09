@@ -24,7 +24,7 @@ public class LineOfRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PlayerDestroy.playerDestroy.isGameOver&& !ShadowAbility.shadowAbility.isShadowActivated) 
+        if (!GameOver.gameOver.isGameOver && !ShadowAbility.shadowAbility.isShadowActivated) 
         {
             lineConnector();
         }
@@ -58,6 +58,7 @@ public class LineOfRay : MonoBehaviour
             {
                 estat = hit.collider.gameObject.GetComponent<EnemyStat>();
                 estat.health -= 10;
+                TotalCoin.totalCoin.curCoinGet += 2;
             } 
           
             else

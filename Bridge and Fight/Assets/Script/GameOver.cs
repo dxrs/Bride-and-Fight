@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static GameOver gameOver;
 
-    // Update is called once per frame
-    void Update()
+    public bool isGameOver;
+
+    private void Awake()
     {
-        
+        gameOver = this;
     }
 }

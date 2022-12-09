@@ -31,7 +31,7 @@ public class CameraZoom : MonoBehaviour
     {
         if (camTarget == null) { return; }
 
-        if (!PlayerDestroy.playerDestroy.isGameOver
+        if (!GameOver.gameOver.isGameOver
             &&GameStarting.gameStarting.isGameStarted)
         {
             

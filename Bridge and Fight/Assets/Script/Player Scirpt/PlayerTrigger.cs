@@ -37,9 +37,13 @@ public class PlayerTrigger : MonoBehaviour
         }
         if (collision.gameObject.tag == "Normal Enemy" || collision.gameObject.tag=="Medium Enemy")
         {
-
-            PlayerDestroy.playerDestroy.isGameOver = true;
-            Instantiate(playerParticle, transform.position, Quaternion.identity);
+            PlayerStatus.playerStatus.playerHealth -= 10;
+            //GameOver.gameOver.isGameOver = true;
+            //Instantiate(playerParticle, transform.position, Quaternion.identity);
+        }
+        if(collision.gameObject.tag=="Player 1") 
+        {
+            PlayerStatus.playerStatus.playerHealth -= PlayerStatus.playerStatus.playerHealth;
         }
     }
 

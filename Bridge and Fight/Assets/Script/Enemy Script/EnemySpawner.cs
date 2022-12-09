@@ -24,8 +24,8 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             if (GameStarting.gameStarting.isGameStarted&&
-                !PlayerDestroy.playerDestroy.isGameOver
-                &&!GameFinish.gameFinish.isGameFinished)
+                !GameOver.gameOver.isGameOver
+                && !GameFinish.gameFinish.isGameFinished)
             {
                 Vector2 spawnPos = radiusObj.transform.position;
                 spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
             if (UIManager.uIManager.timerValue <= 80) 
             {
                 if (GameStarting.gameStarting.isGameStarted &&
-              !PlayerDestroy.playerDestroy.isGameOver
+              !GameOver.gameOver.isGameOver
               && !GameFinish.gameFinish.isGameFinished)
                 {
                     Vector2 spawnPos = radiusObj.transform.position;
@@ -62,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
             if (UIManager.uIManager.timerValue <= 60) 
             {
                 if (GameStarting.gameStarting.isGameStarted &&
-                !PlayerDestroy.playerDestroy.isGameOver
+                !GameOver.gameOver.isGameOver
                 && !GameFinish.gameFinish.isGameFinished)
                 {
                     Vector2 spawnPos = radiusObj.transform.position;

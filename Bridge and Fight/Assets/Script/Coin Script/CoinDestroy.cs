@@ -13,6 +13,7 @@ public class CoinDestroy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player 1" || collision.gameObject.tag == "Player 2")
         {
+            TotalCoin.totalCoin.curCoinGet += 10;
             Destroy(gameObject);
         }
     }

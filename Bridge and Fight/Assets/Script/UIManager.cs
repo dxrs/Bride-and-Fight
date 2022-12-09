@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     }
     void inGameStatus() 
     {
-        if (PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished)
+        if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
             StartCoroutine(popUpEndGameShow());
             if (inGamePopUp[0].activeSelf)
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
 
             }
         }
-        if (PlayerDestroy.playerDestroy.isGameOver)
+        if (GameOver.gameOver.isGameOver)
         {
             tmpOverFinish.text = "GAME OVER";
             tmpLevelMenu.text = "ENTER - RESTART";
@@ -71,11 +71,11 @@ public class UIManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
-        if (GameStarting.gameStarting.isGameStarted && !PlayerDestroy.playerDestroy.isGameOver)
+        if (GameStarting.gameStarting.isGameStarted && !GameOver.gameOver.isGameOver)
         {
             timerStart();
         }
-        if (PlayerDestroy.playerDestroy.isGameOver || GameFinish.gameFinish.isGameFinished)
+        if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
             isTimeCountDown = false;
         }

@@ -27,7 +27,7 @@ public class BulletConnect : MonoBehaviour
     }
     private void Update()
     {
-        if (!PlayerDestroy.playerDestroy.isGameOver) 
+        if (!GameOver.gameOver.isGameOver) 
         {
             if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance)
             {
