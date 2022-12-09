@@ -5,43 +5,27 @@ using UnityEngine.UI;
 
 public class AbilityIcon : MonoBehaviour
 {
-    public Image[] abilityIcon_kiri;
-    public Image[] abilityIcon_kanan;
+    public Image abilityIcon_kiri;
+    public Image abilityIcon_kanan;
+    public Image abilityIcon_inGame;
 
-    private void Start()
-    {
-      
-    }
+
+   
     private void Update()
     {
-        iconKiri();
-        iconKanan();
-    }
-    void iconKiri() 
-    {
-        if (AbilityInventory.abilityInventory.skill_1 == 0) 
-        {
-            abilityIcon_kiri[0].enabled = true;
-            abilityIcon_kiri[1].enabled = false;
-        }
-        if(AbilityInventory.abilityInventory.skill_1 == 1) 
-        {
-            abilityIcon_kiri[1].enabled = true;
-            abilityIcon_kiri[0].enabled = false;
-        }
+        abilityIcon_kiri.sprite = Resources.Load<Sprite>("A"+ AbilityInventory.abilityInventory.skill_1);
+        abilityIcon_kanan.sprite = Resources.Load<Sprite>("A" + AbilityInventory.abilityInventory.skill_2);
+        imgAbilityInGame();
     }
 
-    void iconKanan() 
+    void imgAbilityInGame() 
     {
-        if (AbilityInventory.abilityInventory.skill_2 == 0) 
+        if (GameStarting.gameStarting.isGameStarted) 
         {
-            abilityIcon_kanan[0].enabled = true;
-            abilityIcon_kanan[1].enabled = false;
+            abilityIcon_inGame.enabled = true;
+            abilityIcon_inGame.sprite = Resources.Load<Sprite>("A" + AbilitySelector.abilitySelector.abilitySelected);
         }
-        if(AbilityInventory.abilityInventory.skill_2 == 1) 
-        {
-            abilityIcon_kanan[1].enabled = true;
-            abilityIcon_kanan[0].enabled = false;
-        }
+        
     }
+   
 }
