@@ -16,8 +16,14 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI tmpTimer;
     public TextMeshProUGUI tmpOverFinish;
     public TextMeshProUGUI tmpLevelMenu;
+
+    
+
     public float timerValue;
+
+    [SerializeField] TextMeshProUGUI tmpTotalCoin;
     [SerializeField] GameObject[] inGamePopUp;
+    [SerializeField] GameObject inGameUI;
     [SerializeField] bool isTimeCountDown;
     TimeSpan timePlay;
     
@@ -37,13 +43,21 @@ public class UIManager : MonoBehaviour
         if (GameStarting.gameStarting.isGameStarted) 
         {
             inGamePopUp[1].SetActive(false);
+            inGameUI.SetActive(true);
+        }
+        else 
+        {
+            inGameUI.SetActive(false);
         }
     }
     void inGameStatus() 
     {
+        gameIsPaused();
+        tmpTotalCoin.text = "=" + TotalCoin.totalCoin.curCoinGet + "$";
         if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
             StartCoroutine(popUpEndGameShow());
+            GameStarting.gameStarting.isGameStarted = false;
             if (inGamePopUp[0].activeSelf)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -75,9 +89,17 @@ public class UIManager : MonoBehaviour
         {
             timerStart();
         }
-        if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
+        if (GameOver.gameOver.isGameOver 
+            || GameFinish.gameFinish.isGameFinished 
+            || GamePaused.gamePaused.isGamePaused)
         {
             isTimeCountDown = false;
+            Cursor.visible = true;
+        }
+        if (!GamePaused.gamePaused.isGamePaused) 
+        {
+            isTimeCountDown = true;
+            
         }
     }
     public void timerStart() 
@@ -94,6 +116,29 @@ public class UIManager : MonoBehaviour
             isTimeCountDown = false;
             timerValue = 0; 
         }
+    }
+
+    void gameIsPaused() 
+    {
+        if(!GameOver.gameOver.isGameOver
+            &&!GameFinish.gameFinish.isGameFinished
+            && GameStarting.gameStarting.isGameStarted) 
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if (!GamePaused.gamePaused.isGamePaused)
+                {
+                    Cursor.visible = false;
+                    GamePaused.gamePaused.isGamePaused = true;
+                }
+                else
+                {
+                    GamePaused.gamePaused.isGamePaused = false;
+                    Cursor.visible = true;
+                }
+            }
+        }
+        
     }
     IEnumerator timeCountDownStart() 
     {
@@ -116,6 +161,6 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         inGamePopUp[0].SetActive(true);
-        tmpTimer.enabled = false;
+        inGameUI.SetActive(false);
     }
 }

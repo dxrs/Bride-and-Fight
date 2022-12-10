@@ -12,6 +12,7 @@ TagManager:
   - Normal Enemy
   - Medium Enemy
   - Camera Edge
+  - Infinity Stone
   layers:
   - Default
   - TransparentFX

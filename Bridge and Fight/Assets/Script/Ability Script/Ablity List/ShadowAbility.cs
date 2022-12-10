@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ShadowAbility : MonoBehaviour
 {
@@ -12,41 +14,79 @@ public class ShadowAbility : MonoBehaviour
 
     public bool isShadowActivated;
 
-    public float shadowAbilityTimer;
-    public float shadowAblityCoolDown;
+    [SerializeField] float shadowAbilityTimer;
+    [SerializeField] float shadowAblityCoolDown;
 
     [SerializeField] bool isUsingAbility;
 
 
     [SerializeField] SpriteRenderer[] sr;
+    [SerializeField] Image imgBar;
+    [SerializeField] TextMeshProUGUI textCooldownTimer;
+
+    float curValueTimer;
+    float maxValueTimer = 12;
 
     private void Awake()
     {
         shadowAbility = this;
     }
 
+    private void Start()
+    {
+        curValueTimer = shadowAbilityTimer;
+    }
+
     private void Update()
     {
         if (!GameOver.gameOver.isGameOver
-            && AbilitySelector.abilitySelector.abilitySelected==0) 
+            && GameStarting.gameStarting.isGameStarted
+            && !GamePaused.gamePaused.isGamePaused
+            && !GameFinish.gameFinish.isGameFinished
+            &&AbilitySelector.abilitySelector.abilitySelected==0) 
         {
             abilityInput();
         }
-        
+        shadowBar();
+        textCooldownTimer.text = (int)shadowAblityCoolDown + "s";
     }
 
     void abilityInput() 
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isUsingAbility
-            &&shadowAblityCoolDown<=0) 
+        if (PlayerNumber.playerNumber.isSoloMode) 
         {
-           
-            shadowAblityCoolDown = 10;
-            if (!isShadowActivated)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                isShadowActivated = true;
+                if (!isUsingAbility && shadowAblityCoolDown <= 0)
+                {
+
+                    shadowAblityCoolDown = 11.0f;
+                    if (!isShadowActivated)
+                    {
+                        isShadowActivated = true;
+
+                    }
+                }
             }
         }
+        else 
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Abutton")) 
+            {
+                if (!isUsingAbility && shadowAblityCoolDown <= 0)
+                {
+
+                    shadowAblityCoolDown = 11.0f;
+                    if (!isShadowActivated)
+                    {
+                        isShadowActivated = true;
+
+                    }
+                }
+            }
+        }
+       
+       
         shadowActivated();
         shadowNotActive();
        
@@ -73,6 +113,8 @@ public class ShadowAbility : MonoBehaviour
         {
             isShadowActivated = false;
             shadowAbilityTimer = 10.0f;
+            textCooldownTimer.enabled = true;
+            
         }
         if (!isShadowActivated) 
         {
@@ -85,13 +127,29 @@ public class ShadowAbility : MonoBehaviour
         {
             if (shadowAblityCoolDown > 0) 
             {
-                shadowAblityCoolDown -= 0.3f * Time.deltaTime;
+                shadowAblityCoolDown -= 0.8f * Time.deltaTime;
             }
         }
 
         if (shadowAblityCoolDown <= 0) 
         {
+            textCooldownTimer.enabled = false;
             shadowAblityCoolDown = 0;
         }
+    }
+    void shadowBar() 
+    {
+        if (isShadowActivated) 
+        {
+            imgBar.enabled = true;
+        }
+        else 
+        {
+            imgBar.enabled = false;
+        }
+        curValueTimer = shadowAbilityTimer;
+        imgBar.fillAmount = curValueTimer / maxValueTimer;
+
+
     }
 }

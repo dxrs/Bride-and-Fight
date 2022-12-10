@@ -29,7 +29,7 @@ public class AbilitySelector : MonoBehaviour
         GameStarting.gameStarting.isGameStarted=true;
         curSkill_1 = AbilityInventory.abilityInventory.skill_1;
         abilitySelected = curSkill_1;
-    
+        Cursor.visible = false;
         
     }
 
@@ -38,7 +38,7 @@ public class AbilitySelector : MonoBehaviour
         GameStarting.gameStarting.isGameStarted = true;
         curSkill_2 = AbilityInventory.abilityInventory.skill_2;
         abilitySelected = curSkill_2;
-
+        Cursor.visible = false;
     }
 
 

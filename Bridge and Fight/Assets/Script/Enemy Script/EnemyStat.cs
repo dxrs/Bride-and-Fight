@@ -31,7 +31,8 @@ public class EnemyStat : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2") 
+        if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2"
+            ||collision.gameObject.tag=="Infinity Stone") 
         {
             Destroy(gameObject);
             Instantiate(enemyParticle, transform.position, Quaternion.identity);
