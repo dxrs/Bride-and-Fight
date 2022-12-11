@@ -8,8 +8,6 @@ public class SaveDataManager : MonoBehaviour
 
     public string[] listDataName;
 
-    [SerializeField] int dataCoin;
-
     private void Awake()
     {
         saveDataManager = this;

@@ -12,6 +12,7 @@ public class StoneColider : MonoBehaviour
     public GameObject[] stone;
 
     [SerializeField] float delayTime;
+    [SerializeField] int curUpLevelValue = 1;
 
     protected float timerCountp1;
     protected float timerCountp2;

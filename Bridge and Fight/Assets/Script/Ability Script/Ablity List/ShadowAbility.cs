@@ -18,12 +18,14 @@ public class ShadowAbility : MonoBehaviour
     [SerializeField] float shadowAblityCoolDown;
 
     [SerializeField] bool isUsingAbility;
-
+    [SerializeField] int curUpLevelValue=1;
 
     [SerializeField] SpriteRenderer[] sr;
     [SerializeField] Image imgBar;
     [SerializeField] TextMeshProUGUI textCooldownTimer;
 
+    float curShadowCooldown;
+    float curShadowTimer;
     float curValueTimer;
     float maxValueTimer = 12;
 
@@ -34,7 +36,10 @@ public class ShadowAbility : MonoBehaviour
 
     private void Start()
     {
+        upgradeAbilityShadow();
+        shadowAbilityTimer = curShadowTimer;
         curValueTimer = shadowAbilityTimer;
+        
     }
 
     private void Update()
@@ -60,7 +65,7 @@ public class ShadowAbility : MonoBehaviour
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
 
-                    shadowAblityCoolDown = 11.0f;
+                    shadowAblityCoolDown = curShadowCooldown;
                     if (!isShadowActivated)
                     {
                         isShadowActivated = true;
@@ -76,7 +81,7 @@ public class ShadowAbility : MonoBehaviour
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
 
-                    shadowAblityCoolDown = 11.0f;
+                    shadowAblityCoolDown = curShadowCooldown;
                     if (!isShadowActivated)
                     {
                         isShadowActivated = true;
@@ -112,7 +117,7 @@ public class ShadowAbility : MonoBehaviour
         if (isShadowActivated && shadowAbilityTimer <= 0) 
         {
             isShadowActivated = false;
-            shadowAbilityTimer = 10.0f;
+            shadowAbilityTimer = curShadowTimer;
             textCooldownTimer.enabled = true;
             
         }
@@ -152,4 +157,26 @@ public class ShadowAbility : MonoBehaviour
 
 
     }
+
+    //upgrade ability
+    #region
+    void upgradeAbilityShadow() 
+    {
+        switch (curUpLevelValue) 
+        {
+            case 1:
+                curShadowTimer = 5;
+                curShadowCooldown = 11.0f;
+                break;
+            case 2:
+                curShadowTimer = 10;
+                curShadowCooldown = 11.0f;
+                break;
+            case 3:
+                curShadowTimer = 12.5f;
+                curShadowCooldown = 16.0f;
+                break;
+        }
+    }
+    #endregion
 }
