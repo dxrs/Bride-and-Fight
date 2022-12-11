@@ -27,7 +27,7 @@ public class StoneColider : MonoBehaviour
     {
         cc = GetComponent<CircleCollider2D>();
         curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue;
-        delayTime = Random.Range(10.0f, 21.0f);
+        delayTime = Random.Range(12.0f, 21.0f);
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class StoneColider : MonoBehaviour
         if(AbilitySelector.abilitySelector.abilitySelected == 1) 
         {
             totalStone();
-            if (curStoneValue > 3) { curStoneValue = 3; }
+            if (curStoneValue > InfinityStoneAbility.infinityStone.maxStoneValue) { curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue; }
             if (curStoneValue <= InfinityStoneAbility.infinityStone.maxStoneValue)
             {
                 if (id == 1)
@@ -78,30 +78,41 @@ public class StoneColider : MonoBehaviour
     }
     void totalStone() 
     {
-        if (curStoneValue <= 2)
+        if (curStoneValue <= 3) 
         {
             stone[0].SetActive(false);
         }
-        else if (curStoneValue > 2)
+        else if (curStoneValue > 3) 
         {
             stone[0].SetActive(true);
         }
-        if (curStoneValue <= 1)
+        if (curStoneValue <= 2)
         {
             stone[1].SetActive(false);
         }
-        else if (curStoneValue > 1)
+        else if (curStoneValue > 2)
         {
             stone[1].SetActive(true);
         }
-        if (curStoneValue <= 0)
+        if (curStoneValue <= 1)
         {
             stone[2].SetActive(false);
         }
-        else if (curStoneValue > 0)
+        else if (curStoneValue > 1)
         {
             stone[2].SetActive(true);
         }
+        if (curStoneValue <= 0)
+        {
+            stone[3].SetActive(false);
+        }
+        else if (curStoneValue > 0)
+        {
+            stone[3].SetActive(true);
+            
+        }
+
+        //upgrade stone ability
     }
 
 

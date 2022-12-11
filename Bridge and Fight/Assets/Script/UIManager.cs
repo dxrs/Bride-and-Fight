@@ -15,9 +15,7 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI tmpTimer;
     public TextMeshProUGUI tmpOverFinish;
-    public TextMeshProUGUI tmpLevelMenu;
 
-    
 
     public float timerValue;
 
@@ -58,6 +56,7 @@ public class UIManager : MonoBehaviour
         {
             StartCoroutine(popUpEndGameShow());
             GameStarting.gameStarting.isGameStarted = false;
+            /*
             if (inGamePopUp[0].activeSelf)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -66,20 +65,23 @@ public class UIManager : MonoBehaviour
                 }
 
             }
+            */
         }
         if (GameOver.gameOver.isGameOver)
         {
             tmpOverFinish.text = "GAME OVER";
-            tmpLevelMenu.text = "ENTER - RESTART";
+            
+            /*
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+            */
         }
         if (GameFinish.gameFinish.isGameFinished)
         {
             tmpOverFinish.text = "GAME FINISH";
-            tmpLevelMenu.text = "ENTER - NEXT LEVEL";
+            
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
