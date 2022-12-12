@@ -79,6 +79,7 @@ public class StoneColider : MonoBehaviour
     }
     void totalStone() 
     {
+        /*
         if (curStoneValue <= 3) 
         {
             stone[0].SetActive(false);
@@ -111,6 +112,19 @@ public class StoneColider : MonoBehaviour
         {
             stone[3].SetActive(true);
             
+        }
+        */
+
+        for (int i = 0; i < stone.Length; i++)
+        {
+            if (curStoneValue <= i)
+            {
+                stone[i].SetActive(false);
+            }
+            else
+            {
+                stone[i].SetActive(true);
+            }
         }
 
         //upgrade stone ability
