@@ -12,4 +12,12 @@ public class SaveDataManager : MonoBehaviour
     {
         saveDataManager = this;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K)) 
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }
 }

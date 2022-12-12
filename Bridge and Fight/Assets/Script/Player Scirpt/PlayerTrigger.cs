@@ -11,12 +11,20 @@ public class PlayerTrigger : MonoBehaviour
 
     public ParticleSystem playerParticle;
 
+    public float playerHealth;
   
 
     [SerializeField] int numbPlayer;
     private void Awake()
     {
         if (playerTrigger == null) { playerTrigger = this; }
+    }
+    private void Update()
+    {
+        if (playerHealth <= 0) 
+        {
+            GameOver.gameOver.isGameOver=true;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,19 +39,27 @@ public class PlayerTrigger : MonoBehaviour
                 isP2_ColtoCamEdge = true;
             }
         }
-        if (collision.gameObject.tag == "obstacle") 
+        if(collision.gameObject.tag=="Normal Enemy"||collision.gameObject.tag=="Medium Enemy") 
         {
-          
+            if (TotalCoin.totalCoin.curCoinGet > 0) 
+            {
+                TotalCoin.totalCoin.curCoinGet -= 5;
+            }
         }
-        if (collision.gameObject.tag == "Normal Enemy" || collision.gameObject.tag=="Medium Enemy")
+        if (collision.gameObject.tag == "Normal Enemy")
         {
-            PlayerStatus.playerStatus.playerHealth -= 10;
-            //GameOver.gameOver.isGameOver = true;
-            //Instantiate(playerParticle, transform.position, Quaternion.identity);
+
+            playerHealth -= 10;
+            
+        }
+        if(collision.gameObject.tag == "Medium Enemy") 
+        {
+            playerHealth -= 20;
+         
         }
         if(collision.gameObject.tag=="Player 1") 
         {
-            PlayerStatus.playerStatus.playerHealth -= PlayerStatus.playerStatus.playerHealth;
+            playerHealth -= 100;
         }
     }
 
@@ -60,9 +76,6 @@ public class PlayerTrigger : MonoBehaviour
                 isP2_ColtoCamEdge = false;
             }
         }
-        if (collision.gameObject.tag == "obstacle")
-        {
-           
-        }
+        
     }
 }

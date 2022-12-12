@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] inGamePopUp;
     [SerializeField] GameObject inGameUI;
     [SerializeField] bool isTimeCountDown;
+    public int test;
 
     int coinValue;
     bool isCoinDataSaved;
@@ -39,7 +40,9 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(timeCountDownStart());
         coinValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
+        test= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         
+
     }
     private void Update()
     {
@@ -56,9 +59,11 @@ public class UIManager : MonoBehaviour
         }
         if (isCoinDataSaved) 
         {
+            
+           
             if (TotalCoin.totalCoin.curCoinGet > PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0])) 
             {
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
+                
             }
             
         }
@@ -69,6 +74,9 @@ public class UIManager : MonoBehaviour
         textTotalCoin.text = "=" + TotalCoin.totalCoin.curCoinGet + "$";
         if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
+            
+
+            //PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1] + TotalCoin.totalCoin.curCoinGet, test);
             StartCoroutine(popUpEndGameShow());
             GameStarting.gameStarting.isGameStarted = false;
             //DataCoin.dataCoin.coinDataValue = TotalCoin.totalCoin.curCoinGet;
@@ -170,13 +178,20 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator loadToSceneMenu() 
     {
-        yield return new WaitForSeconds(1);
+        test = test + PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], test);
+        yield return new WaitForSeconds(3);
+
         SceneManager.LoadScene("Scene test select level");
     }
 
     public void onClickContinue() 
     {
         isCoinDataSaved = true;
+        if (isCoinDataSaved) 
+        {
+            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
+        }
         StartCoroutine(loadToSceneMenu());
         
     }

@@ -12,7 +12,7 @@ public class StoneColider : MonoBehaviour
     public GameObject[] stone;
 
     [SerializeField] float delayTime;
-    
+    [SerializeField] int curUpLevelValue = 1;
 
     protected float timerCountp1;
     protected float timerCountp2;
@@ -28,7 +28,7 @@ public class StoneColider : MonoBehaviour
     {
         cc = GetComponent<CircleCollider2D>();
         curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue;
-        delayTime = Random.Range(12.0f, 21.0f);
+        //delayTime = Random.Range(12.0f, 21.0f);
     }
 
     private void Update()
@@ -155,4 +155,5 @@ public class StoneColider : MonoBehaviour
        
     }
     
+
 }

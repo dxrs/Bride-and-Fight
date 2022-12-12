@@ -7,6 +7,7 @@ public class TotalCoin : MonoBehaviour
     public static TotalCoin totalCoin;
 
     public int curCoinGet;
+    public int totalCoinGet;
 
     private void Awake()
     {

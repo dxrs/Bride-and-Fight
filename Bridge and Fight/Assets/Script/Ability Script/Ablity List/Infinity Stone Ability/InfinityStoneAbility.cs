@@ -21,11 +21,13 @@ public class InfinityStoneAbility : MonoBehaviour
     private void Awake()
     {
         infinityStone = this;
+        abilityUpgrade();
     }
     private void Start()
-    {
+    {  
         p1StoneColider.SetActive(false);
         p2StoneColider.SetActive(false);
+      
     }
     private void Update()
     {
@@ -59,6 +61,35 @@ public class InfinityStoneAbility : MonoBehaviour
 
     //Ability Upgrade
     #region
-
+    void abilityUpgrade() 
+    {
+        if (curUpLevelValue == 1) 
+        {
+            
+        }
+        if (curUpLevelValue == 2) 
+        {
+            
+        }
+        if (curUpLevelValue == 3) 
+        {
+            
+        }
+        switch (curUpLevelValue) 
+        {
+            case 1:
+                stoneTimerSpawn = 10;
+                maxStoneValue = 2;
+                break;
+            case 2:
+                stoneTimerSpawn = 16.5f;
+                maxStoneValue = 4;
+                break;
+            case 3:
+                stoneTimerSpawn = 28.5f;
+                maxStoneValue = 8;
+                break;
+        }
+    }
     #endregion
 }

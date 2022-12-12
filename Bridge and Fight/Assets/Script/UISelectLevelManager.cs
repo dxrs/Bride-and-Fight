@@ -8,6 +8,8 @@ public class UISelectLevelManager : MonoBehaviour
 {
     public static UISelectLevelManager uISelectLevelManager;
 
+    public int curBank;
+
     [Header("List DBMS Value")]
     [SerializeField] int coinData;
 
@@ -20,7 +22,11 @@ public class UISelectLevelManager : MonoBehaviour
     private void Start()
     {
         coinData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
+        curBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        
     }
+
+   
 
 
 }
