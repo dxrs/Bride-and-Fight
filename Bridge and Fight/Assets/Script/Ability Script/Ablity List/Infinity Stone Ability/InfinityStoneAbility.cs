@@ -10,6 +10,8 @@ public class InfinityStoneAbility : MonoBehaviour
 
     public float stoneTimerSpawn;
 
+    [SerializeField] int curUpLevelValue = 1;
+
     [SerializeField] Transform player1;
     [SerializeField] Transform player2;
 
@@ -54,4 +56,9 @@ public class InfinityStoneAbility : MonoBehaviour
         }
        
     }
+
+    //Ability Upgrade
+    #region
+
+    #endregion
 }

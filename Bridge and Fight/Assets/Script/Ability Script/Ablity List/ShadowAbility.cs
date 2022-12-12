@@ -20,6 +20,8 @@ public class ShadowAbility : MonoBehaviour
     [SerializeField] bool isUsingAbility;
     [SerializeField] int curUpLevelValue=1;
 
+    [SerializeField] GameObject[] coinColider;
+    [SerializeField] GameObject[] player;
     [SerializeField] SpriteRenderer[] sr;
     [SerializeField] Image imgBar;
     [SerializeField] TextMeshProUGUI textCooldownTimer;
@@ -44,6 +46,11 @@ public class ShadowAbility : MonoBehaviour
 
     private void Update()
     {
+        if (!GameOver.gameOver.isGameOver) 
+        {
+            coinColider[0].transform.position = player[0].transform.position;
+            coinColider[1].transform.position = player[1].transform.position;
+        }
         if (!GameOver.gameOver.isGameOver
             && GameStarting.gameStarting.isGameStarted
             && !GamePaused.gamePaused.isGamePaused
@@ -162,6 +169,11 @@ public class ShadowAbility : MonoBehaviour
     #region
     void upgradeAbilityShadow() 
     {
+        if (curUpLevelValue >= 2) 
+        {
+            coinColider[0].SetActive(true);
+            coinColider[1].SetActive(true);
+        }
         switch (curUpLevelValue) 
         {
             case 1:
@@ -170,7 +182,6 @@ public class ShadowAbility : MonoBehaviour
                 break;
             case 2:
                 curShadowTimer = 10;
-                curShadowCooldown = 11.0f;
                 break;
             case 3:
                 curShadowTimer = 12.5f;
