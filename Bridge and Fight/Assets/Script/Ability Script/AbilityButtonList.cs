@@ -14,6 +14,7 @@ public class AbilityButtonList : MonoBehaviour
     public bool isClicked;
 
     public Button[] abilityListButton;
+    [SerializeField] Button buttonUp;
 
    
 
@@ -70,6 +71,18 @@ public class AbilityButtonList : MonoBehaviour
         clickedValue = value;
         isClicked = true;
         //abilityShowUp.SetActive(true);
+    }
+
+    public void buttonUpgradeClicked() 
+    {
+        if (clickedValue == 1) 
+        {
+            AbilityShadowUpgrade.abilityShadowUpgrade.onClickUpgradeShadow();
+        }
+        if (clickedValue == 2) 
+        {
+            AbilityInfinityStoneUpgrade.abilityInfinityStoneUpgrade.onClickUpgradeStone();
+        }
     }
     
 }

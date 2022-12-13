@@ -10,7 +10,7 @@ public class InfinityStoneAbility : MonoBehaviour
 
     public float stoneTimerSpawn;
 
-    [SerializeField] int curUpLevelValue = 1;
+    [SerializeField] int curUpLevelValue;
 
     [SerializeField] Transform player1;
     [SerializeField] Transform player2;
@@ -18,16 +18,21 @@ public class InfinityStoneAbility : MonoBehaviour
     [SerializeField] GameObject p1StoneColider;
     [SerializeField] GameObject p2StoneColider;
 
+    int curLevel;
+
     private void Awake()
     {
         infinityStone = this;
-        abilityUpgrade();
+        
     }
     private void Start()
-    {  
+    {
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
+        curUpLevelValue = curLevel;
         p1StoneColider.SetActive(false);
         p2StoneColider.SetActive(false);
-      
+        abilityUpgrade();
+
     }
     private void Update()
     {

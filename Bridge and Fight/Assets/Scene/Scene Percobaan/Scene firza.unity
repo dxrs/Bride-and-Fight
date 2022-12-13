@@ -631,8 +631,8 @@ MonoBehaviour:
   listDataName:
   - Coin
   - Bank
-  - 
-  - 
+  - UpgradeShadow
+  - UpgradeStone
   - 
   - 
   - 
@@ -1502,7 +1502,6 @@ MonoBehaviour:
   - {fileID: 59657333}
   - {fileID: 776974619}
   delayTime: 10
-  curUpLevelValue: 1
 --- !u!50 &305161668
 Rigidbody2D:
   serializedVersion: 4
@@ -4143,6 +4142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curCoinGet: 0
+  totalCoinGet: 0
 --- !u!1 &963856641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4448,6 +4448,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinData: 0
+  bankData: 0
+  shadowLevel: 0
+  stoneLevel: 0
 --- !u!1 &1101810713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,7 +5205,7 @@ MonoBehaviour:
   shadowAbilityTimer: 5
   shadowAblityCoolDown: 0
   isUsingAbility: 0
-  curUpLevelValue: 1
+  curUpLevelValue: 0
   coinColider:
   - {fileID: 1040373484}
   - {fileID: 854858410}
@@ -5787,7 +5790,6 @@ MonoBehaviour:
   - {fileID: 1403103346}
   - {fileID: 1635121763}
   delayTime: 10
-  curUpLevelValue: 1
 --- !u!50 &1509830082
 Rigidbody2D:
   serializedVersion: 4
@@ -7541,9 +7543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11dd1c6ac23acb4a839158215f8c9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStoneValue: 2
-  stoneTimerSpawn: 10
-  curUpLevelValue: 1
+  maxStoneValue: 0
+  stoneTimerSpawn: 0
+  curUpLevelValue: 0
   player1: {fileID: 813679839}
   player2: {fileID: 128164986}
   p1StoneColider: {fileID: 1509830079}

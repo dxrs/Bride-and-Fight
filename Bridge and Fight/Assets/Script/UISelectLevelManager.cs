@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class UISelectLevelManager : MonoBehaviour
@@ -12,6 +14,8 @@ public class UISelectLevelManager : MonoBehaviour
     [SerializeField] Button buttonBackToSelectLevel;
     //[SerializeField] Button buttonBackToStore;
     [SerializeField] GameObject abilityShowUp;
+    [SerializeField] Button buttonUp;
+    [SerializeField] TextMeshProUGUI textMoney;
 
     [Header("List DBMS Value")]
     [SerializeField] int coinData;
@@ -31,6 +35,7 @@ public class UISelectLevelManager : MonoBehaviour
     }
     private void Update()
     {
+        textMoney.text = curBank.ToString();
         if (AbilityButtonList.abilityButton.isClicked) 
         {
             buttonBackToSelectLevel.interactable = false;
@@ -39,12 +44,17 @@ public class UISelectLevelManager : MonoBehaviour
         else 
         {
             buttonBackToSelectLevel.interactable = true;
+            buttonUp.interactable = true;
             abilityShowUp.SetActive(false);
         }
     }
     public void onClickBackToStore() 
     {
         AbilityButtonList.abilityButton.isClicked = false;
+    }
+    public void onClickPlay() 
+    {
+        SceneManager.LoadScene("Scene firza");
     }
 
 

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 public class AbilityInfinityStoneUpgrade : MonoBehaviour
 {
+    public static AbilityInfinityStoneUpgrade abilityInfinityStoneUpgrade;
+
     [Header("Other")]
     [SerializeField] Button buttonUpgrade;
     [SerializeField] TextMeshProUGUI textInfoUpgrade;
@@ -14,9 +16,16 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     public int nextUpgradeLevel;
     public int curCostUpgrade;
     [SerializeField] int maxStoneLevel;
+    [SerializeField] int yourBank;
 
+    private void Awake()
+    {
+        abilityInfinityStoneUpgrade = this;
+    }
     private void Start()
     {
+        curStoneLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
+        yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         nextUpgradeLevel = curStoneLevel + 1;
 
     }
@@ -27,5 +36,9 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
             textInfoUpgrade.text = "Upgrade Level " + curStoneLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
         }
        
+    }
+    public void onClickUpgradeStone() 
+    {
+        curStoneLevel++;
     }
 }

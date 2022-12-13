@@ -11,7 +11,7 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField] string[] abilityName;
     [SerializeField] TextMeshProUGUI textAbilityName;
 
-    
+    public int totalCurAbility;
     private void Awake()
     {
         upgradeSystem = this;

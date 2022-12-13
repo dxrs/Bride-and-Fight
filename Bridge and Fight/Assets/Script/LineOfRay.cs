@@ -52,7 +52,11 @@ public class LineOfRay : MonoBehaviour
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.blue);
                 estat = hit.collider.gameObject.GetComponent<EnemyStat>();
                 estat.health -= 10 * Time.deltaTime;
-                TotalCoin.totalCoin.curCoinGet += 4;
+                if (estat.health <= 0) 
+                {
+                    TotalCoin.totalCoin.curCoinGet += 4;
+                }
+               
 
             }
             else if (hit.collider.gameObject.tag == "Normal Enemy" && BulletConnect.bulletConnect.isConnected)

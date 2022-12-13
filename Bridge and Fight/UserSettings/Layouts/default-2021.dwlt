@@ -98,7 +98,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 65
+  controlID: 123
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 66
+  controlID: 124
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 26
+  controlID: 164
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -292,8 +292,8 @@ MonoBehaviour:
     y: 0
     width: 769
     height: 957
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -318,8 +318,8 @@ MonoBehaviour:
     y: 0
     width: 840
     height: 957
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -476,7 +476,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b8affdff3cb1fdff428ffeff58a8feff8ccbfefffee9feff56fefeffa623ffff2654ffff3aecffff08f6ffff38f8fffffafaffff7c75000082750000a4750000ae750000ec750000eeb0000010c80000badb0000fcdb000036dc000040dc00007edc0000
+      m_ExpandedIDs: ec55fbff1265fbffcefefbff1004fcffaa4ffcffd083fcff74fbfcff025ffdff9c97fdff4603feff1438feff663afeff483ffeff0ca5feff9e02ffffc622ffffc440ffffbe4cffff104effffde55ffffd656ffffcc5affffea5bffff5e5dffff7280ffffca98ffffbcd8ffff26dbffffd0e0ffff32e8ffffe6e8ffffcee9ffffc4ecffff24f1ffffd2f5fffffafaffff1693000022930000429300005a9300007493000088930000ec9300009e940000c894000012a00000d0a0000012a8000096bb000014bc00009ebc0000bec300009ec90000e6e2000002e600008ae6000090e60000b4e900003cea000042ea0000a60101002e020100f003010044040100bc040100160501001806010066060100f40b0100b60d0100f00d0100780e010096110100c4150100022401000c2401004a240100c8360100d63601001037010022370100ee3701000c380100ae3d0100bc3d0100f63d0100ac410100f6430100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -492,7 +492,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 12}
+        m_ClientGUIView: {fileID: 6}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -541,22 +541,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Script/Ability Script/Ability Upgrade
+    - Assets/Scene/Scene Percobaan
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Script/Ability Script/Ability Upgrade
+  - Assets/Scene/Scene Percobaan
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\GITHUB\Bride-and-Fight\Bridge and Fight
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 04f30000
-    m_LastClickedID: 62212
-    m_ExpandedIDs: 00000000e2740000e4740000e6740000e8740000ea740000ec740000ee740000f0740000f2740000f4740000f6740000127500001475000000ca9a3b
+    m_SelectedIDs: be800000
+    m_LastClickedID: 32958
+    m_ExpandedIDs: 00000000a6720000a8720000aa720000ac720000ae720000b0720000b2720000b4720000b6720000b8720000ba720000bc720000c2720000c4720000fc7c0000a88f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -584,7 +584,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2740000e4740000e6740000e8740000ea740000ec740000ee740000f0740000f2740000f4740000f6740000
+    m_ExpandedIDs: 00000000a6720000a8720000aa720000ac720000ae720000b0720000b2720000b4720000b6720000b8720000ba720000bc720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -615,20 +615,20 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Scene Percobaan
+      m_OriginalName: Scene Percobaan
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 32958
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 12}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -915,9 +915,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 461.7093, y: 306.90103, z: -2.2263381}
+    m_Target: {x: -4.8547773, y: 3.0343375, z: -0.064458475}
     speed: 2
-    m_Value: {x: 461.7093, y: 306.90103, z: -2.2263381}
+    m_Value: {x: -4.8547773, y: 3.0343375, z: -0.064458475}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -968,9 +968,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 299.03815
+    m_Target: 8.626076
     speed: 2
-    m_Value: 299.03815
+    m_Value: 8.626076
   m_Ortho:
     m_Target: 1
     speed: 2

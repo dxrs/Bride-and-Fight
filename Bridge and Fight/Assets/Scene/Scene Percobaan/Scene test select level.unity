@@ -1258,6 +1258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinData: 0
   bankData: 0
+  shadowLevel: 0
+  stoneLevel: 0
 --- !u!1 &681466453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,8 +1551,8 @@ MonoBehaviour:
   listDataName:
   - Coin
   - Bank
-  - 
-  - 
+  - UpgradeShadow
+  - UpgradeStone
   - 
   - 
   - 
@@ -1643,10 +1645,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonUpgrade: {fileID: 1970954296}
   textInfoUpgrade: {fileID: 16582881}
-  curStoneLevel: 2
+  curStoneLevel: 0
   nextUpgradeLevel: 0
-  curCostUpgrade: 750
+  curCostUpgrade: 0
   maxStoneLevel: 3
+  yourBank: 0
 --- !u!114 &1214006525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,10 +1664,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonUpgrade: {fileID: 1970954296}
   textInfoUpgrade: {fileID: 16582881}
-  curShadowLevel: 1
+  curShadowLevel: 0
   nextUpgradeLevel: 0
-  curCostUpgrade: 350
+  curCostUpgrade: 0
+  isUpgraded: 0
   maxShadowLevel: 3
+  yourBank: 0
 --- !u!4 &1214006526
 Transform:
   m_ObjectHideFlags: 0
@@ -3170,7 +3175,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1970954297}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2004220915}
+        m_TargetAssemblyTypeName: AbilityButtonList, Assembly-CSharp
+        m_MethodName: buttonUpgradeClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1970954297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3258,6 +3275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonBackToSelectLevel: {fileID: 741262682}
   abilityShowUp: {fileID: 1382952614}
+  buttonUp: {fileID: 1970954296}
+  textMoney: {fileID: 1597746941}
   coinData: 0
   curBank: 0
 --- !u!114 &2004220915
@@ -3279,6 +3298,7 @@ MonoBehaviour:
   abilityListButton:
   - {fileID: 345731235}
   - {fileID: 1470785730}
+  buttonUp: {fileID: 0}
 --- !u!114 &2004220916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3295,6 +3315,7 @@ MonoBehaviour:
   - Shadow
   - Stone
   textAbilityName: {fileID: 2048838169}
+  totalCurAbility: 0
 --- !u!1 &2048838167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3513,7 +3534,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2065294756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2004220914}
+        m_TargetAssemblyTypeName: UISelectLevelManager, Assembly-CSharp
+        m_MethodName: onClickPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2065294756
 MonoBehaviour:
   m_ObjectHideFlags: 0

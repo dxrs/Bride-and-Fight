@@ -13,6 +13,7 @@ public class UIMenuManager : MonoBehaviour
     private void Start()
     {
         valueSelector = 1;
+       
     }
     private void Update()
     {
@@ -42,7 +43,7 @@ public class UIMenuManager : MonoBehaviour
         {
             if (valueSelector == 1) 
             {
-                SceneManager.LoadScene("Scene Tutorial");
+                SceneManager.LoadScene("Scene firza");
             }else if (valueSelector == 2) 
             {
 
@@ -75,4 +76,6 @@ public class UIMenuManager : MonoBehaviour
             selector[2].SetActive(true);
         }
     }
+
+   
 }

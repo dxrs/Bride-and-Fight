@@ -18,7 +18,7 @@ public class ShadowAbility : MonoBehaviour
     [SerializeField] float shadowAblityCoolDown;
 
     [SerializeField] bool isUsingAbility;
-    [SerializeField] int curUpLevelValue=1;
+    [SerializeField] int curUpLevelValue;
 
     [SerializeField] GameObject[] coinColider;
     [SerializeField] GameObject[] player;
@@ -26,6 +26,7 @@ public class ShadowAbility : MonoBehaviour
     [SerializeField] Image imgBar;
     [SerializeField] TextMeshProUGUI textCooldownTimer;
 
+    int curLevel;
     float curShadowCooldown;
     float curShadowTimer;
     float curValueTimer;
@@ -38,9 +39,13 @@ public class ShadowAbility : MonoBehaviour
 
     private void Start()
     {
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
+        print(curLevel);
+        curUpLevelValue = curLevel;
         upgradeAbilityShadow();
         shadowAbilityTimer = curShadowTimer;
         curValueTimer = shadowAbilityTimer;
+        
         
     }
 

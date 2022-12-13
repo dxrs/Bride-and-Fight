@@ -12,12 +12,27 @@ public class SaveDataManager : MonoBehaviour
     {
         saveDataManager = this;
     }
+    private void Start()
+    {
+        currentLevelAbility();
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K)) 
         {
             PlayerPrefs.DeleteAll();
+        }
+    }
+    void currentLevelAbility()
+    {
+        if (!PlayerPrefs.HasKey(listDataName[2]))
+        {
+            PlayerPrefs.SetInt(listDataName[2], 1);
+        }
+        if (!PlayerPrefs.HasKey(listDataName[3])) 
+        {
+            PlayerPrefs.SetInt(listDataName[3], 1);
         }
     }
 }

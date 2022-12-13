@@ -12,11 +12,12 @@ public class StoneColider : MonoBehaviour
     public GameObject[] stone;
 
     [SerializeField] float delayTime;
-    [SerializeField] int curUpLevelValue = 1;
+    
 
     protected float timerCountp1;
     protected float timerCountp2;
 
+    int curLevel;
     CircleCollider2D cc;
 
     private void Awake()
@@ -26,9 +27,22 @@ public class StoneColider : MonoBehaviour
 
     private void Start()
     {
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
         cc = GetComponent<CircleCollider2D>();
-        curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue;
-      
+        
+        if (curLevel == 1) 
+        {
+            curStoneValue = 2;
+            
+        }
+        if (curLevel == 2) 
+        {
+            curStoneValue = 4;
+        }
+        if (curLevel == 3) 
+        {
+            curStoneValue = 8;
+        }
     }
 
     private void Update()
@@ -40,7 +54,7 @@ public class StoneColider : MonoBehaviour
 
     void abilityStoneActivated() 
     {
-        if(AbilitySelector.abilitySelector.abilitySelected == 1) 
+        if(AbilitySelector.abilitySelector.abilitySelected == 1 && GameStarting.gameStarting.isGameStarted) 
         {
             totalStone();
             if (curStoneValue > InfinityStoneAbility.infinityStone.maxStoneValue) { curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue; }
