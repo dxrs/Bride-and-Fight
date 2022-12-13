@@ -13,4 +13,8 @@ public class TotalCoin : MonoBehaviour
     {
         totalCoin = this;
     }
+    private void Update()
+    {
+        if (curCoinGet <= 0) { curCoinGet = 0; }
+    }
 }

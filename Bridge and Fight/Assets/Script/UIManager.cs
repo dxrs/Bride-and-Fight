@@ -24,8 +24,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] inGamePopUp;
     [SerializeField] GameObject inGameUI;
     [SerializeField] bool isTimeCountDown;
-    public int test;
 
+    int totalCoinValue;
     int coinValue;
     bool isCoinDataSaved;
 
@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(timeCountDownStart());
         coinValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
-        test= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         
 
     }
@@ -178,8 +178,8 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator loadToSceneMenu() 
     {
-        test = test + PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
-        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], test);
+        TotalCoin.totalCoin.totalCoinGet = TotalCoin.totalCoin.totalCoinGet + PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], TotalCoin.totalCoin.totalCoinGet);
         yield return new WaitForSeconds(3);
 
         SceneManager.LoadScene("Scene test select level");
