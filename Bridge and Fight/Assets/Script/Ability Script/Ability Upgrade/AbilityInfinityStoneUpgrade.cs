@@ -15,6 +15,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     public int curStoneLevel;
     public int nextUpgradeLevel;
     public int curCostUpgrade;
+    [SerializeField] bool isUpgraded;
     [SerializeField] int maxStoneLevel;
     [SerializeField] int yourBank;
 
@@ -31,11 +32,47 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     }
     private void Update()
     {
+        if (AbilityButtonList.abilityButton.isClicked)
+        {
+            if (AbilityButtonList.abilityButton.clickedValue == 2 && curStoneLevel == 3)
+            {
+                buttonUpgrade.interactable = false;
+            }
+        }
+
+        progressUp();
+        saveDataUpStone();
         if (AbilityButtonList.abilityButton.clickedValue == 2) 
         {
             textInfoUpgrade.text = "Upgrade Level " + curStoneLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
         }
        
+    }
+    void progressUp() 
+    {
+        if (!AbilityButtonList.abilityButton.isClicked) 
+        {
+            isUpgraded = false;
+        }
+        if (AbilityButtonList.abilityButton.clickedValue == 2) 
+        {
+            if (curStoneLevel == 1)
+            {
+
+            }
+            if (curStoneLevel == 2) 
+            {
+
+            }
+            if (curStoneLevel == 3) 
+            {
+                
+            }
+        }
+    }
+    void saveDataUpStone() 
+    {
+        
     }
     public void onClickUpgradeStone() 
     {

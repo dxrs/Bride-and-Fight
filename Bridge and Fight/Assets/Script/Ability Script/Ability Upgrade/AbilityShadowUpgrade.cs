@@ -36,13 +36,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     {
         progressUp();
         saveDataUpShadow();
-        if (AbilityButtonList.abilityButton.isClicked) 
-        {
-            if(AbilityButtonList.abilityButton.clickedValue==1 && curShadowLevel == 3) 
-            {
-                buttonUpgrade.interactable = false;
-            }
-        }
+        
 
     }
     void progressUp() 
@@ -55,7 +49,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
         {
             if (curShadowLevel == 1)
             {
-                curCostUpgrade = 35;
+                curCostUpgrade = 50;
                
                 if (yourBank < curCostUpgrade) 
                 {
@@ -70,7 +64,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
             }
             if (curShadowLevel == 2)
             {
-                curCostUpgrade = 70;
+                curCostUpgrade = 170;
                 if (yourBank < curCostUpgrade)
                 {
                     textInfoUpgrade.text = "Not enough money to upgrade";
