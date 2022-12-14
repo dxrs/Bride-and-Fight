@@ -9,6 +9,8 @@ public class UpgradeSystem : MonoBehaviour
     public static UpgradeSystem upgradeSystem;
 
     [SerializeField] string[] abilityName;
+    [SerializeField] Sprite[] abilityIcon;
+    [SerializeField] Image abilityImage;
     [SerializeField] TextMeshProUGUI textAbilityName;
 
     public int totalCurAbility;
@@ -26,6 +28,23 @@ public class UpgradeSystem : MonoBehaviour
                 if ((j+1) == AbilityButtonList.abilityButton.clickedValue)
                 {
                     textAbilityName.text = abilityName[j];
+                    break;
+                }
+            }
+        }
+
+        imagePerAbility();
+    }
+
+    void imagePerAbility() 
+    {
+        if (AbilityButtonList.abilityButton.isClicked)
+        {
+            for (int i = 0; i < abilityIcon.Length; i++)
+            {
+                if (AbilityButtonList.abilityButton.clickedValue == i+1)
+                {
+                    abilityImage.sprite = abilityIcon[i];
                     break;
                 }
             }

@@ -44,7 +44,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
         saveDataUpStone();
         if (AbilityButtonList.abilityButton.clickedValue == 2) 
         {
-            textInfoUpgrade.text = "Upgrade Level " + curStoneLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
+            
         }
        
     }
@@ -58,15 +58,35 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
         {
             if (curStoneLevel == 1)
             {
-
+                curCostUpgrade = 80;
+                if (yourBank < curCostUpgrade) 
+                {
+                    textInfoUpgrade.text = "Not enough money to upgrade";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade) 
+                {
+                    textInfoUpgrade.text = "Upgrade Level " + curStoneLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
+                }
             }
             if (curStoneLevel == 2) 
             {
-
+                curCostUpgrade = 280;
+                if (yourBank < curCostUpgrade)
+                {
+                    textInfoUpgrade.text = "Not enough money to upgrade";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
+                    textInfoUpgrade.text = "Upgrade Level " + curStoneLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
+                }
             }
             if (curStoneLevel == 3) 
             {
-                
+                nextUpgradeLevel = 3;
+                textInfoUpgrade.text = "Level Maxed";
+                buttonUpgrade.interactable = false;
             }
         }
     }
@@ -76,6 +96,18 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     }
     public void onClickUpgradeStone() 
     {
-        curStoneLevel++;
+        if (AbilityButtonList.abilityButton.clickedValue == 2)
+        {
+            isUpgraded = true;
+            if (isUpgraded)
+            {
+                yourBank -= curCostUpgrade;
+            }
+            if (curStoneLevel < 3)
+            {
+                curStoneLevel++;
+            }
+
+        }
     }
 }
