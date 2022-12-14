@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4b5da8570f0654bba56da8f5f4c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.8
+  speed: 1.2
   health: 1
   aSource: {fileID: -2004549424312607604}
   clipNya: {fileID: 8300000, guid: e5f821e79a9bc11428a0475c72441c1c, type: 3}

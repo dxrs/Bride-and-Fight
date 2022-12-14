@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilitySelector : MonoBehaviour
 {
     public static AbilitySelector abilitySelector;
 
     public int abilitySelected;
+
+    [SerializeField] Image[] imgAbility;
 
     int curSkill_1, curSkill_2;
 
@@ -26,7 +29,7 @@ public class AbilitySelector : MonoBehaviour
         GameStarting.gameStarting.isGameStarted=true;
         curSkill_1 = AbilityInventory.abilityInventory.skill_1;
         abilitySelected = curSkill_1;
-        //print(curSkill_1);
+        Cursor.visible = false;
         
     }
 
@@ -35,6 +38,8 @@ public class AbilitySelector : MonoBehaviour
         GameStarting.gameStarting.isGameStarted = true;
         curSkill_2 = AbilityInventory.abilityInventory.skill_2;
         abilitySelected = curSkill_2;
-        //print(curSkill_2);
+        Cursor.visible = false;
     }
+
+
 }

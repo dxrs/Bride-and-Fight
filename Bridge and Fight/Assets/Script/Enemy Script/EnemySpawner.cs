@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            if (UIManager.uIManager.timerValue <= 80) 
+            if (UIManager.uIManager.timerValue <= 100) 
             {
                 if (GameStarting.gameStarting.isGameStarted &&
               !GameOver.gameOver.isGameOver
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            if (UIManager.uIManager.timerValue <= 60) 
+            if (UIManager.uIManager.timerValue <= 90) 
             {
                 if (GameStarting.gameStarting.isGameStarted &&
                 !GameOver.gameOver.isGameOver

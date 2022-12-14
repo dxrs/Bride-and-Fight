@@ -11,7 +11,9 @@ public class CoinDestroy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player 1" || collision.gameObject.tag == "Player 2")
+        if (collision.gameObject.tag == "Player 1" 
+            || collision.gameObject.tag == "Player 2"
+            || collision.gameObject.tag=="Coin Colider")
         {
             TotalCoin.totalCoin.curCoinGet += 10;
             Destroy(gameObject);

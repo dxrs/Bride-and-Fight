@@ -48,11 +48,15 @@ public class BulletConnect : MonoBehaviour
 
         while (true) 
         {
-            if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance
-                && !LineOfRay.lineOfRay.isTouchObstcale) 
+            if (!GameOver.gameOver.isGameOver) 
             {
-                Instantiate(bullet, shootPoint.transform.position, Quaternion.identity);
+                if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance
+                && !LineOfRay.lineOfRay.isTouchObstcale)
+                {
+                    Instantiate(bullet, shootPoint.transform.position, Quaternion.identity);
+                }
             }
+            
             
             yield return new WaitForSeconds(waitTimeToSpawn);
         }

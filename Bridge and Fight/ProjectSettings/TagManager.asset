@@ -12,6 +12,8 @@ TagManager:
   - Normal Enemy
   - Medium Enemy
   - Camera Edge
+  - Infinity Stone
+  - Coin Colider
   layers:
   - Default
   - TransparentFX

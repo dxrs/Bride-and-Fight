@@ -9,16 +9,26 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager uIManager;
-
+     
     public AudioSource aSource;
     public AudioClip clipnya;
 
-    public TextMeshProUGUI tmpTimer;
-    public TextMeshProUGUI tmpOverFinish;
-    public TextMeshProUGUI tmpLevelMenu;
+    public TextMeshProUGUI textTimer;
+    public TextMeshProUGUI textOverFinish;
+
+
     public float timerValue;
+
+    [SerializeField] TextMeshProUGUI textTotalCoin;
+    [SerializeField] TextMeshProUGUI textTotalCoinEndGame;
     [SerializeField] GameObject[] inGamePopUp;
+    [SerializeField] GameObject inGameUI;
     [SerializeField] bool isTimeCountDown;
+
+    int totalCoinValue;
+    int coinValue;
+    bool isCoinDataSaved;
+
     TimeSpan timePlay;
     
 
@@ -29,6 +39,10 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(timeCountDownStart());
+        coinValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
+        TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        
+
     }
     private void Update()
     {
@@ -37,35 +51,48 @@ public class UIManager : MonoBehaviour
         if (GameStarting.gameStarting.isGameStarted) 
         {
             inGamePopUp[1].SetActive(false);
+            inGameUI.SetActive(true);
+        }
+        else 
+        {
+            inGameUI.SetActive(false);
+        }
+        if (isCoinDataSaved) 
+        {
+            
+           
+            if (TotalCoin.totalCoin.curCoinGet > PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0])) 
+            {
+                
+            }
+            
         }
     }
     void inGameStatus() 
     {
+        gameIsPaused();
+        textTotalCoin.text = "=" + TotalCoin.totalCoin.curCoinGet + "$";
         if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
-            StartCoroutine(popUpEndGameShow());
-            if (inGamePopUp[0].activeSelf)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    SceneManager.LoadScene("Scene Menu");
-                }
+            
 
-            }
+            //PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1] + TotalCoin.totalCoin.curCoinGet, test);
+            StartCoroutine(popUpEndGameShow());
+            GameStarting.gameStarting.isGameStarted = false;
+            //DataCoin.dataCoin.coinDataValue = TotalCoin.totalCoin.curCoinGet;
+            textTotalCoinEndGame.text= "=" + TotalCoin.totalCoin.curCoinGet + "$";
+           
         }
         if (GameOver.gameOver.isGameOver)
         {
-            tmpOverFinish.text = "GAME OVER";
-            tmpLevelMenu.text = "ENTER - RESTART";
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            textOverFinish.text = "GAME OVER";
+            
+          
         }
         if (GameFinish.gameFinish.isGameFinished)
         {
-            tmpOverFinish.text = "GAME FINISH";
-            tmpLevelMenu.text = "ENTER - NEXT LEVEL";
+            textOverFinish.text = "GAME FINISH";
+            
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -75,9 +102,17 @@ public class UIManager : MonoBehaviour
         {
             timerStart();
         }
-        if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
+        if (GameOver.gameOver.isGameOver 
+            || GameFinish.gameFinish.isGameFinished 
+            || GamePaused.gamePaused.isGamePaused)
         {
             isTimeCountDown = false;
+            Cursor.visible = true;
+        }
+        if (!GamePaused.gamePaused.isGamePaused) 
+        {
+            isTimeCountDown = true;
+            
         }
     }
     public void timerStart() 
@@ -95,6 +130,29 @@ public class UIManager : MonoBehaviour
             timerValue = 0; 
         }
     }
+
+    void gameIsPaused() 
+    {
+        if(!GameOver.gameOver.isGameOver
+            &&!GameFinish.gameFinish.isGameFinished
+            && GameStarting.gameStarting.isGameStarted) 
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if (!GamePaused.gamePaused.isGamePaused)
+                {
+                    Cursor.visible = false;
+                    GamePaused.gamePaused.isGamePaused = true;
+                }
+                else
+                {
+                    GamePaused.gamePaused.isGamePaused = false;
+                    Cursor.visible = true;
+                }
+            }
+        }
+        
+    }
     IEnumerator timeCountDownStart() 
     {
         while (true) 
@@ -104,7 +162,7 @@ public class UIManager : MonoBehaviour
                 timerValue -= Time.deltaTime;
                 timePlay = TimeSpan.FromSeconds(timerValue);
                 string strTimerPlaying = timePlay.ToString("mm':'ss':'ff");
-                tmpTimer.text = strTimerPlaying;
+                textTimer.text = strTimerPlaying;
             }
            
           
@@ -116,6 +174,29 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         inGamePopUp[0].SetActive(true);
-        tmpTimer.enabled = false;
+        inGameUI.SetActive(false);
+    }
+    IEnumerator loadToSceneMenu() 
+    {
+        TotalCoin.totalCoin.totalCoinGet = TotalCoin.totalCoin.totalCoinGet + PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], TotalCoin.totalCoin.totalCoinGet);
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene("Scene test select level");
+    }
+
+    public void onClickContinue() 
+    {
+        isCoinDataSaved = true;
+        if (isCoinDataSaved) 
+        {
+            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
+        }
+        StartCoroutine(loadToSceneMenu());
+        
+    }
+    public void onClickRestart() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

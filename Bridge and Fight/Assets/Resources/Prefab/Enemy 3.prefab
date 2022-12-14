@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 1ced7462fb54f4146b664cf6cc38522b, type: 3}
-  m_Color: {r: 1, g: 0.4557446, b: 0.0039215684, a: 1}
+  m_Color: {r: 1, g: 0.014317344, b: 0.0039215684, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: 7438855646090002115}
   - component: {fileID: 1885028616840890209}
   m_Layer: 6
-  m_Name: Enemy 2
-  m_TagString: Medium Enemy
+  m_Name: Enemy 3
+  m_TagString: Normal Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.82, y: 2.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7438855646737430261}
   m_Father: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad05cf0398e1ec4e9430d44cc81f3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
+  enemyParticle: {fileID: 4131467262019528824, guid: 52237b7350b2cbf43819def39e679c07, type: 3}
   aSource: {fileID: 0}
   clipNya: {fileID: 0}
 --- !u!114 &3158544808245334592
@@ -147,11 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4b5da8570f0654bba56da8f5f4c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  health: 10
+  speed: 1.5
+  health: 1
   aSource: {fileID: 0}
   clipNya: {fileID: 0}
-  enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
+  enemyParticle: {fileID: 4131467262019528824, guid: 52237b7350b2cbf43819def39e679c07, type: 3}
 --- !u!50 &7438855646090002115
 Rigidbody2D:
   serializedVersion: 4
@@ -198,11 +198,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5530733, y: 0.49772358}
-      - {x: -0.61001855, y: -0.5000677}
-      - {x: -0.00668031, y: -0.29694235}
-      - {x: 0.60241294, y: -0.09826064}
-      - {x: 0.044994593, y: 0.21204084}
+    - - {x: -0.1611656, y: 0.14593363}
+      - {x: -0.17240459, y: -0.15347716}
+      - {x: 0.014723122, y: -0.086734414}
+      - {x: 0.18719685, y: -0.03297162}
+      - {x: 0.041442156, y: 0.04901308}
 --- !u!1 &7438855646737430260
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 7438855646737430260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 89292782622370899}
