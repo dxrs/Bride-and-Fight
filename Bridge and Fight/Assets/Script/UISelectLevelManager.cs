@@ -12,7 +12,6 @@ public class UISelectLevelManager : MonoBehaviour
 
 
     [SerializeField] Button buttonBackToSelectLevel;
-    //[SerializeField] Button buttonBackToStore;
     [SerializeField] GameObject abilityShowUp;
     [SerializeField] Button buttonUp;
     [SerializeField] TextMeshProUGUI textMoney;
@@ -56,6 +55,7 @@ public class UISelectLevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("Scene firza");
     }
+    
 
 
 

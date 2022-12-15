@@ -24,16 +24,15 @@ public class AbilityInventory : MonoBehaviour
         skill_1 = Random.Range(0, maxTotalSkill);
         skill_2 = Random.Range(0, maxTotalSkill);
 
-
-    }
-    private void Update()
-    {
+        // Pastikan skill_1 dan skill_2 tidak sama
         if (skill_1 == skill_2)
         {
-            skill_2 = Random.Range(0, maxTotalSkill);
-            
+            // Generate angka acak untuk skill_2 sampai tidak sama dengan skill_1
+            while (skill_1 == skill_2)
+            {
+                skill_2 = Random.Range(0, maxTotalSkill);
+            }
         }
-        else { return; }
     }
     
 

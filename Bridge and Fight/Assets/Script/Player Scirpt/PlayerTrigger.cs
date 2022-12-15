@@ -23,6 +23,7 @@ public class PlayerTrigger : MonoBehaviour
     {
         if (playerHealth <= 0) 
         {
+            TotalCoin.totalCoin.curCoinGet = 0;
             GameOver.gameOver.isGameOver=true;
         }
     }

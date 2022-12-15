@@ -10,6 +10,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     [Header("Other")]
     [SerializeField] Button buttonUpgrade;
     [SerializeField] TextMeshProUGUI textInfoUpgrade;
+    [SerializeField] TextMeshProUGUI textCurBank;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curStoneLevel;
@@ -42,11 +43,8 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
 
         progressUp();
         saveDataUpStone();
-        if (AbilityButtonList.abilityButton.clickedValue == 2) 
-        {
-            
-        }
-       
+        textCurBank.text = "Your Money : " + yourBank + "$";
+
     }
     void progressUp() 
     {
@@ -61,7 +59,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 curCostUpgrade = 80;
                 if (yourBank < curCostUpgrade) 
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade";
+                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => " + curCostUpgrade + "$";
                     buttonUpgrade.interactable = false;
                 }
                 if (yourBank >= curCostUpgrade) 
@@ -74,7 +72,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 curCostUpgrade = 280;
                 if (yourBank < curCostUpgrade)
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade";
+                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => " + curCostUpgrade +"$";
                     buttonUpgrade.interactable = false;
                 }
                 if (yourBank >= curCostUpgrade)

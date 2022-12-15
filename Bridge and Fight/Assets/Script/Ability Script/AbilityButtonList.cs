@@ -70,7 +70,7 @@ public class AbilityButtonList : MonoBehaviour
         //Debug.Log(value);
         clickedValue = value;
         isClicked = true;
-        //abilityShowUp.SetActive(true);
+        
     }
 
     public void buttonUpgradeClicked() 
@@ -84,5 +84,6 @@ public class AbilityButtonList : MonoBehaviour
             AbilityInfinityStoneUpgrade.abilityInfinityStoneUpgrade.onClickUpgradeStone();
         }
     }
+    
     
 }

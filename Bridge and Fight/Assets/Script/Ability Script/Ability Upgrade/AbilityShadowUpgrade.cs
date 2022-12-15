@@ -11,6 +11,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     [Header("Other")]
     [SerializeField] Button buttonUpgrade;
     [SerializeField] TextMeshProUGUI textInfoUpgrade;
+    [SerializeField] TextMeshProUGUI textCurBank;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curShadowLevel;
@@ -36,7 +37,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     {
         progressUp();
         saveDataUpShadow();
-        
+        textCurBank.text = "Your Money : " + yourBank +"$";
 
     }
     void progressUp() 
@@ -53,7 +54,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                
                 if (yourBank < curCostUpgrade) 
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade";
+                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => "+curCostUpgrade + "$";
                     buttonUpgrade.interactable = false;
                 }
                 if (yourBank >=curCostUpgrade) 
@@ -67,7 +68,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 curCostUpgrade = 170;
                 if (yourBank < curCostUpgrade)
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade";
+                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => " + curCostUpgrade + "$";
                     buttonUpgrade.interactable = false;
                 }
                 if (yourBank >= curCostUpgrade)

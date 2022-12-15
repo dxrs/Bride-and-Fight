@@ -57,16 +57,7 @@ public class UIManager : MonoBehaviour
         {
             inGameUI.SetActive(false);
         }
-        if (isCoinDataSaved) 
-        {
-            
-           
-            if (TotalCoin.totalCoin.curCoinGet > PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0])) 
-            {
-                
-            }
-            
-        }
+       
     }
     void inGameStatus() 
     {
@@ -109,7 +100,7 @@ public class UIManager : MonoBehaviour
             isTimeCountDown = false;
             Cursor.visible = true;
         }
-        if (!GamePaused.gamePaused.isGamePaused) 
+        if (!GamePaused.gamePaused.isGamePaused && GameStarting.gameStarting.isGameStarted) 
         {
             isTimeCountDown = true;
             
@@ -117,7 +108,11 @@ public class UIManager : MonoBehaviour
     }
     public void timerStart() 
     {
-        isTimeCountDown = true;
+        if (GameStarting.gameStarting.isGameStarted) 
+        {
+            isTimeCountDown = true;
+        }
+      
         
     }
     void timerEnd() 

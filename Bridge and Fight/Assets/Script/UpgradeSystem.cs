@@ -9,9 +9,11 @@ public class UpgradeSystem : MonoBehaviour
     public static UpgradeSystem upgradeSystem;
 
     [SerializeField] string[] abilityName;
+    [SerializeField] string[] abilitydDesc;
     [SerializeField] Sprite[] abilityIcon;
     [SerializeField] Image abilityImage;
     [SerializeField] TextMeshProUGUI textAbilityName;
+    [SerializeField] TextMeshProUGUI textAbilityDesc;
 
     public int totalCurAbility;
     private void Awake()
