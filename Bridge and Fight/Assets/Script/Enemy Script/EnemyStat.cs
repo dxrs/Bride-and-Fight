@@ -10,11 +10,17 @@ public class EnemyStat : MonoBehaviour
     public float speed;
     public float health;
 
+    public int id;
+
     public AudioSource aSource;
     public AudioClip clipNya;
 
     public ParticleSystem enemyParticle;
 
+    private void Awake()
+    {
+        if (enemyStat == null) { enemyStat = this; }
+    }
     void Update()
     {
         if(health <= 0)
@@ -36,6 +42,51 @@ public class EnemyStat : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(enemyParticle, transform.position, Quaternion.identity);
+        }
+        if(collision.gameObject.tag == "Player 1")
+        {
+            if (!GameOver.gameOver.isGameOver)
+            {
+                if (id == 1)
+                {
+                    Player1Health.player1Health.p1TriggerWithNormalEnemy();
+
+
+                }
+                if (id == 2)
+                {
+                    Player1Health.player1Health.p1TriggerWithMediumEnemy();
+                   
+
+                }
+
+
+
+            }
+            
+           
+        }
+        if (collision.gameObject.tag == "Player 2")
+        {
+            if (!GameOver.gameOver.isGameOver)
+            {
+                if (id == 1)
+                {
+                    Player2Health.player2Health.p2TriggerWithNormalEnemy();
+
+
+                }
+                if (id == 2)
+                {
+                    Player2Health.player2Health.p2TriggerWithMediumEnemy();
+                   
+
+                }
+
+
+            }
+          
+            
         }
     }
 }

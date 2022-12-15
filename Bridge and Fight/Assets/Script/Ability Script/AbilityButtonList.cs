@@ -44,12 +44,12 @@ public class AbilityButtonList : MonoBehaviour
     }
     private void Update()
     {
-        for (int i = 0; i < abilityListButton.Length; i++)
+        for (int i = 0; i < abilityListButton.Length-1; i++)
         {
             if (isClicked)
             {
+                //abilityListButton[i].interactable = false;
                 abilityListButton[i].interactable = false;
-                //abilityListButton[abilityListButton.Length].interactable = false;
             }
             else 
             {

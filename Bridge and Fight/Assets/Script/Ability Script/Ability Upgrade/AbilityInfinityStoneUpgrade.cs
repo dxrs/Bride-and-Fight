@@ -11,6 +11,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     [SerializeField] Button buttonUpgrade;
     [SerializeField] TextMeshProUGUI textInfoUpgrade;
     [SerializeField] TextMeshProUGUI textCurBank;
+    [SerializeField] Image[] imgStatuLevelAbility;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curStoneLevel;
@@ -51,6 +52,21 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
         if (!AbilityButtonList.abilityButton.isClicked) 
         {
             isUpgraded = false;
+        }
+        switch (curStoneLevel) 
+        {
+            case 1:
+                imgStatuLevelAbility[0].enabled = true;
+                break;
+            case 2:
+                imgStatuLevelAbility[0].enabled = true;
+                imgStatuLevelAbility[1].enabled = true;
+                break;
+            case 3:
+                imgStatuLevelAbility[0].enabled = true;
+                imgStatuLevelAbility[1].enabled = true;
+                imgStatuLevelAbility[2].enabled = true;
+                break;
         }
         if (AbilityButtonList.abilityButton.clickedValue == 2) 
         {

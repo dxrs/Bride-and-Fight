@@ -26,6 +26,12 @@ public class SaveDataManager : MonoBehaviour
     }
     void currentLevelAbility()
     {
+        //total ability
+        if (!PlayerPrefs.HasKey(listDataName[4])) 
+        {
+            PlayerPrefs.SetInt(listDataName[4], 2);
+        }
+
         if (!PlayerPrefs.HasKey(listDataName[2]))
         {
             PlayerPrefs.SetInt(listDataName[2], 1);

@@ -9,9 +9,8 @@ public class PlayerTrigger : MonoBehaviour
     public bool isP1_ColtoCamEdge, isP2_ColtoCamEdge;
     public bool colObstacle_p1, colObstacle_p2;
 
-    public ParticleSystem playerParticle;
-
-    public float playerHealth;
+  
+    
   
 
     [SerializeField] int numbPlayer;
@@ -19,14 +18,7 @@ public class PlayerTrigger : MonoBehaviour
     {
         if (playerTrigger == null) { playerTrigger = this; }
     }
-    private void Update()
-    {
-        if (playerHealth <= 0) 
-        {
-            TotalCoin.totalCoin.curCoinGet = 0;
-            GameOver.gameOver.isGameOver=true;
-        }
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Camera Edge") 
@@ -47,22 +39,9 @@ public class PlayerTrigger : MonoBehaviour
                 TotalCoin.totalCoin.curCoinGet -= 5;
             }
         }
-        if (collision.gameObject.tag == "Normal Enemy")
-        {
-
-            playerHealth -= 10;
-            
-        }
-        if(collision.gameObject.tag == "Medium Enemy") 
-        {
-            playerHealth -= 20;
-         
-        }
-        if(collision.gameObject.tag=="Player 1") 
-        {
-            playerHealth -= 100;
-        }
+        
     }
+   
 
     private void OnTriggerExit2D(Collider2D collision)
     {

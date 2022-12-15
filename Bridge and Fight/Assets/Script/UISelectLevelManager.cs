@@ -46,6 +46,13 @@ public class UISelectLevelManager : MonoBehaviour
             buttonUp.interactable = true;
             abilityShowUp.SetActive(false);
         }
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if (AbilityButtonList.abilityButton.isClicked) 
+            {
+                AbilityButtonList.abilityButton.isClicked = false;
+            }
+        }
     }
     public void onClickBackToStore() 
     {

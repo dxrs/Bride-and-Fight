@@ -20,7 +20,10 @@ public class UpgradeSystem : MonoBehaviour
     {
         upgradeSystem = this;
     }
-
+    private void Start()
+    {
+        totalCurAbility = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
+    }
     private void Update()
     {
         if (AbilityButtonList.abilityButton.isClicked) 

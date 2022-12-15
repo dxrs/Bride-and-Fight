@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   health: 1
+  id: 1
   aSource: {fileID: 0}
   clipNya: {fileID: 0}
   enemyParticle: {fileID: 4131467262019528824, guid: 52237b7350b2cbf43819def39e679c07, type: 3}

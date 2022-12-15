@@ -550,6 +550,8 @@ MonoBehaviour:
   coinData: 0
   bankData: 0
   shadowLevel: 0
+  stoneLevel: 0
+  totalAbility: 0
 --- !u!1 &464804606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,7 +1259,7 @@ MonoBehaviour:
   - Bank
   - UpgradeShadow
   - UpgradeStone
-  - 
+  - TotalAbility
   - 
   - 
   - 

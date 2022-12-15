@@ -21,6 +21,8 @@ public class AbilityInventory : MonoBehaviour
 
     private void Start()
     {
+        maxTotalSkill = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
+
         skill_1 = Random.Range(0, maxTotalSkill);
         skill_2 = Random.Range(0, maxTotalSkill);
 

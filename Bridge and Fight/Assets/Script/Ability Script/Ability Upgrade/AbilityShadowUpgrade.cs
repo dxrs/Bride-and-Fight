@@ -12,6 +12,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     [SerializeField] Button buttonUpgrade;
     [SerializeField] TextMeshProUGUI textInfoUpgrade;
     [SerializeField] TextMeshProUGUI textCurBank;
+    [SerializeField] Image[] imgStatuLevelAbility;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curShadowLevel;
@@ -46,12 +47,28 @@ public class AbilityShadowUpgrade : MonoBehaviour
         {
             isUpgraded = false;
         }
+        switch (curShadowLevel) 
+        {
+            case 1:
+                imgStatuLevelAbility[0].enabled = true;
+                break;
+            case 2:
+                imgStatuLevelAbility[0].enabled = true;
+                imgStatuLevelAbility[1].enabled = true;
+                break;
+            case 3:
+                imgStatuLevelAbility[0].enabled = true;
+                imgStatuLevelAbility[1].enabled = true;
+                imgStatuLevelAbility[2].enabled = true;
+                break;
+        }
         if(AbilityButtonList.abilityButton.clickedValue == 1) 
         {
             if (curShadowLevel == 1)
             {
+                
                 curCostUpgrade = 50;
-               
+                
                 if (yourBank < curCostUpgrade) 
                 {
                     textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => "+curCostUpgrade + "$";
@@ -65,6 +82,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
             }
             if (curShadowLevel == 2)
             {
+                
                 curCostUpgrade = 170;
                 if (yourBank < curCostUpgrade)
                 {
@@ -78,6 +96,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
             }
             if (curShadowLevel == 3) 
             {
+               
                 nextUpgradeLevel = 3;
                 textInfoUpgrade.text = "Level Maxed";
                 buttonUpgrade.interactable = false;
