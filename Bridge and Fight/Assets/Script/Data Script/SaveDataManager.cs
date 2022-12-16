@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SaveDataManager : MonoBehaviour
 {
     public static SaveDataManager saveDataManager;
 
     public string[] listDataName;
+
+ 
 
     private void Awake()
     {
@@ -19,9 +22,13 @@ public class SaveDataManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K)) 
+        
+        if (Input.GetKeyDown(KeyCode.K))
         {
             PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+            
+            
         }
     }
     void currentLevelAbility()
@@ -32,6 +39,7 @@ public class SaveDataManager : MonoBehaviour
             PlayerPrefs.SetInt(listDataName[4], 2);
         }
 
+        // list ability
         if (!PlayerPrefs.HasKey(listDataName[2]))
         {
             PlayerPrefs.SetInt(listDataName[2], 1);
@@ -39,6 +47,10 @@ public class SaveDataManager : MonoBehaviour
         if (!PlayerPrefs.HasKey(listDataName[3])) 
         {
             PlayerPrefs.SetInt(listDataName[3], 1);
+        }
+        if (!PlayerPrefs.HasKey(listDataName[5])) 
+        {
+            PlayerPrefs.SetInt(listDataName[5], 1);
         }
     }
 }

@@ -1696,7 +1696,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655971829}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7fc58ce90a808445999caf77b7780b5, type: 3}
   m_Name: 
@@ -1705,6 +1705,7 @@ MonoBehaviour:
   bankData: 0
   shadowLevel: 0
   stoneLevel: 0
+  healLevel: 0
   totalAbility: 0
 --- !u!1 &681365772
 GameObject:
@@ -2429,7 +2430,7 @@ MonoBehaviour:
   - UpgradeShadow
   - UpgradeStone
   - TotalAbility
-  - 
+  - UpgradeHeal
   - 
   - 
   - 
@@ -2786,6 +2787,7 @@ MonoBehaviour:
   isUpgraded: 0
   maxShadowLevel: 3
   yourBank: 0
+  restOfYourBank: 0
 --- !u!4 &1214006526
 Transform:
   m_ObjectHideFlags: 0

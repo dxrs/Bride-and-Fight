@@ -551,6 +551,7 @@ MonoBehaviour:
   bankData: 0
   shadowLevel: 0
   stoneLevel: 0
+  healLevel: 0
   totalAbility: 0
 --- !u!1 &464804606
 GameObject:
@@ -1260,7 +1261,7 @@ MonoBehaviour:
   - UpgradeShadow
   - UpgradeStone
   - TotalAbility
-  - 
+  - UpgradeHeal
   - 
   - 
   - 

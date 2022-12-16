@@ -14,7 +14,7 @@ public class StoneColider : MonoBehaviour
     [SerializeField] float delayTime;
     
 
-    protected float timerCountp1;
+    public float timerCountp1;
     protected float timerCountp2;
 
     int curLevel;
@@ -23,26 +23,27 @@ public class StoneColider : MonoBehaviour
     private void Awake()
     {
         if (stoneColider == null) { stoneColider = this; }
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
     }
 
     private void Start()
     {
-        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
-        cc = GetComponent<CircleCollider2D>();
         
-        if (curLevel == 1) 
+        cc = GetComponent<CircleCollider2D>();
+        if (curLevel == 1)
         {
             curStoneValue = 2;
-            
+
         }
-        if (curLevel == 2) 
+        if (curLevel == 2)
         {
             curStoneValue = 4;
         }
-        if (curLevel == 3) 
+        if (curLevel == 3)
         {
             curStoneValue = 8;
         }
+
     }
 
     private void Update()
@@ -60,14 +61,16 @@ public class StoneColider : MonoBehaviour
             if (curStoneValue > InfinityStoneAbility.infinityStone.maxStoneValue) { curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue; }
             if (curStoneValue <= InfinityStoneAbility.infinityStone.maxStoneValue)
             {
+                timerCountp1 += Time.deltaTime;
+                if (timerCountp1 >= delayTime)
+                {
+                    timerCountp1 = 0f;
+                    curStoneValue++;
+                }
+                /*
                 if (id == 1)
                 {
-                    timerCountp1 += Time.deltaTime;
-                    if (timerCountp1 >= delayTime)
-                    {
-                        timerCountp1 = 0f;
-                        curStoneValue++;
-                    }
+                    
                 }
                 if (id == 2)
                 {
@@ -78,7 +81,7 @@ public class StoneColider : MonoBehaviour
                         curStoneValue++;
                     }
                 }
-
+                */
             }
             
             if (curStoneValue <= 0)
@@ -93,7 +96,7 @@ public class StoneColider : MonoBehaviour
     }
     void totalStone() 
     {
-        
+       
 
         for (int i = 0; i < stone.Length; i++)
         {
@@ -116,7 +119,7 @@ public class StoneColider : MonoBehaviour
         if(collision.gameObject.tag=="Normal Enemy") 
         {
             timerCountp1 = 0f;
-            timerCountp2 = 0f;
+            //timerCountp2 = 0f;
             if (curStoneValue > 0) 
             {
                 curStoneValue--;
@@ -125,7 +128,7 @@ public class StoneColider : MonoBehaviour
         if(collision.gameObject.tag=="Medium Enemy") 
         {
             timerCountp1 = 0f;
-            timerCountp2 = 0f;
+            //timerCountp2 = 0f;
             if (curStoneValue > 0)
             {
                 curStoneValue-=2;

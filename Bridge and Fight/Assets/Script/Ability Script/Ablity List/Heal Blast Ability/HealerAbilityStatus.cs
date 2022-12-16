@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class HealerAbilityStatus : MonoBehaviour
 {
+    private void Update()
+    {
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Normal Enemy"||collision.gameObject.tag=="Medium Enemy") 
@@ -16,7 +20,7 @@ public class HealerAbilityStatus : MonoBehaviour
             {
                 Player2Health.player2Health.playerHealth++;
             }else if (Player2Health.player2Health.playerHealth >= 50) { Player2Health.player2Health.playerHealth = 50; }
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

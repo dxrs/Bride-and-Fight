@@ -106,16 +106,23 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     }
     void saveDataUpStone() 
     {
-        
+        if (curStoneLevel > 1) 
+        {
+            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[3], curStoneLevel);
+        }
     }
     public void onClickUpgradeStone() 
     {
         if (AbilityButtonList.abilityButton.clickedValue == 2)
         {
             isUpgraded = true;
-            if (isUpgraded)
+            if (yourBank >= curCostUpgrade) 
             {
                 yourBank -= curCostUpgrade;
+                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], yourBank);
+
+                // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
+                PlayerPrefs.Save();
             }
             if (curStoneLevel < 3)
             {

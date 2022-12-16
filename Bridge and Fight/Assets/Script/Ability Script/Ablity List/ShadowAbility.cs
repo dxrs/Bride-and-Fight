@@ -40,7 +40,7 @@ public class ShadowAbility : MonoBehaviour
     private void Start()
     {
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
-        print(curLevel);
+        //print(curLevel);
         curUpLevelValue = curLevel;
         upgradeAbilityShadow();
         shadowAbilityTimer = curShadowTimer;
@@ -63,9 +63,10 @@ public class ShadowAbility : MonoBehaviour
             &&AbilitySelector.abilitySelector.abilitySelected==0) 
         {
             abilityInput();
+            shadowBar();
+            textCooldownTimer.text = (int)shadowAblityCoolDown + "s";
         }
-        shadowBar();
-        textCooldownTimer.text = (int)shadowAblityCoolDown + "s";
+
     }
 
     void abilityInput() 

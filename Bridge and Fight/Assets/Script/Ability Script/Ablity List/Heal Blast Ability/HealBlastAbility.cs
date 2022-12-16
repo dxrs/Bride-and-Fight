@@ -10,12 +10,16 @@ public class HealBlastAbility : MonoBehaviour
 
     public bool healIsActivated;
 
+   
+
     [SerializeField] int circlePlayer;
 
     [SerializeField] GameObject[] player;
+    [SerializeField] GameObject[] healObjectList;
     [SerializeField] GameObject ringOfHeal;
 
     [SerializeField] bool isUsingAbility;
+    [SerializeField] int curUpLevelValue;
 
     [SerializeField] float healingCoolDownTimer;
     [SerializeField] float healingTimer;
@@ -23,11 +27,19 @@ public class HealBlastAbility : MonoBehaviour
     [SerializeField] Image imgBar;
     [SerializeField] TextMeshProUGUI textCooldownTimer;
 
+
+    [Header("Heal Blast is Moving")]
+    [SerializeField] float moveSpeed;
+    [SerializeField] float xMax;
+    [SerializeField] float yMax;
+    
+
     Vector2 ringScale;
+    int curLevel;
     float curHealCoolDown;
     float curHealTimer;
     float curValueTimer;
-    float maxValueTimer = 12;
+    float maxValueTimer = 20;
 
     private void Awake()
     {
@@ -35,8 +47,14 @@ public class HealBlastAbility : MonoBehaviour
     }
     private void Start()
     {
+        //curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
         circlePlayer = Random.Range(0, 2);
         ringScale = ringOfHeal.transform.localScale;
+        //curUpLevelValue = curLevel;
+        //healingTimer = curHealTimer;
+        curValueTimer = healingTimer;
+        upgradeAbilityHeal();
+       
     }
 
     private void Update()
@@ -47,11 +65,13 @@ public class HealBlastAbility : MonoBehaviour
             && !GameFinish.gameFinish.isGameFinished
             && AbilitySelector.abilitySelector.abilitySelected == 2) 
         {
-            
+            healTransform();
+            healBlastMoving();
+            abilityInput();
+            healBar();
+            textCooldownTimer.text = (int)healingCoolDownTimer + "s";
         }
-        healTransform();
-
-        abilityInput();
+       
     }
     void abilityInput() 
     {
@@ -61,13 +81,33 @@ public class HealBlastAbility : MonoBehaviour
             {
                 if (!isUsingAbility && healingCoolDownTimer <= 0)
                 {
-                    healingCoolDownTimer = 10f;
+                    
+                    for(int i = 0; i < healObjectList.Length; i++) 
+                    {
+                        healObjectList[i].SetActive(true);
+                    }
+                    healingCoolDownTimer = 30f;//= curHealCoolDown
                     if (!healIsActivated)
                     {
                         healIsActivated = true;
                     }
                 }
             }
+        }
+        else 
+        {
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Abutton")) 
+            {
+                if (!isUsingAbility && healingCoolDownTimer <= 0)
+                {
+                    healingCoolDownTimer = 30f; //= curHealCoolDown
+                    if (!healIsActivated)
+                    {
+                        healIsActivated = true;
+                    }
+                }
+            }
+            
         }
         healAcitve();
         healNotActive();
@@ -88,7 +128,8 @@ public class HealBlastAbility : MonoBehaviour
         if(healIsActivated && healingTimer <= 0) 
         {
             healIsActivated = false;
-            healingTimer = 10;
+            healingTimer = 15; //= curHealingTimer
+            textCooldownTimer.enabled = true;
         }
         if (!healIsActivated) { isUsingAbility = false; }
 
@@ -103,8 +144,23 @@ public class HealBlastAbility : MonoBehaviour
         }
         if (healingCoolDownTimer <= 0) 
         {
+            textCooldownTimer.enabled = false;
             healingCoolDownTimer = 0;
         }
+    }
+
+    void healBar() 
+    {
+        if (healIsActivated) 
+        {
+            imgBar.enabled = true;
+        }
+        else 
+        {
+            imgBar.enabled = false;
+        }
+        curValueTimer = healingTimer;
+        imgBar.fillAmount = curValueTimer / maxValueTimer;
     }
 
     void healTransform() 
@@ -131,4 +187,40 @@ public class HealBlastAbility : MonoBehaviour
             ringOfHeal.SetActive(false);
         }
     }
+
+    void healBlastMoving() 
+    {
+        if(healIsActivated
+            && curUpLevelValue==3) 
+        {
+            ringOfHeal.transform.position = ringOfHeal.transform.position + new Vector3(
+            Random.Range(-1.0f, 1.0f),
+            Random.Range(-1.0f, 1.0f), 0) * moveSpeed * Time.deltaTime;
+
+            ringOfHeal.transform.position = new Vector3(Mathf.Clamp(
+                ringOfHeal.transform.position.x, -xMax, xMax),
+                Mathf.Clamp(ringOfHeal.transform.position.y, -yMax, yMax),
+                ringOfHeal.transform.position.z);
+        }
+       
+    }
+
+    //upgrade ability
+    #region
+    void upgradeAbilityHeal() 
+    {
+        switch (curUpLevelValue)
+        {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+        }
+    }
+    #endregion
 }

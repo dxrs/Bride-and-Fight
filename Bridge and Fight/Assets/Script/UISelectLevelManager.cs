@@ -18,7 +18,7 @@ public class UISelectLevelManager : MonoBehaviour
 
     [Header("List DBMS Value")]
     [SerializeField] int coinData;
-    [SerializeField] int curBank;
+    public int curBank;
 
 
     private void Awake()
@@ -29,12 +29,12 @@ public class UISelectLevelManager : MonoBehaviour
     private void Start()
     {
         coinData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
-        curBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        //curBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         
     }
     private void Update()
     {
-        textMoney.text = curBank.ToString();
+        textMoney.text = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]).ToString();
         if (AbilityButtonList.abilityButton.isClicked) 
         {
             buttonBackToSelectLevel.interactable = false;

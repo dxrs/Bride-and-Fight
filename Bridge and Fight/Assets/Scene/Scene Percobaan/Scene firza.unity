@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4623424
 Transform:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &39612091
 Transform:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &59657334
 Transform:
   m_ObjectHideFlags: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
   - UpgradeShadow
   - UpgradeStone
   - TotalAbility
-  - 
+  - UpgradeHeal
   - 
   - 
   - 
@@ -1599,10 +1599,24 @@ MonoBehaviour:
   player:
   - {fileID: 813679838}
   - {fileID: 128164985}
+  healObjectList:
+  - {fileID: 2075887854455228309}
+  - {fileID: 1849427632}
+  - {fileID: 467521229}
+  - {fileID: 180306756}
+  - {fileID: 1313103929}
+  - {fileID: 631904217}
+  - {fileID: 1187706657}
   ringOfHeal: {fileID: 1395239703}
   isUsingAbility: 0
+  curUpLevelValue: 1
   healingCoolDownTimer: 0
   healingTimer: 15
+  imgBar: {fileID: 598110924}
+  textCooldownTimer: {fileID: 1260774467}
+  moveSpeed: 0
+  xMax: 0
+  yMax: 0
 --- !u!1 &296617094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1728,7 @@ MonoBehaviour:
   - {fileID: 59657333}
   - {fileID: 776974619}
   delayTime: 10
+  timerCountp1: 0
 --- !u!50 &305161668
 Rigidbody2D:
   serializedVersion: 4
@@ -1750,7 +1765,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.53
 --- !u!1 &315448023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,7 +3299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &704241612
 Transform:
   m_ObjectHideFlags: 0
@@ -3471,7 +3486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &770505368
 Transform:
   m_ObjectHideFlags: 0
@@ -3555,7 +3570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &776974620
 Transform:
   m_ObjectHideFlags: 0
@@ -4073,7 +4088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &853627470
 Transform:
   m_ObjectHideFlags: 0
@@ -4967,6 +4982,7 @@ MonoBehaviour:
   bankData: 0
   shadowLevel: 0
   stoneLevel: 0
+  healLevel: 0
   totalAbility: 0
 --- !u!1 &1101810713
 GameObject:
@@ -5840,7 +5856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1334938925
 Transform:
   m_ObjectHideFlags: 0
@@ -6222,7 +6238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1403103347
 Transform:
   m_ObjectHideFlags: 0
@@ -6690,6 +6706,7 @@ MonoBehaviour:
   - {fileID: 1403103346}
   - {fileID: 1635121763}
   delayTime: 10
+  timerCountp1: 0
 --- !u!50 &1509830082
 Rigidbody2D:
   serializedVersion: 4
@@ -6726,7 +6743,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.53
 --- !u!1 &1527115725
 GameObject:
   m_ObjectHideFlags: 0
@@ -7194,7 +7211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1587472243
 Transform:
   m_ObjectHideFlags: 0
@@ -7424,7 +7441,7 @@ MonoBehaviour:
   clipnya: {fileID: 8300000, guid: ff4fe73acd370d04d9650cd040f8651d, type: 3}
   textTimer: {fileID: 1289874228}
   textOverFinish: {fileID: 1474794427}
-  timerValue: 180
+  timerValue: 100
   textTotalCoin: {fileID: 1695392342}
   textTotalCoinEndGame: {fileID: 645933008}
   inGamePopUp:
@@ -7461,7 +7478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1635121764
 Transform:
   m_ObjectHideFlags: 0
@@ -7800,7 +7817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723831645
 Transform:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     [SerializeField] bool isUpgraded;
     [SerializeField] int maxShadowLevel;
     [SerializeField] int yourBank;
+ 
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
         curShadowLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
         yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         nextUpgradeLevel = curShadowLevel + 1;
+    
         
     }
     private void Update()
@@ -110,22 +112,27 @@ public class AbilityShadowUpgrade : MonoBehaviour
         {
             PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[2], curShadowLevel);
         }
-        if (isUpgraded) 
-        {
-            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], yourBank);
-        }
+       
     }
     public void onClickUpgradeShadow() 
     {
         
         
-        if (AbilityButtonList.abilityButton.clickedValue == 1) 
+        if (AbilityButtonList.abilityButton.clickedValue == 1)
         {
             isUpgraded = true;
-            if (isUpgraded) 
+            if (yourBank >= curCostUpgrade)
             {
+                // Proses pengurangan sisa uang yang dimiliki
                 yourBank -= curCostUpgrade;
+
+                // Menyimpan data sisa uang yang dimiliki ke dalam PlayerPrefs
+                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], yourBank);
+
+                // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
+                PlayerPrefs.Save();
             }
+            
             if (curShadowLevel < 3) 
             {
                 curShadowLevel++;
