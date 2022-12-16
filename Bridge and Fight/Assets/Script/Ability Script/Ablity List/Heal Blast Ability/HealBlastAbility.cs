@@ -65,13 +65,13 @@ public class HealBlastAbility : MonoBehaviour
             && !GameFinish.gameFinish.isGameFinished
             && AbilitySelector.abilitySelector.abilitySelected == 2) 
         {
-            healTransform();
-            healBlastMoving();
-            abilityInput();
-            healBar();
-            textCooldownTimer.text = (int)healingCoolDownTimer + "s";
+            
         }
-       
+        healTransform();
+        healBlastMoving();
+        abilityInput();
+        healBar();
+        textCooldownTimer.text = (int)healingCoolDownTimer + "s";
     }
     void abilityInput() 
     {
