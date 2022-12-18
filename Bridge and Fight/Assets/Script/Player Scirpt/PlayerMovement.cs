@@ -9,13 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float movePower;
    
     [SerializeField] int numbOfPlayer;
-    [SerializeField] float movementSpeedP1;
-    [SerializeField] float movementSpeedP2;
+    
 
-    float speedInUnitPerSecond;
-    float curSpeed = 3;
-    float slowSpeed = 1;
-    int dir;
+    
 
     Rigidbody2D rb;
     CircleCollider2D cc;
@@ -29,8 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
         cc = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        movementSpeedP1 = curSpeed;
-        movementSpeedP2 = curSpeed;
+        
         
     }
     private void Update()
@@ -69,106 +64,9 @@ public class PlayerMovement : MonoBehaviour
             physicsControl();
         }
     }
-    private void inputPlayer() 
-    {
-        playerControl();
-        if (dir == 1) 
-        {
-            if (numbOfPlayer == 1) 
-            {
-                transform.Translate(movementSpeedP1 * Time.deltaTime, 0, 0);
-            }
-            else 
-            {
-                transform.Translate(movementSpeedP2 * Time.deltaTime, 0, 0);
-            }
-            
-        }else if(dir == 2) 
-        {
-            if (numbOfPlayer == 1) 
-            {
-                transform.Translate(-movementSpeedP1 * Time.deltaTime, 0, 0);
-            }
-            else 
-            {
-                transform.Translate(-movementSpeedP2 * Time.deltaTime, 0, 0);
-            }
-            
-        }
-        else if (dir == 3) 
-        {
-            if (numbOfPlayer == 1)
-            {
-                transform.Translate(0, movementSpeedP1 * Time.deltaTime, 0);
-            }
-            else
-            {
-                transform.Translate(0, movementSpeedP2 * Time.deltaTime, 0);
-            }
-            
-        }
-        else if(dir == 4) 
-        {
-            if (numbOfPlayer == 1)
-            {
-                transform.Translate(0, -movementSpeedP1 * Time.deltaTime, 0);
-            }
-            else
-            {
-                transform.Translate(0, -movementSpeedP2 * Time.deltaTime, 0);
-            }
-            
-        }
-    }
-    void playerControl() 
-    {
-        if (numbOfPlayer == 1)
-        {
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                audioManager.amanager.moveSound();
-                dir = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                audioManager.amanager.moveSound();
-                dir = 2;
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                audioManager.amanager.moveSound();
-                dir = 3;
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                audioManager.amanager.moveSound();
-                dir = 4;
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                audioManager.amanager.moveSound();
-                dir = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                audioManager.amanager.moveSound();
-                dir = 2;
-            }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                audioManager.amanager.moveSound();
-                dir = 3;
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                audioManager.amanager.moveSound();
-                dir = 4;
-            }
-        }
-    }
+    
+   
+    
 
     void physicsControl()
     {
@@ -239,13 +137,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 // print("kena p1");
                 //movementSpeedP1 = slowSpeed;
-                rb.drag = 5;
+                rb.drag = 3.5f;
             }
             if (numbOfPlayer == 2) 
             {
                 //print("kena p2");
                 //movementSpeedP2 = slowSpeed;
-                rb.drag = 5;
+                rb.drag = 3.5f;
             }
             
         }

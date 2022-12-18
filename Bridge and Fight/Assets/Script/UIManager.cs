@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(timeCountDownStart());
         coinValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
-        
+        inGamePopUp[1].SetActive(true);
 
     }
     private void Update()

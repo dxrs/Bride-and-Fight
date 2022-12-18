@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player2Health : MonoBehaviour
 {
     public static Player2Health player2Health;
 
     public float playerHealth;
+
+    [SerializeField] Image player_2_HealthBar;
+
+    float curHealthBarValue;
+    float maxHealthBarValue = 50;
 
     private void Awake()
     {
@@ -19,7 +25,9 @@ public class Player2Health : MonoBehaviour
             TotalCoin.totalCoin.curCoinGet = 0;
             GameOver.gameOver.isGameOver = true;
         }
-       
+        curHealthBarValue = playerHealth;
+        player_2_HealthBar.fillAmount = curHealthBarValue / maxHealthBarValue;
+
     }
     public void p2TriggerWithNormalEnemy() 
     {
@@ -36,5 +44,10 @@ public class Player2Health : MonoBehaviour
         {
             Player1Health.player1Health.p1SuicideKill();
         }
+        if (collision.gameObject.tag == "Wall")
+        {
+            playerHealth -= 200;
+        }
+
     }
 }

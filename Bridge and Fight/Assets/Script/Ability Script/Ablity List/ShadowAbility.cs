@@ -11,6 +11,7 @@ public class ShadowAbility : MonoBehaviour
     public Color curPlayerColor_1;
     public Color curPlayerColor_2;
     public Color shadowColor;
+    public Color shadowColorInner;
 
     public bool isShadowActivated;
 
@@ -20,6 +21,7 @@ public class ShadowAbility : MonoBehaviour
     [SerializeField] bool isUsingAbility;
     [SerializeField] int curUpLevelValue;
 
+    [SerializeField] GameObject[] wallColider;
     [SerializeField] GameObject[] coinColider;
     [SerializeField] GameObject[] player;
     [SerializeField] SpriteRenderer[] sr;
@@ -117,6 +119,12 @@ public class ShadowAbility : MonoBehaviour
             
             sr[0].color = shadowColor;
             sr[1].color = shadowColor;
+            sr[2].color = shadowColorInner;
+            sr[3].color = shadowColorInner;
+
+            wallColider[0].SetActive(true);
+            wallColider[1].SetActive(true);
+
             isUsingAbility = true;
             if (shadowAbilityTimer > 0) 
             {
@@ -137,15 +145,21 @@ public class ShadowAbility : MonoBehaviour
         if (!isShadowActivated) 
         {
             isUsingAbility = false;
-           
+
+            wallColider[0].SetActive(false);
+            wallColider[1].SetActive(false);
+
             sr[0].color = curPlayerColor_1;
             sr[1].color = curPlayerColor_2;
+          
+            sr[2].color = curPlayerColor_2;
+            sr[3].color = curPlayerColor_1;
         }
         if (!isUsingAbility) 
         {
             if (shadowAblityCoolDown > 0) 
             {
-                shadowAblityCoolDown -= 0.8f * Time.deltaTime;
+                shadowAblityCoolDown -= 0.8f;
             }
         }
 

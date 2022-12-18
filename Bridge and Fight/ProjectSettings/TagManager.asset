@@ -14,6 +14,7 @@ TagManager:
   - Camera Edge
   - Infinity Stone
   - Coin Colider
+  - Wall
   layers:
   - Default
   - TransparentFX
