@@ -1609,14 +1609,18 @@ MonoBehaviour:
   - {fileID: 1187706657}
   ringOfHeal: {fileID: 1395239703}
   isUsingAbility: 0
-  curUpLevelValue: 1
+  curUpLevelValue: 3
   healingCoolDownTimer: 0
   healingTimer: 15
   imgBar: {fileID: 598110924}
   textCooldownTimer: {fileID: 1260774467}
-  moveSpeed: 0
-  xMax: 0
-  yMax: 0
+  moveSpeed: 2
+  xMax: 1920
+  xMin: -1920
+  yMax: 1080
+  yMin: -1080
+  targetPos: {x: 0, y: 0, z: 0}
+  isMoving: 0
 --- !u!1 &296617094
 GameObject:
   m_ObjectHideFlags: 0

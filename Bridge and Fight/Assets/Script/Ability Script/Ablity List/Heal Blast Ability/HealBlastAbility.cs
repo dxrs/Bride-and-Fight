@@ -31,7 +31,11 @@ public class HealBlastAbility : MonoBehaviour
     [Header("Heal Blast is Moving")]
     [SerializeField] float moveSpeed;
     [SerializeField] float xMax;
+    [SerializeField] float xMin;
     [SerializeField] float yMax;
+    [SerializeField] float yMin;
+    [SerializeField] Vector3 targetPos;
+    [SerializeField] bool isMoving;
     
 
     Vector2 ringScale;
@@ -49,12 +53,12 @@ public class HealBlastAbility : MonoBehaviour
     {
         //curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
         circlePlayer = Random.Range(0, 2);
-        ringScale = ringOfHeal.transform.localScale;
+        //ringScale = ringOfHeal.transform.localScale;
         //curUpLevelValue = curLevel;
         //healingTimer = curHealTimer;
         curValueTimer = healingTimer;
         upgradeAbilityHeal();
-       
+        StartCoroutine(ringOfHealIsMoving());
     }
 
     private void Update()
@@ -65,13 +69,14 @@ public class HealBlastAbility : MonoBehaviour
             && !GameFinish.gameFinish.isGameFinished
             && AbilitySelector.abilitySelector.abilitySelected == 2) 
         {
-            
+            healTransform();
+            healBlastMoving();
+            abilityInput();
+            healBar();
+            textCooldownTimer.text = (int)healingCoolDownTimer + "s";
         }
-        healTransform();
-        healBlastMoving();
-        abilityInput();
-        healBar();
-        textCooldownTimer.text = (int)healingCoolDownTimer + "s";
+        
+       
     }
     void abilityInput() 
     {
@@ -165,6 +170,8 @@ public class HealBlastAbility : MonoBehaviour
 
     void healTransform() 
     {
+       
+        
         if (!GameOver.gameOver.isGameOver) 
         {
             if (circlePlayer == 0 && !healIsActivated)
@@ -186,23 +193,40 @@ public class HealBlastAbility : MonoBehaviour
         {
             ringOfHeal.SetActive(false);
         }
+        
     }
 
-    void healBlastMoving() 
+    void healBlastMoving()
     {
-        if(healIsActivated
-            && curUpLevelValue==3) 
+        if (isMoving)
         {
-            ringOfHeal.transform.position = ringOfHeal.transform.position + new Vector3(
-            Random.Range(-1.0f, 1.0f),
-            Random.Range(-1.0f, 1.0f), 0) * moveSpeed * Time.deltaTime;
-
-            ringOfHeal.transform.position = new Vector3(Mathf.Clamp(
-                ringOfHeal.transform.position.x, -xMax, xMax),
-                Mathf.Clamp(ringOfHeal.transform.position.y, -yMax, yMax),
-                ringOfHeal.transform.position.z);
+            ringOfHeal.transform.localPosition = Vector3.MoveTowards(ringOfHeal.transform.localPosition, 
+                targetPos, moveSpeed * Time.deltaTime);
+            if (ringOfHeal.transform.localPosition == targetPos)
+            {
+                isMoving = false;
+            }
         }
-       
+        
+    }
+
+    IEnumerator ringOfHealIsMoving() 
+    {
+        while (true) 
+        {
+            yield return new WaitForSeconds(1.5f);
+            
+            if (healIsActivated 
+                && !GameOver.gameOver.isGameOver 
+                && GameStarting.gameStarting.isGameStarted) 
+            {
+
+                targetPos = new Vector3(Random.Range(xMin, xMax),
+                   Random.Range(yMin, yMax), 0);
+                isMoving = true;
+
+            }
+        }
     }
 
     //upgrade ability
