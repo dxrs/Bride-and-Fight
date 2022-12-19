@@ -33,6 +33,8 @@ public class AbilityButtonList : MonoBehaviour
 
             
             abilityListButton[j].onClick.AddListener(() => buttonClicked(buttonValues));
+
+
             EventTrigger eventTrigger = abilityListButton[j].gameObject.AddComponent<EventTrigger>();
             EventTrigger.Entry entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerEnter;
@@ -57,7 +59,7 @@ public class AbilityButtonList : MonoBehaviour
             }
            
         }
-       
+        
     }
     void ButtonHighlighted(int value)
     {

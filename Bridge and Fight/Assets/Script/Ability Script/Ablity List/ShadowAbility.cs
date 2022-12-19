@@ -32,7 +32,7 @@ public class ShadowAbility : MonoBehaviour
     float curShadowCooldown;
     float curShadowTimer;
     float curValueTimer;
-    float maxValueTimer = 12;
+    float maxValueTimer;
 
     private void Awake()
     {
@@ -89,9 +89,9 @@ public class ShadowAbility : MonoBehaviour
                 }
             }
         }
-        else 
+        if(!PlayerNumber.playerNumber.isSoloMode)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Abutton")) 
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Abutton")) 
             {
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
@@ -198,14 +198,17 @@ public class ShadowAbility : MonoBehaviour
         {
             case 1:
                 curShadowTimer = 5;
+                maxValueTimer = 5;
                 curShadowCooldown = 11.0f;
                 break;
             case 2:
                 curShadowTimer = 10;
+                maxValueTimer = 11;
                 curShadowCooldown = 13.0f;
                 break;
             case 3:
                 curShadowTimer = 12.5f;
+                maxValueTimer = 13;
                 curShadowCooldown = 20.0f;
                 break;
         }

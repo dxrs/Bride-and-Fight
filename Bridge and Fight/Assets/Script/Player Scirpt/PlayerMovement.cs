@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButton("Abutton")) 
         {
-            print("bisa");
+            //print("bisa");
         }
         
        

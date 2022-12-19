@@ -16,13 +16,14 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textTimer;
     public TextMeshProUGUI textOverFinish;
 
+    public bool isStarting;
 
     public float timerValue;
 
     [SerializeField] TextMeshProUGUI textTotalCoin;
     [SerializeField] TextMeshProUGUI textTotalCoinEndGame;
-    [SerializeField] GameObject[] inGamePopUp;
-    [SerializeField] GameObject inGameUI;
+    [SerializeField] GameObject[] UI_object;
+    [SerializeField] GameObject abilityObject;
     [SerializeField] bool isTimeCountDown;
 
     int totalCoinValue;
@@ -41,28 +42,33 @@ public class UIManager : MonoBehaviour
         StartCoroutine(timeCountDownStart());
         coinValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
-        inGamePopUp[1].SetActive(true);
+        UI_object[0].SetActive(true); // ui start game
+        for (int i = 1; i < UI_object.Length; i++) 
+        {
+            UI_object[i].SetActive(false);
+        }
 
     }
     private void Update()
     {
         inGameStatus();
         timerEnd();
+        StartCoroutine(gameIsStarting());
         if (GameStarting.gameStarting.isGameStarted) 
         {
-            inGamePopUp[1].SetActive(false);
-            inGameUI.SetActive(true);
+            UI_object[0].SetActive(false); // ui start game
+            UI_object[1].SetActive(true); // ui in game
         }
         else 
         {
-            inGameUI.SetActive(false);
+            UI_object[1].SetActive(false); // ui in game
         }
        
     }
     void inGameStatus() 
     {
         gameIsPaused();
-        textTotalCoin.text = "=" + TotalCoin.totalCoin.curCoinGet + "$";
+        textTotalCoin.text = TotalCoin.totalCoin.curCoinGet + "$";
         if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
             
@@ -165,11 +171,21 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
+    IEnumerator gameIsStarting() 
+    {
+        if (isStarting) 
+        {
+            
+            abilityObject.transform.localPosition = Vector2.Lerp(abilityObject.transform.localPosition, new Vector2(0, -300), 5 * Time.deltaTime);
+            yield return new WaitForSeconds(0.8f);
+            GameStarting.gameStarting.isGameStarted = true;
+        }
+    }
     IEnumerator popUpEndGameShow() 
     {
         yield return new WaitForSeconds(1);
-        inGamePopUp[0].SetActive(true);
-        inGameUI.SetActive(false);
+        UI_object[2].SetActive(true); // ui end game
+        UI_object[1].SetActive(false); // ui in game
     }
     IEnumerator loadToSceneMenu() 
     {
