@@ -159,7 +159,7 @@ public class ShadowAbility : MonoBehaviour
         {
             if (shadowAblityCoolDown > 0) 
             {
-                shadowAblityCoolDown -= 0.8f;
+                shadowAblityCoolDown -= 0.8f * Time.deltaTime;
             }
         }
 
@@ -202,10 +202,11 @@ public class ShadowAbility : MonoBehaviour
                 break;
             case 2:
                 curShadowTimer = 10;
+                curShadowCooldown = 13.0f;
                 break;
             case 3:
                 curShadowTimer = 12.5f;
-                curShadowCooldown = 16.0f;
+                curShadowCooldown = 20.0f;
                 break;
         }
     }
