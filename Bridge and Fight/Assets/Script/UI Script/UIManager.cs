@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject abilityObject;
     [SerializeField] bool isTimeCountDown;
 
+    //endGame
+    [SerializeField] GameObject objectTextEndegame; 
+
     int totalCoinValue;
     int coinValue;
     bool isCoinDataSaved;
@@ -77,7 +80,7 @@ public class UIManager : MonoBehaviour
             StartCoroutine(popUpEndGameShow());
             GameStarting.gameStarting.isGameStarted = false;
             //DataCoin.dataCoin.coinDataValue = TotalCoin.totalCoin.curCoinGet;
-            textTotalCoinEndGame.text= "=" + TotalCoin.totalCoin.curCoinGet + "$";
+            textTotalCoinEndGame.text= "+" + TotalCoin.totalCoin.curCoinGet + "$";
            
         }
         if (GameOver.gameOver.isGameOver)
