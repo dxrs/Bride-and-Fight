@@ -36,17 +36,17 @@ public class InfinityStoneAbility : MonoBehaviour
     }
     private void Update()
     {
-        if (!GameOver.gameOver.isGameOver) 
+        if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
         {
             p1StoneColider.transform.position = player1.transform.position;
             p2StoneColider.transform.position = player2.transform.position;
             p1StoneColider.transform.Rotate(Vector3.forward, 150 * Time.deltaTime);
             p2StoneColider.transform.Rotate(-Vector3.forward, 150 * Time.deltaTime);
         }
-        else 
+        if(GameFinish.gameFinish.isGameFinished||GameOver.gameOver.isGameOver)
         {
-            Destroy(p1StoneColider);
-            Destroy(p2StoneColider);
+            Destroy(gameObject);
+            //Destroy(p2StoneColider);
         }
       
         enableAbility();

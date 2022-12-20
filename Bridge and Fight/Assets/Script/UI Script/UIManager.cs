@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,11 +27,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] bool isTimeCountDown;
 
     //endGame
-    [SerializeField] GameObject objectTextEndegame; 
+    [Header("End Game Interactive UI Function")]
+    [SerializeField] GameObject objectTextEndegame;
+    [SerializeField] GameObject buttonSelector;
+    [SerializeField] GameObject sceneTrasisi;
+    [SerializeField] GameObject objectEndGame;
+    [SerializeField] int[] curValueSelect;
+    [SerializeField] int highlightedValue;
+    [SerializeField] Button[] endGameListButton;
+    [SerializeField] TextMeshProUGUI textSelectStatus;
+
 
     int totalCoinValue;
     int coinValue;
     bool isCoinDataSaved;
+    bool dpadPressed = false;
+    bool isEnabled = false;
+    bool goingTransition = false;
+    Vector2 targetScale = new Vector2(1.5f, 1.5f); // text finish/game over
 
     TimeSpan timePlay;
     
@@ -46,10 +59,14 @@ public class UIManager : MonoBehaviour
         coinValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         UI_object[0].SetActive(true); // ui start game
+        objectEndGame.SetActive(false);
         for (int i = 1; i < UI_object.Length; i++) 
         {
             UI_object[i].SetActive(false);
         }
+
+        //endGame function
+        eventPointerEnter();
 
     }
     private void Update()
@@ -66,7 +83,17 @@ public class UIManager : MonoBehaviour
         {
             UI_object[1].SetActive(false); // ui in game
         }
-       
+
+        // khusus endGame
+        #region
+        scalingTextStatusEndGame();
+        objectEndGameActive();
+        compareHighLightValue();
+        inputKeyboardOnly();
+        inputKeyboardOrGamePad();
+        fadeInStart();
+        #endregion
+
     }
     void inGameStatus() 
     {
@@ -93,10 +120,7 @@ public class UIManager : MonoBehaviour
         {
             textOverFinish.text = "GAME FINISH";
             
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+            
         }
         if (GameStarting.gameStarting.isGameStarted && !GameOver.gameOver.isGameOver)
         {
@@ -107,7 +131,12 @@ public class UIManager : MonoBehaviour
             || GamePaused.gamePaused.isGamePaused)
         {
             isTimeCountDown = false;
-            Cursor.visible = true;
+            if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+            {
+                // tampilkan cursor jika mouse di-swipe
+                textSelectStatus.text = "Mouse";
+                Cursor.visible = true;
+            }
         }
         if (!GamePaused.gamePaused.isGamePaused && GameStarting.gameStarting.isGameStarted) 
         {
@@ -151,7 +180,12 @@ public class UIManager : MonoBehaviour
                 else
                 {
                     GamePaused.gamePaused.isGamePaused = false;
-                    Cursor.visible = true;
+                    if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+                    {
+                        // tampilkan cursor jika mouse di-swipe
+                        //textSelectStatus.text = "Mouse";
+                        Cursor.visible = true;
+                    }
                 }
             }
         }
@@ -194,23 +228,242 @@ public class UIManager : MonoBehaviour
     {
         TotalCoin.totalCoin.totalCoinGet = TotalCoin.totalCoin.totalCoinGet + PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], TotalCoin.totalCoin.totalCoinGet);
-        yield return new WaitForSeconds(3);
+        if (goingTransition) 
+        {
+           
+        }
+         yield return new WaitForSeconds(3);
 
-        SceneManager.LoadScene("Scene test select level");
+            SceneManagerCallback.sceneManagerCallback.keSceneSelectLevel();
     }
+
+
+    // endGame function
+    #region
+
+    void fadeInStart() 
+    {
+        if (goingTransition) 
+        {
+            sceneTrasisi.transform.localScale = Vector2.MoveTowards(sceneTrasisi.transform.localScale, 
+                new Vector2(30.0f, 30.0f), 
+                100 * Time.deltaTime);
+        }
+    }
+
+    void scalingTextStatusEndGame() 
+    {
+        
+        
+        if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
+        {
+            StartCoroutine(waitToScale());
+        }
+    }
+
+    void objectEndGameActive() 
+    {
+        if (isEnabled) 
+        {
+            objectEndGame.SetActive(true);
+        }
+    }
+
+    void eventPointerEnter()
+    {
+        do
+        {
+            for (int i = 0; i < endGameListButton.Length; i++)
+            {
+                int valuesSelect = curValueSelect[i];
+
+                EventTrigger eventTrigger = endGameListButton[i].gameObject.AddComponent<EventTrigger>();
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerEnter;
+                entry.callback.AddListener((data) => { buttonHighlighted(valuesSelect); });
+                eventTrigger.triggers.Add(entry);
+
+
+
+            }
+        } while (isEnabled == true);
+
+      
+    }
+
+    void compareHighLightValue() 
+    {
+        if (highlightedValue == 1) 
+        {
+            buttonSelector.transform.localPosition = new Vector2(buttonSelector.transform.localPosition.x,
+                -465f);
+        }
+        if (highlightedValue == 2) 
+        {
+            buttonSelector.transform.localPosition = new Vector2(buttonSelector.transform.localPosition.x,
+                -550f);
+        }
+    }
+    private void buttonHighlighted(int value)
+    {
+        highlightedValue = value;
+    }
+
+    void inputKeyboardOnly() 
+    {
+        if (PlayerNumber.playerNumber.isSoloMode) 
+        {
+            if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished) 
+            {
+                if (isEnabled && !goingTransition) 
+                {
+                    if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        textSelectStatus.text = "Keyboard/Gamepad";
+                        Cursor.visible = false;
+                        highlightedValue++;
+                        if (highlightedValue > 2) 
+                        {
+                            highlightedValue = 1;
+                        }
+                    }
+                    if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) 
+                    {
+                        textSelectStatus.text = "Keyboard/Gamepad";
+                        Cursor.visible = false;
+                        highlightedValue--;
+                        if (highlightedValue < 1)
+                        {
+                            highlightedValue = 2;
+                        }
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.Return)) 
+                    {
+                        if (highlightedValue == 1)
+                        {
+                            goingTransition = true;
+                            isCoinDataSaved = true;
+                            if (isCoinDataSaved)
+                            {
+                                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
+                            }
+                            StartCoroutine(loadToSceneMenu());
+                            endGameListButton[0].enabled = false;
+                            endGameListButton[1].enabled = false;
+                        }
+                        if (highlightedValue == 2)
+                        {
+                            goingTransition = true;
+                            endGameListButton[0].enabled = false;
+                            endGameListButton[1].enabled = false;
+                            SceneManagerCallback.sceneManagerCallback.restartScene();
+                        }
+                    }
+                }
+            }
+        }
+      
+    }
+
+    void inputKeyboardOrGamePad() 
+    {
+        if (!PlayerNumber.playerNumber.isSoloMode) 
+        {
+            if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
+            {
+                if(isEnabled && !goingTransition) 
+                {
+                    if (Input.GetAxis("DPadUp") > 0 && !dpadPressed)
+                    {
+                        textSelectStatus.text = "Keyboard/Gamepad";
+                        dpadPressed = true;
+                        Cursor.visible = false;
+                        highlightedValue++;
+                        if (highlightedValue > 2)
+                        {
+                            highlightedValue = 1;
+                        }
+                    }
+                    else if (Input.GetAxis("DPadUp") == 0)
+                    {
+                        dpadPressed = false;
+                    }
+
+                    if (Input.GetAxis("DPadDown") < 0 && !dpadPressed) 
+                    {
+                        textSelectStatus.text = "Keyboard/Gamepad";
+                        dpadPressed = true;
+                        Cursor.visible = false;
+                        highlightedValue--;
+                        if (highlightedValue < 1)
+                        {
+                            highlightedValue = 2;
+                        }
+                    }else if (Input.GetAxis("DPadDown") == 0) 
+                    {
+                        dpadPressed = false;
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Abutton")) 
+                    {
+                        if (highlightedValue == 1) 
+                        {
+                            goingTransition = true;
+                            isCoinDataSaved = true;
+                            if (isCoinDataSaved)
+                            {
+                                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
+                            }
+                            StartCoroutine(loadToSceneMenu());
+                            endGameListButton[0].enabled = false;
+                            endGameListButton[1].enabled = false;
+                        }
+                        if (highlightedValue == 2) 
+                        {
+                            goingTransition = true;
+                            endGameListButton[0].enabled = false;
+                            endGameListButton[1].enabled = false;
+                            SceneManagerCallback.sceneManagerCallback.restartScene();
+                        }
+                    }
+                }
+               
+            }
+        }
+    }
+
+    IEnumerator waitToScale() 
+    {
+        yield return new WaitForSeconds(1f);
+        objectTextEndegame.transform.localScale = Vector2.MoveTowards(objectTextEndegame.transform.localScale,
+                targetScale, 2f * Time.deltaTime);
+        yield return new WaitForSeconds(1.35f);
+        isEnabled = true;
+    }
+
+   
 
     public void onClickContinue() 
     {
+        goingTransition = true;
         isCoinDataSaved = true;
         if (isCoinDataSaved) 
         {
             PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
         }
         StartCoroutine(loadToSceneMenu());
+        endGameListButton[0].enabled = false;
+        endGameListButton[1].enabled = false;
         
     }
     public void onClickRestart() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       
+        goingTransition = true;
+        endGameListButton[0].enabled = false;
+        endGameListButton[1].enabled = false;
+        SceneManagerCallback.sceneManagerCallback.restartScene();
     }
+    #endregion
 }
