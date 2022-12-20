@@ -29,13 +29,14 @@ public class AbilitySelector : MonoBehaviour
     private void Awake()
     {
         abilitySelector = this;
+        Cursor.visible = false;
     }
 
     private void Start()
     {
 
-        //Cursor.visible = false;
-        //textSelectStatus.text = "Keyboard/Gamepad";
+        
+        textSelectStatus.text = "Keyboard/Gamepad";
         curSkill_1 = AbilityInventory.abilityInventory.skill_1;
         curSkill_2 = AbilityInventory.abilityInventory.skill_2;
 
