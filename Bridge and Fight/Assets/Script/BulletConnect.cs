@@ -27,7 +27,7 @@ public class BulletConnect : MonoBehaviour
     }
     private void Update()
     {
-        if (!GameOver.gameOver.isGameOver) 
+        if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
         {
             if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance)
             {
@@ -48,7 +48,7 @@ public class BulletConnect : MonoBehaviour
 
         while (true) 
         {
-            if (!GameOver.gameOver.isGameOver) 
+            if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
             {
                 if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance
                 && !LineOfRay.lineOfRay.isTouchObstcale)

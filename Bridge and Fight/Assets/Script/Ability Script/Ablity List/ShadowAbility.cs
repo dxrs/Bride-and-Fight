@@ -19,6 +19,7 @@ public class ShadowAbility : MonoBehaviour
     [SerializeField] float shadowAblityCoolDown;
 
     [SerializeField] bool isUsingAbility;
+    [SerializeField] bool isSlowMotion;
     [SerializeField] int curUpLevelValue;
 
     [SerializeField] GameObject[] wallColider;

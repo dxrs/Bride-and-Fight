@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
         {
             UI_object[i].SetActive(false);
         }
-
+        textSelectStatus.text = "Keyboard/Gamepad";
         //endGame function
         eventPointerEnter();
 
