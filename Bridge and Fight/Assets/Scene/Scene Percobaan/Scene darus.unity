@@ -7528,6 +7528,7 @@ MonoBehaviour:
   shadowAbilityTimer: 5
   shadowAblityCoolDown: 0
   isUsingAbility: 0
+  isSlowMotion: 0
   curUpLevelValue: 0
   wallColider:
   - {fileID: 200067466}
@@ -9173,6 +9174,14 @@ MonoBehaviour:
   - {fileID: 1955476254}
   abilityObject: {fileID: 94422081}
   isTimeCountDown: 0
+  objectTextEndegame: {fileID: 0}
+  buttonSelector: {fileID: 0}
+  sceneTrasisi: {fileID: 0}
+  objectEndGame: {fileID: 0}
+  curValueSelect: 
+  highlightedValue: 0
+  endGameListButton: []
+  textSelectStatus: {fileID: 0}
 --- !u!114 &1619304050
 MonoBehaviour:
   m_ObjectHideFlags: 0

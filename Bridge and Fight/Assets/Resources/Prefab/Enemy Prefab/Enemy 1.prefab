@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6754440010400763986}
   - component: {fileID: 5902615457908755138}
   m_Layer: 6
-  m_Name: e_pink
+  m_Name: Enemy 1
   m_TagString: Normal Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 2925462774602308856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.635, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4074523530991403001}
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4b5da8570f0654bba56da8f5f4c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 1.8
   health: 1
   id: 1
   aSource: {fileID: -2004549424312607604, guid: be8cbee7afea12a49b7e31dc3a2fd66e, type: 3}

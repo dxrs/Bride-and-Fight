@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7438855646090002115}
   - component: {fileID: 1885028616840890209}
   m_Layer: 6
-  m_Name: Enemy 3
-  m_TagString: Normal Enemy
+  m_Name: Enemy 21
+  m_TagString: Medium Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7438855646090002114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.82, y: 2.44, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7438855646737430261}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad05cf0398e1ec4e9430d44cc81f3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyParticle: {fileID: 4131467262019528824, guid: 52237b7350b2cbf43819def39e679c07, type: 3}
+  enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
   aSource: {fileID: 0}
   clipNya: {fileID: 0}
 --- !u!114 &3158544808245334592
@@ -63,12 +63,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4b5da8570f0654bba56da8f5f4c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  health: 1
-  id: 1
+  speed: 0.9
+  health: 10
+  id: 2
   aSource: {fileID: 0}
   clipNya: {fileID: 0}
-  enemyParticle: {fileID: 4131467262019528824, guid: 52237b7350b2cbf43819def39e679c07, type: 3}
+  enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
 --- !u!50 &7438855646090002115
 Rigidbody2D:
   serializedVersion: 4
@@ -115,11 +115,21 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.13484025, y: 0.089992285}
-      - {x: -0.13554913, y: -0.0896382}
-      - {x: -0.00041383505, y: -0.041323304}
-      - {x: 0.13323009, y: -0.0013811588}
-      - {x: 0.021040082, y: 0.037166774}
+    - - {x: 0.035188913, y: 0.25511003}
+      - {x: -0.037196994, y: 0.28357148}
+      - {x: -0.11298931, y: 0.33548474}
+      - {x: -0.043789506, y: 0.38605857}
+      - {x: -0.18925202, y: 0.4669857}
+      - {x: -0.6325778, y: 0.72740364}
+      - {x: -0.62895525, y: 0.050192595}
+      - {x: -0.51859534, y: -0.013434887}
+      - {x: -0.6340538, y: -0.048969984}
+      - {x: -0.6210609, y: -0.7164968}
+      - {x: -0.046521187, y: -0.39002633}
+      - {x: -0.048641026, y: -0.28148305}
+      - {x: 0.043860316, y: -0.3341794}
+      - {x: 0.6355399, y: -0.005505085}
+      - {x: 0.049411535, y: 0.3445484}
 --- !u!1 &7438855646737430260
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +141,7 @@ GameObject:
   - component: {fileID: 7438855646737430261}
   - component: {fileID: 7438855646737430262}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 7438855646737430260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7438855646090002141}
@@ -193,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 331828c720450e74685e97033b0a53c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac07587be823ed8499f95c374794be29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
