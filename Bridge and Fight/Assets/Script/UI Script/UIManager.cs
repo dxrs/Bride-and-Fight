@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
     void inGameStatus() 
     {
         gameIsPaused();
-        textTotalCoin.text = TotalCoin.totalCoin.curCoinGet + "$";
+        textTotalCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
         if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
             
@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour
             StartCoroutine(popUpEndGameShow());
             GameStarting.gameStarting.isGameStarted = false;
             //DataCoin.dataCoin.coinDataValue = TotalCoin.totalCoin.curCoinGet;
-            textTotalCoinEndGame.text= "+" + TotalCoin.totalCoin.curCoinGet + "$";
+            textTotalCoinEndGame.text= "+" + TotalCoin.totalCoin.curCoinGet;
            
         }
         if (GameOver.gameOver.isGameOver)
