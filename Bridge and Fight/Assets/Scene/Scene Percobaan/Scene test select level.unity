@@ -1463,7 +1463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &524874186
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2787,7 +2787,6 @@ MonoBehaviour:
   isUpgraded: 0
   maxShadowLevel: 3
   yourBank: 0
-  restOfYourBank: 0
 --- !u!4 &1214006526
 Transform:
   m_ObjectHideFlags: 0
@@ -3647,7 +3646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1546528556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4758,7 +4757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2065294754
 RectTransform:
   m_ObjectHideFlags: 0
