@@ -112,13 +112,13 @@ public class UIManager : MonoBehaviour
         }
         if (GameOver.gameOver.isGameOver)
         {
-            textOverFinish.text = "GAME OVER";
+            textOverFinish.text = "DEFATED";
             
           
         }
         if (GameFinish.gameFinish.isGameFinished)
         {
-            textOverFinish.text = "GAME FINISH";
+            textOverFinish.text = "VICTORY";
             
             
         }

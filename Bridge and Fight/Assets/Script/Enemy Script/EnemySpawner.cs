@@ -4,74 +4,52 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float spawnRadius;
-    public float spawnRadiusSpecial;
-    public float normalTime, fastTime, slowTime;
-    public GameObject enemyNormal;
-    public GameObject enemyFast;
-    public GameObject enemySlow;
-    [SerializeField] GameObject radiusObj;
+    
+
+    [SerializeField] GameObject enemy;
+    [SerializeField] GameObject spawnRadiusObject;
+
+    [SerializeField] float enemyRadiusValue;
+    [SerializeField] float enemySpawnTimerValue;
+    [SerializeField] float enemyWaitToSpawn;
+
+    [SerializeField] bool enemyIsWaitingToSpawn;
+
+    Vector2 enemySpawnPos;
     
     void Start()
     {
-        StartCoroutine(spawnEnemyNormal());
-        StartCoroutine(spawnEnemySlow());
-        StartCoroutine(spawnEnemyFast());
+        StartCoroutine(enemyIsSpawning());
     }
 
-    IEnumerator spawnEnemyNormal()
-    {
-        while (true)
-        {
-            if (GameStarting.gameStarting.isGameStarted&&
-                !GameOver.gameOver.isGameOver
-                && !GameFinish.gameFinish.isGameFinished)
-            {
-                Vector2 spawnPos = radiusObj.transform.position;
-                spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
-                Instantiate(enemyNormal, spawnPos, Quaternion.identity);
-            }
-            yield return new WaitForSeconds(normalTime);
-        }
-    }
 
-    IEnumerator spawnEnemySlow()
+    IEnumerator enemyIsSpawning() 
     {
-        while (true)
+        while (true) 
         {
-            if (UIManager.uIManager.timerValue <= 100) 
+            if (GameStarting.gameStarting.isGameStarted && !GamePaused.gamePaused.isGamePaused
+                    && !GameFinish.gameFinish.isGameFinished && !GameOver.gameOver.isGameOver)
             {
-                if (GameStarting.gameStarting.isGameStarted &&
-              !GameOver.gameOver.isGameOver
-              && !GameFinish.gameFinish.isGameFinished)
+                if (!enemyIsWaitingToSpawn) // klo langsung keluar
                 {
-                    Vector2 spawnPos = radiusObj.transform.position;
-                    spawnPos += Random.insideUnitCircle.normalized * spawnRadiusSpecial;
-                    Instantiate(enemySlow, spawnPos, Quaternion.identity);
+                    enemySpawnPos = spawnRadiusObject.transform.position;
+                    enemySpawnPos += Random.insideUnitCircle.normalized * enemyRadiusValue;
+                    Instantiate(enemy, enemySpawnPos, Quaternion.identity);
+                }
+                else //klo ga langsung keluar
+                {
+                    if (UIManager.uIManager.timerValue <= enemySpawnTimerValue) 
+                    {
+                        enemySpawnPos = spawnRadiusObject.transform.position;
+                        enemySpawnPos += Random.insideUnitCircle.normalized * enemyRadiusValue;
+                        Instantiate(enemy, enemySpawnPos, Quaternion.identity);
+                    }
                 }
             }
-          
-            yield return new WaitForSeconds(slowTime);
-        }
-    }
-
-    IEnumerator spawnEnemyFast()
-    {
-        while (true)
-        {
-            if (UIManager.uIManager.timerValue <= 90) 
-            {
-                if (GameStarting.gameStarting.isGameStarted &&
-                !GameOver.gameOver.isGameOver
-                && !GameFinish.gameFinish.isGameFinished)
-                {
-                    Vector2 spawnPos = radiusObj.transform.position;
-                    spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
-                    Instantiate(enemyFast, spawnPos, Quaternion.identity);
-                }
-            }
+            yield return new WaitForSeconds(enemyWaitToSpawn);
            
-            yield return new WaitForSeconds(fastTime);
         }
     }
+
+   
 }
