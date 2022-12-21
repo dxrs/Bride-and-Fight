@@ -19,8 +19,8 @@ public class AbilityIcon : MonoBehaviour
    
     private void Update()
     {
-        abilityIcon_kiri.sprite = Resources.Load<Sprite>("A"+ AbilityInventory.abilityInventory.skill_1);
-        abilityIcon_kanan.sprite = Resources.Load<Sprite>("A" + AbilityInventory.abilityInventory.skill_2);
+        abilityIcon_kiri.sprite = Resources.Load<Sprite>("Sprite/Ability Sprite/A"+ AbilityInventory.abilityInventory.skill_1);
+        abilityIcon_kanan.sprite = Resources.Load<Sprite>("Sprite/Ability Sprite/A" + AbilityInventory.abilityInventory.skill_2);
 
         for (int i = 0; i < namaAbilityKanan.Length; i++)
         {
@@ -56,7 +56,7 @@ public class AbilityIcon : MonoBehaviour
         if (GameStarting.gameStarting.isGameStarted) 
         {
             abilityIcon_inGame.enabled = true;
-            abilityIcon_inGame.sprite = Resources.Load<Sprite>("A" + AbilitySelector.abilitySelector.abilitySelected);
+            abilityIcon_inGame.sprite = Resources.Load<Sprite>("Sprite/Ability Sprite/A" + AbilitySelector.abilitySelector.abilitySelected);
         }
         
     }
