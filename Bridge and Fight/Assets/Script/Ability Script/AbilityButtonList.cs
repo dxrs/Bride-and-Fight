@@ -14,7 +14,9 @@ public class AbilityButtonList : MonoBehaviour
     public bool isClicked;
 
     public Button[] abilityListButton;
-    [SerializeField] Button buttonUp;
+    //
+    //
+    //[SerializeField] Button buttonUp;
 
    
 

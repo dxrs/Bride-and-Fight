@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DataNameValue : MonoBehaviour
 {
+
+    [SerializeField] int curLevel;
+
     [SerializeField] int coinData;
     [SerializeField] int bankData;
 
@@ -21,6 +24,9 @@ public class DataNameValue : MonoBehaviour
     }
     private void Update()
     {
+        //level
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+
         //money
         coinData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         bankData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
