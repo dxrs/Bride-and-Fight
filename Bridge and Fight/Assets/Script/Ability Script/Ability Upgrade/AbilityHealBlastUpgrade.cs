@@ -18,10 +18,10 @@ public class AbilityHealBlastUpgrade : MonoBehaviour
     }
     private void Update()
     {
-        if (UpgradeSystem.upgradeSystem.totalCurAbility < 3 || AbilityButtonList.abilityButton.isClicked) 
+        if (UpgradeSystem.upgradeSystem.totalCurAbility < 3 || AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
         {
             abilityButtonClick.interactable = false;
-        }else if (UpgradeSystem.upgradeSystem.totalCurAbility >= 3 && !AbilityButtonList.abilityButton.isClicked) 
+        }else if (UpgradeSystem.upgradeSystem.totalCurAbility >= 3 && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
         {
             abilityButtonClick.interactable = true;
         }

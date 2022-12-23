@@ -2,38 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AbilityLevelStatus : MonoBehaviour
 {
-    [SerializeField] Image[] imageStatusLevel;
+    [SerializeField] string[] abilityDesc;
+
+    [SerializeField] TextMeshProUGUI textStatusLevelUpgrade;
+    [SerializeField] TextMeshProUGUI textAbilityDesc;
+
+    int level = 0;
 
     private void Update()
     {
-        
+
+        textStatusLevelUpgrade.text = "Level " + level;
         // Menyimpan nilai curShadowLevel atau curStoneLevel ke dalam variabel
         if(SceneManagerStatus.sceneManagerStatus.sceneStats=="Select Level") 
         {
-            int level = 0;
-            if (AbilityButtonList.abilityButton.clickedValue == 1)
+
+            int abilityIndex = AbilityButtonList.abilityButton.clickedValue - 1;
+            int[] abilityLevel = {
+                AbilityShadowUpgrade.abilityShadowUpgrade.curShadowLevel,
+                AbilityInfinityStoneUpgrade.abilityInfinityStoneUpgrade.curStoneLevel
+            };
+
+            if (abilityIndex >= 0 && abilityIndex < abilityDesc.Length)
             {
-                level = AbilityShadowUpgrade.abilityShadowUpgrade.curShadowLevel;
-            }
-            else if (AbilityButtonList.abilityButton.clickedValue == 2)
-            {
-                level = AbilityInfinityStoneUpgrade.abilityInfinityStoneUpgrade.curStoneLevel;
+                level = abilityLevel[abilityIndex];
+                textAbilityDesc.text = abilityDesc[abilityIndex];
             }
 
-            // Menampilkan gambar sesuai dengan level yang tersimpan di variabel
-            for (int i = 0; i < level; i++)
-            {
-                imageStatusLevel[i].enabled = true;
-            }
 
-            for (int i = level; i < imageStatusLevel.Length; i++)
-            {
-                imageStatusLevel[i].enabled = false;
-            }
-           
+
         }
        
 

@@ -26,7 +26,7 @@ public class UpgradeSystem : MonoBehaviour
     }
     private void Update()
     {
-        if (AbilityButtonList.abilityButton.isClicked) 
+        if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
         {
             for(int j = 0; j < abilityName.Length; j++) 
             {
@@ -43,7 +43,7 @@ public class UpgradeSystem : MonoBehaviour
 
     void imagePerAbility() 
     {
-        if (AbilityButtonList.abilityButton.isClicked)
+        if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
         {
             for (int i = 0; i < abilityIcon.Length; i++)
             {

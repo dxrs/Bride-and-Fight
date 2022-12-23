@@ -68,7 +68,7 @@ public class SelectPlanet : MonoBehaviour
                 break;
             }
         }
-        if (isPlanetClicked) 
+        if (isPlanetClicked || UISelectLevelManager.uISelectLevelManager.isGoingToStore) 
         {
             planetSelector.SetActive(false);
             for (int k = 0; k < planetListButton.Length; k++)
@@ -76,7 +76,7 @@ public class SelectPlanet : MonoBehaviour
                 planetListButton[k].interactable = false;
             }
         }
-        else 
+        if(!isPlanetClicked && !UISelectLevelManager.uISelectLevelManager.isGoingToStore)
         {
             planetSelector.SetActive(true);
             for (int k = 0; k < planetListButton.Length; k++)
@@ -143,33 +143,33 @@ public class SelectPlanet : MonoBehaviour
         {
             dpadPressed = false;
         }
-        if (Input.GetButton("Xbutton"))
-        {
-            //print("kena");
-            // ke store
-        }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Abutton"))
+
+
+       
+    }
+    public void enterToSelectLevel() 
+    {
+        Cursor.visible = false;
+        UISelectLevelManager.uISelectLevelManager.isGoingToStore = false;
+        for (int x = 1; x <= 3; x++) //max planet
         {
-            Cursor.visible = false;
-            for (int x = 1; x <= 3; x++) //max planet
+            if (planetHighLightValue == x)
             {
-                if (planetHighLightValue == x) 
-                {
-                    planetClickValue = planetHighLightValue;
-                    isPlanetClicked = true;
-                    print("ke planet " + x +"click"+planetClickValue);
-                    break;
-                }
+                planetClickValue = planetHighLightValue;
+                isPlanetClicked = true;
+                print("ke planet " + x + "click" + planetClickValue);
+                break;
             }
-           
         }
+      
     }
 
     #endregion
 
     public void onClickStore() 
     {
-        
+        UISelectLevelManager.uISelectLevelManager.isGoingToStore = true;
+        //UISelectLevelManager.uISelectLevelManager.inputValue[0] = 1;
     }
 }

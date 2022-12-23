@@ -11,7 +11,7 @@ public class AbilityButtonList : MonoBehaviour
     public int[] buttonCurValue;
     public int clickedValue;
     public int highlightedValue;
-    public bool isClicked;
+    public bool isClickedToUpgradePopUp;
 
     public Button[] abilityListButton;
     //
@@ -50,7 +50,7 @@ public class AbilityButtonList : MonoBehaviour
     {
         for (int i = 0; i < abilityListButton.Length-1; i++)
         {
-            if (isClicked)
+            if (isClickedToUpgradePopUp)
             {
                 //abilityListButton[i].interactable = false;
                 abilityListButton[i].interactable = false;
@@ -61,8 +61,11 @@ public class AbilityButtonList : MonoBehaviour
             }
            
         }
-        
+      
+
+
     }
+
     void ButtonHighlighted(int value)
     {
         // Mengambil nilai int dari button yang di-highlight
@@ -73,8 +76,10 @@ public class AbilityButtonList : MonoBehaviour
     {
         //Debug.Log(value);
         clickedValue = value;
-        isClicked = true;
+        isClickedToUpgradePopUp = true;
         
+
+
     }
 
     public void buttonUpgradeClicked() 
@@ -82,6 +87,7 @@ public class AbilityButtonList : MonoBehaviour
         if (clickedValue == 1) 
         {
             AbilityShadowUpgrade.abilityShadowUpgrade.onClickUpgradeShadow();
+            
         }
         if (clickedValue == 2) 
         {
