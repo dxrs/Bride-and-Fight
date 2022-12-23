@@ -14,6 +14,7 @@ public class UISelectLevelManager : MonoBehaviour
     [SerializeField] Button buttonBackToSelectLevel;
     [SerializeField] GameObject abilityShowUp;
     [SerializeField] Button buttonUp;
+    [SerializeField] Button buttonStore;
     [SerializeField] TextMeshProUGUI textMoney;
 
     [Header("List DBMS Value")]

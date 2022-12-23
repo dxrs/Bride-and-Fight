@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
         inGameStatus();
         timerEnd();
         StartCoroutine(gameIsStarting());
-        if (GameStarting.gameStarting.isGameStarted) 
+        if (GameStarting.gameStarting.isGameStarted && !GamePaused.gamePaused.isGamePaused) 
         {
             UI_object[0].SetActive(false); // ui start game
             UI_object[1].SetActive(true); // ui in game
@@ -112,13 +112,13 @@ public class UIManager : MonoBehaviour
         }
         if (GameOver.gameOver.isGameOver)
         {
-            textOverFinish.text = "GAME OVER";
+            textOverFinish.text = "DEFATED";
             
           
         }
         if (GameFinish.gameFinish.isGameFinished)
         {
-            textOverFinish.text = "GAME FINISH";
+            textOverFinish.text = "VICTORY";
             
             
         }
@@ -176,15 +176,20 @@ public class UIManager : MonoBehaviour
                 {
                     Cursor.visible = false;
                     GamePaused.gamePaused.isGamePaused = true;
+                    UI_object[3].SetActive(true);
+                    UI_object[1].SetActive(false);
                 }
                 else
                 {
+                    UI_object[3].SetActive(false);
+                    UI_object[1].SetActive(true);
                     GamePaused.gamePaused.isGamePaused = false;
                     if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
                     {
                         // tampilkan cursor jika mouse di-swipe
                         //textSelectStatus.text = "Mouse";
                         Cursor.visible = true;
+                        
                     }
                 }
             }

@@ -42,11 +42,11 @@ public class Player1Health : MonoBehaviour
 
     public void p1TriggerWithNormalEnemy() 
     {
-        playerHealth -= 10;
+        playerHealth -= 5;
     }
     public void p1TriggerWithMediumEnemy() 
     {
-        playerHealth -= 20;
+        playerHealth -= 10;
     }
     public void p1SuicideKill() 
     {

@@ -52,6 +52,7 @@ public class LineOfRay : MonoBehaviour
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.blue);
                 estat = hit.collider.gameObject.GetComponent<EnemyStat>();
                 estat.health -= 10 * Time.deltaTime;
+                
                 if (estat.health <= 0) 
                 {
                     TotalCoin.totalCoin.curCoinGet += 4;
