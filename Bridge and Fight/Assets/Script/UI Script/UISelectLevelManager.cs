@@ -11,13 +11,17 @@ public class UISelectLevelManager : MonoBehaviour
     public static UISelectLevelManager uISelectLevelManager;
 
     public bool isGoingToStore;
-   
 
+    [SerializeField] string[] joyStickInputName;
+    [SerializeField] GameObject[] objectUpgrade;
+        
     [Header("Boolean Controller")]
     public bool keyButtonPressedBack;
     public bool keyButtonPressedEnter;
+    public bool keyButtonOressedlbrb;
 
     [Header("Alfa Store")]
+    public int chooseStoreValue = 1;
     [SerializeField] Button buttonBackToSelectLevel;
     [SerializeField] GameObject abilityShowUp;
     [SerializeField] GameObject alfaStore;
@@ -25,6 +29,8 @@ public class UISelectLevelManager : MonoBehaviour
     [SerializeField] Button buttonUp;
     [SerializeField] Button buttonStore;
     [SerializeField] TextMeshProUGUI textMoney;
+    [SerializeField] TextMeshProUGUI textStoreChoose;
+    [SerializeField] TextMeshProUGUI[] textIconChoose;
 
     [Header("List DBMS Value")]
     [SerializeField] int coinData;
@@ -82,6 +88,16 @@ public class UISelectLevelManager : MonoBehaviour
 
     void goingToStore() 
     {
+
+        if (chooseStoreValue == 1) 
+        {
+            textStoreChoose.text = "ABILITY";
+        }
+        if (chooseStoreValue == 2) 
+        {
+            textStoreChoose.text = "SKIN";
+        }
+
         if (isGoingToStore || SelectPlanet.selectPlanet.isPlanetClicked) 
         {
             buttonStore.interactable = false;
@@ -109,11 +125,66 @@ public class UISelectLevelManager : MonoBehaviour
     void storeInputController()
     {
 
-
+        
 
         buttonBack();
         buttonEnter();
         inputToStore();
+        inputChooseStore();
+
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        {
+            // tampilkan cursor jika mouse di-swipe
+
+            Cursor.visible = true;
+            if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
+            {
+                objectUpgrade[0].SetActive(true);
+                objectUpgrade[1].SetActive(false);
+            }
+        }
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0
+            ||Input.anyKeyDown)
+        {
+            textIconChoose[0].text = "[";
+            textIconChoose[1].text = "]";
+        }
+        else 
+        {
+            for(int i = 0; i < joyStickInputName.Length; i++) 
+            {
+                //float buttonAxis = Input.GetAxis(joyStickInputName[i]);
+                if (Input.GetButton(joyStickInputName[i])) 
+                {
+                    textIconChoose[0].text = "L";
+                    textIconChoose[1].text = "R";
+                    Cursor.visible = false;
+                }
+
+               
+                
+            }
+        }
+
+        if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
+        {
+            for (int i = 0; i < joyStickInputName.Length; i++)
+            {
+
+                if (Input.anyKeyDown || Input.GetButton(joyStickInputName[i]))
+                {
+                    objectUpgrade[0].SetActive(false);
+                    objectUpgrade[1].SetActive(true);
+                }
+
+
+            }
+           
+        }
+
+
+
+
 
     }
 
@@ -137,6 +208,7 @@ public class UISelectLevelManager : MonoBehaviour
                 if (SelectPlanet.selectPlanet.isPlanetClicked) 
                 {
                     SelectPlanet.selectPlanet.isPlanetClicked = false;
+                    SelectPlanet.selectPlanet.planetClickValue = 0;
                 }
 
 
@@ -157,6 +229,11 @@ public class UISelectLevelManager : MonoBehaviour
                 if (!isGoingToStore) 
                 {
                     SelectPlanet.selectPlanet.enterToSelectLevel();
+                }
+
+                if (isGoingToStore) 
+                {
+                    AbilityButtonList.abilityButton.onEnterAbilitySelect();
                 }
             }
 
@@ -179,8 +256,91 @@ public class UISelectLevelManager : MonoBehaviour
         }
        
     }
+    void inputChooseStore() 
+    {
+        
+        if (isGoingToStore && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftBracket)) //[
+            {
+                
+                Cursor.visible = false;
+                keyButtonOressedlbrb = true;
+                chooseStoreValue--;
+                if (chooseStoreValue < 1)
+                {
+                    chooseStoreValue = 2;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.RightBracket)) //]
+            {
+                Cursor.visible = false;
+                keyButtonOressedlbrb = true;
+                chooseStoreValue++;
+                if (chooseStoreValue > 2)
+                {
+                    chooseStoreValue = 1;
+                }
+            }
+
+
+
+            if (Input.GetButton("RBbutton") && !keyButtonOressedlbrb)
+            {
+                Cursor.visible = false;
+                keyButtonOressedlbrb = true;
+                chooseStoreValue++;
+                if (chooseStoreValue > 2)
+                {
+                    chooseStoreValue = 1;
+                }
+                
+
+            }
+
+            if (Input.GetButton("LBbutton") && !keyButtonOressedlbrb)
+            {
+                Cursor.visible = false;
+                keyButtonOressedlbrb = true;
+                chooseStoreValue--;
+                if (chooseStoreValue < 1)
+                {
+                    chooseStoreValue = 2;
+                }
+               
+            }
+
+            if (!Input.GetButton("LBbutton") && !Input.GetButton("RBbutton"))
+            {
+                keyButtonOressedlbrb = false;
+            }
+
+        }
+
+
+        
+
+
+    }
 
     #endregion
+
+    public void onClickChooseStoreLeft() 
+    {
+        chooseStoreValue--;
+        if (chooseStoreValue < 1)
+        {
+            chooseStoreValue = 2;
+        }
+    }
+    public void onClickChooseStoreRight() 
+    {
+        chooseStoreValue++;
+        if (chooseStoreValue > 2)
+        {
+            chooseStoreValue = 1;
+        }
+    }
 
     public void onClickBackToPlanet() 
     {
@@ -199,14 +359,7 @@ public class UISelectLevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("Scene firza");
     }
-    IEnumerator BbuttonPress() 
-    {
-        if (keyButtonPressedBack) 
-        {
-            yield return new WaitForSeconds(0.1f);
-            keyButtonPressedBack = false;
-        }
-    }
+    
     
     
 
