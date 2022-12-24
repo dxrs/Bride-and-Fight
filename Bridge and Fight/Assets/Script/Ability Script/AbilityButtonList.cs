@@ -8,17 +8,18 @@ public class AbilityButtonList : MonoBehaviour
 {
     public static AbilityButtonList abilityButton;
 
+
+    public int maxSelectAbility;
     public int[] buttonCurValue;
     public int clickedValue;
     public int highlightedValue;
-    public bool isClicked;
+    public bool isClickedToUpgradePopUp;
 
     public Button[] abilityListButton;
-    //
-    //
-    //[SerializeField] Button buttonUp;
+    [SerializeField] Vector2[] abilityListSelectorPos;
+    [SerializeField] GameObject abilityListSelector;
 
-   
+    bool dpadPressed = false;
 
     private void Awake()
     {
@@ -50,9 +51,9 @@ public class AbilityButtonList : MonoBehaviour
     {
         for (int i = 0; i < abilityListButton.Length-1; i++)
         {
-            if (isClicked)
+            if (isClickedToUpgradePopUp)
             {
-                //abilityListButton[i].interactable = false;
+              
                 abilityListButton[i].interactable = false;
             }
             else 
@@ -61,20 +62,95 @@ public class AbilityButtonList : MonoBehaviour
             }
            
         }
-        
+        for(int x = 0; x < abilityListSelectorPos.Length; x++) 
+        {
+            if (highlightedValue == x + 1) 
+            {
+                abilityListSelector.transform.localPosition = abilityListSelectorPos[x];
+                break;
+            }
+        }
+
+        if (highlightedValue > maxSelectAbility) 
+        {
+            highlightedValue = maxSelectAbility;
+        }
+        inputChooseAbility();
     }
+
+
+
     void ButtonHighlighted(int value)
     {
         // Mengambil nilai int dari button yang di-highlight
-        //Debug.Log(value);
+      
         highlightedValue = value;
     }
-    void buttonClicked(int value) 
+     void buttonClicked(int value) 
     {
         //Debug.Log(value);
         clickedValue = value;
-        isClicked = true;
+        isClickedToUpgradePopUp = true;
         
+
+
+    }
+
+    #region choose ability
+    void inputChooseAbility() 
+    {
+        if(UISelectLevelManager.uISelectLevelManager.isGoingToStore && !isClickedToUpgradePopUp) 
+        {
+            if(Input.GetAxis("DPadRight")>0 && !dpadPressed
+                || Input.GetKeyDown(KeyCode.D)
+                || Input.GetKeyDown(KeyCode.RightArrow)) 
+            {
+                Cursor.visible = false;
+                dpadPressed = true;
+                highlightedValue++;
+                if (highlightedValue > maxSelectAbility) 
+                {
+                    highlightedValue = 1;
+                }
+            }
+            else if (Input.GetAxis("DPadRight") == 0) 
+            {
+                dpadPressed = false;
+            }
+
+            if(Input.GetAxis("DPadLeft") < 0 && !dpadPressed
+                || Input.GetKeyDown(KeyCode.A)
+                || Input.GetKeyDown(KeyCode.LeftArrow)) 
+            {
+                Cursor.visible = false;
+                dpadPressed = true;
+                highlightedValue--;
+                if (highlightedValue < 1)
+                {
+                    highlightedValue = maxSelectAbility;
+                }
+            }
+            else if (Input.GetAxis("DPadLeft") == 0)
+            {
+                dpadPressed = false;
+            }
+        }
+    }
+    #endregion
+
+    public void onEnterAbilitySelect() 
+    {
+        Cursor.visible = false;
+        isClickedToUpgradePopUp = true;
+        for(int j = 0; j <= maxSelectAbility; j++) 
+        {
+            if (highlightedValue == j) 
+            {
+                clickedValue = highlightedValue;
+                print("ability ke " + j);
+                break;
+            }
+        }
     }
 
     public void buttonUpgradeClicked() 
@@ -82,6 +158,7 @@ public class AbilityButtonList : MonoBehaviour
         if (clickedValue == 1) 
         {
             AbilityShadowUpgrade.abilityShadowUpgrade.onClickUpgradeShadow();
+            
         }
         if (clickedValue == 2) 
         {

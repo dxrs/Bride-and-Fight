@@ -12,7 +12,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     [SerializeField] Button buttonUpgrade;
     [SerializeField] TextMeshProUGUI textInfoUpgrade;
     [SerializeField] TextMeshProUGUI textCurBank;
-    [SerializeField] Image[] imgStatuLevelAbility;
+    [SerializeField] TextMeshProUGUI textStatusLevelShadow;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curShadowLevel;
@@ -33,7 +33,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
         curShadowLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
         yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         nextUpgradeLevel = curShadowLevel + 1;
-    
+        
         
     }
     private void Update()
@@ -41,29 +41,17 @@ public class AbilityShadowUpgrade : MonoBehaviour
         progressUp();
         saveDataUpShadow();
         textCurBank.text = "Your Money : " + yourBank +"$";
+        textStatusLevelShadow.text = curShadowLevel.ToString();
+
 
     }
     void progressUp() 
     {
-        if (!AbilityButtonList.abilityButton.isClicked) 
+        if (!AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
         {
             isUpgraded = false;
         }
-        switch (curShadowLevel) 
-        {
-            case 1:
-                imgStatuLevelAbility[0].enabled = true;
-                break;
-            case 2:
-                imgStatuLevelAbility[0].enabled = true;
-                imgStatuLevelAbility[1].enabled = true;
-                break;
-            case 3:
-                imgStatuLevelAbility[0].enabled = true;
-                imgStatuLevelAbility[1].enabled = true;
-                imgStatuLevelAbility[2].enabled = true;
-                break;
-        }
+       
         if(AbilityButtonList.abilityButton.clickedValue == 1) 
         {
             if (curShadowLevel == 1)
