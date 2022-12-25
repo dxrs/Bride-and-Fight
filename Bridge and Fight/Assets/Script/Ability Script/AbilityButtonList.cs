@@ -9,7 +9,7 @@ public class AbilityButtonList : MonoBehaviour
     public static AbilityButtonList abilityButton;
 
 
-    public int maxSelectAbility;
+    //public int maxSelectAbility;
     public int[] buttonCurValue;
     public int clickedValue;
     public int highlightedValue;
@@ -71,9 +71,9 @@ public class AbilityButtonList : MonoBehaviour
             }
         }
 
-        if (highlightedValue > maxSelectAbility) 
+        if (highlightedValue > UpgradeSystem.upgradeSystem.totalCurAbility) 
         {
-            highlightedValue = maxSelectAbility;
+            highlightedValue = UpgradeSystem.upgradeSystem.totalCurAbility;
         }
         inputChooseAbility();
     }
@@ -83,6 +83,10 @@ public class AbilityButtonList : MonoBehaviour
     void ButtonHighlighted(int value)
     {
         // Mengambil nilai int dari button yang di-highlight
+        if(value> UpgradeSystem.upgradeSystem.totalCurAbility) 
+        {
+            value = UpgradeSystem.upgradeSystem.totalCurAbility;
+        }
       
         highlightedValue = value;
     }
@@ -108,7 +112,7 @@ public class AbilityButtonList : MonoBehaviour
                 Cursor.visible = false;
                 dpadPressed = true;
                 highlightedValue++;
-                if (highlightedValue > maxSelectAbility) 
+                if (highlightedValue > UpgradeSystem.upgradeSystem.totalCurAbility)
                 {
                     highlightedValue = 1;
                 }
@@ -127,7 +131,7 @@ public class AbilityButtonList : MonoBehaviour
                 highlightedValue--;
                 if (highlightedValue < 1)
                 {
-                    highlightedValue = maxSelectAbility;
+                    highlightedValue = UpgradeSystem.upgradeSystem.totalCurAbility;
                 }
             }
             else if (Input.GetAxis("DPadLeft") == 0)
@@ -142,10 +146,11 @@ public class AbilityButtonList : MonoBehaviour
     {
         Cursor.visible = false;
         isClickedToUpgradePopUp = true;
-        for(int j = 0; j <= maxSelectAbility; j++) 
+        for(int j = 0; j <= UpgradeSystem.upgradeSystem.totalCurAbility; j++) 
         {
             if (highlightedValue == j) 
             {
+
                 clickedValue = highlightedValue;
                 print("ability ke " + j);
                 break;

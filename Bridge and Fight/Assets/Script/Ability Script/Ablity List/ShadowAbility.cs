@@ -190,7 +190,7 @@ public class ShadowAbility : MonoBehaviour
     #region
     void upgradeAbilityShadow() 
     {
-        if (curUpLevelValue >= 2) 
+        if (curUpLevelValue >= 3) 
         {
             coinColider[0].SetActive(true);
             coinColider[1].SetActive(true);
@@ -204,8 +204,8 @@ public class ShadowAbility : MonoBehaviour
                 break;
             case 2:
                 curShadowTimer = 10;
-                maxValueTimer = 11;
-                curShadowCooldown = 13.0f;
+                maxValueTimer = 5;
+                curShadowCooldown = 11.0f;
                 break;
             case 3:
                 curShadowTimer = 12.5f;

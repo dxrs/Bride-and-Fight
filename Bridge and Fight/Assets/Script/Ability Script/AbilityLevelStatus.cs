@@ -6,7 +6,7 @@ using TMPro;
 
 public class AbilityLevelStatus : MonoBehaviour
 {
-    [SerializeField] string[] abilityDesc;
+    //[SerializeField] string[] abilityDesc;
 
     [SerializeField] TextMeshProUGUI textStatusLevelUpgrade;
     [SerializeField] TextMeshProUGUI textAbilityDesc;
@@ -27,10 +27,10 @@ public class AbilityLevelStatus : MonoBehaviour
                 AbilityInfinityStoneUpgrade.abilityInfinityStoneUpgrade.curStoneLevel
             };
 
-            if (abilityIndex >= 0 && abilityIndex < abilityDesc.Length)
+            if (abilityIndex >= 0)
             {
                 level = abilityLevel[abilityIndex];
-                textAbilityDesc.text = abilityDesc[abilityIndex];
+                //textAbilityDesc.text = abilityDesc[abilityIndex];
             }
 
 

@@ -59,7 +59,10 @@ public class SelectPlanet : MonoBehaviour
 
     private void Update()
     {
-
+        if (planetHighLightValue > maxPlanet)
+        {
+            planetHighLightValue = maxPlanet;
+        }
         for (int i = 0; i < planetSelectorPos.Length; i++)
         {
             if (planetHighLightValue == i + 1)
@@ -94,10 +97,7 @@ public class SelectPlanet : MonoBehaviour
             planetSelector.SetActive(false);
         }
 
-        if (planetHighLightValue > maxPlanet)
-        {
-            planetHighLightValue = maxPlanet;
-        }
+       
 
         for (int k = 0; k < planetListButton.Length; k++)
         {
@@ -119,12 +119,12 @@ public class SelectPlanet : MonoBehaviour
 
     void planetButtonHighLighted(int values) 
     {
-        planetHighLightValue = values;
+    
         if (values > maxPlanet) 
         {
-            
+            values = maxPlanet;
         }
-        
+            planetHighLightValue = values;
         Debug.Log(planetHighLightValue);
     }
 

@@ -13,6 +13,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     [SerializeField] TextMeshProUGUI textInfoUpgrade;
     [SerializeField] TextMeshProUGUI textCurBank;
     [SerializeField] TextMeshProUGUI textStatusLevelShadow;
+    [SerializeField] TextMeshProUGUI[] textDescAbility;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curShadowLevel;
@@ -54,6 +55,9 @@ public class AbilityShadowUpgrade : MonoBehaviour
        
         if(AbilityButtonList.abilityButton.clickedValue == 1) 
         {
+            textDescAbility[0].text = "Make you to become ghost mode within short time. [Active Ability]";
+            textDescAbility[1].text = "II  Longer ghost activated timer";
+            textDescAbility[2].text = "III More longer ghost timer when activated, and now you can still pick up the coin while you become ghost";
             if (curShadowLevel == 1)
             {
                 
@@ -102,6 +106,10 @@ public class AbilityShadowUpgrade : MonoBehaviour
         }
        
     }
+
+    #region input Key/button
+
+    #endregion
     public void onClickUpgradeShadow() 
     {
         

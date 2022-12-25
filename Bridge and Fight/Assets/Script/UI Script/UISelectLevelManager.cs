@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.EventSystems;
 
 public class UISelectLevelManager : MonoBehaviour
 {
@@ -14,20 +14,27 @@ public class UISelectLevelManager : MonoBehaviour
 
     [SerializeField] string[] joyStickInputName;
     [SerializeField] GameObject[] objectUpgrade;
+
+
         
     [Header("Boolean Controller")]
     public bool keyButtonPressedBack;
     public bool keyButtonPressedEnter;
     public bool keyButtonOressedlbrb;
+    [SerializeField] bool goblok;
 
     [Header("Alfa Store")]
     public int chooseStoreValue = 1;
+    public int buttonUpExitValue=1; //khusus pas mau upgrade
+    [SerializeField] int[] buttonValue;  //khusus pas mau upgrade
     [SerializeField] Button buttonBackToSelectLevel;
     [SerializeField] GameObject abilityShowUp;
     [SerializeField] GameObject alfaStore;
     [SerializeField] GameObject storeStock;
+    [SerializeField] GameObject upgradeSelector;
     [SerializeField] Button buttonUp;
     [SerializeField] Button buttonStore;
+    [SerializeField] Button[] buttonUpOrExit; //khusus pas mau upgrade
     [SerializeField] TextMeshProUGUI textMoney;
     [SerializeField] TextMeshProUGUI textStoreChoose;
     [SerializeField] TextMeshProUGUI[] textIconChoose;
@@ -36,6 +43,9 @@ public class UISelectLevelManager : MonoBehaviour
     [SerializeField] int coinData;
     public int curBank;
 
+
+    bool dpadPressed = false;
+  
 
 
     private void Awake()
@@ -131,17 +141,20 @@ public class UISelectLevelManager : MonoBehaviour
         buttonEnter();
         inputToStore();
         inputChooseStore();
+        inputChooseUpgradeOrExit(); //khusus upgrade
+        StartCoroutine(test());
+
+        if (!goblok && AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
+        {
+            StartCoroutine(lagi());
+        }
 
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
             // tampilkan cursor jika mouse di-swipe
 
             Cursor.visible = true;
-            if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
-            {
-                objectUpgrade[0].SetActive(true);
-                objectUpgrade[1].SetActive(false);
-            }
+            
         }
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0
             ||Input.anyKeyDown)
@@ -166,21 +179,7 @@ public class UISelectLevelManager : MonoBehaviour
             }
         }
 
-        if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
-        {
-            for (int i = 0; i < joyStickInputName.Length; i++)
-            {
-
-                if (Input.anyKeyDown || Input.GetButton(joyStickInputName[i]))
-                {
-                    objectUpgrade[0].SetActive(false);
-                    objectUpgrade[1].SetActive(true);
-                }
-
-
-            }
-           
-        }
+       
 
 
 
@@ -210,51 +209,83 @@ public class UISelectLevelManager : MonoBehaviour
                     SelectPlanet.selectPlanet.isPlanetClicked = false;
                     SelectPlanet.selectPlanet.planetClickValue = 0;
                 }
-
+                if (goblok)
+                {
+                    goblok = false;
+                }
 
             }
         }
         else if (!Input.GetButton("Bbutton") || !Input.GetKeyDown(KeyCode.Escape))
         {
             keyButtonPressedBack = false;
+            
         }
     }
 
     void buttonEnter() //untuk semua button back (enter/buttonA) di select level 
     {
+        Debug.Log("Enter button pressed");
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Abutton")) // nanti di ubah
         {
-            if (!keyButtonPressedEnter) 
+            if (!keyButtonPressedEnter)
             {
-                if (!isGoingToStore) 
+                if (!isGoingToStore)
                 {
                     SelectPlanet.selectPlanet.enterToSelectLevel();
                 }
 
-                if (isGoingToStore) 
+                if (isGoingToStore && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
                 {
-                    AbilityButtonList.abilityButton.onEnterAbilitySelect();
+                    //keyButtonPressedEnter = true;
+                    //print("klik tidak");
+                    //AbilityButtonList.abilityButton.onEnterAbilitySelect();
+                    //ok = 2;
+                    
+
+                }
+                if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp && buttonUpExitValue==1)
+                {
+                    if (goblok) 
+                    {
+                        keyButtonPressedEnter = true;
+                        goblok = false;
+                    }
+                    // jika panel upgrade ability sedang ditampilkan, kembali ke panel store
+                    //isGoingToStore = true;
+                    //keyButtonPressedEnter = true;
+                    //ok = 2;
+                    // print("klik ok");
+                    //print("nantu up");
+                    //isGoingToStore = false;
+                    
+
                 }
             }
 
         }
-        else if(!Input.GetKeyDown(KeyCode.Return) || !Input.GetButton("Abutton")) 
+        else if ( !Input.GetButton("Abutton"))
         {
             keyButtonPressedEnter = false;
         }
+
+       
     }
-    void inputToStore() 
+
+    void inputToStore()
     {
-        if (!SelectPlanet.selectPlanet.isPlanetClicked) 
+        if (!SelectPlanet.selectPlanet.isPlanetClicked)
         {
             if (Input.GetButton("Xbutton") || Input.GetKeyDown(KeyCode.I))
             {
                 isGoingToStore = true;
                 
 
+
+
             }
         }
-       
+
     }
     void inputChooseStore() 
     {
@@ -323,9 +354,79 @@ public class UISelectLevelManager : MonoBehaviour
 
     }
 
+    void inputChooseUpgradeOrExit() // ini buat pas mau upgrade atau exit milih tombolnya dulu
+    {
+        if (buttonUpExitValue == 1) 
+        {
+            upgradeSelector.transform.localPosition = new Vector2(-320, upgradeSelector.transform.localPosition.y);
+        }
+        if (buttonUpExitValue == 2) 
+        {
+            upgradeSelector.transform.localPosition = new Vector2(320, upgradeSelector.transform.localPosition.y);
+        }
+        if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
+        {
+            for(int x = 0; x < buttonUpOrExit.Length; x++) 
+            {
+                int buttonValues = buttonValue[x];
+
+                EventTrigger eventTrigger = buttonUpOrExit[x].gameObject.AddComponent<EventTrigger>();
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerEnter;
+                entry.callback.AddListener((data) => { buttonUpOrExitHighlight(buttonValues); });
+                eventTrigger.triggers.Add(entry);
+            }
+
+            if(Input.GetAxis("DPadRight")>0 && !dpadPressed
+                || Input.GetKeyDown(KeyCode.D)
+                || Input.GetKeyDown(KeyCode.RightArrow)) 
+            {
+                Cursor.visible = false;
+                dpadPressed = true;
+                buttonUpExitValue++;
+                if (buttonUpExitValue > 2) 
+                {
+                    buttonUpExitValue = 1;
+                }
+
+            }
+            else if (Input.GetAxis("DPadRight") == 0) 
+            {
+                dpadPressed = false;
+            }
+
+            if(Input.GetAxis("DPadLeft") < 0 && !dpadPressed
+                || Input.GetKeyDown(KeyCode.A)
+                || Input.GetKeyDown(KeyCode.LeftArrow)) 
+            {
+                Cursor.visible = false;
+                dpadPressed = true;
+                buttonUpExitValue--;
+                if (buttonUpExitValue < 1) 
+                {
+                    buttonUpExitValue = 2;
+                }
+            }
+            else if (Input.GetAxis("DPadLeft") == 0)
+            {
+                dpadPressed = false;
+            }
+        }
+        else 
+        {
+            buttonUpExitValue = 1;
+        }
+    }
+
+    void buttonUpOrExitHighlight(int value) 
+    {
+        buttonUpExitValue = value;
+    }
+
     #endregion
 
-    public void onClickChooseStoreLeft() 
+    #region mouse onClick
+    public void onClickChooseStoreLeft()
     {
         chooseStoreValue--;
         if (chooseStoreValue < 1)
@@ -333,7 +434,7 @@ public class UISelectLevelManager : MonoBehaviour
             chooseStoreValue = 2;
         }
     }
-    public void onClickChooseStoreRight() 
+    public void onClickChooseStoreRight()
     {
         chooseStoreValue++;
         if (chooseStoreValue > 2)
@@ -342,26 +443,60 @@ public class UISelectLevelManager : MonoBehaviour
         }
     }
 
-    public void onClickBackToPlanet() 
+    public void onClickBackToPlanet()
     {
         isGoingToStore = false;
         storeStock.SetActive(false);
 
     }
-    public void onClickBackToStore() 
+    public void onClickBackToStore()
     {
         AbilityButtonList.abilityButton.isClickedToUpgradePopUp = false;
-       
+
 
 
     }
-    public void onClickPlay() 
+    public void onClickPlay()
     {
         SceneManager.LoadScene("Scene firza");
     }
-    
-    
-    
+    #endregion
+
+    IEnumerator test() 
+    {
+        yield return new WaitForSeconds(1);
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Abutton")) 
+        {
+            if (!goblok) 
+            {
+                if (!keyButtonPressedEnter) 
+                {
+                    if (isGoingToStore && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
+                    {
+                        keyButtonPressedEnter = true;
+                        goblok = true;
+                        AbilityButtonList.abilityButton.onEnterAbilitySelect();
+                    }
+                }
+                
+            }
+        }
+        else if (!Input.GetButton("Abutton")) 
+        {
+            keyButtonPressedEnter = false;
+        }
+        print("ayolah");
+
+    }
+    IEnumerator lagi() 
+    {
+        yield return new WaitForSeconds(.1f);
+        AbilityButtonList.abilityButton.isClickedToUpgradePopUp = false;
+    }
+
+
+
+
 
 
 
