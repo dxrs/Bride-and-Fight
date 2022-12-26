@@ -11,6 +11,8 @@ public class UISelectLevelManager : MonoBehaviour
     public static UISelectLevelManager uISelectLevelManager;
 
     public bool isGoingToStore;
+    public bool isGoingToUpgradeSystem;
+    public bool mouseInputSys;
 
     [SerializeField] string[] joyStickInputName;
     [SerializeField] GameObject[] objectUpgrade;
@@ -21,7 +23,7 @@ public class UISelectLevelManager : MonoBehaviour
     public bool keyButtonPressedBack;
     public bool keyButtonPressedEnter;
     public bool keyButtonOressedlbrb;
-    [SerializeField] bool goblok;
+    
 
     [Header("Alfa Store")]
     public int chooseStoreValue = 1;
@@ -62,7 +64,7 @@ public class UISelectLevelManager : MonoBehaviour
     private void Update()
     {
         shoppingGuys();
-        storeInputController();
+        //storeInputController();
         
     }
 
@@ -142,48 +144,51 @@ public class UISelectLevelManager : MonoBehaviour
         inputToStore();
         inputChooseStore();
         inputChooseUpgradeOrExit(); //khusus upgrade
-        StartCoroutine(test());
+        
 
-        if (!goblok && AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
+        if (!isGoingToUpgradeSystem && AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
         {
-            StartCoroutine(lagi());
+            StartCoroutine(backToStore());
         }
 
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
             // tampilkan cursor jika mouse di-swipe
-
+            mouseInputSys = true;
             Cursor.visible = true;
+            
+        }
+        else if(Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) 
+        {
             
         }
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0
             ||Input.anyKeyDown)
         {
+            //mouseInputSys = false;
             textIconChoose[0].text = "[";
             textIconChoose[1].text = "]";
         }
-        else 
+         
+        
+        for (int i = 0; i < joyStickInputName.Length; i++)
         {
-            for(int i = 0; i < joyStickInputName.Length; i++) 
+            //float buttonAxis = Input.GetAxis(joyStickInputName[i]);
+            if (Input.GetButton(joyStickInputName[i])
+               || Input.GetKeyDown(KeyCode.A)
+               || Input.GetKeyDown(KeyCode.D)
+               || Input.GetKeyDown(KeyCode.LeftArrow)
+               || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                //float buttonAxis = Input.GetAxis(joyStickInputName[i]);
-                if (Input.GetButton(joyStickInputName[i])) 
-                {
-                    textIconChoose[0].text = "L";
-                    textIconChoose[1].text = "R";
-                    Cursor.visible = false;
-                }
-
-               
-                
+                textIconChoose[0].text = "L";
+                textIconChoose[1].text = "R";
+                Cursor.visible = false;
+                mouseInputSys = false;
             }
+
+
+
         }
-
-       
-
-
-
-
 
     }
 
@@ -209,9 +214,9 @@ public class UISelectLevelManager : MonoBehaviour
                     SelectPlanet.selectPlanet.isPlanetClicked = false;
                     SelectPlanet.selectPlanet.planetClickValue = 0;
                 }
-                if (goblok)
+                if (isGoingToUpgradeSystem)
                 {
-                    goblok = false;
+                    isGoingToUpgradeSystem = false;
                 }
 
             }
@@ -228,6 +233,25 @@ public class UISelectLevelManager : MonoBehaviour
         Debug.Log("Enter button pressed");
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Abutton")) // nanti di ubah
         {
+
+            if (isGoingToStore && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
+            {
+
+                if (!isGoingToUpgradeSystem )
+                {
+                    if (!keyButtonPressedEnter)
+                    {
+                        if (isGoingToStore && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
+                        {
+                            keyButtonPressedEnter = true;
+                            isGoingToUpgradeSystem = true;
+                            AbilityButtonList.abilityButton.onEnterAbilitySelect();
+                        }
+                    }
+
+                }
+
+            }
             if (!keyButtonPressedEnter)
             {
                 if (!isGoingToStore)
@@ -235,29 +259,15 @@ public class UISelectLevelManager : MonoBehaviour
                     SelectPlanet.selectPlanet.enterToSelectLevel();
                 }
 
-                if (isGoingToStore && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
-                {
-                    //keyButtonPressedEnter = true;
-                    //print("klik tidak");
-                    //AbilityButtonList.abilityButton.onEnterAbilitySelect();
-                    //ok = 2;
-                    
-
-                }
+               
                 if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp && buttonUpExitValue==1)
                 {
-                    if (goblok) 
+                    if (isGoingToUpgradeSystem) 
                     {
                         keyButtonPressedEnter = true;
-                        goblok = false;
+                        isGoingToUpgradeSystem = false;
                     }
-                    // jika panel upgrade ability sedang ditampilkan, kembali ke panel store
-                    //isGoingToStore = true;
-                    //keyButtonPressedEnter = true;
-                    //ok = 2;
-                    // print("klik ok");
-                    //print("nantu up");
-                    //isGoingToStore = false;
+                   
                     
 
                 }
@@ -462,19 +472,20 @@ public class UISelectLevelManager : MonoBehaviour
     }
     #endregion
 
+    /*
     IEnumerator test() 
     {
         yield return new WaitForSeconds(1);
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Abutton")) 
         {
-            if (!goblok) 
+            if (!isGoingToUpgradeSystem) 
             {
                 if (!keyButtonPressedEnter) 
                 {
                     if (isGoingToStore && !AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
                     {
                         keyButtonPressedEnter = true;
-                        goblok = true;
+                        isGoingToUpgradeSystem = true;
                         AbilityButtonList.abilityButton.onEnterAbilitySelect();
                     }
                 }
@@ -485,10 +496,10 @@ public class UISelectLevelManager : MonoBehaviour
         {
             keyButtonPressedEnter = false;
         }
-        print("ayolah");
-
+     
     }
-    IEnumerator lagi() 
+    */
+    IEnumerator backToStore() 
     {
         yield return new WaitForSeconds(.1f);
         AbilityButtonList.abilityButton.isClickedToUpgradePopUp = false;

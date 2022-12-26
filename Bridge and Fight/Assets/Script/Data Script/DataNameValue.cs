@@ -7,6 +7,8 @@ public class DataNameValue : MonoBehaviour
 
     [SerializeField] int curLevel;
 
+    [SerializeField] int curPlanet;
+
     [SerializeField] int coinData;
     [SerializeField] int bankData;
 
@@ -26,6 +28,9 @@ public class DataNameValue : MonoBehaviour
     {
         //level
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+
+        //planet
+        curPlanet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[7]);
 
         //money
         coinData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);

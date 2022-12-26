@@ -33,9 +33,8 @@ public class AbilityButtonList : MonoBehaviour
         {
             int buttonValues = buttonCurValue[j];
 
-
-            
             abilityListButton[j].onClick.AddListener(() => buttonClicked(buttonValues));
+           
 
 
             EventTrigger eventTrigger = abilityListButton[j].gameObject.AddComponent<EventTrigger>();
@@ -75,7 +74,7 @@ public class AbilityButtonList : MonoBehaviour
         {
             highlightedValue = UpgradeSystem.upgradeSystem.totalCurAbility;
         }
-        inputChooseAbility();
+        //inputChooseAbility();
     }
 
 
@@ -94,8 +93,17 @@ public class AbilityButtonList : MonoBehaviour
     {
         //Debug.Log(value);
         clickedValue = value;
+        //onEnterAbilitySelect();
+        if (UISelectLevelManager.uISelectLevelManager.mouseInputSys)
+        {
+           
+            print(clickedValue);
+          
+        }
+
         isClickedToUpgradePopUp = true;
-        
+        //UISelectLevelManager.uISelectLevelManager.isGoingToStore = true;
+
 
 
     }
@@ -142,13 +150,13 @@ public class AbilityButtonList : MonoBehaviour
     }
     #endregion
 
-    public void onEnterAbilitySelect() 
+    public void onEnterAbilitySelect()
     {
         Cursor.visible = false;
         isClickedToUpgradePopUp = true;
-        for(int j = 0; j <= UpgradeSystem.upgradeSystem.totalCurAbility; j++) 
+        for (int j = 0; j <= UpgradeSystem.upgradeSystem.totalCurAbility; j++)
         {
-            if (highlightedValue == j) 
+            if (highlightedValue == j)
             {
 
                 clickedValue = highlightedValue;
@@ -156,6 +164,11 @@ public class AbilityButtonList : MonoBehaviour
                 break;
             }
         }
+        if (!UISelectLevelManager.uISelectLevelManager.mouseInputSys) 
+        {
+           
+        }
+       
     }
 
     public void buttonUpgradeClicked() 

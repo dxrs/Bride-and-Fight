@@ -2437,6 +2437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curLevel: 0
+  curPlanet: 0
   coinData: 0
   bankData: 0
   shadowLevel: 0
@@ -3430,7 +3431,7 @@ MonoBehaviour:
   - TotalAbility
   - UpgradeHeal
   - Level
-  - 
+  - Planet
   - 
   - 
 --- !u!4 &906405192
@@ -4889,7 +4890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1382952615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6977,8 +6978,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2004220913}
   - component: {fileID: 2004220914}
-  - component: {fileID: 2004220918}
   - component: {fileID: 2004220915}
+  - component: {fileID: 2004220920}
+  - component: {fileID: 2004220918}
   - component: {fileID: 2004220919}
   - component: {fileID: 2004220916}
   - component: {fileID: 2004220917}
@@ -7018,6 +7020,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoingToStore: 0
+  isGoingToUpgradeSystem: 0
+  mouseInputSys: 0
   joyStickInputName:
   - LBbutton
   - RBbutton
@@ -7036,7 +7040,6 @@ MonoBehaviour:
   keyButtonPressedBack: 0
   keyButtonPressedEnter: 0
   keyButtonOressedlbrb: 0
-  goblok: 0
   chooseStoreValue: 1
   buttonUpExitValue: 1
   buttonValue: 0100000002000000
@@ -7165,6 +7168,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStatusLevelUpgrade: {fileID: 1396309865}
   textAbilityDesc: {fileID: 372185757}
+--- !u!114 &2004220920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004220912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf57de55f7b37849b1cc18d10fb1d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelPerPlanet:
+  - {fileID: 1323848854}
+  isInSelectLevelSection: 0
+  keyEnterButonPressedLevel: 0
+  curValueSelect: 
+  buttonLevelSelectValue: 0
+  buttonLevelHighlightedValue: 0
+  selector: {fileID: 0}
+  levelButton1: []
+  levelButton2: []
+  levelButton3: []
 --- !u!1 &2048838167
 GameObject:
   m_ObjectHideFlags: 0
