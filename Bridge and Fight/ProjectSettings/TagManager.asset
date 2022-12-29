@@ -15,6 +15,7 @@ TagManager:
   - Infinity Stone
   - Coin Colider
   - Wall
+  - Big Ball
   layers:
   - Default
   - TransparentFX

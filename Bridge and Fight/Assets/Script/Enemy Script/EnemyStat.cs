@@ -17,9 +17,16 @@ public class EnemyStat : MonoBehaviour
 
     public ParticleSystem enemyParticle;
 
+    float slowSpeed = 2; // di bagi 2
+    float curSpeed;
+
     private void Awake()
     {
         if (enemyStat == null) { enemyStat = this; }
+    }
+    private void Start()
+    {
+        curSpeed = speed;
     }
     void Update()
     {
@@ -42,6 +49,10 @@ public class EnemyStat : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(enemyParticle, transform.position, Quaternion.identity);
+        }
+        if(collision.gameObject.tag=="Big Ball") 
+        {
+            StartCoroutine(getTriggerWithBigBall());
         }
         if(collision.gameObject.tag == "Player 1")
         {
@@ -88,5 +99,12 @@ public class EnemyStat : MonoBehaviour
           
             
         }
+    }
+
+    IEnumerator getTriggerWithBigBall() 
+    {
+        speed = speed / slowSpeed;
+        yield return new WaitForSeconds(6.5f);
+        speed = curSpeed;
     }
 }
