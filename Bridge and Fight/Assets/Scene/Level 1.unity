@@ -707,7 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c23563bf07b6394dab495405e60d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
   player: {fileID: 813679838}
   bigBall: {fileID: 3181718348591880091, guid: 8f53c4b6e07608844905e353ab6e4866, type: 3}
 --- !u!1 &90131777
@@ -1079,7 +1078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &128164986
 Transform:
   m_ObjectHideFlags: 0
@@ -5482,7 +5481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &813679839
 Transform:
   m_ObjectHideFlags: 0
@@ -11917,7 +11916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c23563bf07b6394dab495405e60d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
   player: {fileID: 128164985}
   bigBall: {fileID: 3181718348591880091, guid: 8f53c4b6e07608844905e353ab6e4866, type: 3}
 --- !u!1 &1887510420

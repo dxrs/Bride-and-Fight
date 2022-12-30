@@ -17,6 +17,10 @@ public class BigBallAbilitySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (player != null)
+        {
+            transform.localPosition = player.transform.position;
+        }
         if (!GameOver.gameOver.isGameOver
              && GameStarting.gameStarting.isGameStarted
              && !GamePaused.gamePaused.isGamePaused
@@ -24,14 +28,11 @@ public class BigBallAbilitySpawner : MonoBehaviour
              && AbilitySelector.abilitySelector.abilitySelected == 3) 
         {
             
-            if (player != null)
-            {
-                transform.localPosition = player.transform.position;
-            }
+            
         }
         else 
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     
         
