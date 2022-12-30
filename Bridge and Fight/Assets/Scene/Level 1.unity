@@ -279,7 +279,7 @@ Transform:
   - {fileID: 1826465211}
   - {fileID: 1332447546}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &39612090
 GameObject:
@@ -707,9 +707,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c23563bf07b6394dab495405e60d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
   player: {fileID: 813679838}
   bigBall: {fileID: 3181718348591880091, guid: 8f53c4b6e07608844905e353ab6e4866, type: 3}
+--- !u!1001 &88826613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6202249
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.039789103
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.075210966
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893150994, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233312473893151004, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
+      propertyPath: m_Name
+      value: Data Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11a59ae081a9ab946b0eadae6a9899ce, type: 3}
 --- !u!1 &90131777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,62 +1058,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2696233487335739328, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
   m_PrefabInstance: {fileID: 2696233487313873152}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &124127427
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 124127429}
-  - component: {fileID: 124127428}
-  m_Layer: 0
-  m_Name: Data Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &124127428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124127427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90bff705fe3c0846a401f8230cc6e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listDataName:
-  - Coin
-  - Bank
-  - UpgradeShadow
-  - UpgradeStone
-  - TotalAbility
-  - UpgradeHeal
-  - 
-  - 
-  - 
-  - 
---- !u!4 &124127429
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124127427}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6202249, y: -0.039789103, z: -0.075210966}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1097636148}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128164985
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,7 +3217,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360162113
 GameObject:
@@ -6699,7 +6699,7 @@ Transform:
   - {fileID: 1977210757}
   - {fileID: 433920484}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1074367087
 PrefabInstance:
@@ -6791,58 +6791,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2696233487335739328, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
   m_PrefabInstance: {fileID: 1074367087}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1097636147
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1097636148}
-  - component: {fileID: 1097636149}
-  m_Layer: 0
-  m_Name: DBMS Name
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1097636148
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097636147}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 124127429}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1097636149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097636147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7fc58ce90a808445999caf77b7780b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curLevel: 0
-  curPlanet: 0
-  coinData: 0
-  bankData: 0
-  shadowLevel: 0
-  stoneLevel: 0
-  healLevel: 0
-  totalAbility: 0
 --- !u!1 &1101810713
 GameObject:
   m_ObjectHideFlags: 0
@@ -7106,7 +7054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10146,7 +10094,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1703075072
 MonoBehaviour:
@@ -11748,7 +11696,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1873103037
 GameObject:
@@ -11917,7 +11865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c23563bf07b6394dab495405e60d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
   player: {fileID: 128164985}
   bigBall: {fileID: 3181718348591880091, guid: 8f53c4b6e07608844905e353ab6e4866, type: 3}
 --- !u!1 &1887510420
@@ -12614,10 +12561,10 @@ MonoBehaviour:
   textAbilityKanan: {fileID: 116223522}
   namaAbilityKanan:
   - Infinity Stone
-  - Shadow
+  - Ghost
   namaAbilityKiri:
   - Infinity Stone
-  - Shadow
+  - Ghost
 --- !u!114 &2121558565
 MonoBehaviour:
   m_ObjectHideFlags: 0

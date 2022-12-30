@@ -1,81 +1,116 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.EventSystems;
 
 public class UIMenuManager : MonoBehaviour
 {
     public static UIMenuManager uIMenuManager;
 
-    [SerializeField] int valueSelector;
-    [SerializeField] GameObject[] selector;
+    public bool buttonMenuIsClicked;
+
+    [SerializeField] GameObject selector;
+    [SerializeField] GameObject sceneTransitionObj;
+
+    [SerializeField] Button[] menuButton;
+
+    [SerializeField] Vector2[] selectorPos;
+    
+
+    [SerializeField] int[] curButtonValue;
+    [SerializeField] int highLightButtonValue;
+    [SerializeField] int clickedValue;
+
+    bool isGoingToSelectLevel = false;
+
+    Vector2 transitionObject = new Vector2(30, 30);
+
+    private void Awake()
+    {
+        uIMenuManager = this;
+    }
 
     private void Start()
     {
-        valueSelector = 1;
-       
+        
+        buttonEventList();
     }
+
     private void Update()
     {
-        if (valueSelector < 1)
+        for(int x = 0; x < selectorPos.Length; x++) 
         {
-            valueSelector = 3;
-        }
-        if (valueSelector > 3)
-        {
-            valueSelector = 1;
-        }
-        inputSelector();
-        posSelector();
-    }
-    void inputSelector() 
-    {
-        if (Input.GetKeyDown(KeyCode.S)) 
-        {
-            valueSelector++;
-           
-        }
-        if (Input.GetKeyDown(KeyCode.W)) 
-        {
-            valueSelector--;
-        }
-        if (Input.GetKeyDown(KeyCode.Return)) 
-        {
-            if (valueSelector == 1) 
+            if (highLightButtonValue == x+1) 
             {
-                SceneManager.LoadScene("Scene firza");
-            }else if (valueSelector == 2) 
+                selector.transform.localPosition = selectorPos[x];
+                break;
+            }
+        }
+
+       
+        for (int i = 0; i < menuButton.Length; i++)
+        {
+            if (buttonMenuIsClicked)
             {
+                if (clickedValue == 1)
+                {
+                    isGoingToSelectLevel = true;
+                }
+                menuButton[i].interactable = false;
 
             }
             else 
             {
-                Application.Quit();
+                menuButton[i].interactable = true;
             }
         }
+
+        if (isGoingToSelectLevel) 
+        {
+            sceneTransitionObj.transform.localScale = Vector2.MoveTowards(sceneTransitionObj.transform.localScale,
+                transitionObject, 100 * Time.deltaTime);
+            StartCoroutine(goingToSelectLevel());
+        }
     }
 
-    void posSelector() 
+    void buttonEventList() 
     {
-        if (valueSelector == 1) 
+        for(int i = 0; i < menuButton.Length; i++) 
         {
-            selector[0].SetActive(true);
-            selector[1].SetActive(false);
-            selector[2].SetActive(false);
-        }
-        if (valueSelector == 2) 
-        {
-            selector[0].SetActive(false);
-            selector[1].SetActive(true);
-            selector[2].SetActive(false);
-        }
-        if (valueSelector == 3) 
-        {
-            selector[0].SetActive(false);
-            selector[1].SetActive(false);
-            selector[2].SetActive(true);
+            int buttonValue = curButtonValue[i];
+
+            menuButton[i].onClick.AddListener(() => menuButtonClicked(buttonValue));
+
+            EventTrigger eventTrigger = menuButton[i].gameObject.AddComponent<EventTrigger>();
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerEnter;
+            entry.callback.AddListener((data) => { menuButtonHighlighted(buttonValue); });
+            eventTrigger.triggers.Add(entry);
         }
     }
 
-   
+    void menuButtonClicked(int value) 
+    {
+        clickedValue = value;
+        buttonMenuIsClicked = true;
+    }
+
+    void menuButtonHighlighted(int value) 
+    {
+        highLightButtonValue = value;
+    }
+
+    IEnumerator goingToSelectLevel() 
+    {
+        if (sceneTransitionObj.transform.localScale.x >= 30) 
+        {
+            yield return new WaitForSeconds(2);
+            SceneManagerCallback.sceneManagerCallback.keSceneSelectLevel();
+        }
+    }
+
+
+
 }
