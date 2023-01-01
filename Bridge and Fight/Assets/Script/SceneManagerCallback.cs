@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class SceneManagerCallback : MonoBehaviour
 {
     public static SceneManagerCallback sceneManagerCallback;
+    
 
     private void Awake()
     {
         sceneManagerCallback = this;
     }
 
+   
 
-    // KEMBALI KE SELECT LEVEL SCENE
+    // KE SELECT LEVEL SCENE
     #region
     public void keSceneSelectLevel() 
     {

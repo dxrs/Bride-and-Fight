@@ -9640,6 +9640,7 @@ MonoBehaviour:
   textOverFinish: {fileID: 1474794427}
   isStarting: 0
   timerValue: 180
+  idLevel: 1
   textTotalCoin: {fileID: 1695392342}
   textTotalCoinEndGame: {fileID: 645933008}
   UI_object:
@@ -9649,6 +9650,7 @@ MonoBehaviour:
   - {fileID: 1955476254}
   abilityObject: {fileID: 94422081}
   isTimeCountDown: 0
+  curLevelValue: 0
   objectTextEndegame: {fileID: 693721177}
   buttonSelector: {fileID: 1913123602}
   sceneTrasisi: {fileID: 624929345}
