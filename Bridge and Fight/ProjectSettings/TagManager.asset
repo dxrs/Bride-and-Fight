@@ -16,6 +16,8 @@ TagManager:
   - Coin Colider
   - Wall
   - Big Ball
+  - Object Follow
+  - Bull Boss
   layers:
   - Default
   - TransparentFX

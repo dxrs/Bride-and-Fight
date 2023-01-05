@@ -149,9 +149,9 @@ public class UIManager : MonoBehaviour
             
         }
     }
-    public void timerStart() 
+     void timerStart() 
     {
-        if (GameStarting.gameStarting.isGameStarted) 
+        if (GameStarting.gameStarting.isGameStarted && SceneManagerStatus.sceneManagerStatus.sceneStats != "Level Bos") 
         {
             isTimeCountDown = true;
         }
