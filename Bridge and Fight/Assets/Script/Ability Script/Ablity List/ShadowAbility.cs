@@ -187,7 +187,7 @@ public class ShadowAbility : MonoBehaviour
     }
 
     //upgrade ability
-    #region
+    #region upgrade ability shadow
     void upgradeAbilityShadow() 
     {
         if (curUpLevelValue >= 3) 

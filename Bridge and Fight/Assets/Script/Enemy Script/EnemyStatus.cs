@@ -2,50 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStat : MonoBehaviour
+public class EnemyStatus : MonoBehaviour
 {
 
-    public static EnemyStat enemyStat;
+    public static EnemyStatus enemyStatus;
 
-    public float speed;
-    public float health;
+    public float enemyMoveSpeed;
+    public float enemyHealth;
 
     public int id;
+    public int randomTarget;
 
-    public AudioSource aSource;
-    public AudioClip clipNya;
+    [SerializeField] ParticleSystem enemyParticle;
 
-    public ParticleSystem enemyParticle;
+    [SerializeField] GameObject friendlyBot;
+
 
     float slowSpeed = 2; // di bagi 2
     float curSpeed;
 
+   
+
     private void Awake()
     {
-        if (enemyStat == null) { enemyStat = this; }
+        if (enemyStatus == null) { enemyStatus = this; }
     }
     private void Start()
     {
-        curSpeed = speed;
+        curSpeed = enemyMoveSpeed;
     }
     void Update()
     {
-        if(health <= 0)
+        if(enemyHealth <= 0)
         {
-            enemyMati();
+            enemyDestroy();
         }
     }
 
-    public void enemyMati()
+    public void enemyDestroy()
     {
-        //audioManager.amanager.enemySound();
+       
         Destroy(gameObject);
         Instantiate(enemyParticle, transform.position, Quaternion.identity);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2"
-            ||collision.gameObject.tag=="Infinity Stone") 
+            ||collision.gameObject.tag=="Infinity Stone"
+            ||collision.gameObject.tag=="Friendly Bot") 
         {
             Destroy(gameObject);
             Instantiate(enemyParticle, transform.position, Quaternion.identity);
@@ -99,12 +103,21 @@ public class EnemyStat : MonoBehaviour
           
             
         }
+
+        if (collision.gameObject.tag == "Diamond") 
+        {
+            Destroy(gameObject);
+            Instantiate(friendlyBot, transform.position, Quaternion.identity);
+        }
+
+       
+        
     }
 
     IEnumerator getTriggerWithBigBall() 
     {
-        speed = speed / slowSpeed;
+        enemyMoveSpeed = enemyMoveSpeed / slowSpeed;
         yield return new WaitForSeconds(6.5f);
-        speed = curSpeed;
+        enemyMoveSpeed = curSpeed;
     }
 }

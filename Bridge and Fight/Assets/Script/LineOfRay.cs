@@ -15,7 +15,7 @@ public class LineOfRay : MonoBehaviour
     public Transform[] lineTargets;
     public LayerMask layerMask;
 
-    EnemyStat estat;
+    EnemyStatus enemyStatus;
     private void Awake()
     {
         if (lineOfRay == null) { lineOfRay = this; }
@@ -50,10 +50,10 @@ public class LineOfRay : MonoBehaviour
             {
                 
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.blue);
-                estat = hit.collider.gameObject.GetComponent<EnemyStat>();
-                estat.health -= 10 * Time.deltaTime;
+                enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
+                enemyStatus.enemyHealth -= 10 * Time.deltaTime;
                 
-                if (estat.health <= 0) 
+                if (enemyStatus.enemyHealth <= 0) 
                 {
                     TotalCoin.totalCoin.curCoinGet += 4;
                 }
@@ -62,8 +62,8 @@ public class LineOfRay : MonoBehaviour
             }
             else if (hit.collider.gameObject.tag == "Normal Enemy" && BulletConnect.bulletConnect.isConnected)
             {
-                estat = hit.collider.gameObject.GetComponent<EnemyStat>();
-                estat.health -= 10;
+                enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
+                enemyStatus.enemyHealth -= 10;
                 TotalCoin.totalCoin.curCoinGet += 2;
             } 
           

@@ -12,6 +12,7 @@ public class HealerAbilityStatus : MonoBehaviour
     {
         if(collision.gameObject.tag=="Normal Enemy"||collision.gameObject.tag=="Medium Enemy") 
         {
+            /*
             if (Player1Health.player1Health.playerHealth < 50) 
             {
                 Player1Health.player1Health.playerHealth++;
@@ -20,6 +21,7 @@ public class HealerAbilityStatus : MonoBehaviour
             {
                 Player2Health.player2Health.playerHealth++;
             }else if (Player2Health.player2Health.playerHealth >= 50) { Player2Health.player2Health.playerHealth = 50; }
+            */
             gameObject.SetActive(false);
         }
     }

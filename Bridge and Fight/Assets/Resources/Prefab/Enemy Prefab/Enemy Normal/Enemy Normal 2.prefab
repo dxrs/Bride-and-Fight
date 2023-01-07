@@ -140,6 +140,37 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &6871738826915925333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4082718419638728227}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Target Bot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4082718419638728227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871738826915925333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2930608344892239700}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8121647616304929916
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2633219597366233475}
+  - {fileID: 4082718419638728227}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -242,8 +274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyParticle: {fileID: 4131467262019528824, guid: 52237b7350b2cbf43819def39e679c07, type: 3}
-  aSource: {fileID: 0}
-  clipNya: {fileID: 0}
 --- !u!114 &3921510752142574561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,12 +286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4b5da8570f0654bba56da8f5f4c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.2
-  health: 1
+  enemyMoveSpeed: 4
+  enemyHealth: 1
   id: 1
-  aSource: {fileID: 0}
-  clipNya: {fileID: 0}
+  randomTarget: 0
   enemyParticle: {fileID: 4131467262019528824, guid: 52237b7350b2cbf43819def39e679c07, type: 3}
+  friendlyBot: {fileID: 1053851749885299795, guid: 30657cbf7320aa54babe057cebb2fad1, type: 3}
 --- !u!50 &1764745284117961832
 Rigidbody2D:
   serializedVersion: 4

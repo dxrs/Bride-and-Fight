@@ -38,8 +38,8 @@ public class HealBlastAbility : MonoBehaviour
     [SerializeField] bool isMoving;
     
 
-    Vector2 ringScale;
-    int curLevel;
+  
+    //int curLevel;
     float curHealCoolDown;
     float curHealTimer;
     float curValueTimer;
@@ -67,7 +67,7 @@ public class HealBlastAbility : MonoBehaviour
             && GameStarting.gameStarting.isGameStarted
             && !GamePaused.gamePaused.isGamePaused
             && !GameFinish.gameFinish.isGameFinished
-            && AbilitySelector.abilitySelector.abilitySelected == 2) 
+            ) 
         {
             healTransform();
             healBlastMoving();

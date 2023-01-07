@@ -9,7 +9,9 @@ public class PlayerTrigger : MonoBehaviour
     public bool isP1_ColtoCamEdge, isP2_ColtoCamEdge;
     public bool colObstacle_p1, colObstacle_p2;
 
-  
+    [SerializeField] ParticleSystem playerHitParticle;
+
+    [SerializeField] string[] enemyTag;
     
   
 
@@ -32,12 +34,20 @@ public class PlayerTrigger : MonoBehaviour
                 isP2_ColtoCamEdge = true;
             }
         }
+        for(int j = 0; j < enemyTag.Length; j++) 
+        {
+            if (collision.gameObject.tag == enemyTag[j]) 
+            {
+                if (TotalCoin.totalCoin.curCoinGet > 0)
+                {
+                    TotalCoin.totalCoin.curCoinGet -= 5;
+                }
+                Instantiate(playerHitParticle, transform.position, Quaternion.identity);
+            }
+        }
         if(collision.gameObject.tag=="Normal Enemy"||collision.gameObject.tag=="Medium Enemy") 
         {
-            if (TotalCoin.totalCoin.curCoinGet > 0) 
-            {
-                TotalCoin.totalCoin.curCoinGet -= 5;
-            }
+            
         }
         
     }

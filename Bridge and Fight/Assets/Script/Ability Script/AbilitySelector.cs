@@ -29,14 +29,14 @@ public class AbilitySelector : MonoBehaviour
     private void Awake()
     {
         abilitySelector = this;
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void Start()
     {
 
         
-        textSelectStatus.text = "Keyboard/Gamepad";
+        //textSelectStatus.text = "Keyboard/Gamepad";
         curSkill_1 = AbilityInventory.abilityInventory.skill_1;
         curSkill_2 = AbilityInventory.abilityInventory.skill_2;
 
@@ -73,7 +73,7 @@ public class AbilitySelector : MonoBehaviour
         {
             selector.transform.localPosition = new Vector2(335, 0);
         }
-        selectorInput();
+        //selectorInput();
     }
 
     // input select ability when start

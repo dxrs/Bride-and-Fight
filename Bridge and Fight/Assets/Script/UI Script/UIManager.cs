@@ -20,11 +20,14 @@ public class UIManager : MonoBehaviour
 
     public float timerValue;
 
+    public int idLevel;
+
     [SerializeField] TextMeshProUGUI textTotalCoin;
     [SerializeField] TextMeshProUGUI textTotalCoinEndGame;
     [SerializeField] GameObject[] UI_object;
     [SerializeField] GameObject abilityObject;
     [SerializeField] bool isTimeCountDown;
+    [SerializeField] int curLevelValue;
 
     //endGame
     [Header("End Game Interactive UI Function")]
@@ -60,13 +63,15 @@ public class UIManager : MonoBehaviour
         TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         UI_object[0].SetActive(true); // ui start game
         objectEndGame.SetActive(false);
+        
         for (int i = 1; i < UI_object.Length; i++) 
         {
             UI_object[i].SetActive(false);
         }
-        textSelectStatus.text = "Keyboard/Gamepad";
+        //textSelectStatus.text = "Keyboard/Gamepad";
         //endGame function
         eventPointerEnter();
+        curLevelValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
 
     }
     private void Update()
@@ -89,8 +94,8 @@ public class UIManager : MonoBehaviour
         scalingTextStatusEndGame();
         objectEndGameActive();
         compareHighLightValue();
-        inputKeyboardOnly();
-        inputKeyboardOrGamePad();
+        //inputKeyboardOnly();
+        //inputKeyboardOrGamePad();
         fadeInStart();
         #endregion
 
@@ -144,9 +149,9 @@ public class UIManager : MonoBehaviour
             
         }
     }
-    public void timerStart() 
+     void timerStart() 
     {
-        if (GameStarting.gameStarting.isGameStarted) 
+        if (GameStarting.gameStarting.isGameStarted && SceneManagerStatus.sceneManagerStatus.sceneStats != "Level Bos") 
         {
             isTimeCountDown = true;
         }
