@@ -18,6 +18,10 @@ TagManager:
   - Big Ball
   - Object Follow
   - Bull Boss
+  - Friendly Bot
+  - Diamond
+  - Fast Enemy
+  - Target Bot
   layers:
   - Default
   - TransparentFX

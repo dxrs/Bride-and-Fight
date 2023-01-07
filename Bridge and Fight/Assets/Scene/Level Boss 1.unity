@@ -1108,6 +1108,11 @@ MonoBehaviour:
   isP2_ColtoCamEdge: 0
   colObstacle_p1: 0
   colObstacle_p2: 0
+  playerHitParticle: {fileID: 4376017807099830539, guid: f42bec4734d242642898c9de67ba547a, type: 3}
+  enemyTag:
+  - Normal Enemy
+  - Medium Enemy
+  - Hard Enemy
   numbPlayer: 2
 --- !u!114 &128164992
 MonoBehaviour:
@@ -5486,6 +5491,11 @@ MonoBehaviour:
   isP2_ColtoCamEdge: 0
   colObstacle_p1: 0
   colObstacle_p2: 0
+  playerHitParticle: {fileID: 4010479885397470980, guid: ed8762de807931e47accf0be95dc6426, type: 3}
+  enemyTag:
+  - Normal Enemy
+  - Medium Enemy
+  - Hard Enemy
   numbPlayer: 1
 --- !u!114 &813679845
 MonoBehaviour:
@@ -8064,7 +8074,7 @@ GameObject:
   - component: {fileID: 1395239704}
   - component: {fileID: 1395239705}
   m_Layer: 0
-  m_Name: Ring of Heal
+  m_Name: Diamond Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9972,6 +9982,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1692302780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692302781}
+  m_Layer: 0
+  m_Name: Hypnotized Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692302781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692302780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2121558566}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1695392340
 GameObject:
   m_ObjectHideFlags: 0
@@ -12550,6 +12591,7 @@ Transform:
   - {fileID: 293876515}
   - {fileID: 1855665338}
   - {fileID: 90131778}
+  - {fileID: 1692302781}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

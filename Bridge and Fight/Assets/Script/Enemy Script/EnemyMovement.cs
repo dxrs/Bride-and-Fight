@@ -7,60 +7,82 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField]ParticleSystem enemyParticle;
 
-    GameObject p1,p2;
-    int numbOfPlayer;
-    bool e_destroyed;
-    Rigidbody2D rb;
-    Vector2 movement;
-    Vector2 dir;
-    EnemyStat eStat;
 
-    public AudioSource aSource;
-    public AudioClip clipNya;
+
+    GameObject player1;
+    GameObject player2;
+
+    int indexPlayer;
+
+    bool isEnemyDestroyed;
+
+    Rigidbody2D rb;
+
+    Vector2 movement;
+
+    Vector2 dir;
+
+    EnemyStatus enemyStatus;
+
+
+   
     // Start is called before the first frame update
     void Start()
     {
-        eStat = GetComponent<EnemyStat>();
+        enemyStatus = GetComponent<EnemyStatus>();
 
         rb = GetComponent<Rigidbody2D>();
 
-        if (p1 != null && p2 != null)
-        {
-           
-        }
-        p1 = GameObject.FindGameObjectWithTag("Player 1");
-        p2 = GameObject.FindGameObjectWithTag("Player 2");
-        numbOfPlayer = Random.Range(1, 3);
+
+        // p1 = GameObject.FindGameObjectWithTag("Player 1");
+        // p2 = GameObject.FindGameObjectWithTag("Player 2");
+
+        player1 = GameObject.FindGameObjectWithTag("Player 1");
+        player2 = GameObject.FindGameObjectWithTag("Player 2");
+        
+        
+        indexPlayer = Random.Range(0, 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished) 
+        if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
         {
-            e_destroyed = true;
+            isEnemyDestroyed = true;
 
         }
-        if (e_destroyed) 
+        if (isEnemyDestroyed)
         {
             Destroy(gameObject);
         }
-        if(p1!=null && p2 != null) 
+
+
+        if (player1 != null && player2 != null)
         {
-            if (numbOfPlayer == 1)
+            if (!ShadowAbility.shadowAbility.isShadowActivated) 
             {
-                dir = p1.transform.position - transform.position;
-                //pterpilih = new Vector2(p1.transform.position.x,p1.transform.position.y);
+                if (indexPlayer == 0)
+                {
+                    dir = player1.transform.position - transform.position;
+                }
+                if (indexPlayer == 1)
+                {
+                    dir = player2.transform.position - transform.position;
+                }
             }
-            if (numbOfPlayer == 2)
-            {
-                dir = p2.transform.position - transform.position;
-                //pterpilih = p2.transform.position;
-            }
+          
+
         }
-        else { return; }
+        else
+        {
+            return;
+        }
        
+
        
+
+
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         dir.Normalize();
@@ -73,19 +95,21 @@ public class EnemyMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-        MoveChar(movement);
+        enemyMovement(movement);
     }
 
-    void MoveChar(Vector2 direction)
+    void enemyMovement(Vector2 direction)
     {
-        rb.MovePosition((Vector2)transform.position + (direction * eStat.speed * Time.deltaTime));
+        rb.MovePosition((Vector2)transform.position + (direction * enemyStatus.enemyMoveSpeed * Time.deltaTime));
     }
 
     private void OnDestroy()
     {
-        if (e_destroyed) 
+        if (isEnemyDestroyed) 
         {
             Instantiate(enemyParticle, transform.position, Quaternion.identity);
         }
     }
+   
+
 }

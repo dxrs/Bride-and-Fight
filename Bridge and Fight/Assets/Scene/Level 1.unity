@@ -719,7 +719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 90131778}
   m_Layer: 0
-  m_Name: Big Ball Ability
+  m_Name: Slow Ride Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,7 +740,7 @@ Transform:
   - {fileID: 78450149}
   - {fileID: 1883655720}
   m_Father: {fileID: 2121558566}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94422081
 GameObject:
@@ -1108,7 +1108,12 @@ MonoBehaviour:
   isP2_ColtoCamEdge: 0
   colObstacle_p1: 0
   colObstacle_p2: 0
-  numbPlayer: 2
+  playerHitParticle: {fileID: 4376017807099830539, guid: f42bec4734d242642898c9de67ba547a, type: 3}
+  enemyTag:
+  - Normal Enemy
+  - Medium Enemy
+  - Hard Enemy
+  numbPlayer: 1
 --- !u!114 &128164992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,7 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 2.7
+  movePower: 3.5
   numbOfPlayer: 2
 --- !u!114 &128164993
 MonoBehaviour:
@@ -1130,7 +1135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128164985}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c75b57ae61f5b45930d27552b6da6f, type: 3}
   m_Name: 
@@ -1422,11 +1427,12 @@ GameObject:
   - component: {fileID: 165228879}
   - component: {fileID: 165228883}
   - component: {fileID: 165228882}
+  - component: {fileID: 165228885}
   - component: {fileID: 165228881}
   - component: {fileID: 165228884}
   m_Layer: 0
   m_Name: Diamond (7)
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1453,7 +1459,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165228878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -1603,6 +1609,18 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &165228885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165228878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &180306756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,11 +1632,12 @@ GameObject:
   - component: {fileID: 180306757}
   - component: {fileID: 180306760}
   - component: {fileID: 180306758}
+  - component: {fileID: 180306763}
   - component: {fileID: 180306761}
   - component: {fileID: 180306762}
   m_Layer: 0
   m_Name: Diamond (3)
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1718,7 +1737,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180306756}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -1795,6 +1814,18 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &180306763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180306756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &182101886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &293876515
 Transform:
   m_ObjectHideFlags: 0
@@ -2641,10 +2672,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1395239704}
+  m_Children: []
   m_Father: {fileID: 2121558566}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &293876516
 MonoBehaviour:
@@ -2653,7 +2683,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293876514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32218526469cd584bb628ac0d948c6f1, type: 3}
   m_Name: 
@@ -2981,6 +3011,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1290094622428962477, guid: 2e08b4d6adff5c2449974c14b275e12f, type: 3}
   m_PrefabInstance: {fileID: 308679529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &316974581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316974582}
+  - component: {fileID: 316974583}
+  m_Layer: 0
+  m_Name: Hypnotized Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &316974582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316974581}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1395239704}
+  m_Father: {fileID: 2121558566}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &316974583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316974581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cb181ac597c2c4293f66d7777b1b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hypnotizedActivated: 0
+  player:
+  - {fileID: 813679838}
+  - {fileID: 128164985}
+  diamondList:
+  - {fileID: 2075887854455228309}
+  - {fileID: 1849427632}
+  - {fileID: 467521229}
+  - {fileID: 180306756}
+  - {fileID: 1313103929}
+  - {fileID: 631904217}
+  - {fileID: 1187706657}
+  - {fileID: 165228878}
+  ringOfDiamond: {fileID: 1395239703}
+  isUsingAbility: 0
+  curUpLevelValue: 0
+  hypnotizedCooldownTimer: 0
+  hypnotizeActivatedTime: 15
+  imgBar: {fileID: 0}
+  textCooldownTimer: {fileID: 0}
+  moveSpeed: 2
+  xMax: 18
+  xMin: -18
+  yMax: 18
+  yMin: -18
+  targetPos: {x: 0, y: 0, z: 0}
+  isMoving: 0
 --- !u!1 &329658086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3599,11 +3701,12 @@ GameObject:
   - component: {fileID: 467521230}
   - component: {fileID: 467521233}
   - component: {fileID: 467521231}
+  - component: {fileID: 467521236}
   - component: {fileID: 467521234}
   - component: {fileID: 467521235}
   m_Layer: 0
   m_Name: Diamond (2)
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3703,7 +3806,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467521229}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -3780,6 +3883,18 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &467521236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467521229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &502159580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4275,11 +4390,12 @@ GameObject:
   - component: {fileID: 631904218}
   - component: {fileID: 631904221}
   - component: {fileID: 631904219}
+  - component: {fileID: 631904224}
   - component: {fileID: 631904222}
   - component: {fileID: 631904223}
   m_Layer: 0
   m_Name: Diamond (5)
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4379,7 +4495,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631904217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -4456,6 +4572,18 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &631904224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631904217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &645933006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4838,7 +4966,7 @@ Transform:
   m_GameObject: {fileID: 692202329}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.6395, y: 0.7765, z: 0}
-  m_LocalScale: {x: 1.5709933, y: 1.4751153, z: 1}
+  m_LocalScale: {x: 2.59858, y: 2.4399881, z: 1.6541}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 20621609}
@@ -5302,9 +5430,9 @@ MonoBehaviour:
   - {fileID: 128164986}
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.5
-  minZoom: 8
-  maxZoom: 6.5
-  zoomLimiter: 15
+  minZoom: 15
+  maxZoom: 8
+  zoomLimiter: 20
 --- !u!114 &791276990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5434,7 +5562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813679838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.89, y: 0, z: 0}
+  m_LocalPosition: {x: -4.8, y: -1.19, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.8571429}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5511,6 +5639,11 @@ MonoBehaviour:
   isP2_ColtoCamEdge: 0
   colObstacle_p1: 0
   colObstacle_p2: 0
+  playerHitParticle: {fileID: 4010479885397470980, guid: ed8762de807931e47accf0be95dc6426, type: 3}
+  enemyTag:
+  - Normal Enemy
+  - Medium Enemy
+  - Hard Enemy
   numbPlayer: 1
 --- !u!114 &813679845
 MonoBehaviour:
@@ -5524,7 +5657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 2.7
+  movePower: 3.5
   numbOfPlayer: 1
 --- !u!114 &813679846
 MonoBehaviour:
@@ -5533,7 +5666,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813679838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b69da2f1e2d8cec43919c8db3dd75961, type: 3}
   m_Name: 
@@ -5689,7 +5822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyWaitToSpawn
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: spawnRadiusObject
@@ -5701,7 +5834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyIsWaitingToSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
@@ -6713,7 +6846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyWaitToSpawn
-      value: 7.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: spawnRadiusObject
@@ -6725,7 +6858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyIsWaitingToSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
@@ -7033,11 +7166,12 @@ GameObject:
   - component: {fileID: 1187706658}
   - component: {fileID: 1187706661}
   - component: {fileID: 1187706659}
+  - component: {fileID: 1187706664}
   - component: {fileID: 1187706662}
   - component: {fileID: 1187706663}
   m_Layer: 0
   m_Name: Diamond (6)
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7137,7 +7271,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187706657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -7214,6 +7348,18 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &1187706664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187706657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1260774465
 GameObject:
   m_ObjectHideFlags: 0
@@ -7571,11 +7717,12 @@ GameObject:
   - component: {fileID: 1313103930}
   - component: {fileID: 1313103933}
   - component: {fileID: 1313103931}
+  - component: {fileID: 1313103936}
   - component: {fileID: 1313103934}
   - component: {fileID: 1313103935}
   m_Layer: 0
   m_Name: Diamond (4)
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7675,7 +7822,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313103929}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -7752,6 +7899,18 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &1313103936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313103929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1332447545
 GameObject:
   m_ObjectHideFlags: 0
@@ -8093,7 +8252,7 @@ GameObject:
   - component: {fileID: 1395239704}
   - component: {fileID: 1395239705}
   m_Layer: 0
-  m_Name: Ring of Heal
+  m_Name: Ring of Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8106,7 +8265,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395239703}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8119,7 +8278,7 @@ Transform:
   - {fileID: 631904218}
   - {fileID: 1187706658}
   - {fileID: 165228879}
-  m_Father: {fileID: 293876515}
+  m_Father: {fileID: 316974582}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1395239705
@@ -11303,11 +11462,12 @@ GameObject:
   - component: {fileID: 1849427633}
   - component: {fileID: 1849427636}
   - component: {fileID: 1849427634}
+  - component: {fileID: 1849427639}
   - component: {fileID: 1849427637}
   - component: {fileID: 1849427638}
   m_Layer: 0
   m_Name: Diamond (1)
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11407,7 +11567,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849427632}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -11484,6 +11644,18 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &1849427639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849427632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1854467644
 GameObject:
   m_ObjectHideFlags: 0
@@ -11592,7 +11764,7 @@ Transform:
   - {fileID: 1732863313}
   - {fileID: 1484593472}
   m_Father: {fileID: 2121558566}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1855665339
 MonoBehaviour:
@@ -12596,9 +12768,10 @@ Transform:
   m_Children:
   - {fileID: 1357713994}
   - {fileID: 2071974642}
-  - {fileID: 293876515}
   - {fileID: 1855665338}
   - {fileID: 90131778}
+  - {fileID: 293876515}
+  - {fileID: 316974582}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12897,11 +13070,12 @@ GameObject:
   - component: {fileID: 3612807134105763105}
   - component: {fileID: 1189518949018410984}
   - component: {fileID: 1082966392895395958}
+  - component: {fileID: 3612807134105763108}
   - component: {fileID: 3612807134105763106}
   - component: {fileID: 3612807134105763107}
   m_Layer: 0
   m_Name: Diamond
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12975,7 +13149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyWaitToSpawn
-      value: 4.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: spawnRadiusObject
@@ -13009,7 +13183,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075887854455228309}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef94b9001135cc4981e7d17b2c7656e, type: 3}
   m_Name: 
@@ -13086,3 +13260,15 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.11}
       - {x: 0.049999997, y: -0.94}
       - {x: 0.089999996, y: -0.71999997}
+--- !u!114 &3612807134105763108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075887854455228309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155854f995c837b4b8e306cd7412a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

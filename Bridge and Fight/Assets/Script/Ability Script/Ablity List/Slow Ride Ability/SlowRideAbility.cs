@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigBallAbility : MonoBehaviour
+public class SlowRideAbility : MonoBehaviour
 {
     [SerializeField] Vector2 maxScale;
 
