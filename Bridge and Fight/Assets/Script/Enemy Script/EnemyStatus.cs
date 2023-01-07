@@ -21,6 +21,8 @@ public class EnemyStatus : MonoBehaviour
     float slowSpeed = 2; // di bagi 2
     float curSpeed;
 
+    public bool demaged = false;
+
    
 
     private void Awake()
@@ -36,6 +38,11 @@ public class EnemyStatus : MonoBehaviour
         if(enemyHealth <= 0)
         {
             enemyDestroy();
+        }
+        
+        if(demaged)
+        {
+            HitEffect.hitEffect.flashOut();
         }
     }
 
@@ -78,8 +85,6 @@ public class EnemyStatus : MonoBehaviour
 
 
             }
-            
-           
         }
         if (collision.gameObject.tag == "Player 2")
         {

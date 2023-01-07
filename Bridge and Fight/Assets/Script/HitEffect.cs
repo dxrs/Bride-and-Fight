@@ -23,10 +23,12 @@ public class HitEffect : MonoBehaviour
 
     private Coroutine flashRoutine;
 
+    public bool ye = false;
+
     private void Awake()
     {
         hitEffect = this;
-        flashMaterial = Material.Instantiate(flashMaterial);
+        //flashMaterial = Material.Instantiate(flashMaterial);
     }
 
    
@@ -35,25 +37,28 @@ public class HitEffect : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
+        StartCoroutine(flashingObject());
+    }
+
+    void Update()
+    {
     }
 
     public void flashOut()
     {
-        if (flashRoutine != null) 
-        {
-            StopCoroutine(flashRoutine);
-        }
-        flashRoutine = StartCoroutine(flashingObject());
+        StartCoroutine(flashingObject());
     }
 
     IEnumerator flashingObject() 
     {
-        spriteRenderer.material = flashMaterial;
-        print("ok");
-        yield return new WaitForSeconds(duration);
-        print("kena");
-        spriteRenderer.material = originalMaterial;
-
-        flashRoutine = null;
+        while (true)
+        {
+            spriteRenderer.material = flashMaterial;
+            //print("ok");
+            yield return new WaitForSeconds(duration);
+            //print("kena");
+            spriteRenderer.material = originalMaterial;
+            yield return new WaitForSeconds(duration);
+        }
     }
 }
