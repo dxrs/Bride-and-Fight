@@ -15,6 +15,8 @@ public class HitEffect : MonoBehaviour
     [Tooltip("Duration of the flash.")]
     [SerializeField] private float duration;
 
+    [SerializeField] int jokowi;
+
     // The SpriteRenderer that should flash.
     private SpriteRenderer spriteRenderer;
 
@@ -26,7 +28,7 @@ public class HitEffect : MonoBehaviour
     private void Awake()
     {
         hitEffect = this;
-        flashMaterial = Material.Instantiate(flashMaterial);
+        //flashMaterial = Material.Instantiate(flashMaterial);
     }
 
    
@@ -36,24 +38,37 @@ public class HitEffect : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
     }
-
+    private void Update()
+    {
+        if (jokowi == 0) 
+        {
+            spriteRenderer.material = originalMaterial;
+        }
+        else 
+        {
+            spriteRenderer.material = flashMaterial;
+        }
+    }
     public void flashOut()
     {
+
         if (flashRoutine != null) 
         {
-            StopCoroutine(flashRoutine);
+            //StopCoroutine(flashingObject());
         }
-        flashRoutine = StartCoroutine(flashingObject());
-    }
+        StartCoroutine(flashingObject());
 
+    }
+    
     IEnumerator flashingObject() 
     {
-        spriteRenderer.material = flashMaterial;
-        print("ok");
-        yield return new WaitForSeconds(duration);
-        print("kena");
-        spriteRenderer.material = originalMaterial;
-
-        flashRoutine = null;
+        //Material materialSementara = spriteRenderer.material;
+        
+        jokowi = 1;
+        yield return new WaitForSeconds(0.000001f);
+        jokowi = 0;
+        
+        //flashRoutine = null;
+        //yield return StartCoroutine(flashingObject());
     }
 }

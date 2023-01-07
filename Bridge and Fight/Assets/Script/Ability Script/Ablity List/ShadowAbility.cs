@@ -13,6 +13,8 @@ public class ShadowAbility : MonoBehaviour
     public Color shadowColor;
     public Color shadowColorInner;
 
+    
+
     public bool isShadowActivated;
 
     [SerializeField] float shadowAbilityTimer;
@@ -27,9 +29,13 @@ public class ShadowAbility : MonoBehaviour
     [SerializeField] GameObject[] player;
     [SerializeField] SpriteRenderer[] sr;
     [SerializeField] Image imgBar;
-    [SerializeField] TextMeshProUGUI textCooldownTimer;
+    [SerializeField] Image imgAbilityIcon;
+    [SerializeField] TextMeshProUGUI textReady;
+
+    
 
     int curLevel;
+    float barUpValue = 0;
     float curShadowCooldown;
     float curShadowTimer;
     float curValueTimer;
@@ -67,7 +73,7 @@ public class ShadowAbility : MonoBehaviour
         {
             abilityInput();
             shadowBar();
-            textCooldownTimer.text = (int)shadowAblityCoolDown + "s";
+            //textCooldownTimer.text = (int)shadowAblityCoolDown + "s";
         }
 
     }
@@ -80,8 +86,11 @@ public class ShadowAbility : MonoBehaviour
             {
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
-
+                    imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
                     shadowAblityCoolDown = curShadowCooldown;
+
+                    barUpValue = 0;
+                    textReady.enabled = false;
                     if (!isShadowActivated)
                     {
                         isShadowActivated = true;
@@ -96,8 +105,11 @@ public class ShadowAbility : MonoBehaviour
             {
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
-
+                    imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
                     shadowAblityCoolDown = curShadowCooldown;
+
+                    barUpValue = 0;
+                    textReady.enabled = false;
                     if (!isShadowActivated)
                     {
                         isShadowActivated = true;
@@ -131,6 +143,7 @@ public class ShadowAbility : MonoBehaviour
             {
                 shadowAbilityTimer -= 1 * Time.deltaTime;
             }
+            
         }
     }
 
@@ -140,7 +153,8 @@ public class ShadowAbility : MonoBehaviour
         {
             isShadowActivated = false;
             shadowAbilityTimer = curShadowTimer;
-            textCooldownTimer.enabled = true;
+            
+            
             
         }
         if (!isShadowActivated) 
@@ -162,12 +176,18 @@ public class ShadowAbility : MonoBehaviour
             {
                 shadowAblityCoolDown -= 0.8f * Time.deltaTime;
             }
+            if (barUpValue < 11)
+            {
+                barUpValue += 0.8f * Time.deltaTime;
+            }
         }
 
         if (shadowAblityCoolDown <= 0) 
         {
-            textCooldownTimer.enabled = false;
+            
             shadowAblityCoolDown = 0;
+            imgAbilityIcon.color = new Color(1, 1, 1);
+            textReady.enabled = true;
         }
     }
     void shadowBar() 
@@ -175,13 +195,19 @@ public class ShadowAbility : MonoBehaviour
         if (isShadowActivated) 
         {
             imgBar.enabled = true;
+            curValueTimer = shadowAbilityTimer;
+    
+            imgBar.fillAmount = curValueTimer / curShadowTimer;
+            
+            
         }
         else 
         {
-            imgBar.enabled = false;
+           curValueTimer = barUpValue;
+           imgBar.fillAmount =curValueTimer/curShadowCooldown;
+         
         }
-        curValueTimer = shadowAbilityTimer;
-        imgBar.fillAmount = curValueTimer / maxValueTimer;
+        
 
 
     }
@@ -204,12 +230,12 @@ public class ShadowAbility : MonoBehaviour
                 break;
             case 2:
                 curShadowTimer = 10;
-                maxValueTimer = 5;
+                maxValueTimer = 10;
                 curShadowCooldown = 11.0f;
                 break;
             case 3:
                 curShadowTimer = 12.5f;
-                maxValueTimer = 13;
+                maxValueTimer = 12.5f;
                 curShadowCooldown = 20.0f;
                 break;
         }
