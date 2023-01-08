@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneManagerCallback : MonoBehaviour
 {
     public static SceneManagerCallback sceneManagerCallback;
-    
+
+    public string[] sceneNameForLevel;
 
     private void Awake()
     {

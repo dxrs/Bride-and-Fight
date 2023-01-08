@@ -73,7 +73,7 @@ public class ShadowAbility : MonoBehaviour
         {
             abilityInput();
             shadowBar();
-            //textCooldownTimer.text = (int)shadowAblityCoolDown + "s";
+            
         }
 
     }
@@ -225,17 +225,17 @@ public class ShadowAbility : MonoBehaviour
         {
             case 1:
                 curShadowTimer = 5;
-                maxValueTimer = 5;
+              
                 curShadowCooldown = 11.0f;
                 break;
             case 2:
                 curShadowTimer = 10;
-                maxValueTimer = 10;
+               
                 curShadowCooldown = 11.0f;
                 break;
             case 3:
                 curShadowTimer = 12.5f;
-                maxValueTimer = 12.5f;
+                
                 curShadowCooldown = 20.0f;
                 break;
         }

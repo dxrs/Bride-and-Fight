@@ -3532,7 +3532,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004220918}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectPlanet, Assembly-CSharp
         m_MethodName: onClickStore
         m_Mode: 1
@@ -4415,7 +4415,7 @@ MonoBehaviour:
   - TotalAbility
   - UpgradeHeal
   - Level
-  - Planet
+  - 
   - 
   - 
 --- !u!4 &906405192
@@ -7671,6 +7671,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740480131}
   m_CullTransparentMesh: 1
+--- !u!1 &1748006730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748006733}
+  - component: {fileID: 1748006732}
+  - component: {fileID: 1748006731}
+  m_Layer: 0
+  m_Name: Scene Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1748006731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748006730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64544c788cdbd447894bdbf8c2570f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneStats: Select Level
+--- !u!114 &1748006732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748006730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713f613e9d20845439f1f3e66a84e743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNameForLevel: []
+--- !u!4 &1748006733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748006730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 619.14624, y: 436.17972, z: -16.914064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1751430780
 GameObject:
   m_ObjectHideFlags: 0
@@ -8362,7 +8421,6 @@ GameObject:
   - component: {fileID: 2004220914}
   - component: {fileID: 2004220915}
   - component: {fileID: 2004220920}
-  - component: {fileID: 2004220918}
   - component: {fileID: 2004220919}
   - component: {fileID: 2004220916}
   - component: {fileID: 2004220917}
@@ -8504,38 +8562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneStats: Select Level
---- !u!114 &2004220918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004220912}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9335770bd65c9241b01d2edd61a0ffa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clampLevel: 0
-  maxPlanet: 2
-  planetClickValue: 0
-  planetHighLightValue: 0
-  isPlanetClicked: 0
-  planetListButton:
-  - {fileID: 408309939}
-  - {fileID: 358849143}
-  - {fileID: 974821129}
-  curValueSelect: 010000000200000003000000
-  planetSelector: {fileID: 0}
-  planetSelectorPos:
-  - {x: -285, y: 0}
-  - {x: 0, y: 0}
-  - {x: 285, y: 0}
-  planetSelectorImage: {fileID: 0}
-  planetSelectorColor:
-  - {r: 0.3584906, g: 0, b: 0.26523903, a: 1}
-  - {r: 0.0115254605, g: 0.3490566, b: 0.24061862, a: 1}
-  - {r: 0, g: 0.021690577, b: 0.40392157, a: 1}
 --- !u!114 &2004220919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8562,6 +8588,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf57de55f7b37849b1cc18d10fb1d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalLevel: 0
+  levelButtonClickedValue: 0
+  levelButtonHighlightValue: 0
+  isLevelButtonClicked: 0
+  listButtonLevel: []
+  curValueSelect: 
+  levelSelector: {fileID: 0}
+  levelSelectorPos: []
 --- !u!1 &2007319749
 GameObject:
   m_ObjectHideFlags: 0
