@@ -53,8 +53,7 @@ public class LineOfRay : MonoBehaviour
                 enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
                 enemyStatus.enemyHealth -= 10 * Time.deltaTime;
 
-                HitEffect hitEffect = hit.collider.gameObject.GetComponent<HitEffect>();
-                hitEffect.flashOut();
+                
                 
                 if (enemyStatus.enemyHealth <= 0) 
                 {
