@@ -45,10 +45,7 @@ public class PlayerTrigger : MonoBehaviour
                 Instantiate(playerHitParticle, transform.position, Quaternion.identity);
             }
         }
-        if(collision.gameObject.tag=="Normal Enemy"||collision.gameObject.tag=="Medium Enemy") 
-        {
-            
-        }
+       
         
     }
    
