@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager uIManager;
+    //public static UIManager uIManager;
      
     public AudioSource aSource;
     public AudioClip clipnya;
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        uIManager = this;
+        //uIManager = this;
     }
     private void Start()
     {

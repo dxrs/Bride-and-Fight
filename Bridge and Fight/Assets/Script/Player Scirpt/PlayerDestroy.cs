@@ -32,11 +32,15 @@ public class PlayerDestroy : MonoBehaviour
         yield return new WaitForSeconds(1);
         transform.localScale = Vector2.Lerp(transform.localScale, targetScale, 1.5f * Time.deltaTime);
     }
+
+    
     private void OnDestroy()
     {
         if (GameOver.gameOver.isGameOver) 
         {
             Instantiate(destroyParticle, player.transform.position, Quaternion.identity);
+            
+
         }
     }
 

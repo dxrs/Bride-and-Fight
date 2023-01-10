@@ -7,7 +7,7 @@ using TMPro;
 
 public class AbilitySelector : MonoBehaviour
 {
-    public static AbilitySelector abilitySelector;
+    //public static AbilitySelector abilitySelector;
 
     public int abilitySelected;
 
@@ -28,7 +28,7 @@ public class AbilitySelector : MonoBehaviour
 
     private void Awake()
     {
-        abilitySelector = this;
+        //abilitySelector = this;
         //Cursor.visible = false;
     }
 
@@ -147,7 +147,7 @@ public class AbilitySelector : MonoBehaviour
             {
                 if (highlightValue == 1) 
                 {
-                    UIManager.uIManager.isStarting = true;
+                    //UIManager.uIManager.isStarting = true;
                     curSkill_1 = AbilityInventory.abilityInventory.skill_1;
                     abilitySelected = curSkill_1;
                     Cursor.visible = false;
@@ -158,7 +158,7 @@ public class AbilitySelector : MonoBehaviour
                 }
                 if (highlightValue==2) 
                 {
-                    UIManager.uIManager.isStarting = true;
+                    //UIManager.uIManager.isStarting = true;
                     curSkill_2 = AbilityInventory.abilityInventory.skill_2;
                     abilitySelected = curSkill_2;
                     Cursor.visible = false;
@@ -175,7 +175,7 @@ public class AbilitySelector : MonoBehaviour
             {
                 if (highlightValue == 1) 
                 {
-                    UIManager.uIManager.isStarting = true;
+                    //UIManager.uIManager.isStarting = true;
                     curSkill_1 = AbilityInventory.abilityInventory.skill_1;
                     abilitySelected = curSkill_1;
                     Cursor.visible = false;
@@ -186,7 +186,7 @@ public class AbilitySelector : MonoBehaviour
                 }
                 if (highlightValue == 2)
                 {
-                    UIManager.uIManager.isStarting = true;
+                    //UIManager.uIManager.isStarting = true;
                     curSkill_2 = AbilityInventory.abilityInventory.skill_2;
                     abilitySelected = curSkill_2;
                     Cursor.visible = false;
@@ -208,7 +208,7 @@ public class AbilitySelector : MonoBehaviour
     public void onClickButtonA() 
     {
         //GameStarting.gameStarting.isGameStarted=true;
-        UIManager.uIManager.isStarting = true;
+        //UIManager.uIManager.isStarting = true;
         curSkill_1 = AbilityInventory.abilityInventory.skill_1;
         abilitySelected = curSkill_1;
         Cursor.visible = false;
@@ -222,7 +222,7 @@ public class AbilitySelector : MonoBehaviour
     public void onClickButtonB() 
     {
         //GameStarting.gameStarting.isGameStarted = true;
-        UIManager.uIManager.isStarting = true;
+        //UIManager.uIManager.isStarting = true;
         curSkill_2 = AbilityInventory.abilityInventory.skill_2;
         abilitySelected = curSkill_2;
         Cursor.visible = false;

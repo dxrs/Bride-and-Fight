@@ -9,19 +9,23 @@ public class BigBallAbilitySpawner : MonoBehaviour
 
     [SerializeField] GameObject player;
     [SerializeField] GameObject bigBall;
-
+    string abilityName = "Slow Ride";
     private void Awake()
     {
         bigBallAbilitySpawner = this;
     }
-
+    private void Start()
+    {
+        UIStartGame.uIStartGame.abilityLeftName[3] = abilityName;
+        UIStartGame.uIStartGame.abilityRightName[3] = abilityName;
+    }
     private void Update()
     {
         if (!GameOver.gameOver.isGameOver
              && GameStarting.gameStarting.isGameStarted
              && !GamePaused.gamePaused.isGamePaused
              && !GameFinish.gameFinish.isGameFinished
-             && AbilitySelector.abilitySelector.abilitySelected == 3) 
+             && UIStartGame.uIStartGame.abilitySelectedValue == 3) 
         {
             
             if (player != null)

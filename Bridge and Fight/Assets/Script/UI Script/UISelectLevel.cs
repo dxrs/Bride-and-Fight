@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class uiSelectLevel : MonoBehaviour
+public class UISelectLevel : MonoBehaviour
 {
-    public static uiSelectLevel uiselectLevel;
+    public static UISelectLevel uiselectLevel;
 
 
     public int totalLevel;

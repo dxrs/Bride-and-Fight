@@ -38,7 +38,7 @@ public class HypnotizedAbility : MonoBehaviour
     float curAbilityTimer;
     float curValueTimer;
     float maxValueTimer = 20;
-
+    string abilityName = "Mind Control";
     private void Awake()
     {
         hypnotizedAbility = this;
@@ -48,7 +48,8 @@ public class HypnotizedAbility : MonoBehaviour
         indexPlayer = Random.Range(0, 2);
 
         curValueTimer = hypnotizeActivatedTime;
-
+        UIStartGame.uIStartGame.abilityLeftName[2] = abilityName;
+        UIStartGame.uIStartGame.abilityRightName[2] = abilityName;
         //up method di sini
 
         StartCoroutine(ringOfDiamondStartMoving());
@@ -60,7 +61,7 @@ public class HypnotizedAbility : MonoBehaviour
             && GameStarting.gameStarting.isGameStarted
             && !GamePaused.gamePaused.isGamePaused
             && !GameFinish.gameFinish.isGameFinished
-            && AbilitySelector.abilitySelector.abilitySelected==2) 
+            && UIStartGame.uIStartGame.abilitySelectedValue == 2) 
         {
             ringOfDiamondTransform();
             if (curUpLevelValue == 3) 

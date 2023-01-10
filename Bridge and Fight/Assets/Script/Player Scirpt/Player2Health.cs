@@ -22,6 +22,7 @@ public class Player2Health : MonoBehaviour
     {
         if (playerHealth <= 0)
         {
+            
             TotalCoin.totalCoin.curCoinGet = 0;
             GameOver.gameOver.isGameOver = true;
         }
@@ -47,6 +48,7 @@ public class Player2Health : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             playerHealth -= 200;
+            
         }
 
     }

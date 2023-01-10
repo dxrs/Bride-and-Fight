@@ -55,10 +55,10 @@ public class ButtonLevel : MonoBehaviour
 
      void purchaseLevel()
     {
-        if (uiSelectLevel.uiselectLevel.isLevelButtonClicked && !isPurchased)
+        if (UISelectLevel.uiselectLevel.isLevelButtonClicked && !isPurchased)
         {
             
-            if (id == uiSelectLevel.uiselectLevel.levelButtonClickedValue) 
+            if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue) 
             {
 
                 if (indexButton == 0) 
@@ -67,15 +67,15 @@ public class ButtonLevel : MonoBehaviour
                 }
                   
 
-                for (int i = 2; i <= uiSelectLevel.uiselectLevel.curValueSelect.Length; i++)
+                for (int i = 2; i <= UISelectLevel.uiselectLevel.curValueSelect.Length; i++)
                 {
-                    if (uiSelectLevel.uiselectLevel.levelButtonClickedValue == i)
+                    if (UISelectLevel.uiselectLevel.levelButtonClickedValue == i)
                     {
-                        uiSelectLevel.uiselectLevel.levelPurchased[i - 2] = 1;
+                        UISelectLevel.uiselectLevel.levelPurchased[i - 2] = 1;
                         idStatus = 1;
                         indexButton = idStatus;
-                        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[7] + (i - 2), 
-                            uiSelectLevel.uiselectLevel.levelPurchased[i - 2]);
+                        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[7] + (i - 2),
+                            UISelectLevel.uiselectLevel.levelPurchased[i - 2]);
 
                         if (indexButton == 1) 
                         {
@@ -98,9 +98,9 @@ public class ButtonLevel : MonoBehaviour
     {
        
 
-        for (int i = 2; i <= uiSelectLevel.uiselectLevel.curValueSelect.Length; i++)
+        for (int i = 2; i <= UISelectLevel.uiselectLevel.curValueSelect.Length; i++)
         {
-            if (uiSelectLevel.uiselectLevel.levelPurchased[i - 2] == 1)
+            if (UISelectLevel.uiselectLevel.levelPurchased[i - 2] == 1)
             {
                 if (id == i)
                 {
@@ -147,9 +147,9 @@ public class ButtonLevel : MonoBehaviour
     }
     void getIndexDataButtonValue() 
     {
-        for (int i = 0; i < uiSelectLevel.uiselectLevel.levelPurchased.Length; i++)
+        for (int i = 0; i < UISelectLevel.uiselectLevel.levelPurchased.Length; i++)
         {
-            uiSelectLevel.uiselectLevel.levelPurchased[i] = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[7] + i);
+            UISelectLevel.uiselectLevel.levelPurchased[i] = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[7] + i);
         }
     }
 

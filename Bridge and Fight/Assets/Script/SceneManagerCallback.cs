@@ -13,9 +13,20 @@ public class SceneManagerCallback : MonoBehaviour
     {
         sceneManagerCallback = this;
     }
-
+    private void Start()
+    {
+        idLevelPerSceneIndex();
+    }
+  
    
-
+    public void idLevelPerSceneIndex() 
+    {
+        if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
+        {
+            UIStartGame.uIStartGame.idLevel = SceneManager.GetActiveScene().buildIndex;
+        }
+       
+    }
     // KE SELECT LEVEL SCENE
     #region
     public void keSceneSelectLevel() 

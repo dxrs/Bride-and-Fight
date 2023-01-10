@@ -38,12 +38,15 @@ public class EnemySpawner : MonoBehaviour
                 }
                 else //klo ga langsung keluar
                 {
-                    if (UIManager.uIManager.timerValue <= enemySpawnTimerValue) 
+                    
+                    if (UIInGame.uIInGame.timerValue <= enemySpawnTimerValue) 
                     {
                         enemySpawnPos = spawnRadiusObject.transform.position;
                         enemySpawnPos += Random.insideUnitCircle.normalized * enemyRadiusValue;
                         Instantiate(enemy, enemySpawnPos, Quaternion.identity);
                     }
+                    
+                    
                 }
             }
             yield return new WaitForSeconds(enemyWaitToSpawn);
