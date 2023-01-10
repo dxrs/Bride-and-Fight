@@ -14,13 +14,15 @@ public class UIManager : MonoBehaviour
     public AudioClip clipnya;
 
     public TextMeshProUGUI textTimer;
-    public TextMeshProUGUI textOverFinish;
+    public TextMeshProUGUI textEndGame;
 
     public bool isStarting;
 
     public float timerValue;
 
     public int idLevel;
+
+    
 
     [SerializeField] TextMeshProUGUI textTotalCoin;
     [SerializeField] TextMeshProUGUI textTotalCoinEndGame;
@@ -29,7 +31,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] bool isTimeCountDown;
     [SerializeField] int curLevelValue;
 
-    //endGame
+  
+
+    #region interactive input end game
     [Header("End Game Interactive UI Function")]
     [SerializeField] GameObject objectTextEndegame;
     [SerializeField] GameObject buttonSelector;
@@ -39,6 +43,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] int highlightedValue;
     [SerializeField] Button[] endGameListButton;
     [SerializeField] TextMeshProUGUI textSelectStatus;
+    #endregion
 
 
     int totalCoinValue;
@@ -48,6 +53,9 @@ public class UIManager : MonoBehaviour
     bool isEnabled = false;
     bool goingTransition = false;
     Vector2 targetScale = new Vector2(1.5f, 1.5f); // text finish/game over
+
+    float lerpTime = 0.5f; 
+    float currentLerpTime = 0;
 
     TimeSpan timePlay;
     
@@ -68,10 +76,10 @@ public class UIManager : MonoBehaviour
         {
             UI_object[i].SetActive(false);
         }
-        //textSelectStatus.text = "Keyboard/Gamepad";
-        //endGame function
+       
         eventPointerEnter();
         curLevelValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+        
 
     }
     private void Update()
@@ -91,7 +99,7 @@ public class UIManager : MonoBehaviour
 
         // khusus endGame
         #region
-        scalingTextStatusEndGame();
+        blankTextStatusEndGame();
         objectEndGameActive();
         compareHighLightValue();
         //inputKeyboardOnly();
@@ -104,28 +112,27 @@ public class UIManager : MonoBehaviour
     {
         gameIsPaused();
         textTotalCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
-        if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
+        
+        if (GameOver.gameOver.isGameOver)
         {
-            
-
+            textEndGame.text = "FAILED";
             //PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1] + TotalCoin.totalCoin.curCoinGet, test);
             StartCoroutine(popUpEndGameShow());
             GameStarting.gameStarting.isGameStarted = false;
             //DataCoin.dataCoin.coinDataValue = TotalCoin.totalCoin.curCoinGet;
-            textTotalCoinEndGame.text= "+" + TotalCoin.totalCoin.curCoinGet;
-           
-        }
-        if (GameOver.gameOver.isGameOver)
-        {
-            textOverFinish.text = "DEFATED";
-            
-          
+            textTotalCoinEndGame.text = "+" + TotalCoin.totalCoin.curCoinGet;
+
         }
         if (GameFinish.gameFinish.isGameFinished)
         {
-            textOverFinish.text = "VICTORY";
-            
-            
+            textEndGame.text = "SURVIVED";
+            //PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1] + TotalCoin.totalCoin.curCoinGet, test);
+            UI_object[2].SetActive(true); // ui end game
+            UI_object[1].SetActive(false); // ui in game
+            GameStarting.gameStarting.isGameStarted = false;
+            //DataCoin.dataCoin.coinDataValue = TotalCoin.totalCoin.curCoinGet;
+            textTotalCoinEndGame.text = "+" + TotalCoin.totalCoin.curCoinGet;
+
         }
         if (GameStarting.gameStarting.isGameStarted && !GameOver.gameOver.isGameOver)
         {
@@ -238,10 +245,7 @@ public class UIManager : MonoBehaviour
     {
         TotalCoin.totalCoin.totalCoinGet = TotalCoin.totalCoin.totalCoinGet + PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], TotalCoin.totalCoin.totalCoinGet);
-        if (goingTransition) 
-        {
-           
-        }
+        
          yield return new WaitForSeconds(3);
 
             SceneManagerCallback.sceneManagerCallback.keSceneSelectLevel();
@@ -261,13 +265,24 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void scalingTextStatusEndGame() 
+    void blankTextStatusEndGame() 
     {
-        
-        
-        if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
+
+        if (GameFinish.gameFinish.isGameFinished) 
         {
-            StartCoroutine(waitToScale());
+            StartCoroutine(waitToBlankGameFinish());
+            if (textEndGame.color == new Color(1, 1, 1, 0))
+            {
+                isEnabled = true;
+            }
+        }
+        if( GameOver.gameOver.isGameOver) 
+        {
+            StartCoroutine(waitToBlankGameOver());
+            if (textEndGame.color==new Color(1,1,1,0)) 
+            {
+               isEnabled=true;
+            }
         }
     }
 
@@ -443,16 +458,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    IEnumerator waitToScale() 
+    IEnumerator waitToBlankGameOver() 
     {
-        yield return new WaitForSeconds(1f);
-        objectTextEndegame.transform.localScale = Vector2.MoveTowards(objectTextEndegame.transform.localScale,
-                targetScale, 2f * Time.deltaTime);
-        yield return new WaitForSeconds(1.35f);
-        isEnabled = true;
+        yield return new WaitForSeconds(3f);
+
+        currentLerpTime += Time.deltaTime;
+        float t = currentLerpTime / lerpTime;
+        textEndGame.color = Color.Lerp(new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), t);
+    }
+    IEnumerator waitToBlankGameFinish()
+    {
+        yield return new WaitForSeconds(2f);
+
+        currentLerpTime += Time.deltaTime;
+        float t = currentLerpTime / lerpTime;
+        textEndGame.color = Color.Lerp(new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), t);
     }
 
-   
 
     public void onClickContinue() 
     {

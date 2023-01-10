@@ -20,7 +20,7 @@ public class SceneManagerCallback : MonoBehaviour
     #region
     public void keSceneSelectLevel() 
     {
-        SceneManager.LoadScene("Scene test select level"); // nanti di ubah sesuai index
+        SceneManager.LoadScene("Scene Select Level"); // nanti di ubah sesuai index
     }
     #endregion
 

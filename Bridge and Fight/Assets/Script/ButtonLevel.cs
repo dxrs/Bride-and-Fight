@@ -22,6 +22,7 @@ public class ButtonLevel : MonoBehaviour
     bool isPurchased = false;
 
     int curLevel;
+    int indexButton = 0;
    
     private void Awake()
     {
@@ -59,10 +60,12 @@ public class ButtonLevel : MonoBehaviour
             
             if (id == uiSelectLevel.uiselectLevel.levelButtonClickedValue) 
             {
-                print("anda membeli level " + id + " dengan harga " + levelCost);
 
-                
-               
+                if (indexButton == 0) 
+                {
+                    print("anda membeli level " + id + " dengan harga " + levelCost);
+                }
+                  
 
                 for (int i = 2; i <= uiSelectLevel.uiselectLevel.curValueSelect.Length; i++)
                 {
@@ -70,9 +73,14 @@ public class ButtonLevel : MonoBehaviour
                     {
                         uiSelectLevel.uiselectLevel.levelPurchased[i - 2] = 1;
                         idStatus = 1;
-                        
+                        indexButton = idStatus;
                         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[7] + (i - 2), 
                             uiSelectLevel.uiselectLevel.levelPurchased[i - 2]);
+
+                        if (indexButton == 1) 
+                        {
+                            print("masuk ke scene " + id);
+                        }
                     }
                 }
 
