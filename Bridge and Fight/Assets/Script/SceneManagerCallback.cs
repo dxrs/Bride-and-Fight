@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneManagerCallback : MonoBehaviour
 {
     public static SceneManagerCallback sceneManagerCallback;
-    
+
+    public string[] sceneNameForLevel;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class SceneManagerCallback : MonoBehaviour
     #region
     public void keSceneSelectLevel() 
     {
-        SceneManager.LoadScene("Scene test select level"); // nanti di ubah sesuai index
+        SceneManager.LoadScene("Scene Select Level"); // nanti di ubah sesuai index
     }
     #endregion
 

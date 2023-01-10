@@ -32,15 +32,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameFinish.gameFinish.isGameFinished) 
         {
-            rb.drag =10;
+            //rb.drag =10;
         }
         
-        if(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A)
-            || Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.DownArrow)|| Input.GetKey(KeyCode.RightArrow))
-        {
-     
         
-        }
         if (ShadowAbility.shadowAbility.isShadowActivated) 
         {
             cc.enabled = false;
@@ -49,10 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
             cc.enabled = true;
         }
-        if (Input.GetButton("Abutton")) 
-        {
-            //print("bisa");
-        }
+       
         
        
     }
@@ -135,14 +127,12 @@ public class PlayerMovement : MonoBehaviour
             
             if (numbOfPlayer == 1) 
             {
-                // print("kena p1");
-                //movementSpeedP1 = slowSpeed;
+                
                 rb.drag = 3.5f;
             }
             if (numbOfPlayer == 2) 
             {
-                //print("kena p2");
-                //movementSpeedP2 = slowSpeed;
+                
                 rb.drag = 3.5f;
             }
             
@@ -159,12 +149,12 @@ public class PlayerMovement : MonoBehaviour
             
             if (numbOfPlayer == 1) 
             {
-                //movementSpeedP1 = curSpeed;
+               
                 rb.drag = 0;
             }
             if (numbOfPlayer == 2) 
             {
-                //movementSpeedP2 = curSpeed;
+               
                 rb.drag = 0;
             }
             

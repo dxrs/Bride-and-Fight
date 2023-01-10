@@ -53,13 +53,8 @@ public class LineOfRay : MonoBehaviour
                 enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
                 enemyStatus.enemyHealth -= 10 * Time.deltaTime;
 
-                HitEffect he = hit.collider.gameObject.GetComponent<HitEffect>();
-                he.enabled = true;
-                if(hit.collider == null)
-                {
-                    he.enabled = false;
-                }
-
+                
+                
                 if (enemyStatus.enemyHealth <= 0) 
                 {
                     TotalCoin.totalCoin.curCoinGet += 4;
@@ -76,7 +71,7 @@ public class LineOfRay : MonoBehaviour
           
             else
             {
-
+                
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.green);
                 isTouchObstcale = false;
                 

@@ -105,6 +105,7 @@ MonoBehaviour:
   - TotalAbility
   - UpgradeHeal
   - Level
-  - Planet
+  - Level Purchase
   - 
   - 
+  levelPurchase: 00000000000000000000000000000000

@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 4934226245832131111}
   - component: {fileID: 4934226245832131130}
   - component: {fileID: 4934226245832131129}
+  - component: {fileID: 411142897697385654}
   - component: {fileID: 4934226245832131131}
   - component: {fileID: 4934226245832131132}
   m_Layer: 6
@@ -261,6 +262,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
+--- !u!114 &411142897697385654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934226245832131110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd816743a88ff94d99d7a88a0239ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 528fba50c769fba4ba57f3ebc1596f83, type: 2}
+  duration: 0.01
 --- !u!50 &4934226245832131131
 Rigidbody2D:
   serializedVersion: 4
@@ -321,7 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092904112300039124}
   m_Layer: 6
-  m_Name: GameObject
+  m_Name: Target Bot
   m_TagString: Target Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

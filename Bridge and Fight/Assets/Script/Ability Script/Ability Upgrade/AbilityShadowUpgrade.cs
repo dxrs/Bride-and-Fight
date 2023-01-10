@@ -10,7 +10,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] Button buttonUpgrade;
-    [SerializeField] TextMeshProUGUI textInfoUpgrade;
+    [SerializeField] TextMeshProUGUI textAbilityType;
     [SerializeField] TextMeshProUGUI textCurBank;
     [SerializeField] TextMeshProUGUI textStatusLevelShadow;
     [SerializeField] TextMeshProUGUI[] textDescAbility;
@@ -41,7 +41,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     {
         progressUp();
         saveDataUpShadow();
-        textCurBank.text = "Your Money : " + yourBank +"$";
+        //textCurBank.text = "Your Money : " + yourBank +"$";
         textStatusLevelShadow.text = curShadowLevel.ToString();
 
 
@@ -55,23 +55,20 @@ public class AbilityShadowUpgrade : MonoBehaviour
        
         if(AbilityButtonList.abilityButton.clickedValue == 1) 
         {
-            textDescAbility[0].text = "Make you to become ghost mode within short time. [Active Ability]";
-            textDescAbility[1].text = "II  Longer ghost activated timer";
-            textDescAbility[2].text = "III More longer ghost timer when activated, and now you can still pick up the coin while you become ghost";
+            textAbilityType.text = "Ability Type : Active";
             if (curShadowLevel == 1)
             {
-                
+                textDescAbility[0].text = "Cooldown  :  5s     +0s";
+                textDescAbility[1].text = "Duration     :  5s     +2s";
+               
                 curCostUpgrade = 50;
                 
                 if (yourBank < curCostUpgrade) 
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => "+curCostUpgrade + "$";
+                    
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >=curCostUpgrade) 
-                {
-                    textInfoUpgrade.text = "Upgrade Level " + curShadowLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
-                }
+                
                 
             }
             if (curShadowLevel == 2)
@@ -80,19 +77,16 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 curCostUpgrade = 170;
                 if (yourBank < curCostUpgrade)
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => " + curCostUpgrade + "$";
+                   
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
-                {
-                    textInfoUpgrade.text = "Upgrade Level " + curShadowLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
-                }
+               
             }
             if (curShadowLevel == 3) 
             {
                
                 nextUpgradeLevel = 3;
-                textInfoUpgrade.text = "Level Maxed";
+                
                 buttonUpgrade.interactable = false;
             }
         }

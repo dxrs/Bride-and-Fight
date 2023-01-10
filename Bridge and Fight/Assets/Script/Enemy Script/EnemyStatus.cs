@@ -115,6 +115,17 @@ public class EnemyStatus : MonoBehaviour
             Instantiate(friendlyBot, transform.position, Quaternion.identity);
         }
 
+        if (collision.gameObject.tag == "Bullet")
+        {
+            HitEffect hitEffect = gameObject.GetComponent<HitEffect>();
+            if (hitEffect != null && !ShadowAbility.shadowAbility.isShadowActivated) 
+            {
+                hitEffect.flashOut();
+            }
+          
+           
+        }
+
        
         
     }

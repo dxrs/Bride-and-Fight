@@ -9,6 +9,7 @@ public class SaveDataManager : MonoBehaviour
 
     public string[] listDataName;
 
+    
  
 
     private void Awake()

@@ -59,7 +59,8 @@ public class HypnotizedAbility : MonoBehaviour
         if(!GameOver.gameOver.isGameOver
             && GameStarting.gameStarting.isGameStarted
             && !GamePaused.gamePaused.isGamePaused
-            && !GameFinish.gameFinish.isGameFinished) 
+            && !GameFinish.gameFinish.isGameFinished
+            && AbilitySelector.abilitySelector.abilitySelected==2) 
         {
             ringOfDiamondTransform();
             if (curUpLevelValue == 3) 

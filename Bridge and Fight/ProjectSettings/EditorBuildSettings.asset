@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scene/Scene Menu.unity
     guid: 9ebd8fb07b770784d9205b04934d8654
   - enabled: 1
-    path: Assets/Scene/Scene Percobaan/Scene test select level.unity
+    path: Assets/Scene/Scene Select Level.unity
     guid: 610c361d01e66b643938c1f87aa17fc1
   - enabled: 1
     path: Assets/Scene/Scene Percobaan/Scene firza.unity
