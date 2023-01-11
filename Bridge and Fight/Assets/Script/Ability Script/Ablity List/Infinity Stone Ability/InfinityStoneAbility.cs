@@ -19,6 +19,7 @@ public class InfinityStoneAbility : MonoBehaviour
     [SerializeField] GameObject p2StoneColider;
 
     int curLevel;
+    string abilityName = "Infinity Stone";
 
     private void Awake()
     {
@@ -28,6 +29,8 @@ public class InfinityStoneAbility : MonoBehaviour
     private void Start()
     {
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
+        UIStartGame.uIStartGame.abilityLeftName[1] = abilityName;
+        UIStartGame.uIStartGame.abilityRightName[1] = abilityName;
         curUpLevelValue = curLevel;
         p1StoneColider.SetActive(false);
         p2StoneColider.SetActive(false);
@@ -55,7 +58,7 @@ public class InfinityStoneAbility : MonoBehaviour
     {
         if (GameStarting.gameStarting.isGameStarted) 
         {
-            if (AbilitySelector.abilitySelector.abilitySelected == 1)
+            if (UIStartGame.uIStartGame.abilitySelectedValue == 1)
             {
                 p1StoneColider.SetActive(true);
                 p2StoneColider.SetActive(true);

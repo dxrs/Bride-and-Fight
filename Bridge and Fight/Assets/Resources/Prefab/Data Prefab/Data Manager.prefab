@@ -100,12 +100,14 @@ MonoBehaviour:
   listDataName:
   - Coin
   - Bank
-  - UpgradeShadow
-  - UpgradeStone
-  - TotalAbility
-  - UpgradeHeal
+  - Upgrade Shadow
+  - Upgrade Stone
+  - Total Ability
+  - Upgrade Heal
   - Level
   - Level Purchase
-  - 
-  - 
-  levelPurchase: 00000000000000000000000000000000
+  - Visual
+  - Sound
+  - Music
+  - Upgrade Mind Control
+  - Upgrade Slow Ride

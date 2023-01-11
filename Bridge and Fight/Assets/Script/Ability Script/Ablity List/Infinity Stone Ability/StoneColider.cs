@@ -55,7 +55,7 @@ public class StoneColider : MonoBehaviour
 
     void abilityStoneActivated() 
     {
-        if(AbilitySelector.abilitySelector.abilitySelected == 1 && GameStarting.gameStarting.isGameStarted) 
+        if(UIStartGame.uIStartGame.abilitySelectedValue == 1 && GameStarting.gameStarting.isGameStarted) 
         {
             totalStone();
             if (curStoneValue > InfinityStoneAbility.infinityStone.maxStoneValue) { curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue; }

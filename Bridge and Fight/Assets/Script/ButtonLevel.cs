@@ -9,7 +9,7 @@ public class ButtonLevel : MonoBehaviour
 {
     public static ButtonLevel buttonLevel;
 
-    [SerializeField] int id;
+    public int id;
     [SerializeField] int levelCost;
 
     [SerializeField] int idStatus;
@@ -18,11 +18,14 @@ public class ButtonLevel : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textLevelCost;
 
+    [SerializeField] Button levelButton;
+
 
     bool isPurchased = false;
 
     int curLevel;
     int indexButton = 0;
+    int coin;
    
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class ButtonLevel : MonoBehaviour
     private void Start()
     {
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+        coin= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
 
         getIndexDataButtonValue();
         onStartButtonValue();
@@ -55,32 +59,51 @@ public class ButtonLevel : MonoBehaviour
 
      void purchaseLevel()
     {
-        if (uiSelectLevel.uiselectLevel.isLevelButtonClicked && !isPurchased)
+        if (UISelectLevel.uiselectLevel.isLevelButtonClicked && !isPurchased)
         {
             
-            if (id == uiSelectLevel.uiselectLevel.levelButtonClickedValue) 
+            if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue) 
             {
 
-                if (indexButton == 0) 
-                {
-                    print("anda membeli level " + id + " dengan harga " + levelCost);
-                }
+               
                   
 
-                for (int i = 2; i <= uiSelectLevel.uiselectLevel.curValueSelect.Length; i++)
+                for (int i = 2; i <= UISelectLevel.uiselectLevel.curValueSelect.Length; i++)
                 {
-                    if (uiSelectLevel.uiselectLevel.levelButtonClickedValue == i)
+                    if (UISelectLevel.uiselectLevel.levelButtonClickedValue == i)
                     {
-                        uiSelectLevel.uiselectLevel.levelPurchased[i - 2] = 1;
-                        idStatus = 1;
-                        indexButton = idStatus;
-                        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[7] + (i - 2), 
-                            uiSelectLevel.uiselectLevel.levelPurchased[i - 2]);
+                        if (indexButton == 0)
+                        {
+                            if (coin < levelCost)
+                            {
+                                print("wah duit anda kurang");
+                            }
+                            if (coin >= levelCost)
+                            {
+                                print("anda membeli level " + id + " dengan harga " + levelCost);
+                                idStatus = 1;
+                                indexButton = idStatus;
+                                coin -= levelCost;
+                                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], coin);
+                                
+                                UISelectLevel.uiselectLevel.levelPurchased[i - 2] = 1;
+                                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[7] + (i - 2),
+                                    UISelectLevel.uiselectLevel.levelPurchased[i - 2]);
 
-                        if (indexButton == 1) 
+                                PlayerPrefs.Save();
+                                
+                            }
+
+                        }
+                        if (indexButton == 1)
                         {
                             print("masuk ke scene " + id);
+                            SceneManagerCallback.sceneManagerCallback.masukKeSceneLevel();
                         }
+                      
+
+
+                       
                     }
                 }
 
@@ -98,9 +121,9 @@ public class ButtonLevel : MonoBehaviour
     {
        
 
-        for (int i = 2; i <= uiSelectLevel.uiselectLevel.curValueSelect.Length; i++)
+        for (int i = 2; i <= UISelectLevel.uiselectLevel.curValueSelect.Length; i++)
         {
-            if (uiSelectLevel.uiselectLevel.levelPurchased[i - 2] == 1)
+            if (UISelectLevel.uiselectLevel.levelPurchased[i - 2] == 1)
             {
                 if (id == i)
                 {
@@ -118,6 +141,12 @@ public class ButtonLevel : MonoBehaviour
     {
         if (id <= curLevel)
         {
+            if (!SceneManagerCallback.sceneManagerCallback.isGoingToLevel) 
+            {
+                levelButton.interactable = true;
+
+            }
+            
             if (idStatus == 1)
             {
                 buttonLevelStatus[0].SetActive(true);
@@ -143,15 +172,18 @@ public class ButtonLevel : MonoBehaviour
             buttonLevelStatus[0].SetActive(false);
             buttonLevelStatus[1].SetActive(false);
             buttonLevelStatus[2].SetActive(true);
+            levelButton.interactable = false;
         }
     }
     void getIndexDataButtonValue() 
     {
-        for (int i = 0; i < uiSelectLevel.uiselectLevel.levelPurchased.Length; i++)
+        for (int i = 0; i < UISelectLevel.uiselectLevel.levelPurchased.Length; i++)
         {
-            uiSelectLevel.uiselectLevel.levelPurchased[i] = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[7] + i);
+            UISelectLevel.uiselectLevel.levelPurchased[i] = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[7] + i);
         }
     }
 
     #endregion
+
+   
 }

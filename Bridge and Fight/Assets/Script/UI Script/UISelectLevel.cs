@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class uiSelectLevel : MonoBehaviour
+public class UISelectLevel : MonoBehaviour
 {
-    public static uiSelectLevel uiselectLevel;
+    public static UISelectLevel uiselectLevel;
 
 
     public int totalLevel;
@@ -84,50 +84,47 @@ public class uiSelectLevel : MonoBehaviour
         }
 
         // reaksi button dan selector di select level ketika ke store
-        if (isGoingToStore || isGoingToMenu || isLevelButtonClicked)
+        if (isGoingToStore || isGoingToMenu || SceneManagerCallback.sceneManagerCallback.isGoingToLevel)
         {
            
-            for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = false; }
+           for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = false; }
 
         }
 
-        if (!isGoingToStore && !isGoingToMenu && !isLevelButtonClicked) 
+        if (!isGoingToStore && !isGoingToMenu && !SceneManagerCallback.sceneManagerCallback.isGoingToLevel) 
         {
-            for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = true; }
+           for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = true; }
         }
 
-
-
-        if (!isGoingToStore && !isGoingToMenu)
+        if (isLevelButtonClicked) 
         {
-            if (isLevelButtonClicked)
+            if (levelButtonClickedValue == 1) 
             {
-                levelSelector.SetActive(false);
+                StartCoroutine(SceneManagerCallback.sceneManagerCallback.loadToLevel1());
                 for (int i = 0; i < listButtonLevel.Length; i++)
                 {
                     listButtonLevel[i].interactable = false;
                 }
             }
-            else
-            {
-                levelSelector.SetActive(true);
-                for (int i = 0; i < listButtonLevel.Length; i++)
-                {
-                    listButtonLevel[i].interactable = true;
-                }
-            }
         }
+
+        if (SceneManagerCallback.sceneManagerCallback.isGoingToLevel) 
+        {
+            levelSelector.SetActive(false);
+        }
+
+        
 
         //button interaksi tergantung total current level
         for (int x = 0; x < listButtonLevel.Length; x++)
         {
             if (x < curLevel && !isLevelButtonClicked)
             {
-                listButtonLevel[x].interactable = true;
+                //istButtonLevel[x].interactable = true;
             }
             else
             {
-                listButtonLevel[x].interactable = false;
+                //listButtonLevel[x].interactable = false;
             }
         }
 

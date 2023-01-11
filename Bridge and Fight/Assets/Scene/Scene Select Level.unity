@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004220914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UISelectLevelManager, Assembly-CSharp
         m_MethodName: onClickChooseStoreRight
         m_Mode: 1
@@ -3463,7 +3463,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004220914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UISelectLevelManager, Assembly-CSharp
         m_MethodName: onClickBackToPlanet
         m_Mode: 1
@@ -4047,7 +4047,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004220914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UISelectLevelManager, Assembly-CSharp
         m_MethodName: onClickBackToPlanet
         m_Mode: 1
@@ -5998,7 +5998,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004220914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UISelectLevelManager, Assembly-CSharp
         m_MethodName: onClickChooseStoreLeft
         m_Mode: 1
@@ -6792,6 +6792,7 @@ MonoBehaviour:
   - {fileID: 158402785}
   - {fileID: 2000667002}
   textLevelCost: {fileID: 1272816626}
+  levelButton: {fileID: 1375348763}
 --- !u!1 &1382952614
 GameObject:
   m_ObjectHideFlags: 0
@@ -8055,7 +8056,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1625113653}
   m_OnClick:
     m_PersistentCalls:
@@ -8118,6 +8119,7 @@ MonoBehaviour:
   - {fileID: 748495437}
   - {fileID: 1570257737}
   textLevelCost: {fileID: 2086103565}
+  levelButton: {fileID: 1625113652}
 --- !u!1 &1627771009
 GameObject:
   m_ObjectHideFlags: 0
@@ -8837,7 +8839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713f613e9d20845439f1f3e66a84e743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNameForLevel: []
+  isGoingToLevel: 0
 --- !u!4 &1748006733
 Transform:
   m_ObjectHideFlags: 0
@@ -9511,7 +9513,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2004220913}
-  - component: {fileID: 2004220914}
   - component: {fileID: 2004220920}
   - component: {fileID: 2004220915}
   - component: {fileID: 2004220919}
@@ -9540,59 +9541,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2004220914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004220912}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017f64f5f9f96c349bab57a0c98ceebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGoingToStore: 0
-  isGoingToUpgradeSystem: 0
-  mouseInputSys: 0
-  joyStickInputName:
-  - LBbutton
-  - RBbutton
-  - Bbutton
-  - Xbutton
-  - DPadDown
-  - DPadUp
-  - DPadRight
-  - DPadLeft
-  - Abutton
-  - AnalogLeftHorizontal
-  - AnalogLeftVertical
-  objectUpgrade:
-  - {fileID: 1330547232}
-  - {fileID: 999235245}
-  keyButtonPressedBack: 0
-  keyButtonPressedEnter: 0
-  keyButtonOressedlbrb: 0
-  chooseStoreValue: 1
-  buttonUpExitValue: 1
-  buttonValue: 0100000002000000
-  buttonBackToSelectLevel: {fileID: 741262682}
-  abilityShowUp: {fileID: 1382952614}
-  alfaStore: {fileID: 1546528555}
-  storeStock: {fileID: 1179944122}
-  upgradeSelector: {fileID: 456027838}
-  buttonUp: {fileID: 1970954296}
-  buttonStore: {fileID: 719432276}
-  buttonUpOrExit:
-  - {fileID: 1970954296}
-  - {fileID: 2051846021}
-  textMoney: {fileID: 127943612}
-  textStoreChoose: {fileID: 678622433}
-  textIconChoose:
-  - {fileID: 55150245}
-  - {fileID: 1687179379}
-  coinData: 0
-  curBank: 0
 --- !u!114 &2004220915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10157,6 +10105,7 @@ MonoBehaviour:
   - {fileID: 1627771009}
   - {fileID: 540007979}
   textLevelCost: {fileID: 1561463840}
+  levelButton: {fileID: 2041490308}
 --- !u!1 &2048838167
 GameObject:
   m_ObjectHideFlags: 0

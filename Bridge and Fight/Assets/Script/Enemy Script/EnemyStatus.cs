@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class EnemyStatus : MonoBehaviour
 {
@@ -51,6 +52,13 @@ public class EnemyStatus : MonoBehaviour
        
         Destroy(gameObject);
         Instantiate(enemyParticle, transform.position, Quaternion.identity);
+    }
+    private void OnDestroy()
+    {
+        if (gameObject != null && !GameFinish.gameFinish.isGameFinished && !GameOver.gameOver.isGameOver) 
+        {
+            CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

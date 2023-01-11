@@ -26,6 +26,12 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (GamePaused.gamePaused.isGamePaused) 
+        {
+            gameObject.SetActive(false);
+        }
+        else { gameObject.SetActive(true); }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

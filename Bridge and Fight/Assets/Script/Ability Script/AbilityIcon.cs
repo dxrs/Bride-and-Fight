@@ -56,7 +56,7 @@ public class AbilityIcon : MonoBehaviour
         if (GameStarting.gameStarting.isGameStarted) 
         {
             abilityIcon_inGame.enabled = true;
-            abilityIcon_inGame.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/A" + AbilitySelector.abilitySelector.abilitySelected);
+            //abilityIcon_inGame.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/A" + AbilitySelector.abilitySelector.abilitySelected);
         }
         
     }

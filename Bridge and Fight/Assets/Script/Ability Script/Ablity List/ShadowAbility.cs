@@ -40,7 +40,7 @@ public class ShadowAbility : MonoBehaviour
     float curShadowTimer;
     float curValueTimer;
     float maxValueTimer;
-
+    string abilityName = "Ghost";
     private void Awake()
     {
         shadowAbility = this;
@@ -49,6 +49,8 @@ public class ShadowAbility : MonoBehaviour
     private void Start()
     {
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
+        UIStartGame.uIStartGame.abilityLeftName[0] = abilityName;
+        UIStartGame.uIStartGame.abilityRightName[0] = abilityName;
         //print(curLevel);
         curUpLevelValue = curLevel;
         upgradeAbilityShadow();
@@ -69,7 +71,7 @@ public class ShadowAbility : MonoBehaviour
             && GameStarting.gameStarting.isGameStarted
             && !GamePaused.gamePaused.isGamePaused
             && !GameFinish.gameFinish.isGameFinished
-            &&AbilitySelector.abilitySelector.abilitySelected==0) 
+            &&UIStartGame.uIStartGame.abilitySelectedValue==0) 
         {
             abilityInput();
             shadowBar();
