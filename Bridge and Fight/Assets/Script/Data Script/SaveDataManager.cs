@@ -27,7 +27,7 @@ public class SaveDataManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             PlayerPrefs.DeleteAll();
-            PlayerPrefs.Save();
+            
             
             
         }

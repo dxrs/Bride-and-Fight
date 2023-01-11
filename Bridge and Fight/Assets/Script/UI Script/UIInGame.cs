@@ -17,6 +17,7 @@ public class UIInGame : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textTimer;
     [SerializeField] TextMeshProUGUI textCoin;
+    [SerializeField] TextMeshProUGUI textAlmostDone;
 
     
 
@@ -39,9 +40,14 @@ public class UIInGame : MonoBehaviour
             
         }
 
-        StartCoroutine(tes());
+        StartCoroutine(slowMotion());
 
         textCoin.text= TotalCoin.totalCoin.curCoinGet.ToString();
+
+        if (timerValue < 30) 
+        {
+            textAlmostDone.enabled = true;
+        }
 
 
         timerStart();
@@ -50,7 +56,7 @@ public class UIInGame : MonoBehaviour
     }
 
 
-    IEnumerator tes() 
+    IEnumerator slowMotion() 
     {
         if (GameOver.gameOver.isGameOver) 
         {

@@ -34,8 +34,7 @@ public class EnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
 
-        // p1 = GameObject.FindGameObjectWithTag("Player 1");
-        // p2 = GameObject.FindGameObjectWithTag("Player 2");
+        
 
         player1 = GameObject.FindGameObjectWithTag("Player 1");
         player2 = GameObject.FindGameObjectWithTag("Player 2");
@@ -47,10 +46,14 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished)
+        if (GameFinish.gameFinish.isGameFinished)
         {
             isEnemyDestroyed = true;
 
+        }
+        if (GameOver.gameOver.isGameOver) 
+        {
+            Destroy(gameObject, 30);
         }
         if (isEnemyDestroyed)
         {
@@ -60,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (player1 != null && player2 != null)
         {
-            if (!ShadowAbility.shadowAbility.isShadowActivated) 
+            if (!ShadowAbility.shadowAbility.isShadowActivated && !GameOver.gameOver.isGameOver) 
             {
                 if (indexPlayer == 0)
                 {

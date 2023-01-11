@@ -75,10 +75,7 @@ public class UIEndGame : MonoBehaviour
     {
         textInfoLevel.text = "Level " + UIStartGame.uIStartGame.idLevel;
 
-        if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
-        {
-            //UIStartGame.uIStartGame.listUIObject[3].SetActive(true);
-        }
+       
 
         if (isGoingTransition) 
         {
@@ -139,7 +136,7 @@ public class UIEndGame : MonoBehaviour
         isGoingTransition = true;
         listEndGameButton[0].interactable = false;
         listEndGameButton[1].interactable = false;
-        //SceneManagerCallback.sceneManagerCallback.restartScene();
+        SceneManagerCallback.sceneManagerCallback.restartScene();
     }
 
     #region text animation
@@ -147,6 +144,7 @@ public class UIEndGame : MonoBehaviour
     {
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {
+            Cursor.visible = true;
             GameStarting.gameStarting.isGameStarted = false;
             textCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
            

@@ -7,7 +7,7 @@ public class SceneManagerCallback : MonoBehaviour
 {
     public static SceneManagerCallback sceneManagerCallback;
 
-    public string[] sceneNameForLevel;
+    public bool isGoingToLevel;
 
     private void Awake()
     {
@@ -26,6 +26,24 @@ public class SceneManagerCallback : MonoBehaviour
             UIStartGame.uIStartGame.idLevel = SceneManager.GetActiveScene().buildIndex;
         }
        
+    }
+
+    public void masukKeSceneLevel() 
+    {
+        StartCoroutine(loadingLevel());
+    }
+    IEnumerator loadingLevel() 
+    {
+        isGoingToLevel = true;
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+ButtonLevel.buttonLevel.id);
+    }
+
+    public IEnumerator loadToLevel1() 
+    {
+        isGoingToLevel = true;
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Level 1");
     }
     // KE SELECT LEVEL SCENE
     #region

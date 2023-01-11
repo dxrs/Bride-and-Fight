@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
+    [SerializeField] Camera cam;
+
+
     public List<Transform> camTarget;
 
     public Vector3 offset;
@@ -18,15 +21,13 @@ public class CameraZoom : MonoBehaviour
     public float zoomLimiter = 5f;
 
 
+    
+
     Vector3 velocity;
 
-    Camera cam;
+    
 
-    private void Start()
-    {
-        cam = GetComponent<Camera>();
-        //cam.orthographicSize = 10;
-    }
+    
     private void LateUpdate()
     {
         if (camTarget == null) { return; }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class PlayerDestroy : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class PlayerDestroy : MonoBehaviour
     
     private void OnDestroy()
     {
+        if (gameObject != null) 
+        {
+            CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
+        }
         if (GameOver.gameOver.isGameOver) 
         {
             Instantiate(destroyParticle, player.transform.position, Quaternion.identity);
