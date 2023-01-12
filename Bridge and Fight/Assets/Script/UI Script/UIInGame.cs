@@ -19,6 +19,8 @@ public class UIInGame : MonoBehaviour
     [SerializeField] TextMeshProUGUI textCoin;
     [SerializeField] TextMeshProUGUI textAlmostDone;
 
+    [SerializeField] Image imageCoin;
+
     
 
     TimeSpan timerCount;
@@ -41,18 +43,29 @@ public class UIInGame : MonoBehaviour
         }
 
         StartCoroutine(slowMotion());
-
-        textCoin.text= TotalCoin.totalCoin.curCoinGet.ToString();
-
-        if (timerValue < 30) 
+       
+        if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
         {
-            textAlmostDone.enabled = true;
+            textCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
+
+            if (timerValue < 30)
+            {
+                textAlmostDone.enabled = true;
+            }
+
+
+            timerStart();
+            timerEnd();
+        }
+        else 
+        {
+            textCoin.enabled = false;
+            textTimer.enabled = false;
+            imageCoin.enabled = false;
         }
 
-
-        timerStart();
-        timerEnd();
         
+
     }
 
 

@@ -22,14 +22,19 @@ public class ShadowAbility : MonoBehaviour
 
     [SerializeField] bool isUsingAbility;
     [SerializeField] bool isSlowMotion;
+
     [SerializeField] int curUpLevelValue;
 
     [SerializeField] GameObject[] wallColider;
     [SerializeField] GameObject[] coinColider;
     [SerializeField] GameObject[] player;
+
     [SerializeField] SpriteRenderer[] sr;
+
     [SerializeField] Image imgBar;
     [SerializeField] Image imgAbilityIcon;
+    
+
     [SerializeField] TextMeshProUGUI textReady;
 
     
@@ -51,7 +56,7 @@ public class ShadowAbility : MonoBehaviour
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
         UIStartGame.uIStartGame.abilityLeftName[0] = abilityName;
         UIStartGame.uIStartGame.abilityRightName[0] = abilityName;
-        //print(curLevel);
+    
         curUpLevelValue = curLevel;
         upgradeAbilityShadow();
         shadowAbilityTimer = curShadowTimer;
@@ -62,6 +67,12 @@ public class ShadowAbility : MonoBehaviour
 
     private void Update()
     {
+        if (GameStarting.gameStarting.isGameStarted && UIStartGame.uIStartGame.abilitySelectedValue==0) 
+        {
+            imgAbilityIcon.enabled = true;
+            imgAbilityIcon.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/Shadow/Shadow" + curUpLevelValue);
+        }
+        
         if (!GameOver.gameOver.isGameOver) 
         {
             coinColider[0].transform.position = player[0].transform.position;

@@ -18,6 +18,7 @@ public class UIStartGame : MonoBehaviour
     public GameObject[] listUIObject;
 
     [SerializeField] GameObject listAbilityObject;
+    [SerializeField] GameObject bossObjectUI;
     
 
     #region variabel ability icon
@@ -68,6 +69,15 @@ public class UIStartGame : MonoBehaviour
 
     private void Start()
     {
+        if(SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
+        {
+            listAbilityObject.SetActive(true);
+        }
+        else 
+        {
+            bossObjectUI.SetActive(true);
+        }
+
 
         isInStartGame = true;
        
@@ -86,15 +96,20 @@ public class UIStartGame : MonoBehaviour
 
     private void Update()
     {
-        
-        #region update ability icon 
-        abilityIcon();
-        #endregion
 
-        compareHighlightValue();
+        if(SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
+        {
+            #region update ability icon
+            abilityIcon();
+            #endregion
+
+            compareHighlightValue();
 
 
-        StartCoroutine(gameStarting());
+            StartCoroutine(gameStarting());
+        }
+
+       
 
         if (GameStarting.gameStarting.isGameStarted) 
         { 
@@ -146,6 +161,12 @@ public class UIStartGame : MonoBehaviour
         {
             listButtonAbility[j].interactable = false;
         }
+    }
+
+    public void onClickContinue() 
+    {
+        Cursor.visible = false;
+        GameStarting.gameStarting.isGameStarted = true;
     }
 
     
@@ -218,11 +239,7 @@ public class UIStartGame : MonoBehaviour
             }
         }
 
-        if (GameStarting.gameStarting.isGameStarted) 
-        {
-            imageAbilitySelected.enabled = true;
-            imageAbilitySelected.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/A" + abilitySelectedValue);
-        }
+        
     }
     #endregion
 

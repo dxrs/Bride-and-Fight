@@ -72,8 +72,12 @@ public class UIPauseGame : MonoBehaviour
         else 
         {
             buttoniSClicked = false;
+
+            if (!GameOver.gameOver.isGameOver) 
+            {
+                Time.timeScale = 1;
+            }
             
-            Time.timeScale = 1;
         }
 
         if(GameStarting.gameStarting.isGameStarted 

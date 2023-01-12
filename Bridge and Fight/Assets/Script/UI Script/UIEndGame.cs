@@ -62,6 +62,8 @@ public class UIEndGame : MonoBehaviour
         TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         curLevelValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
 
+
+        
         highlightListEndGameButtonValue = 1;
 
         eventListener();
@@ -73,6 +75,7 @@ public class UIEndGame : MonoBehaviour
 
     private void Update()
     {
+
         textInfoLevel.text = "Level " + UIStartGame.uIStartGame.idLevel;
 
        
@@ -114,10 +117,14 @@ public class UIEndGame : MonoBehaviour
         isCoinDataSaved = true;
         if (UIStartGame.uIStartGame.idLevel == curLevelValue) 
         {
-            if (isCoinDataSaved)
+            if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
             {
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], totalCoin);
+                if (isCoinDataSaved)
+                {
+                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], totalCoin);
+                }
             }
+           
         }
         else 
         {
@@ -161,17 +168,25 @@ public class UIEndGame : MonoBehaviour
             UIStartGame.uIStartGame.listUIObject[1].SetActive(false);
             if (UIStartGame.uIStartGame.idLevel == curLevelValue)
             {
-                textBonusCoin.enabled = true;
-                textTotalCoin.enabled = true;
-                textCongrats.enabled = true;
+                
+                textTotalCoin.text = "You received " + totalCoin + " Coin";
                 imgObjectCoin.transform.localPosition = new Vector2(-865, imgObjectCoin.transform.localPosition.y);
-                textBonusCoin.text = "+ Bonus Coin + " + bonusCoin;
-                textTotalCoin.text ="You received " + totalCoin + " Coin";
-                if (!isGetBonusCoin)
+
+                if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
                 {
-                    //TotalCoin.totalCoin.curCoinGet = TotalCoin.totalCoin.curCoinGet + bonusCoin;
-                    isGetBonusCoin = true;
+                    textBonusCoin.enabled = true;
+                    textTotalCoin.enabled = true;
+                    textCongrats.enabled = true;
+
+                    textBonusCoin.text = "+ Bonus Coin + " + bonusCoin;
+
+                    if (!isGetBonusCoin)
+                    {
+                        //TotalCoin.totalCoin.curCoinGet = TotalCoin.totalCoin.curCoinGet + bonusCoin;
+                        isGetBonusCoin = true;
+                    }
                 }
+                
 
             }
             else 
@@ -186,15 +201,22 @@ public class UIEndGame : MonoBehaviour
         if (GameOver.gameOver.isGameOver)
         {
             
-            textRemainingTime.enabled = true;
+          
             StartCoroutine(delayPopuEndGame());
             StartCoroutine(textEndGameFailed());
-            remainingTime = UIInGame.uIInGame.timerValue;
-            timerCount = TimeSpan.FromSeconds(remainingTime);
-            string timer = timerCount.ToString("mm':'ss':'ff");
-            textRemainingTime.text = "Remaining time : " + timer;
+          
             textEndGame.text = "DEFEAT";
             //imgObjectCoin.transform.localPosition = new Vector2(0, imgObjectCoin.transform.localPosition.y);
+
+            if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
+            {
+                textRemainingTime.enabled = true;
+                remainingTime = UIInGame.uIInGame.timerValue;
+                timerCount = TimeSpan.FromSeconds(remainingTime);
+                string timer = timerCount.ToString("mm':'ss':'ff");
+                textRemainingTime.text = "Remaining time : " + timer;
+            }
+            
         }
 
         if (isEndGameObjectEnable) 

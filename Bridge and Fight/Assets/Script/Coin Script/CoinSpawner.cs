@@ -16,7 +16,7 @@ public class CoinSpawner : MonoBehaviour
 
     IEnumerator spawnCoin()
     {
-        while (true)
+        while (true && SceneManagerStatus.sceneManagerStatus.sceneStats=="Level")
         {
             if(GameStarting.gameStarting.isGameStarted &&
                 !GameOver.gameOver.isGameOver
