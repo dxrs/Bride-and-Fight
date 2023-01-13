@@ -70,7 +70,8 @@ public class ShadowAbility : MonoBehaviour
         if (GameStarting.gameStarting.isGameStarted && UIStartGame.uIStartGame.abilitySelectedValue==0) 
         {
             imgAbilityIcon.enabled = true;
-            imgAbilityIcon.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/Shadow/Shadow" + curUpLevelValue);
+            imgAbilityIcon.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/Ghost/G" + curUpLevelValue);
+            imgBar.sprite = imgAbilityIcon.sprite;
         }
         
         if (!GameOver.gameOver.isGameOver) 

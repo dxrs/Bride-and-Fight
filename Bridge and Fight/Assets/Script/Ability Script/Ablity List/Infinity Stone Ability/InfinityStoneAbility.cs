@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfinityStoneAbility : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class InfinityStoneAbility : MonoBehaviour
 
     [SerializeField] GameObject p1StoneColider;
     [SerializeField] GameObject p2StoneColider;
+
+    [SerializeField] Image imgAbilityIcon;
 
     int curLevel;
     string abilityName = "Infinity Stone";
@@ -39,6 +42,11 @@ public class InfinityStoneAbility : MonoBehaviour
     }
     private void Update()
     {
+        if(GameStarting.gameStarting.isGameStarted && UIStartGame.uIStartGame.abilitySelectedValue == 1) 
+        {
+            imgAbilityIcon.enabled = true;
+            imgAbilityIcon.sprite= Resources.Load<Sprite>("Sprite/Ability Icon/Infinity Stone/IS" + curUpLevelValue);
+        }
         if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
         {
             p1StoneColider.transform.position = player1.transform.position;

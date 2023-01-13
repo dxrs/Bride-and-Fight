@@ -73,30 +73,6 @@ public class SelectPlanet : MonoBehaviour
             }
         }
 
-        if (maxPlanet > 0 && !UISelectLevelManager.uISelectLevelManager.isGoingToStore)
-        {
-            if (isPlanetClicked)
-            {
-                planetSelector.SetActive(false);
-                for (int k = 0; k < planetListButton.Length; k++)
-                {
-                    planetListButton[k].interactable = false;
-                }
-            }
-            else
-            {
-                planetSelector.SetActive(true);
-                for (int k = 0; k < planetListButton.Length; k++)
-                {
-                    planetListButton[k].interactable = true;
-                }
-            }
-        }
-        else
-        {
-            planetSelector.SetActive(false);
-        }
-
        
 
         for (int k = 0; k < planetListButton.Length; k++)
@@ -139,6 +115,7 @@ public class SelectPlanet : MonoBehaviour
 
     void planetSelectionInput() 
     {
+        /*
        
         if(!isPlanetClicked && !UISelectLevelManager.uISelectLevelManager.isGoingToStore)
         {
@@ -177,24 +154,14 @@ public class SelectPlanet : MonoBehaviour
 
 
         }
+        */
 
 
 
     }
     public void enterToSelectLevel() 
     {
-        Cursor.visible = false;
-        UISelectLevelManager.uISelectLevelManager.isGoingToStore = false;
-        for (int x = 1; x <= maxPlanet; x++) //max planet
-        {
-            if (planetHighLightValue == x)
-            {
-                planetClickValue = planetHighLightValue;
-                isPlanetClicked = true;
-                print("ke planet " + x + "click" + planetClickValue);
-                break;
-            }
-        }
+      
       
     }
 
@@ -202,7 +169,6 @@ public class SelectPlanet : MonoBehaviour
 
     public void onClickStore() 
     {
-        UISelectLevelManager.uISelectLevelManager.isGoingToStore = true;
-        //UISelectLevelManager.uISelectLevelManager.inputValue[0] = 1;
+       
     }
 }

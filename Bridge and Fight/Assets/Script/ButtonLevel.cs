@@ -21,10 +21,12 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField] Button levelButton;
 
 
+
+
     bool isPurchased = false;
 
     int curLevel;
-    int indexButton = 0;
+    int indexButton;
     int coin;
    
     private void Awake()
@@ -59,15 +61,19 @@ public class ButtonLevel : MonoBehaviour
 
      void purchaseLevel()
     {
-        if (UISelectLevel.uiselectLevel.isLevelButtonClicked && !isPurchased)
+        if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue)
         {
-            
-            if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue) 
+            if (idStatus == 1)
             {
-
-               
-                  
-
+                if (UISelectLevel.uiselectLevel.buttonLevelValueSelected == 2 && UISelectLevel.uiselectLevel.isLevelButtonClicked)
+                {
+                    UISelectLevel.uiselectLevel.sceneAnimationTransition();
+                    print("masuk ke scene " + id);
+                }
+                
+            }
+            if ( UISelectLevel.uiselectLevel.buttonLevelValueSelected == 1 && !isPurchased) 
+            {
                 for (int i = 2; i <= UISelectLevel.uiselectLevel.curValueSelect.Length; i++)
                 {
                     if (UISelectLevel.uiselectLevel.levelButtonClickedValue == i)
@@ -85,36 +91,32 @@ public class ButtonLevel : MonoBehaviour
                                 indexButton = idStatus;
                                 coin -= levelCost;
                                 PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], coin);
-                                
+
                                 UISelectLevel.uiselectLevel.levelPurchased[i - 2] = 1;
                                 PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[7] + (i - 2),
                                     UISelectLevel.uiselectLevel.levelPurchased[i - 2]);
 
                                 PlayerPrefs.Save();
-                                
+
+                                isPurchased = true;
+
                             }
 
-                        }
-                        if (indexButton == 1)
-                        {
-                            print("masuk ke scene " + id);
-                            SceneManagerCallback.sceneManagerCallback.masukKeSceneLevel();
                         }
                       
 
 
-                       
                     }
                 }
-
-
-                isPurchased = true;
-                
             }
-            
-            
+          
            
+
+
+           
+
         }
+      
     }
 
     void onStartButtonValue() 
@@ -128,10 +130,12 @@ public class ButtonLevel : MonoBehaviour
                 if (id == i)
                 {
                     idStatus = 1;
+                    
                 }
                 else
                 {
                     idStatus = 0;
+                    
                 }
             }
         }
@@ -139,6 +143,19 @@ public class ButtonLevel : MonoBehaviour
 
     void compareButtonValue() 
     {
+        if (id == UISelectLevel.uiselectLevel.levelButtonHighlightValue) 
+        {
+            if (idStatus == 1) 
+            {
+                UISelectLevel.uiselectLevel.buttonLevelValueSelected = 2;
+            }
+            else 
+            {
+                UISelectLevel.uiselectLevel.buttonLevelValueSelected = 1;
+            }
+        }
+       
+        
         if (id <= curLevel)
         {
             if (!SceneManagerCallback.sceneManagerCallback.isGoingToLevel) 
@@ -149,6 +166,7 @@ public class ButtonLevel : MonoBehaviour
             
             if (idStatus == 1)
             {
+                isPurchased = true;
                 buttonLevelStatus[0].SetActive(true);
                 buttonLevelStatus[1].SetActive(false);
 
@@ -156,6 +174,7 @@ public class ButtonLevel : MonoBehaviour
             }
             if (idStatus == 0)
             {
+                isPurchased = false;
                 buttonLevelStatus[0].SetActive(false);
                 buttonLevelStatus[1].SetActive(true);
 

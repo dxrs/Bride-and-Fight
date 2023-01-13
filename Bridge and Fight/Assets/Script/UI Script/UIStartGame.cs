@@ -31,8 +31,7 @@ public class UIStartGame : MonoBehaviour
     [SerializeField] Image imageAbilityRight;
     [SerializeField] Image imageAbilitySelected;
 
-    [SerializeField] TextMeshProUGUI textAbilityLeft;
-    [SerializeField] TextMeshProUGUI textAbilityRight;
+   
 
    
     #endregion
@@ -131,9 +130,9 @@ public class UIStartGame : MonoBehaviour
     {
         if (isStarted)
         {
-            listAbilityObject.transform.localPosition = Vector2.Lerp(listAbilityObject.transform.localPosition,
-           new Vector2(0, -300), 5 * Time.deltaTime);
-            yield return new WaitForSeconds(0.8f);
+            listAbilityObject.transform.localScale = Vector2.Lerp(listAbilityObject.transform.localScale,
+                new Vector2(0,0),15*Time.deltaTime);
+            yield return new WaitForSeconds(0.5f);
             GameStarting.gameStarting.isGameStarted = true;
             isInStartGame = false;
         }
@@ -190,11 +189,11 @@ public class UIStartGame : MonoBehaviour
     {
         if (highlightListAbilityButtonValue == 1)
         {
-            selector.transform.localPosition = new Vector2(0, 0);
+            selector.transform.localPosition = new Vector2(-215,-20);
         }
         else
         {
-            selector.transform.localPosition = new Vector2(335, 0);
+            selector.transform.localPosition = new Vector2(215, -20);
         }
     }
 
@@ -217,12 +216,12 @@ public class UIStartGame : MonoBehaviour
         {
             if (AbilityInventory.abilityInventory.skill_1 == i)
             {
-                textAbilityLeft.text = abilityLeftName[i];
-                break;
+                //textAbilityLeft.text = abilityLeftName[i];
+                //break;
             }
             else 
             {
-                textAbilityLeft.text = "null";
+               // textAbilityLeft.text = "null";
             }
         }
 
@@ -230,12 +229,12 @@ public class UIStartGame : MonoBehaviour
         {
             if (AbilityInventory.abilityInventory.skill_2 == i)
             {
-                textAbilityRight.text = abilityRightName[i];
-                break;
+                //textAbilityRight.text = abilityRightName[i];
+                //break;
             }
             else
             {
-                textAbilityRight.text = "null";
+               // textAbilityRight.text = "null";
             }
         }
 

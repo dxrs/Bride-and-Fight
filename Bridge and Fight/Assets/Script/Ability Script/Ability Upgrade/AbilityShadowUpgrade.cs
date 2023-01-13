@@ -10,10 +10,18 @@ public class AbilityShadowUpgrade : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] Button buttonUpgrade;
+
+    [SerializeField] Image imageAbilityCard;
+    [SerializeField] Image ImageAbilityIcon;
+
+    [SerializeField] Sprite[] card;
+    [SerializeField] Sprite[] icon;
+    
     [SerializeField] TextMeshProUGUI textAbilityType;
-    [SerializeField] TextMeshProUGUI textCurBank;
-    [SerializeField] TextMeshProUGUI textStatusLevelShadow;
-    [SerializeField] TextMeshProUGUI[] textDescAbility;
+    [SerializeField] TextMeshProUGUI[] textInfoAbilityUpgrade;
+    [SerializeField] TextMeshProUGUI textDescAbility;
+    [SerializeField] TextMeshProUGUI textUpgradeCost;
+    [SerializeField] TextMeshProUGUI textAbilityName;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curShadowLevel;
@@ -22,7 +30,11 @@ public class AbilityShadowUpgrade : MonoBehaviour
     [SerializeField] bool isUpgraded;
     [SerializeField] int maxShadowLevel;
     [SerializeField] int yourBank;
- 
+
+
+    string abilityDesc = "the players will become ghost mode in a short time, when they're in ghost mode, players can cut through to all enemies and obstacles. But not if the players crash each other or cut thorugh the outer wall.";
+
+
 
     private void Awake()
     {
@@ -41,25 +53,30 @@ public class AbilityShadowUpgrade : MonoBehaviour
     {
         progressUp();
         saveDataUpShadow();
-        //textCurBank.text = "Your Money : " + yourBank +"$";
-        textStatusLevelShadow.text = curShadowLevel.ToString();
+        
+        
 
 
     }
     void progressUp() 
     {
-        if (!AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
-        {
-            isUpgraded = false;
-        }
+        
        
-        if(AbilityButtonList.abilityButton.clickedValue == 1) 
+        if(UIShop.uIShop.buttonAbilityClickValue == 1) 
         {
             textAbilityType.text = "Ability Type : Active";
+            textDescAbility.text = abilityDesc;
+            textUpgradeCost.text = curCostUpgrade.ToString();
+            textAbilityName.text = "GHOST";
             if (curShadowLevel == 1)
             {
-                textDescAbility[0].text = "Cooldown  :  5s     +0s";
-                textDescAbility[1].text = "Duration     :  5s     +2s";
+                textInfoAbilityUpgrade[0].enabled = true;
+                textInfoAbilityUpgrade[1].enabled = true;
+                textInfoAbilityUpgrade[0].text = "Cooldown  :  5s     +0s";
+                textInfoAbilityUpgrade[1].text = "Duration     :  11s     +5s";
+
+                imageAbilityCard.sprite = card[0];
+                ImageAbilityIcon.sprite = icon[0];
                
                 curCostUpgrade = 50;
                 
@@ -73,7 +90,14 @@ public class AbilityShadowUpgrade : MonoBehaviour
             }
             if (curShadowLevel == 2)
             {
-                
+                textInfoAbilityUpgrade[0].enabled = true;
+                textInfoAbilityUpgrade[1].enabled = true;
+                textInfoAbilityUpgrade[0].text = "Cooldown  :  5s     +7s";
+                textInfoAbilityUpgrade[1].text = "Duration     :  16s     +4s";
+
+                imageAbilityCard.sprite = card[1];
+                ImageAbilityIcon.sprite = icon[1];
+
                 curCostUpgrade = 170;
                 if (yourBank < curCostUpgrade)
                 {
@@ -82,9 +106,18 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 }
                
             }
-            if (curShadowLevel == 3) 
+            if (curShadowLevel == 3)
             {
-               
+                textInfoAbilityUpgrade[0].enabled = true;
+                textInfoAbilityUpgrade[1].enabled = true;
+                textInfoAbilityUpgrade[2].enabled = true;
+                textInfoAbilityUpgrade[0].text = "Cooldown  :  12s";
+                textInfoAbilityUpgrade[1].text = "Duration     :  20s";
+                textInfoAbilityUpgrade[2].text = "Player now can pick the coin even ghost mode actived";
+
+                imageAbilityCard.sprite = card[2];
+                ImageAbilityIcon.sprite = icon[2];
+
                 nextUpgradeLevel = 3;
                 
                 buttonUpgrade.interactable = false;
@@ -108,9 +141,9 @@ public class AbilityShadowUpgrade : MonoBehaviour
     {
         
         
-        if (AbilityButtonList.abilityButton.clickedValue == 1)
+        if (UIShop.uIShop.buttonAbilityClickValue == 1)
         {
-            isUpgraded = true;
+            
             if (yourBank >= curCostUpgrade)
             {
                 // Proses pengurangan sisa uang yang dimiliki

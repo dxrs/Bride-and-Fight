@@ -13,6 +13,7 @@ public class UISelectLevel : MonoBehaviour
     public int totalLevel;
     public int levelButtonClickedValue;
     public int levelButtonHighlightValue;
+    public int buttonLevelValueSelected;
 
     public bool isLevelButtonClicked;
     public bool isGoingToStore;
@@ -26,8 +27,9 @@ public class UISelectLevel : MonoBehaviour
     [SerializeField] bool isGoingToMenu;
 
     [SerializeField] GameObject levelSelector;
-
-    [SerializeField] GameObject[] levelSelectorPos; // mungkin di ganti atau hapus
+    [SerializeField] GameObject[] levelSelectorPos;
+    [SerializeField] GameObject shopObject;
+    [SerializeField] GameObject sceneTransition;
 
     [SerializeField] Button[] otherButton;
 
@@ -76,12 +78,8 @@ public class UISelectLevel : MonoBehaviour
     {
         textCoin.text = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]).ToString();
 
-        // klo cursor highight ke button yang lebih dari cur level
-        // cur level berdasarkan data level
-        if (levelButtonHighlightValue > curLevel)
-        {
-            levelButtonHighlightValue = curLevel;
-        }
+        
+        
 
         // reaksi button dan selector di select level ketika ke store
         if (isGoingToStore || isGoingToMenu || SceneManagerCallback.sceneManagerCallback.isGoingToLevel)
@@ -95,11 +93,12 @@ public class UISelectLevel : MonoBehaviour
         {
            for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = true; }
         }
-
+        
         if (isLevelButtonClicked) 
         {
-            if (levelButtonClickedValue == 1) 
+            if (levelButtonClickedValue == 1)
             {
+                sceneAnimationTransition();
                 StartCoroutine(SceneManagerCallback.sceneManagerCallback.loadToLevel1());
                 for (int i = 0; i < listButtonLevel.Length; i++)
                 {
@@ -112,22 +111,19 @@ public class UISelectLevel : MonoBehaviour
         {
             levelSelector.SetActive(false);
         }
+        if (isGoingToStore) 
+        {
+            shopObject.transform.localPosition = Vector2.MoveTowards(shopObject.transform.localPosition, new Vector2(0, 0), 10000 * Time.deltaTime);
+        }
+        else 
+        {
+            shopObject.transform.localPosition = Vector2.MoveTowards(shopObject.transform.localPosition, new Vector2(1920, 0), 10000 * Time.deltaTime);
+
+        }
 
         
 
-        //button interaksi tergantung total current level
-        for (int x = 0; x < listButtonLevel.Length; x++)
-        {
-            if (x < curLevel && !isLevelButtonClicked)
-            {
-                //istButtonLevel[x].interactable = true;
-            }
-            else
-            {
-                //listButtonLevel[x].interactable = false;
-            }
-        }
-
+       
         // selector pos berdasarkan button level transform
         for (int i = 0; i < levelSelectorPos.Length; i++)
         {
@@ -144,7 +140,21 @@ public class UISelectLevel : MonoBehaviour
     void levelButtonClicked(int value) 
     {
         levelButtonClickedValue = value;
-        isLevelButtonClicked = true;
+
+        if (levelButtonHighlightValue != 1) 
+        {
+            StartCoroutine(levelButtonSelectedDelay());
+            
+            if (buttonLevelValueSelected == 2)
+            {
+                isLevelButtonClicked = true;
+            }
+        }
+        else 
+        {
+            isLevelButtonClicked = true;
+        }
+        
 
         
         Debug.Log("clicked " + levelButtonClickedValue);
@@ -157,7 +167,19 @@ public class UISelectLevel : MonoBehaviour
         }
        
         levelButtonHighlightValue = value;
+
+        if (levelButtonHighlightValue == 1) 
+        {
+            buttonLevelValueSelected = 1;
+        }
         Debug.Log("cursor " + levelButtonHighlightValue);
+    }
+
+    public void sceneAnimationTransition() 
+    {
+        sceneTransition.transform.localScale = Vector2.MoveTowards(sceneTransition.transform.localScale,
+                new Vector2(30.0f, 30.0f),
+                100 * Time.deltaTime);
     }
 
     public void onClickToMenu() 
@@ -167,5 +189,13 @@ public class UISelectLevel : MonoBehaviour
     public void onClickToStore() 
     {
         levelButtonHighlightValue = 0;
+        isGoingToStore = true;
+        UIShop.uIShop.listAbilityButtonEnable();
+    }
+    IEnumerator levelButtonSelectedDelay() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        buttonLevelValueSelected = 2;
+
     }
 }

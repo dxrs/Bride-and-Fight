@@ -94,12 +94,12 @@ public class AbilityButtonList : MonoBehaviour
         //Debug.Log(value);
         clickedValue = value;
         //onEnterAbilitySelect();
-        if (UISelectLevelManager.uISelectLevelManager.mouseInputSys)
-        {
+        //if (UISelectLevelManager.uISelectLevelManager.mouseInputSys)
+        //{
            
-            print(clickedValue);
+            //print(clickedValue);
           
-        }
+        //}
 
         isClickedToUpgradePopUp = true;
         //UISelectLevelManager.uISelectLevelManager.isGoingToStore = true;
@@ -111,6 +111,7 @@ public class AbilityButtonList : MonoBehaviour
     #region choose ability
     void inputChooseAbility() 
     {
+        /*
         if(UISelectLevelManager.uISelectLevelManager.isGoingToStore && !isClickedToUpgradePopUp) 
         {
             if(Input.GetAxis("DPadRight")>0 && !dpadPressed
@@ -147,7 +148,9 @@ public class AbilityButtonList : MonoBehaviour
                 dpadPressed = false;
             }
         }
+         */
     }
+
     #endregion
 
     public void onEnterAbilitySelect()
@@ -164,10 +167,7 @@ public class AbilityButtonList : MonoBehaviour
                 break;
             }
         }
-        if (!UISelectLevelManager.uISelectLevelManager.mouseInputSys) 
-        {
-           
-        }
+       
        
     }
 
