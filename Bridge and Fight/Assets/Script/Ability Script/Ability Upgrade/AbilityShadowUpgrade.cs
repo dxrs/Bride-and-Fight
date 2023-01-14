@@ -22,17 +22,20 @@ public class AbilityShadowUpgrade : MonoBehaviour
     [SerializeField] TextMeshProUGUI textDescAbility;
     [SerializeField] TextMeshProUGUI textUpgradeCost;
     [SerializeField] TextMeshProUGUI textAbilityName;
+    [SerializeField] TextMeshProUGUI textUpReq;
+
+    [SerializeField] GameObject objectCoinImage;
 
     [Header("Info Shadow Upgrade Ability")]
     public int curShadowLevel;
-    public int nextUpgradeLevel;
     public int curCostUpgrade;
-    [SerializeField] bool isUpgraded;
     [SerializeField] int maxShadowLevel;
     [SerializeField] int yourBank;
 
 
-    string abilityDesc = "the players will become ghost mode in a short time, when they're in ghost mode, players can cut through to all enemies and obstacles. But not if the players crash each other or cut thorugh the outer wall.";
+    string abilityDesc = "players will become ghost mode in a short time, when they're in ghost mode, players can cut through to all enemies and obstacles. But not if the players crash each other or cut thorugh the outer wall.";
+
+    int curLevel;
 
 
 
@@ -45,7 +48,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
     {
         curShadowLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
         yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
-        nextUpgradeLevel = curShadowLevel + 1;
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+
         
         
     }
@@ -72,53 +76,80 @@ public class AbilityShadowUpgrade : MonoBehaviour
             {
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
-                textInfoAbilityUpgrade[0].text = "Cooldown  :  5s     +0s";
-                textInfoAbilityUpgrade[1].text = "Duration     :  11s     +5s";
+                textInfoAbilityUpgrade[0].text = "Cooldown :  5s     +0s";
+                textInfoAbilityUpgrade[1].text = "Duration :  11s     +5s";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
                
-                curCostUpgrade = 50;
+                curCostUpgrade = 230;
                 
-                if (yourBank < curCostUpgrade) 
+                if (yourBank < curCostUpgrade || curLevel<2) 
                 {
-                    
+                    textUpReq.text = "Requirement : Complete Level 2";
                     buttonUpgrade.interactable = false;
                 }
-                
-                
+                if(yourBank>=curCostUpgrade && curLevel >= 2) 
+                {
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
+                }
+                if (yourBank >= curCostUpgrade && curLevel < 2)
+                {
+                    textUpReq.text = "Requirement : Complete Level 2";
+                    buttonUpgrade.interactable = false;
+                }
+
+
             }
             if (curShadowLevel == 2)
             {
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
-                textInfoAbilityUpgrade[0].text = "Cooldown  :  5s     +7s";
-                textInfoAbilityUpgrade[1].text = "Duration     :  16s     +4s";
+                textInfoAbilityUpgrade[0].text = "Cooldown :  5s     +7s";
+                textInfoAbilityUpgrade[1].text = "Duration :  16s     +4s";
 
                 imageAbilityCard.sprite = card[1];
                 ImageAbilityIcon.sprite = icon[1];
 
-                curCostUpgrade = 170;
-                if (yourBank < curCostUpgrade)
+                curCostUpgrade = 450;
+                if (yourBank < curCostUpgrade || curLevel < 3)
                 {
-                   
+                    textUpReq.text = "Requirement : Complete Level 3";
                     buttonUpgrade.interactable = false;
                 }
-               
+
+                if (yourBank >= curCostUpgrade && curLevel >= 3)
+                {
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
+                }
+                if (yourBank >= curCostUpgrade && curLevel < 3)
+                {
+                    textUpReq.text = "Requirement : Complete Level 3";
+                    buttonUpgrade.interactable = false;
+                }
+
             }
             if (curShadowLevel == 3)
             {
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
-                textInfoAbilityUpgrade[2].enabled = true;
-                textInfoAbilityUpgrade[0].text = "Cooldown  :  12s";
-                textInfoAbilityUpgrade[1].text = "Duration     :  20s";
+
+                objectCoinImage.SetActive(false);
+
+                textUpReq.text = "Max Level";
+
+                for (int j = 0; j < textInfoAbilityUpgrade.Length; j++) 
+                {
+                    textInfoAbilityUpgrade[j].enabled = true;
+                }
+              
+                textInfoAbilityUpgrade[0].text = "Cooldown :  12s";
+                textInfoAbilityUpgrade[1].text = "Duration :  20s";
                 textInfoAbilityUpgrade[2].text = "Player now can pick the coin even ghost mode actived";
 
                 imageAbilityCard.sprite = card[2];
                 ImageAbilityIcon.sprite = icon[2];
 
-                nextUpgradeLevel = 3;
                 
                 buttonUpgrade.interactable = false;
             }
@@ -143,6 +174,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
         
         if (UIShop.uIShop.buttonAbilityClickValue == 1)
         {
+            print("anda membeli ghost");
             
             if (yourBank >= curCostUpgrade)
             {
@@ -160,6 +192,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
             {
                 curShadowLevel++;
             }
+            
             
         }
     }

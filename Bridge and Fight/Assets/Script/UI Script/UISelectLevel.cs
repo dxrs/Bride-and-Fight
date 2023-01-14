@@ -24,6 +24,9 @@ public class UISelectLevel : MonoBehaviour
     public int[] curValueSelect;
     public int[] levelPurchased;
 
+    [SerializeField] Image shadowImageEffect1;
+    [SerializeField] Image shadowImageEffect2;
+
     [SerializeField] bool isGoingToMenu;
 
     [SerializeField] GameObject levelSelector;
@@ -84,14 +87,17 @@ public class UISelectLevel : MonoBehaviour
         // reaksi button dan selector di select level ketika ke store
         if (isGoingToStore || isGoingToMenu || SceneManagerCallback.sceneManagerCallback.isGoingToLevel)
         {
-           
-           for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = false; }
+            shadowImageEffect1.enabled = false;
+            shadowImageEffect2.enabled = false;
+            for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = false; }
 
         }
 
-        if (!isGoingToStore && !isGoingToMenu && !SceneManagerCallback.sceneManagerCallback.isGoingToLevel) 
+        if (!isGoingToStore && !isGoingToMenu && !SceneManagerCallback.sceneManagerCallback.isGoingToLevel)
         {
-           for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = true; }
+            shadowImageEffect1.enabled = true;
+            shadowImageEffect2.enabled = true;
+            for (int i = 0; i < otherButton.Length; i++) { otherButton[i].interactable = true; }
         }
         
         if (isLevelButtonClicked) 

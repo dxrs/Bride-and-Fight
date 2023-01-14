@@ -15,7 +15,8 @@ public class UIShop : MonoBehaviour
     public bool isButtonAbilityClicked;
 
     [SerializeField] Button buttonBackToSelectLevel;
-    
+
+    [SerializeField] Image shadowEffect;
 
     [SerializeField] TextMeshProUGUI textCoin;
 
@@ -73,16 +74,18 @@ public class UIShop : MonoBehaviour
 
         if (isButtonAbilityClicked) 
         {
+            shadowEffect.enabled = false;
             isAnimatedPopUp = true;
 
-            listButtonUpgradeAbility[0].interactable = true;
+            //listButtonUpgradeAbility[0].interactable = true;
             listButtonUpgradeAbility[1].interactable = true;
         }
         else 
         {
+            shadowEffect.enabled = true;
             isAnimatedPopUp = false;
 
-            listButtonUpgradeAbility[0].interactable =false;
+            //listButtonUpgradeAbility[0].interactable =false;
             listButtonUpgradeAbility[1].interactable = false;
         }
     
@@ -94,7 +97,7 @@ public class UIShop : MonoBehaviour
     {
         if (!isButtonAbilityClicked)
         {
-            for (int i = 0; i < selectorPosObj.Length-2; i++)
+            for (int i = 0; i < selectorPosObj.Length; i++)
             {
                 if (buttonAbilityHighlightValue == i + 1)
                 {
@@ -171,6 +174,22 @@ public class UIShop : MonoBehaviour
         isButtonAbilityClicked = false;
         listAbilityButtonEnable();
         
+    }
+
+    public void onClickUpgrade() 
+    {
+        if (buttonAbilityClickValue == 1) 
+        {
+            AbilityShadowUpgrade.abilityShadowUpgrade.onClickUpgradeShadow();
+        }
+        if (buttonAbilityClickValue == 2) 
+        {
+            AbilityInfinityStoneUpgrade.abilityInfinityStoneUpgrade.onClickUpgradeStone();
+        }
+        if (buttonAbilityClickValue == 3) 
+        {
+            AbilityMindControlUpgrade.abilityMindControlUpgrade.onClickUpgradeMindControl();
+        }
     }
 
     public void onClickBackToLevel() 

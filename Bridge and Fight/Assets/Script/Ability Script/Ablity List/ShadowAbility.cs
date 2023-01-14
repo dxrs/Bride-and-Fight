@@ -60,8 +60,8 @@ public class ShadowAbility : MonoBehaviour
         curUpLevelValue = curLevel;
         upgradeAbilityShadow();
         shadowAbilityTimer = curShadowTimer;
-        curValueTimer = shadowAbilityTimer;
-        
+        //curValueTimer = shadowAbilityTimer;
+
         
     }
 
@@ -188,11 +188,11 @@ public class ShadowAbility : MonoBehaviour
         {
             if (shadowAblityCoolDown > 0) 
             {
-                shadowAblityCoolDown -= 0.8f * Time.deltaTime;
+                shadowAblityCoolDown -= 0.5f * Time.deltaTime;
             }
-            if (barUpValue < 11)
+            if (barUpValue < curShadowCooldown)
             {
-                barUpValue += 0.8f * Time.deltaTime;
+                barUpValue += 0.5f * Time.deltaTime;
             }
         }
 

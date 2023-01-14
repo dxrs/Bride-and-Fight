@@ -9,7 +9,7 @@ public class SaveDataManager : MonoBehaviour
 
     public string[] listDataName;
 
-    
+    int[] abilityListUpgradeDataValue = { 2, 3, 5, 11 };
  
 
     private void Awake()
@@ -24,10 +24,11 @@ public class SaveDataManager : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKey(KeyCode.K))
         {
             PlayerPrefs.DeleteAll();
-            
+
+            PlayerPrefs.Save();
             
             
         }
@@ -54,6 +55,15 @@ public class SaveDataManager : MonoBehaviour
         }
 
         // list ability
+        foreach(int indexDataAbility in abilityListUpgradeDataValue) 
+        {
+            if (!PlayerPrefs.HasKey(listDataName[indexDataAbility])) 
+            {
+                PlayerPrefs.SetInt(listDataName[indexDataAbility], 1);
+            }
+        }
+
+        /*
         if (!PlayerPrefs.HasKey(listDataName[2]))
         {
             PlayerPrefs.SetInt(listDataName[2], 1);
@@ -66,5 +76,10 @@ public class SaveDataManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(listDataName[5], 1);
         }
+        if (!PlayerPrefs.HasKey(listDataName[11]))
+        {
+            PlayerPrefs.SetInt(listDataName[11], 1);
+        }
+        */
     }
 }

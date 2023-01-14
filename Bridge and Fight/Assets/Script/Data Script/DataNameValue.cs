@@ -29,8 +29,6 @@ public class DataNameValue : MonoBehaviour
         //level
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
 
-        //planet
-        curPlanet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[7]);
 
         //money
         coinData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);

@@ -16,6 +16,7 @@ public class FriendlyBot : MonoBehaviour
 
     float curSpeed = 5;
 
+    int curUpLevel;
 
     Rigidbody2D rb;
 
@@ -29,6 +30,15 @@ public class FriendlyBot : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         movementSpeed = curSpeed;
         target = GameObject.FindGameObjectWithTag("Target Bot");
+        curUpLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
+        if (curUpLevel == 1) 
+        {
+            nyawa = 1;
+        }
+        if (curUpLevel == 2) 
+        {
+            nyawa = 2;
+        }
     }
 
 
@@ -82,20 +92,23 @@ public class FriendlyBot : MonoBehaviour
     {
         if (collision.gameObject.tag == "Normal Enemy" || collision.gameObject.tag == "Medium Enemy")
         {
-            if (Player1Health.player1Health.playerHealth < 50)
+            if (curUpLevel >= 3) 
             {
-                Player1Health.player1Health.playerHealth++;
+                if (Player1Health.player1Health.playerHealth < 50)
+                {
+                    Player1Health.player1Health.playerHealth += 2;
+                }
+                else if (Player1Health.player1Health.playerHealth >= 50) { Player1Health.player1Health.playerHealth = 50; }
+                if (Player2Health.player2Health.playerHealth < 50)
+                {
+                    Player2Health.player2Health.playerHealth += 2;
+                }
+                else if (Player2Health.player2Health.playerHealth >= 50) { Player2Health.player2Health.playerHealth = 50; }
             }
-            else if (Player1Health.player1Health.playerHealth >= 50) { Player1Health.player1Health.playerHealth = 50; }
-            if (Player2Health.player2Health.playerHealth < 50)
-            {
-                Player2Health.player2Health.playerHealth++;
-            }
-            else if (Player2Health.player2Health.playerHealth >= 50) { Player2Health.player2Health.playerHealth = 50; }
+           
+
+            nyawa--;
             
-            Destroy(gameObject);
-            //nyawa--;
-            //print("kena");
         }
 
         if (collision.gameObject.tag == "Wall") 

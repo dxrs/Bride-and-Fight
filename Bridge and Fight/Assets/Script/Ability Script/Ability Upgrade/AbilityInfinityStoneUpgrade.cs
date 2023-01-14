@@ -9,17 +9,31 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] Button buttonUpgrade;
-    [SerializeField] TextMeshProUGUI textInfoUpgrade;
-    [SerializeField] TextMeshProUGUI textCurBank;
-    [SerializeField] TextMeshProUGUI textStatusLevelStone;
 
-    [Header("Info Shadow Upgrade Ability")]
+    [SerializeField] Image imageAbilityCard;
+    [SerializeField] Image ImageAbilityIcon;
+
+    [SerializeField] Sprite[] card;
+    [SerializeField] Sprite[] icon;
+
+    [SerializeField] TextMeshProUGUI textAbilityType;
+    [SerializeField] TextMeshProUGUI[] textInfoAbilityUpgrade;
+    [SerializeField] TextMeshProUGUI textDescAbility;
+    [SerializeField] TextMeshProUGUI textUpgradeCost;
+    [SerializeField] TextMeshProUGUI textAbilityName;
+    [SerializeField] TextMeshProUGUI textUpReq;
+
+    [SerializeField] GameObject objectCoinImage;
+
+    [Header("Info Infinity Stone Upgrade Ability")]
     public int curStoneLevel;
-    public int nextUpgradeLevel;
     public int curCostUpgrade;
-    [SerializeField] bool isUpgraded;
     [SerializeField] int maxStoneLevel;
     [SerializeField] int yourBank;
+
+    string abilityDesc = "players will have a stone that protect from enemies, and each player will have his own stone, the stone will be destroyed when the enemy hits it, and will reappear within the specified time";
+
+    int curLevel;
 
     private void Awake()
     {
@@ -29,63 +43,109 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     {
         curStoneLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
         yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
-        nextUpgradeLevel = curStoneLevel + 1;
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+        
 
     }
     private void Update()
     {
-        if (AbilityButtonList.abilityButton.isClickedToUpgradePopUp)
-        {
-            if (AbilityButtonList.abilityButton.clickedValue == 2 && curStoneLevel == 3)
-            {
-                buttonUpgrade.interactable = false;
-            }
-        }
+       
 
         progressUp();
         saveDataUpStone();
-        textCurBank.text = "Your Money : " + yourBank + "$";
+   
 
     }
     void progressUp() 
     {
-        if (!AbilityButtonList.abilityButton.isClickedToUpgradePopUp) 
+        
+        
+        if (UIShop.uIShop.buttonAbilityClickValue == 2) 
         {
-            isUpgraded = false;
-        }
-        textStatusLevelStone.text = curStoneLevel.ToString();
-        if (AbilityButtonList.abilityButton.clickedValue == 2) 
-        {
+            textAbilityType.text = "Ability Type : Passive";
+            textDescAbility.text = abilityDesc;
+            textUpgradeCost.text = curCostUpgrade.ToString();
+            textAbilityName.text = "INFINITY STONE";
             if (curStoneLevel == 1)
             {
-                curCostUpgrade = 80;
-                if (yourBank < curCostUpgrade) 
+
+                textInfoAbilityUpgrade[0].enabled = true;
+                textInfoAbilityUpgrade[1].enabled = true;
+
+                textInfoAbilityUpgrade[0].text = "Stone Respawn :  10s     +6.5s";
+                textInfoAbilityUpgrade[1].text = "Max Stone :  2     +2";
+
+                imageAbilityCard.sprite = card[0];
+                ImageAbilityIcon.sprite = icon[0];
+
+                curCostUpgrade = 300;
+
+                if (yourBank < curCostUpgrade || curLevel < 4)
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => " + curCostUpgrade + "$";
+                    textUpReq.text = "Requirement : Complete Level 4";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade) 
+                if (yourBank >= curCostUpgrade && curLevel >= 4)
                 {
-                    textInfoUpgrade.text = "Upgrade Level " + curStoneLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
+                if (yourBank >= curCostUpgrade && curLevel < 4)
+                {
+                    textUpReq.text = "Requirement : Complete Level 4";
+                    buttonUpgrade.interactable = false;
+                }
+
             }
             if (curStoneLevel == 2) 
             {
-                curCostUpgrade = 280;
-                if (yourBank < curCostUpgrade)
+                textInfoAbilityUpgrade[0].enabled = true;
+                textInfoAbilityUpgrade[1].enabled = true;
+                textInfoAbilityUpgrade[0].text = "Stone Respawn :  16.5s     +10s";
+                textInfoAbilityUpgrade[1].text = "Max Stone :  4     +2";
+
+                imageAbilityCard.sprite = card[1];
+                ImageAbilityIcon.sprite = icon[1];
+
+                curCostUpgrade = 600;
+                if (yourBank < curCostUpgrade || curLevel < 9)
                 {
-                    textInfoUpgrade.text = "Not enough money to upgrade. Next upgrade cost => " + curCostUpgrade +"$";
+                    textUpReq.text = "Requirement : Complete Level 9";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
+
+                if (yourBank >= curCostUpgrade && curLevel >= 9)
                 {
-                    textInfoUpgrade.text = "Upgrade Level " + curStoneLevel + " => " + nextUpgradeLevel + " Cost : " + curCostUpgrade + "$";
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
+                if (yourBank >= curCostUpgrade && curLevel < 9)
+                {
+                    textUpReq.text = "Requirement : Complete Level 9";
+                    buttonUpgrade.interactable = false;
+                }
+
             }
             if (curStoneLevel == 3) 
             {
-                nextUpgradeLevel = 3;
-                textInfoUpgrade.text = "Level Maxed";
+
+                objectCoinImage.SetActive(false);
+
+                textUpReq.text = "Max Level";
+
+                for (int j = 0; j < textInfoAbilityUpgrade.Length; j++)
+                {
+                    textInfoAbilityUpgrade[j].enabled = true;
+                }
+
+                textInfoAbilityUpgrade[0].text = "Stone Respawn :  28.5s";
+                textInfoAbilityUpgrade[1].text = "Max Stone :  8";
+               
+
+                imageAbilityCard.sprite = card[2];
+                ImageAbilityIcon.sprite = icon[2];
+
+        
                 buttonUpgrade.interactable = false;
             }
         }
@@ -99,9 +159,9 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     }
     public void onClickUpgradeStone() 
     {
-        if (AbilityButtonList.abilityButton.clickedValue == 2)
+        if (UIShop.uIShop.buttonAbilityClickValue == 2)
         {
-            isUpgraded = true;
+           
             if (yourBank >= curCostUpgrade) 
             {
                 yourBank -= curCostUpgrade;

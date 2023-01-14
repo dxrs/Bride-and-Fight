@@ -17,9 +17,8 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField] GameObject[] buttonLevelStatus;
 
     [SerializeField] TextMeshProUGUI textLevelCost;
-
+    [SerializeField] TextMeshProUGUI textNotEnoughCoin;
     [SerializeField] Button levelButton;
-
 
 
 
@@ -82,6 +81,7 @@ public class ButtonLevel : MonoBehaviour
                         {
                             if (coin < levelCost)
                             {
+                                //StartCoroutine(textEnable());
                                 print("wah duit anda kurang");
                             }
                             if (coin >= levelCost)
@@ -151,9 +151,13 @@ public class ButtonLevel : MonoBehaviour
             }
             else 
             {
+               
+                
                 UISelectLevel.uiselectLevel.buttonLevelValueSelected = 1;
             }
+
         }
+        
        
         
         if (id <= curLevel)
@@ -203,6 +207,15 @@ public class ButtonLevel : MonoBehaviour
     }
 
     #endregion
+
+    IEnumerator textEnable() 
+    {
+        textNotEnoughCoin.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        textNotEnoughCoin.enabled = false;
+
+        yield return null;
+    }
 
    
 }

@@ -208,8 +208,8 @@ public class UIStartGame : MonoBehaviour
     #region ability icon
     private void abilityIcon() 
     {
-        imageAbilityLeft.sprite = Resources.Load<Sprite>("Sprite/Ability Sprite/A" + AbilityInventory.abilityInventory.skill_1);
-        imageAbilityRight.sprite = Resources.Load<Sprite>("Sprite/Ability Sprite/A" + AbilityInventory.abilityInventory.skill_2);
+        imageAbilityLeft.sprite = Resources.Load<Sprite>("Sprite/Ability Card/A" + AbilityInventory.abilityInventory.skill_1);
+        imageAbilityRight.sprite = Resources.Load<Sprite>("Sprite/Ability Card/A" + AbilityInventory.abilityInventory.skill_2);
 
 
         for(int i = 0; i < abilityLeftName.Length; i++) 

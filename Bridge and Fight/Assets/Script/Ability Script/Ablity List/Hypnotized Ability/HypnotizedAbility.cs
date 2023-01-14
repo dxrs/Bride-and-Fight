@@ -19,10 +19,14 @@ public class HypnotizedAbility : MonoBehaviour
     [SerializeField] int curUpLevelValue;
 
     [SerializeField] float hypnotizedCooldownTimer;
-    [SerializeField] float hypnotizeActivatedTime;
+    [SerializeField] float hypnotizeActivatedTimer;
 
     [SerializeField] Image imgBar;
-    [SerializeField] TextMeshProUGUI textCooldownTimer;
+    [SerializeField] Image imgAbilityIcon;
+
+
+
+    [SerializeField] TextMeshProUGUI textReady;
 
     [Header("Diamond Object Moving")]
     [SerializeField] float moveSpeed;
@@ -34,30 +38,53 @@ public class HypnotizedAbility : MonoBehaviour
     [SerializeField] bool isMoving;
 
     int indexPlayer;
-    int curLevel;
-    float curAbilityTimer;
+    int curUpLevel;
+    float barUpValue = 0;
+    float curMindControlTimer;
     float curValueTimer;
     float maxValueTimer = 20;
-    string abilityName = "Mind Control";
+    string abilityName = "Hypnotic";
     private void Awake()
     {
         hypnotizedAbility = this;
     }
     private void Start()
     {
+        curUpLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
         indexPlayer = Random.Range(0, 2);
 
-        curValueTimer = hypnotizeActivatedTime;
+        
         UIStartGame.uIStartGame.abilityLeftName[2] = abilityName;
         UIStartGame.uIStartGame.abilityRightName[2] = abilityName;
-        //up method di sini
-
+        curUpLevelValue = curUpLevel;
+        if (curUpLevelValue == 1)
+        {
+            curMindControlTimer = 15;
+        }
+        if (curUpLevelValue == 2)
+        {
+            curMindControlTimer = 17;
+        }
+        if (curUpLevelValue == 3)
+        {
+            curMindControlTimer = 17;
+        }
+        hypnotizeActivatedTimer = curMindControlTimer;
+        //curValueTimer = hypnotizeActivatedTimer;
         StartCoroutine(ringOfDiamondStartMoving());
+
+        
     }
 
     private void Update()
     {
-        if(!GameOver.gameOver.isGameOver
+        if (GameStarting.gameStarting.isGameStarted && UIStartGame.uIStartGame.abilitySelectedValue == 2)
+        {
+            imgAbilityIcon.enabled = true;
+            imgAbilityIcon.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/Mind Control/MC" + curUpLevelValue);
+            imgBar.sprite = imgAbilityIcon.sprite;
+        }
+        if (!GameOver.gameOver.isGameOver
             && GameStarting.gameStarting.isGameStarted
             && !GamePaused.gamePaused.isGamePaused
             && !GameFinish.gameFinish.isGameFinished
@@ -70,7 +97,7 @@ public class HypnotizedAbility : MonoBehaviour
             }
             
             abilityInput();
-            //hypnotizedBar();
+            hypnotizedBar();
             //textCooldownTimer.text = (int)hypnotizedCooldownTimer + "s";
         }
     }
@@ -81,13 +108,18 @@ public class HypnotizedAbility : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space)) 
             {
-                if(!isUsingAbility && hypnotizedCooldownTimer <= 0) 
+                if(!isUsingAbility && hypnotizedCooldownTimer <= 0)
                 {
-                    for(int k=0; k < diamondList.Length; k++) 
+                    imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
+                    barUpValue = 0;
+                    textReady.enabled = false;
+
+                   
+                    for (int k=0; k < diamondList.Length; k++) 
                     {
                         diamondList[k].SetActive(true);
                     }
-                    hypnotizedCooldownTimer = 5; //cur cooldown timer
+                    hypnotizedCooldownTimer = 30; //cur cooldown timer
                     if (!hypnotizedActivated) 
                     {
                         hypnotizedActivated = true;
@@ -101,6 +133,9 @@ public class HypnotizedAbility : MonoBehaviour
             {
                 if (!isUsingAbility && hypnotizedCooldownTimer <= 0)
                 {
+                    imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
+                    barUpValue = 0;
+                    textReady.enabled = false;
                     for (int k = 0; k < diamondList.Length; k++)
                     {
                         diamondList[k].SetActive(true);
@@ -123,19 +158,19 @@ public class HypnotizedAbility : MonoBehaviour
         if (hypnotizedActivated) 
         {
             isUsingAbility = true;
-            if (hypnotizeActivatedTime > 0) 
+            if (hypnotizeActivatedTimer > 0) 
             {
-                hypnotizeActivatedTime -= 1 * Time.deltaTime;
+                hypnotizeActivatedTimer -= 1 * Time.deltaTime;
             }
         }
     }
 
     void hypnotizedNotActive() 
     {
-        if(hypnotizedActivated && hypnotizeActivatedTime <= 0) 
+        if(hypnotizedActivated && hypnotizeActivatedTimer <= 0) 
         {
             hypnotizedActivated = false;
-            hypnotizeActivatedTime = 15;//cur hypnotized timer
+            hypnotizeActivatedTimer = curMindControlTimer;//cur hypnotized timer
             //textCooldownTimer.enabled = true;
 
            
@@ -146,14 +181,20 @@ public class HypnotizedAbility : MonoBehaviour
         {
             if (hypnotizedCooldownTimer > 0) 
             {
-                hypnotizedCooldownTimer -= 0.5f * Time.deltaTime;
+                hypnotizedCooldownTimer -= 1.5f * Time.deltaTime;
+            }
+
+            if (barUpValue < 30)
+            {
+                barUpValue += 0.5f * Time.deltaTime;
             }
         }
 
         if (hypnotizedCooldownTimer <= 0) 
         {
-            //textCooldownTimer.enabled = false;
             hypnotizedCooldownTimer = 0;
+            imgAbilityIcon.color = new Color(1, 1, 1);
+            textReady.enabled = true;
         }
     }
 
@@ -162,13 +203,16 @@ public class HypnotizedAbility : MonoBehaviour
         if (hypnotizedActivated) 
         {
             imgBar.enabled = true;
+            curValueTimer = hypnotizeActivatedTimer;
+
+            imgBar.fillAmount = curValueTimer / curMindControlTimer;
         }
         else 
         {
-            imgBar.enabled = false;
+            curValueTimer = barUpValue;
+            imgBar.fillAmount = curValueTimer / hypnotizedCooldownTimer;
         }
-        curValueTimer = hypnotizeActivatedTime;
-        imgBar.fillAmount = curValueTimer / maxValueTimer;
+       
     }
 
     void ringOfDiamondTransform() 
@@ -214,14 +258,18 @@ public class HypnotizedAbility : MonoBehaviour
         while (true) 
         {
             yield return new WaitForSeconds(1.5f);
-            if (hypnotizedActivated
-                && !GameOver.gameOver.isGameOver
-                && GameStarting.gameStarting.isGameStarted)
+            if (curUpLevelValue >= 2) 
             {
-                targetPos = new Vector3(Random.Range(xMin, xMax),
-                   Random.Range(yMin, yMax), 0);
-                isMoving = true;
+                if (hypnotizedActivated
+               && !GameOver.gameOver.isGameOver
+               && GameStarting.gameStarting.isGameStarted)
+                {
+                    targetPos = new Vector3(Random.Range(xMin, xMax),
+                       Random.Range(yMin, yMax), 0);
+                    isMoving = true;
+                }
             }
+           
         }
     }
     #endregion
