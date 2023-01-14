@@ -13,6 +13,7 @@ public class UIMenuManager : MonoBehaviour
 
     [SerializeField] GameObject selector;
     [SerializeField] GameObject sceneTransitionObj;
+    [SerializeField] GameObject objectSetting;
 
     [SerializeField] Button[] menuButton;
 
@@ -22,6 +23,8 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] int[] curButtonValue;
     [SerializeField] int highLightButtonValue;
     [SerializeField] int clickedValue;
+
+    [SerializeField] bool isAnimatedPopUp;
 
     bool isGoingToSelectLevel = false;
 
@@ -40,14 +43,18 @@ public class UIMenuManager : MonoBehaviour
 
     private void Update()
     {
-        for(int x = 0; x < selectorPos.Length; x++) 
+        if (!buttonMenuIsClicked) 
         {
-            if (highLightButtonValue == x+1) 
+            for (int x = 0; x < selectorPos.Length; x++)
             {
-                selector.transform.localPosition = selectorPos[x];
-                break;
+                if (highLightButtonValue == x + 1)
+                {
+                    selector.transform.localPosition = selectorPos[x];
+                    break;
+                }
             }
         }
+        
 
        
         for (int i = 0; i < menuButton.Length; i++)
@@ -57,6 +64,10 @@ public class UIMenuManager : MonoBehaviour
                 if (clickedValue == 1)
                 {
                     isGoingToSelectLevel = true;
+                }
+                if (clickedValue == 2) 
+                {
+                    isAnimatedPopUp = true;
                 }
                 menuButton[i].interactable = false;
 
@@ -73,6 +84,8 @@ public class UIMenuManager : MonoBehaviour
                 transitionObject, 100 * Time.deltaTime);
             StartCoroutine(goingToSelectLevel());
         }
+
+        animatedPopUp();
     }
 
     void buttonEventList() 
@@ -100,6 +113,20 @@ public class UIMenuManager : MonoBehaviour
     void menuButtonHighlighted(int value) 
     {
         highLightButtonValue = value;
+    }
+
+    void animatedPopUp()
+    {
+        if (isAnimatedPopUp)
+        {
+            objectSetting.transform.localScale = Vector2.MoveTowards(objectSetting.transform.localScale,
+                new Vector2(1, 1), 20 * Time.deltaTime);
+        }
+        else
+        {
+            objectSetting.transform.localScale = Vector2.MoveTowards(objectSetting.transform.localScale,
+               new Vector2(0, 0), 20 * Time.deltaTime);
+        }
     }
 
     IEnumerator goingToSelectLevel() 

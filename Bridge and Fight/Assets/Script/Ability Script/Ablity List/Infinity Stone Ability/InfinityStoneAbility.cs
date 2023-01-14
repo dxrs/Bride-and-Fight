@@ -79,18 +79,7 @@ public class InfinityStoneAbility : MonoBehaviour
     #region
     void abilityUpgrade() 
     {
-        if (curUpLevelValue == 1) 
-        {
-            
-        }
-        if (curUpLevelValue == 2) 
-        {
-            
-        }
-        if (curUpLevelValue == 3) 
-        {
-            
-        }
+        
         switch (curUpLevelValue) 
         {
             case 1:

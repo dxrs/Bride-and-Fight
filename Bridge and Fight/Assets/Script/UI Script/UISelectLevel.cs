@@ -113,6 +113,12 @@ public class UISelectLevel : MonoBehaviour
             }
         }
 
+        if (isGoingToMenu) 
+        {
+            sceneAnimationTransition();
+            StartCoroutine(SceneManagerCallback.sceneManagerCallback.loadToMenu());
+        }
+
         if (SceneManagerCallback.sceneManagerCallback.isGoingToLevel) 
         {
             levelSelector.SetActive(false);
@@ -190,7 +196,8 @@ public class UISelectLevel : MonoBehaviour
 
     public void onClickToMenu() 
     {
-        
+        isGoingToMenu = true;
+       
     }
     public void onClickToStore() 
     {

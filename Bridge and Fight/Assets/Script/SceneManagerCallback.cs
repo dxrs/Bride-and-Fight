@@ -45,6 +45,12 @@ public class SceneManagerCallback : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("Level 1");
     }
+
+    public IEnumerator loadToMenu() 
+    {
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("Scene Menu");
+    }
     // KE SELECT LEVEL SCENE
     #region
     public void keSceneSelectLevel() 

@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55db6c2cba242ed419d8c0e17c119ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScale: {x: 5, y: 5}
-  blastSpeed: 4
+  maxScale: {x: 0, y: 0}
+  blastSpeed: 0
 --- !u!58 &4743818582962043548
 CircleCollider2D:
   m_ObjectHideFlags: 0

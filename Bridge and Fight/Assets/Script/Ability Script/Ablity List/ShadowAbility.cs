@@ -188,7 +188,15 @@ public class ShadowAbility : MonoBehaviour
         {
             if (shadowAblityCoolDown > 0) 
             {
-                shadowAblityCoolDown -= 0.5f * Time.deltaTime;
+                if (curUpLevelValue != 3) 
+                {
+                    shadowAblityCoolDown -= 0.5f * Time.deltaTime;
+                }
+                else
+                {
+                    shadowAblityCoolDown -= 1f * Time.deltaTime;
+                }
+               
             }
             if (barUpValue < curShadowCooldown)
             {

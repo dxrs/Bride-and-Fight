@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class AbilityMindControlUpgrade : MonoBehaviour
+public class AbilitySlowRideUpgrade : MonoBehaviour
 {
-    public static AbilityMindControlUpgrade abilityMindControlUpgrade;
+    public static AbilitySlowRideUpgrade abilitySlowRideUpgrade;
+
 
     [Header("Other")]
     [SerializeField] Button buttonUpgrade;
@@ -27,164 +28,156 @@ public class AbilityMindControlUpgrade : MonoBehaviour
 
     [SerializeField] GameObject objectCoinImage;
 
-    [Header("Info Mind Control Upgrade Ability")]
-    public int curMindControlLevel;
-    public int nextUpgradeLevel;
+    [Header("Info Infinity Stone Upgrade Ability")]
+    public int curSlowRideLevel;
     public int curCostUpgrade;
-    [SerializeField] int maxStoneLevel;
+    [SerializeField] int maxSlowRideLevel;
     [SerializeField] int yourBank;
+
+    string abilityDesc = "when the enemy hits the player, the player will spawn a big explosion, when the enemy touches the particles of the explosion, their movement will become slow in a short time.";
 
     int curLevel;
     int curTotalAbility;
 
-    string abilityDesc = "one of the players will have a diamond ring, and when the item is summoned it will produce several diamonds, when the enemy touches the diamond then the enemy will become our friend we called friendly bot and seek and destroy other enemies.";
-
-
     private void Awake()
     {
-        abilityMindControlUpgrade = this;
+        abilitySlowRideUpgrade = this;
     }
 
     private void Start()
     {
-        curMindControlLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
+        curSlowRideLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[11]);
         yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
-        curTotalAbility= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
-
-        
+        curTotalAbility = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
     }
 
     private void Update()
     {
-
-        if (curLevel == 2) 
+        if (curLevel == 4)
         {
-            curTotalAbility = 3;
+            curTotalAbility = 4;
             PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], curTotalAbility);
         }
-        if (curTotalAbility >= 3 && curMindControlLevel == 1)
+        if (curTotalAbility >= 4 && curSlowRideLevel == 1)
         {
             imageAbilityCard.sprite = card[0];
         }
-        if (curTotalAbility>=3 && UISelectLevel.uiselectLevel.isGoingToStore && !UIShop.uIShop.isButtonAbilityClicked) 
+        if (curTotalAbility >= 4 && UISelectLevel.uiselectLevel.isGoingToStore && !UIShop.uIShop.isButtonAbilityClicked)
         {
             buttonCardAbility.interactable = true;
         }
 
-        if(!UISelectLevel.uiselectLevel.isGoingToStore ||UIShop.uIShop.isButtonAbilityClicked ) 
+        if (!UISelectLevel.uiselectLevel.isGoingToStore || UIShop.uIShop.isButtonAbilityClicked)
         {
             buttonCardAbility.interactable = false;
         }
-
-        progressUp();
-        saveDataUpMindControl();
     }
 
     void progressUp() 
     {
-        if (UIShop.uIShop.buttonAbilityClickValue == 3) 
+        if (UIShop.uIShop.buttonAbilityClickValue == 4)
         {
-            textAbilityType.text = "Ability Type : Active";
+            textAbilityType.text = "Ability Type : Passive";
             textDescAbility.text = abilityDesc;
             textUpgradeCost.text = curCostUpgrade.ToString();
-            textAbilityName.text = "HYPNOTIC";
-
-            if (curMindControlLevel == 1) 
+            textAbilityName.text = "SLOW RIDE";
+            if (curSlowRideLevel == 1)
             {
+
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health :  1hp     +1hp";
-                textInfoAbilityUpgrade[1].text = "Duration :  15     +2";
+                textInfoAbilityUpgrade[0].text = "Blast Speed :  4s     +3s";
+                textInfoAbilityUpgrade[1].text = "Max Blast Scale :  5     +5";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
 
-              
+                curCostUpgrade = 450;
 
-                curCostUpgrade = 500;
-                if (yourBank < curCostUpgrade || curLevel < 13)
+                if (yourBank < curCostUpgrade || curLevel < 6)
                 {
-                    textUpReq.text = "Requirement : Complete Level 13";
+                    textUpReq.text = "Requirement : Complete Level 6";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade && curLevel >= 13)
+                if (yourBank >= curCostUpgrade && curLevel >= 6)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
                 }
-                if (yourBank >= curCostUpgrade && curLevel < 13)
+                if (yourBank >= curCostUpgrade && curLevel < 6)
                 {
-                    textUpReq.text = "Requirement : Complete Level 13";
+                    textUpReq.text = "Requirement : Complete Level 6";
                     buttonUpgrade.interactable = false;
                 }
-            }
-            if (curMindControlLevel == 2) 
-            {
-                for (int j = 0; j < textInfoAbilityUpgrade.Length; j++)
-                {
-                    textInfoAbilityUpgrade[j].enabled = true;
-                }
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health :  2hp";
-                textInfoAbilityUpgrade[1].text = "Duration :  17     +1";
-                textInfoAbilityUpgrade[2].text = "Diamond ring will moving random through the arena";
-                
+            }
+            if (curSlowRideLevel == 2)
+            {
+                textInfoAbilityUpgrade[0].enabled = true;
+                textInfoAbilityUpgrade[1].enabled = true;
+                textInfoAbilityUpgrade[0].text = "Blast Speed :  7s     +3s";
+                textInfoAbilityUpgrade[1].text = "Max Blast Scale :  10     +2";
+
                 imageAbilityCard.sprite = card[1];
                 ImageAbilityIcon.sprite = icon[1];
 
-               
-
-                curCostUpgrade = 850;
-                if (yourBank < curCostUpgrade || curLevel < 20)
+                curCostUpgrade = 780;
+                if (yourBank < curCostUpgrade || curLevel < 15)
                 {
-                    textUpReq.text = "Requirement : Complete Level 20";
+                    textUpReq.text = "Requirement : Complete Level 15";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade && curLevel >= 20)
+
+                if (yourBank >= curCostUpgrade && curLevel >= 15)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
                 }
-                if (yourBank >= curCostUpgrade && curLevel < 20)
+                if (yourBank >= curCostUpgrade && curLevel < 15)
                 {
-                    textUpReq.text = "Requirement : Complete Level 20";
+                    textUpReq.text = "Requirement : Complete Level 15";
                     buttonUpgrade.interactable = false;
                 }
+
             }
-            if (curMindControlLevel == 3) 
+            if (curSlowRideLevel == 3)
             {
+
                 objectCoinImage.SetActive(false);
 
                 textUpReq.text = "Max Level";
+
                 for (int j = 0; j < textInfoAbilityUpgrade.Length; j++)
                 {
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health :  2hp";
-                textInfoAbilityUpgrade[1].text = "Duration :  18";
-                textInfoAbilityUpgrade[2].text = "When bot hit enemies adding 2hp player's health";
+                textInfoAbilityUpgrade[0].text = "Blast Speed :  10s";
+                textInfoAbilityUpgrade[1].text = "Max Blast Scale :  12";
+
 
                 imageAbilityCard.sprite = card[2];
                 ImageAbilityIcon.sprite = icon[2];
 
+
                 buttonUpgrade.interactable = false;
             }
         }
-
     }
-    void saveDataUpMindControl() 
+
+    void saveDataUpSlowRide() 
     {
-        if (curMindControlLevel > 1)
+        if (curSlowRideLevel > 1)
         {
-            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[5], curMindControlLevel);
+            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[11], curSlowRideLevel);
         }
     }
-    public void onClickUpgradeMindControl() 
+
+    public void onClickUpgradeSlowRide() 
     {
-        if (UIShop.uIShop.buttonAbilityClickValue == 3)
+        if (UIShop.uIShop.buttonAbilityClickValue == 4)
         {
 
             if (yourBank >= curCostUpgrade)
@@ -195,9 +188,9 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
                 PlayerPrefs.Save();
             }
-            if (curMindControlLevel < 3)
+            if (curSlowRideLevel < 3)
             {
-                curMindControlLevel++;
+                curSlowRideLevel++;
             }
 
         }

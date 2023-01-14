@@ -178,6 +178,9 @@ public class UIShop : MonoBehaviour
 
     public void onClickUpgrade() 
     {
+       
+
+       
         if (buttonAbilityClickValue == 1) 
         {
             AbilityShadowUpgrade.abilityShadowUpgrade.onClickUpgradeShadow();
@@ -190,6 +193,12 @@ public class UIShop : MonoBehaviour
         {
             AbilityMindControlUpgrade.abilityMindControlUpgrade.onClickUpgradeMindControl();
         }
+        if (buttonAbilityClickValue == 4) 
+        {
+            AbilitySlowRideUpgrade.abilitySlowRideUpgrade.onClickUpgradeSlowRide();
+        }
+       
+       
     }
 
     public void onClickBackToLevel() 
