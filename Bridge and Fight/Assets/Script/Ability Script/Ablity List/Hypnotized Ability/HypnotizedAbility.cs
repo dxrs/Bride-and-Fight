@@ -10,13 +10,15 @@ public class HypnotizedAbility : MonoBehaviour
 
     public bool hypnotizedActivated;
 
+    public int curEnemyHitValue;
+
     [SerializeField] GameObject[] player;
-    [SerializeField] GameObject[] diamondList;
     [SerializeField] GameObject ringOfDiamond;
 
     [SerializeField] bool isUsingAbility;
 
     [SerializeField] int curUpLevelValue;
+
 
     [SerializeField] float hypnotizedCooldownTimer;
     [SerializeField] float hypnotizeActivatedTimer;
@@ -37,6 +39,7 @@ public class HypnotizedAbility : MonoBehaviour
     [SerializeField] Vector3 targetPos;
     [SerializeField] bool isMoving;
 
+    int maxEnemyHit;
     int indexPlayer;
     int curUpLevel;
     float barUpValue = 0;
@@ -57,17 +60,21 @@ public class HypnotizedAbility : MonoBehaviour
         UIStartGame.uIStartGame.abilityLeftName[2] = abilityName;
         UIStartGame.uIStartGame.abilityRightName[2] = abilityName;
         curUpLevelValue = curUpLevel;
+        curEnemyHitValue = 0;
         if (curUpLevelValue == 1)
         {
+            maxEnemyHit = 5;
             curMindControlTimer = 15;
         }
         if (curUpLevelValue == 2)
         {
+            maxEnemyHit = 7;
             curMindControlTimer = 17;
         }
         if (curUpLevelValue == 3)
         {
-            curMindControlTimer = 17;
+            maxEnemyHit = 10;
+            curMindControlTimer = 18;
         }
         hypnotizeActivatedTimer = curMindControlTimer;
         //curValueTimer = hypnotizeActivatedTimer;
@@ -98,7 +105,7 @@ public class HypnotizedAbility : MonoBehaviour
             
             abilityInput();
             hypnotizedBar();
-            //textCooldownTimer.text = (int)hypnotizedCooldownTimer + "s";
+           
         }
     }
 
@@ -115,10 +122,7 @@ public class HypnotizedAbility : MonoBehaviour
                     textReady.enabled = false;
 
                    
-                    for (int k=0; k < diamondList.Length; k++) 
-                    {
-                        diamondList[k].SetActive(true);
-                    }
+                    
                     hypnotizedCooldownTimer = 30; //cur cooldown timer
                     if (!hypnotizedActivated) 
                     {
@@ -136,10 +140,7 @@ public class HypnotizedAbility : MonoBehaviour
                     imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
                     barUpValue = 0;
                     textReady.enabled = false;
-                    for (int k = 0; k < diamondList.Length; k++)
-                    {
-                        diamondList[k].SetActive(true);
-                    }
+                   
                     hypnotizedCooldownTimer = 30;//cur cooldown timer
                     if (!hypnotizedActivated)
                     {
@@ -167,14 +168,18 @@ public class HypnotizedAbility : MonoBehaviour
 
     void hypnotizedNotActive() 
     {
-        if(hypnotizedActivated && hypnotizeActivatedTimer <= 0) 
+        if (hypnotizedActivated) 
         {
-            hypnotizedActivated = false;
-            hypnotizeActivatedTimer = curMindControlTimer;//cur hypnotized timer
-            //textCooldownTimer.enabled = true;
+            if (curEnemyHitValue >= maxEnemyHit || hypnotizeActivatedTimer <= 0)
+            {
+                hypnotizedActivated = false;
+                hypnotizeActivatedTimer = curMindControlTimer;//cur hypnotized timer
+                curEnemyHitValue = 0;
 
-           
+
+            }
         }
+       
         if (!hypnotizedActivated) { isUsingAbility = false; }
 
         if (!isUsingAbility) 

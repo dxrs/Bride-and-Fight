@@ -76,8 +76,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
             {
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
-                textInfoAbilityUpgrade[0].text = "Cooldown :  5s     +0s";
-                textInfoAbilityUpgrade[1].text = "Duration :  11s     +5s";
+                textInfoAbilityUpgrade[0].text = "Cooldown : 5s -> +0s";
+                textInfoAbilityUpgrade[1].text = "Duration : 11s -> +5s";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
@@ -86,7 +86,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 
                 if (yourBank < curCostUpgrade || curLevel<2) 
                 {
-                    textUpReq.text = "Requirement : Complete Level 2";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 2";
                     buttonUpgrade.interactable = false;
                 }
                 if(yourBank>=curCostUpgrade && curLevel >= 2) 
@@ -96,7 +96,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade && curLevel < 2)
                 {
-                    textUpReq.text = "Requirement : Complete Level 2";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 2";
                     buttonUpgrade.interactable = false;
                 }
 
@@ -106,8 +106,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
             {
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
-                textInfoAbilityUpgrade[0].text = "Cooldown :  5s     +7s";
-                textInfoAbilityUpgrade[1].text = "Duration :  16s     +4s";
+                textInfoAbilityUpgrade[0].text = "Cooldown : 5s -> +7s";
+                textInfoAbilityUpgrade[1].text = "Duration : 16s -> +4s";
 
                 imageAbilityCard.sprite = card[1];
                 ImageAbilityIcon.sprite = icon[1];
@@ -115,7 +115,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 curCostUpgrade = 450;
                 if (yourBank < curCostUpgrade || curLevel < 3)
                 {
-                    textUpReq.text = "Requirement : Complete Level 3";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 3";
                     buttonUpgrade.interactable = false;
                 }
 
@@ -126,7 +126,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade && curLevel < 3)
                 {
-                    textUpReq.text = "Requirement : Complete Level 3";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 3";
                     buttonUpgrade.interactable = false;
                 }
 
@@ -143,8 +143,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
               
-                textInfoAbilityUpgrade[0].text = "Cooldown :  12s";
-                textInfoAbilityUpgrade[1].text = "Duration :  20s";
+                textInfoAbilityUpgrade[0].text = "Cooldown : 12s";
+                textInfoAbilityUpgrade[1].text = "Duration : 20s";
                 textInfoAbilityUpgrade[2].text = "Player now can pick the coin even ghost mode actived";
 
                 imageAbilityCard.sprite = card[2];

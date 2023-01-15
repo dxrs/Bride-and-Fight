@@ -8,6 +8,8 @@ public class SlowRideAbility : MonoBehaviour
 
     [SerializeField] float blastSpeed;
 
+    [SerializeField] GameObject bigBlaster;
+
     int curAbilityLevel;
 
 
@@ -34,13 +36,13 @@ public class SlowRideAbility : MonoBehaviour
 
     private void Update()
     {
-        transform.localScale = Vector2.MoveTowards(transform.localScale,
+       bigBlaster.transform.localScale = Vector2.MoveTowards(bigBlaster.transform.localScale,
             maxScale, blastSpeed * Time.deltaTime);
 
 
-        if (transform.localScale.x >= maxScale.x) 
+        if (bigBlaster.transform.localScale.x >= maxScale.x) 
         {
-            Destroy(gameObject,1);
+            Destroy(gameObject,4.5f);
         }
     }
 

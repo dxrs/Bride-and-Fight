@@ -88,8 +88,8 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
 
-                textInfoAbilityUpgrade[0].text = "Blast Speed :  4s     +3s";
-                textInfoAbilityUpgrade[1].text = "Max Blast Scale :  5     +5";
+                textInfoAbilityUpgrade[0].text = "Blast Speed : 4s -> +3s";
+                textInfoAbilityUpgrade[1].text = "Max Blast Scale : 5 -> +5";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
@@ -117,8 +117,8 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
             {
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
-                textInfoAbilityUpgrade[0].text = "Blast Speed :  7s     +3s";
-                textInfoAbilityUpgrade[1].text = "Max Blast Scale :  10     +2";
+                textInfoAbilityUpgrade[0].text = "Blast Speed : 7s -> +3s";
+                textInfoAbilityUpgrade[1].text = "Max Blast Scale : 10 -> +2";
 
                 imageAbilityCard.sprite = card[1];
                 ImageAbilityIcon.sprite = icon[1];
@@ -126,7 +126,7 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                 curCostUpgrade = 780;
                 if (yourBank < curCostUpgrade || curLevel < 15)
                 {
-                    textUpReq.text = "Requirement : Complete Level 15";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 15";
                     buttonUpgrade.interactable = false;
                 }
 
@@ -137,7 +137,7 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade && curLevel < 15)
                 {
-                    textUpReq.text = "Requirement : Complete Level 15";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 15";
                     buttonUpgrade.interactable = false;
                 }
 
@@ -154,8 +154,8 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
 
-                textInfoAbilityUpgrade[0].text = "Blast Speed :  10s";
-                textInfoAbilityUpgrade[1].text = "Max Blast Scale :  12";
+                textInfoAbilityUpgrade[0].text = "Blast Speed : 10s";
+                textInfoAbilityUpgrade[1].text = "Max Blast Scale : 12";
 
 
                 imageAbilityCard.sprite = card[2];

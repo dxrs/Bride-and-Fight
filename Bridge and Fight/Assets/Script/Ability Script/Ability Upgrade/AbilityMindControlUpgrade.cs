@@ -37,7 +37,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
     int curLevel;
     int curTotalAbility;
 
-    string abilityDesc = "one of the players will have a diamond ring, and when the item is summoned it will produce several diamonds, when the enemy touches the diamond then the enemy will become our friend we called friendly bot and seek and destroy other enemies.";
+    string abilityDesc = "one of the players will have a ring, when the enemy touches the diamond then the enemy will become our friend we called friendly bot and seek and destroy other enemies.";
 
 
     private void Awake()
@@ -95,8 +95,9 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 textInfoAbilityUpgrade[0].enabled = true;
                 textInfoAbilityUpgrade[1].enabled = true;
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health :  1hp     +1hp";
-                textInfoAbilityUpgrade[1].text = "Duration :  15     +2";
+                textInfoAbilityUpgrade[0].text = "Max Bot Health : 1hp  -> +1hp";
+                textInfoAbilityUpgrade[1].text = "Duration : 15 -> +2";
+                textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 5 -> +2 ";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
@@ -106,7 +107,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 curCostUpgrade = 500;
                 if (yourBank < curCostUpgrade || curLevel < 13)
                 {
-                    textUpReq.text = "Requirement : Complete Level 13";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 13";
                     buttonUpgrade.interactable = false;
                 }
                 if (yourBank >= curCostUpgrade && curLevel >= 13)
@@ -116,7 +117,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade && curLevel < 13)
                 {
-                    textUpReq.text = "Requirement : Complete Level 13";
+                    textUpReq.text = "Upgrade Requirement : Complete Level 13";
                     buttonUpgrade.interactable = false;
                 }
             }
@@ -127,9 +128,10 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health :  2hp";
-                textInfoAbilityUpgrade[1].text = "Duration :  17     +1";
-                textInfoAbilityUpgrade[2].text = "Diamond ring will moving random through the arena";
+                textInfoAbilityUpgrade[0].text = "Max Bot Health : 2hp";
+                textInfoAbilityUpgrade[1].text = "Duration : 17 -> +1";
+                textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 7 -> +3 ";
+                textInfoAbilityUpgrade[3].text = "ring will moving random through the arena";
                 
                 imageAbilityCard.sprite = card[1];
                 ImageAbilityIcon.sprite = icon[1];
@@ -163,9 +165,10 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health :  2hp";
-                textInfoAbilityUpgrade[1].text = "Duration :  18";
-                textInfoAbilityUpgrade[2].text = "When bot hit enemies adding 2hp player's health";
+                textInfoAbilityUpgrade[0].text = "Max Bot Health : 2hp";
+                textInfoAbilityUpgrade[1].text = "Duration : 18";
+                textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 10";
+                textInfoAbilityUpgrade[3].text = "When bot hit enemies adding 2hp player's health";
 
                 imageAbilityCard.sprite = card[2];
                 ImageAbilityIcon.sprite = icon[2];
