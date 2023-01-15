@@ -9,7 +9,7 @@ public class SaveDataManager : MonoBehaviour
 
     public string[] listDataName;
 
-    int[] abilityListUpgradeDataValue = { 2, 3, 5, 11 };
+    int[] abilityListUpgradeDataValue = { 2, 3, 5, 11, 8, 9 ,10 };
  
 
     private void Awake()
@@ -21,17 +21,37 @@ public class SaveDataManager : MonoBehaviour
         currentLevelAbility();
     }
 
-    private void Update()
+   
+    public void deleteData() 
     {
-        
-        if (Input.GetKey(KeyCode.K))
+        PlayerPrefs.DeleteAll();
+        //level
+        if (!PlayerPrefs.HasKey(listDataName[6]))
         {
-            PlayerPrefs.DeleteAll();
-
-            PlayerPrefs.Save();
-            
-            
+            PlayerPrefs.SetInt(listDataName[6], 1);
         }
+
+        //planet
+        if (!PlayerPrefs.HasKey(listDataName[7]))
+        {
+            PlayerPrefs.SetInt(listDataName[7], 1);
+        }
+
+        //total ability
+        if (!PlayerPrefs.HasKey(listDataName[4]))
+        {
+            PlayerPrefs.SetInt(listDataName[4], 2);
+        }
+
+        // list ability
+        foreach (int indexDataAbility in abilityListUpgradeDataValue)
+        {
+            if (!PlayerPrefs.HasKey(listDataName[indexDataAbility]))
+            {
+                PlayerPrefs.SetInt(listDataName[indexDataAbility], 1);
+            }
+        }
+
     }
     void currentLevelAbility()
     {
@@ -63,23 +83,6 @@ public class SaveDataManager : MonoBehaviour
             }
         }
 
-        /*
-        if (!PlayerPrefs.HasKey(listDataName[2]))
-        {
-            PlayerPrefs.SetInt(listDataName[2], 1);
-        }
-        if (!PlayerPrefs.HasKey(listDataName[3])) 
-        {
-            PlayerPrefs.SetInt(listDataName[3], 1);
-        }
-        if (!PlayerPrefs.HasKey(listDataName[5])) 
-        {
-            PlayerPrefs.SetInt(listDataName[5], 1);
-        }
-        if (!PlayerPrefs.HasKey(listDataName[11]))
-        {
-            PlayerPrefs.SetInt(listDataName[11], 1);
-        }
-        */
+       
     }
 }
