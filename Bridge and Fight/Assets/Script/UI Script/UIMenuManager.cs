@@ -14,6 +14,7 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] GameObject selector;
     [SerializeField] GameObject sceneTransitionObj;
     [SerializeField] GameObject objectSetting;
+    [SerializeField] GameObject objectCredit;
 
     [SerializeField] Button[] menuButton;
 
@@ -25,6 +26,13 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] int clickedValue;
 
     [SerializeField] bool isAnimatedPopUp;
+
+
+    [Header("TOGGLE")]
+    [SerializeField] Toggle[] checkListToggleButton;
+    [SerializeField] int visualValue;
+    [SerializeField] int sfxValue;
+    [SerializeField] int musicValue;
 
     bool isGoingToSelectLevel = false;
 
@@ -39,6 +47,13 @@ public class UIMenuManager : MonoBehaviour
     {
         
         buttonEventList();
+
+        visualValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[8], 1);
+        sfxValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[9], 1);
+        musicValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[10], 1);
+        checkListToggleButton[0].isOn = visualValue == 1;
+        checkListToggleButton[1].isOn = sfxValue == 1;
+        checkListToggleButton[2].isOn = musicValue == 1;
     }
 
     private void Update()
@@ -69,14 +84,32 @@ public class UIMenuManager : MonoBehaviour
                 {
                     isAnimatedPopUp = true;
                 }
+                if (clickedValue == 4) 
+                {
+                    Application.Quit();
+                }
                 menuButton[i].interactable = false;
 
             }
             else 
             {
+                isAnimatedPopUp = false;
                 menuButton[i].interactable = true;
             }
         }
+
+        if (!buttonMenuIsClicked) 
+        {
+            if (highLightButtonValue == 3)
+            {
+                objectCredit.SetActive(true);
+            }
+            else
+            {
+                objectCredit.SetActive(false);
+            }
+        }
+       
 
         if (isGoingToSelectLevel) 
         {
@@ -86,6 +119,33 @@ public class UIMenuManager : MonoBehaviour
         }
 
         animatedPopUp();
+
+        if (visualValue == 1)
+        {
+            checkListToggleButton[0].isOn = true;
+        }
+        else
+        {
+            checkListToggleButton[0].isOn = false;
+        }
+
+        if (sfxValue == 1)
+        {
+            checkListToggleButton[1].isOn = true;
+        }
+        else
+        {
+            checkListToggleButton[1].isOn = false;
+        }
+
+        if (musicValue == 1)
+        {
+            checkListToggleButton[2].isOn = true;
+        }
+        else
+        {
+            checkListToggleButton[2].isOn = false;
+        }
     }
 
     void buttonEventList() 
@@ -107,12 +167,20 @@ public class UIMenuManager : MonoBehaviour
     void menuButtonClicked(int value) 
     {
         clickedValue = value;
-        buttonMenuIsClicked = true;
+        if (clickedValue != 3) 
+        {
+            buttonMenuIsClicked = true;
+        }
+       
     }
 
     void menuButtonHighlighted(int value) 
     {
-        highLightButtonValue = value;
+        if (!buttonMenuIsClicked) 
+        {
+            highLightButtonValue = value;
+        }
+        
     }
 
     void animatedPopUp()
@@ -138,6 +206,45 @@ public class UIMenuManager : MonoBehaviour
         }
     }
 
+    public void onClickExtToMainMenu() 
+    {
+        if (buttonMenuIsClicked) 
+        {
+            buttonMenuIsClicked = false;
+        }
+    }
 
+    public void onClickDeleteData() 
+    {
+        if (buttonMenuIsClicked)
+        {
+            SaveDataManager.saveDataManager.deleteData();
+            visualValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[8], 1);
+            sfxValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[9], 1);
+            musicValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[10], 1);
+        }
+    }
+
+    #region toggle button
+    public void toggleVisual()
+    {
+        visualValue = checkListToggleButton[0].isOn ? 1 : 0;
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[8], visualValue);
+        PlayerPrefs.Save();
+    }
+    public void toggleSFX()
+    {
+        sfxValue = checkListToggleButton[1].isOn ? 1 : 0;
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[9], sfxValue);
+        PlayerPrefs.Save();
+    }
+
+    public void toggleMusic()
+    {
+        musicValue = checkListToggleButton[2].isOn ? 1 : 0;
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[10], musicValue);
+        PlayerPrefs.Save();
+    }
+    #endregion
 
 }

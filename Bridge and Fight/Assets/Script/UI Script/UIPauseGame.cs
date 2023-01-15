@@ -14,8 +14,10 @@ public class UIPauseGame : MonoBehaviour
     [SerializeField] GameObject objectRestartExit;
     [SerializeField] GameObject setting;
     [SerializeField] GameObject postProc;
+    [SerializeField] GameObject sceneTransition;
 
     [SerializeField] bool isInSetting;
+    [SerializeField] bool isAnimatedTransition;
 
     [SerializeField] Vector2[] selectorPos;
 
@@ -67,6 +69,7 @@ public class UIPauseGame : MonoBehaviour
             if (!GameOver.gameOver.isGameOver) 
             {
                 Time.timeScale = 0;
+                
             }
         }
         else 
@@ -76,6 +79,11 @@ public class UIPauseGame : MonoBehaviour
             if (!GameOver.gameOver.isGameOver) 
             {
                 Time.timeScale = 1;
+                
+            }
+            if(!GameOver.gameOver.isGameOver || !GameOver.gameOver.isGameOver || !GameStarting.gameStarting.isGameStarted) 
+            {
+                
             }
             
         }
@@ -104,15 +112,14 @@ public class UIPauseGame : MonoBehaviour
                     GamePaused.gamePaused.isGamePaused = false;
                     UIStartGame.uIStartGame.listUIObject[2].SetActive(false);
                     UIStartGame.uIStartGame.listUIObject[1].SetActive(true);
-                    if (Cursor.visible == true) 
-                    {
-                        Cursor.visible = false;
-                    }
+                    Cursor.visible = false;
                     isInSetting = false;
                     buttonPauseHighlightedValue = 1;
                 }
             }
         }
+
+        
 
         if (isInSetting) 
         {
@@ -122,6 +129,7 @@ public class UIPauseGame : MonoBehaviour
         }
         else 
         {
+            
             objectRestartExit.transform.localPosition = Vector2.MoveTowards(objectRestartExit.transform.localPosition,
                new Vector2(0, 0), 300 * Time.unscaledDeltaTime);
             setting.SetActive(false);
@@ -129,6 +137,7 @@ public class UIPauseGame : MonoBehaviour
 
         compareSelectorPos();
         compareButtonCLickValue();
+        animatedTransition();
 
         if (visualValue == 0) 
         {
@@ -138,9 +147,18 @@ public class UIPauseGame : MonoBehaviour
         {
             postProc.SetActive(true);
         }
-       
-    }
+        
 
+    }
+    void animatedTransition()
+    {
+        if (isAnimatedTransition) 
+        {
+            sceneTransition.transform.localScale = Vector2.MoveTowards(sceneTransition.transform.localScale,
+                new Vector2(30.0f, 30.0f),
+                100 * Time.unscaledDeltaTime);
+        }
+    }
     void compareSelectorPos() 
     {
         if (GamePaused.gamePaused.isGamePaused) 
@@ -188,6 +206,25 @@ public class UIPauseGame : MonoBehaviour
                 Cursor.visible = false;
                 buttonPauseHighlightedValue = 1;
             }
+
+            if (buttonPauseSelectedValue == 3) 
+            {
+                isAnimatedTransition = true;
+                SceneManagerCallback.sceneManagerCallback.restartScene();
+            }
+            if (buttonPauseSelectedValue == 4) 
+            {
+                isAnimatedTransition = true;
+                SceneManagerCallback.sceneManagerCallback.loadToMenu();
+            }
+
+            if(buttonPauseSelectedValue==3 || buttonPauseSelectedValue == 4) 
+            {
+                for(int j = 0; j < listPauseButton.Length; j++) 
+                {
+                    listPauseButton[j].interactable = false;
+                }
+            }
         }
     }
 
@@ -199,11 +236,7 @@ public class UIPauseGame : MonoBehaviour
             buttoniSClicked = true;
         }
        
-        if (buttonPauseHighlightedValue != 2) 
-        {
-            
-        }
-        
+       
     }
 
     void buttonPauseHighlighted(int value) 
