@@ -151,8 +151,8 @@ public class UIEndGame : MonoBehaviour
     {
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {
-            Cursor.visible = true;
-            GameStarting.gameStarting.isGameStarted = false;
+            //Cursor.visible = true;
+            //GameStarting.gameStarting.isGameStarted = false;
             textCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
            
             if (textEndGame.color == new Color(1, 1, 1, 0))

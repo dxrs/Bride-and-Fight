@@ -67,7 +67,7 @@ public class ShadowAbility : MonoBehaviour
 
     private void Update()
     {
-        if (GameStarting.gameStarting.isGameStarted && UIStartGame.uIStartGame.abilitySelectedValue==0) 
+        if (GameStarting.gameStarting.isGameStarted && UIStartGame.uIStartGame.abilitySelectedValue==0 && SceneManagerStatus.sceneManagerStatus.sceneStats!="Level Boss") 
         {
             imgAbilityIcon.enabled = true;
             imgAbilityIcon.sprite = Resources.Load<Sprite>("Sprite/Ability Icon/Ghost/G" + curUpLevelValue);
@@ -83,7 +83,8 @@ public class ShadowAbility : MonoBehaviour
             && GameStarting.gameStarting.isGameStarted
             && !GamePaused.gamePaused.isGamePaused
             && !GameFinish.gameFinish.isGameFinished
-            &&UIStartGame.uIStartGame.abilitySelectedValue==0) 
+            &&UIStartGame.uIStartGame.abilitySelectedValue==0
+            && SceneManagerStatus.sceneManagerStatus.sceneStats!="Level Boss") 
         {
             abilityInput();
             shadowBar();

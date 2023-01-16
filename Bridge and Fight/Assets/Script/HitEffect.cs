@@ -28,10 +28,10 @@ public class HitEffect : MonoBehaviour
     private void Awake()
     {
         hitEffect = this;
-        //flashMaterial = Material.Instantiate(flashMaterial);
+       
     }
 
-   
+
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class HitEffect : MonoBehaviour
     
     public void flashOut()
     {
-
+     
         if (flashRoutine != null) 
         {
             StopCoroutine(flashingObject());
@@ -52,13 +52,13 @@ public class HitEffect : MonoBehaviour
     
     IEnumerator flashingObject() 
     {
-        //Material materialSementara = spriteRenderer.material;
+     
 
         spriteRenderer.material = flashMaterial;
         yield return new WaitForSeconds(duration);
         spriteRenderer.material = originalMaterial;
 
         flashRoutine = null;
-        //yield return StartCoroutine(flashingObject());
+  
     }
 }

@@ -32,11 +32,16 @@ public class Player2Health : MonoBehaviour
     }
     public void p2TriggerWithNormalEnemy() 
     {
-        playerHealth -= 5;
+        playerHealth -= 3;
     }
     public void p2TriggerWithMediumEnemy() 
     {
-        playerHealth -= 10;
+        playerHealth -= 6;
+    }
+
+    public void p2HitByBullBoss()
+    {
+        playerHealth -= 8;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

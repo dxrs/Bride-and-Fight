@@ -162,6 +162,7 @@ public class UIStartGame : MonoBehaviour
         }
     }
 
+    // button di boss level
     public void onClickContinue() 
     {
         Cursor.visible = false;
@@ -212,31 +213,7 @@ public class UIStartGame : MonoBehaviour
         imageAbilityRight.sprite = Resources.Load<Sprite>("Sprite/Ability Card/A" + AbilityInventory.abilityInventory.skill_2);
 
 
-        for(int i = 0; i < abilityLeftName.Length; i++) 
-        {
-            if (AbilityInventory.abilityInventory.skill_1 == i)
-            {
-                //textAbilityLeft.text = abilityLeftName[i];
-                //break;
-            }
-            else 
-            {
-               // textAbilityLeft.text = "null";
-            }
-        }
-
-        for (int i = 0; i < abilityRightName.Length; i++)
-        {
-            if (AbilityInventory.abilityInventory.skill_2 == i)
-            {
-                //textAbilityRight.text = abilityRightName[i];
-                //break;
-            }
-            else
-            {
-               // textAbilityRight.text = "null";
-            }
-        }
+       
 
         
     }

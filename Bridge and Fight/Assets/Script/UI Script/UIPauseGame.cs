@@ -81,10 +81,7 @@ public class UIPauseGame : MonoBehaviour
                 Time.timeScale = 1;
                 
             }
-            if(!GameOver.gameOver.isGameOver || !GameOver.gameOver.isGameOver || !GameStarting.gameStarting.isGameStarted) 
-            {
-                
-            }
+           
             
         }
 
@@ -100,7 +97,7 @@ public class UIPauseGame : MonoBehaviour
                     GamePaused.gamePaused.isGamePaused = true;
                     UIStartGame.uIStartGame.listUIObject[2].SetActive(true);
                     UIStartGame.uIStartGame.listUIObject[1].SetActive(false);
-                    Cursor.visible = true;
+                    //Cursor.visible = true;
                     if (buttoniSClicked) 
                     {
                         buttoniSClicked = false;
@@ -112,7 +109,7 @@ public class UIPauseGame : MonoBehaviour
                     GamePaused.gamePaused.isGamePaused = false;
                     UIStartGame.uIStartGame.listUIObject[2].SetActive(false);
                     UIStartGame.uIStartGame.listUIObject[1].SetActive(true);
-                    Cursor.visible = false;
+                    //Cursor.visible = false;
                     isInSetting = false;
                     buttonPauseHighlightedValue = 1;
                 }
@@ -203,7 +200,7 @@ public class UIPauseGame : MonoBehaviour
                 GamePaused.gamePaused.isGamePaused = false;
                 UIStartGame.uIStartGame.listUIObject[2].SetActive(false);
                 UIStartGame.uIStartGame.listUIObject[1].SetActive(true);
-                Cursor.visible = false;
+                //Cursor.visible = false;
                 buttonPauseHighlightedValue = 1;
             }
 

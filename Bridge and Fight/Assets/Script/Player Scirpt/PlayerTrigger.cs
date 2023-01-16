@@ -45,6 +45,10 @@ public class PlayerTrigger : MonoBehaviour
                 Instantiate(playerHitParticle, transform.position, Quaternion.identity);
             }
         }
+        if(collision.gameObject.tag=="Bull Boss") 
+        {
+            Instantiate(playerHitParticle, transform.position, Quaternion.identity);
+        }
        
         
     }

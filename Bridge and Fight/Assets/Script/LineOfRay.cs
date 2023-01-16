@@ -16,6 +16,8 @@ public class LineOfRay : MonoBehaviour
     public LayerMask layerMask;
 
     EnemyStatus enemyStatus;
+
+    BullBoss bullBoss;
     private void Awake()
     {
         if (lineOfRay == null) { lineOfRay = this; }
@@ -61,6 +63,23 @@ public class LineOfRay : MonoBehaviour
                 }
                
 
+            }
+            else if(hit.collider.gameObject.tag=="Bull Boss" && BulletConnect.bulletConnect.isConnected && SceneManagerStatus.sceneManagerStatus.sceneStats=="Level Boss")
+            {
+                Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.blue);
+                bullBoss = hit.collider.gameObject.GetComponent<BullBoss>();
+                if (!bullBoss.isChassingPlayer)
+                {
+                    bullBoss.bullBossHealth -= 2 * Time.deltaTime;
+
+                }
+               
+          
+               
+                if (bullBoss.bullBossHealth <= 0) 
+                {
+                    TotalCoin.totalCoin.curCoinGet += 100;
+                }
             }
             else if (hit.collider.gameObject.tag == "Normal Enemy" && BulletConnect.bulletConnect.isConnected)
             {
