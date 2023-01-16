@@ -85,6 +85,11 @@ public class UIPauseGame : MonoBehaviour
             
         }
 
+        if (isAnimatedTransition) 
+        {
+            
+        }
+
         if(GameStarting.gameStarting.isGameStarted 
             && !GameOver.gameOver.isGameOver 
             && !GameFinish.gameFinish.isGameFinished) 
@@ -207,12 +212,17 @@ public class UIPauseGame : MonoBehaviour
             if (buttonPauseSelectedValue == 3) 
             {
                 isAnimatedTransition = true;
+                GamePaused.gamePaused.isGamePaused = false;
+                PlayerMovement.playerMovement.restartOrExit();
                 SceneManagerCallback.sceneManagerCallback.restartScene();
             }
-            if (buttonPauseSelectedValue == 4) 
+            if (buttonPauseSelectedValue == 4)
             {
                 isAnimatedTransition = true;
-                SceneManagerCallback.sceneManagerCallback.loadToMenu();
+                GamePaused.gamePaused.isGamePaused = false;
+                PlayerMovement.playerMovement.restartOrExit();
+
+               SceneManagerCallback.sceneManagerCallback.loadToMenu();
             }
 
             if(buttonPauseSelectedValue==3 || buttonPauseSelectedValue == 4) 
@@ -244,6 +254,8 @@ public class UIPauseGame : MonoBehaviour
         }
             
     }
+
+ 
 
     public void onClickButtonSetting() 
     {
@@ -278,4 +290,7 @@ public class UIPauseGame : MonoBehaviour
         PlayerPrefs.Save();
     }
     #endregion
+
+
+    
 }

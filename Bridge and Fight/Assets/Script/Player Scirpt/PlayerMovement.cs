@@ -160,6 +160,12 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
+
+    public void restartOrExit() 
+    {
+        rb.drag = 10;
+        cc.enabled = false;
+    }
     
 
 
