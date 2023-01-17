@@ -32,7 +32,7 @@ public class UISelectLevel : MonoBehaviour
     [SerializeField] GameObject levelSelector;
     [SerializeField] GameObject[] levelSelectorPos;
     [SerializeField] GameObject shopObject;
-    [SerializeField] GameObject sceneTransition;
+    public GameObject sceneTransition;
 
     [SerializeField] Button[] otherButton;
 

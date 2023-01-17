@@ -9,6 +9,7 @@ public class SceneManagerCallback : MonoBehaviour
 
     public bool isGoingToLevel;
 
+
     private void Awake()
     {
         sceneManagerCallback = this;
@@ -16,6 +17,7 @@ public class SceneManagerCallback : MonoBehaviour
     private void Start()
     {
         idLevelPerSceneIndex();
+      
     }
   
    
@@ -36,7 +38,10 @@ public class SceneManagerCallback : MonoBehaviour
     {
         isGoingToLevel = true;
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+ButtonLevel.buttonLevel.id);
+        SceneManager.LoadScene(UISelectLevel.uiselectLevel.levelButtonClickedValue);
+       
+        
+        
     }
 
     public IEnumerator loadToLevel1() 

@@ -23,7 +23,6 @@ public class ButtonLevel : MonoBehaviour
 
 
     bool isPurchased = false;
-
     int curLevel;
     int indexButton;
     int coin;
@@ -60,7 +59,8 @@ public class ButtonLevel : MonoBehaviour
 
      void purchaseLevel()
     {
-        if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue)
+        
+        if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue )
         {
             if (idStatus == 1)
             {
@@ -68,6 +68,9 @@ public class ButtonLevel : MonoBehaviour
                 {
                     UISelectLevel.uiselectLevel.sceneAnimationTransition();
                     print("masuk ke scene " + id);
+
+                    SceneManagerCallback.sceneManagerCallback.masukKeSceneLevel();
+
                 }
                 
             }
@@ -216,6 +219,8 @@ public class ButtonLevel : MonoBehaviour
 
         yield return null;
     }
+
+    
 
    
 }
