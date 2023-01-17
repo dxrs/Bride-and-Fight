@@ -115,24 +115,28 @@ public class UIEndGame : MonoBehaviour
     {
         isGoingTransition = true;
         isCoinDataSaved = true;
-        if (UIStartGame.uIStartGame.idLevel == curLevelValue) 
+        if (curLevelValue <= UIStartGame.uIStartGame.totalLevel) 
         {
-            if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
+            if (UIStartGame.uIStartGame.idLevel == curLevelValue)
+            {
+                if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level")
+                {
+                    if (isCoinDataSaved)
+                    {
+                        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], totalCoin);
+                    }
+                }
+
+            }
+            else
             {
                 if (isCoinDataSaved)
                 {
-                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], totalCoin);
+                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
                 }
             }
-           
         }
-        else 
-        {
-            if (isCoinDataSaved)
-            {
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
-            }
-        }
+       
         
         StartCoroutine(loadToSceneSelectLevel());
         listEndGameButton[0].interactable = false;

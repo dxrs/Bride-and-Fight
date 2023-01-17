@@ -54,7 +54,7 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
 
     private void Update()
     {
-        if (curLevel == 4)
+        if (curLevel == 3)
         {
             curTotalAbility = 4;
             PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], curTotalAbility);
@@ -96,6 +96,7 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
 
                 curCostUpgrade = 450;
 
+                /*
                 if (yourBank < curCostUpgrade || curLevel < 6)
                 {
                     textUpReq.text = "Requirement : Complete Level 6";
@@ -111,6 +112,17 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                     textUpReq.text = "Requirement : Complete Level 6";
                     buttonUpgrade.interactable = false;
                 }
+                */
+
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade) 
+                {
+                    buttonUpgrade.interactable = false;
+                }
 
             }
             if (curSlowRideLevel == 2)
@@ -124,6 +136,7 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                 ImageAbilityIcon.sprite = icon[1];
 
                 curCostUpgrade = 780;
+                /*
                 if (yourBank < curCostUpgrade || curLevel < 15)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 15";
@@ -138,6 +151,16 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                 if (yourBank >= curCostUpgrade && curLevel < 15)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 15";
+                    buttonUpgrade.interactable = false;
+                }
+                */
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
                     buttonUpgrade.interactable = false;
                 }
 

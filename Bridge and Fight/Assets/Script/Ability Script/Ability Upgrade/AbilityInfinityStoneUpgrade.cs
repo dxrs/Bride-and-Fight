@@ -80,6 +80,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
 
                 curCostUpgrade = 300;
 
+                /*
                 if (yourBank < curCostUpgrade || curLevel < 4)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 4";
@@ -95,6 +96,16 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                     textUpReq.text = "Upgrade Requirement : Complete Level 4";
                     buttonUpgrade.interactable = false;
                 }
+                */
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
+                    buttonUpgrade.interactable = false;
+                }
 
             }
             if (curStoneLevel == 2) 
@@ -108,6 +119,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 ImageAbilityIcon.sprite = icon[1];
 
                 curCostUpgrade = 600;
+                /*
                 if (yourBank < curCostUpgrade || curLevel < 9)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 9";
@@ -122,6 +134,16 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 if (yourBank >= curCostUpgrade && curLevel < 9)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 9";
+                    buttonUpgrade.interactable = false;
+                }
+                */
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
                     buttonUpgrade.interactable = false;
                 }
 

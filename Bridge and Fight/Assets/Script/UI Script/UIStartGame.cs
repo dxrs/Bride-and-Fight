@@ -14,6 +14,7 @@ public class UIStartGame : MonoBehaviour
     public bool isStarted;
 
     public int idLevel;
+    public int totalLevel;
 
     public GameObject[] listUIObject;
 
@@ -68,6 +69,7 @@ public class UIStartGame : MonoBehaviour
 
     private void Start()
     {
+        totalLevel = 4;
         if(SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
         {
             listAbilityObject.SetActive(true);

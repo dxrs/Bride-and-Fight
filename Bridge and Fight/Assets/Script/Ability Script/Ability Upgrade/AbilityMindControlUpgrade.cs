@@ -105,6 +105,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
               
 
                 curCostUpgrade = 500;
+                /*
                 if (yourBank < curCostUpgrade || curLevel < 13)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 13";
@@ -118,6 +119,16 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 if (yourBank >= curCostUpgrade && curLevel < 13)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 13";
+                    buttonUpgrade.interactable = false;
+                }
+                */
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
                     buttonUpgrade.interactable = false;
                 }
             }
@@ -139,6 +150,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                
 
                 curCostUpgrade = 850;
+                /*
                 if (yourBank < curCostUpgrade || curLevel < 20)
                 {
                     textUpReq.text = "Requirement : Complete Level 20";
@@ -152,6 +164,16 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 if (yourBank >= curCostUpgrade && curLevel < 20)
                 {
                     textUpReq.text = "Requirement : Complete Level 20";
+                    buttonUpgrade.interactable = false;
+                }
+                */
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
                     buttonUpgrade.interactable = false;
                 }
             }
