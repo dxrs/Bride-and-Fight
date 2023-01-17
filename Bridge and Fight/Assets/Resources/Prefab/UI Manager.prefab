@@ -1369,7 +1369,7 @@ RectTransform:
   - {fileID: 6002340263781055321}
   - {fileID: 6002340265563598772}
   m_Father: {fileID: 6002340264394926688}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1717,7 +1717,7 @@ RectTransform:
   - {fileID: 6002340264325514158}
   - {fileID: 6002340264165111477}
   m_Father: {fileID: 6002340264394926688}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3741,7 +3741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6002340264394926688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3755,6 +3755,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6002340265054448314}
+  - {fileID: 6002340265706415068}
   - {fileID: 6002340265108802963}
   - {fileID: 6002340263914633117}
   - {fileID: 6002340263990977780}
@@ -5563,12 +5564,11 @@ RectTransform:
   m_GameObject: {fileID: 6002340265108802960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62879, y: 0.62879, z: 0.62879}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6002340265706415068}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
   m_Father: {fileID: 6002340264394926688}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6317,7 +6317,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6002340264394926688}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -7658,6 +7658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInGameUI: 0
   timerValue: 120
+  coinImageObj: {fileID: 6002340265108802960}
   isTimerStart: 0
   textTimer: {fileID: 6002340265054448317}
   textCoin: {fileID: 6002340265706415071}
@@ -7898,15 +7899,15 @@ RectTransform:
   m_GameObject: {fileID: 6002340265706415069}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.590356, y: 1.590356, z: 1.590356}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6002340265108802963}
-  m_RootOrder: 0
+  m_Father: {fileID: 6002340264394926688}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 236.88611, y: -40}
+  m_AnchoredPosition: {x: -756.19995, y: 445}
   m_SizeDelta: {x: 176.341, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6002340265706415070

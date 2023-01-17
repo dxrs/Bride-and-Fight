@@ -5,9 +5,18 @@ using UnityEngine;
 public class CoinDestroy : MonoBehaviour
 {
     // Start is called before the first frame update
+    bool coinDestroying;
     void Start()
     {
-        Destroy(gameObject, 5);
+        coinDestroying = true;
+    }
+    private void Update()
+    {
+        if (coinDestroying) 
+        {
+            transform.localScale = Vector2.MoveTowards(transform.localScale, Vector2.zero, 0.15f * Time.deltaTime);
+        }
+        if (transform.localScale.x == 0) { Destroy(gameObject); }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

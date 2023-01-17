@@ -2,20 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BullBossBodyTrigger : MonoBehaviour
+public class BullBossTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!BullBoss.bullBoss.isChassingPlayer) 
-        {
-            if (collision.gameObject.tag == "Bullet")
-            {
-                HitEffect.hitEffect.flashOut();
 
-            }
-        }
-
-        if (collision.gameObject.tag == "Object Follow")
+        if(collision.gameObject.tag=="Object Follow") 
         {
             BullBoss.bullBoss.triggerToObjFollow();
         }
@@ -41,6 +33,5 @@ public class BullBossBodyTrigger : MonoBehaviour
 
 
         }
-
     }
 }

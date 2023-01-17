@@ -49,6 +49,10 @@ public class PlayerTrigger : MonoBehaviour
         {
             Instantiate(playerHitParticle, transform.position, Quaternion.identity);
         }
+        if (collision.gameObject.tag == "Coin") 
+        {
+            StartCoroutine(UIInGame.uIInGame.coinImageAnim());
+        }
        
         
     }

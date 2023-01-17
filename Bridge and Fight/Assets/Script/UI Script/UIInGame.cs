@@ -10,8 +10,11 @@ public class UIInGame : MonoBehaviour
     public static UIInGame uIInGame;
 
     public bool isInGameUI;
+    public bool imageCoinAnimated;
 
     public float timerValue;
+
+    public GameObject coinImageObj;
 
     [SerializeField] bool isTimerStart;
 
@@ -62,6 +65,15 @@ public class UIInGame : MonoBehaviour
             textCoin.enabled = false;
             textTimer.enabled = false;
             imageCoin.enabled = false;
+        }
+
+        if (imageCoinAnimated) 
+        {
+            coinImageObj.transform.localScale = Vector2.MoveTowards(coinImageObj.transform.localScale, new Vector2(0.8f, 0.8f), 1 * Time.deltaTime);
+        }
+        else 
+        {
+            coinImageObj.transform.localScale = Vector2.MoveTowards(coinImageObj.transform.localScale, new Vector2(0.6f, 0.6f), 1 * Time.deltaTime);
         }
 
         
@@ -119,6 +131,15 @@ public class UIInGame : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public IEnumerator coinImageAnim() 
+    {
+        imageCoinAnimated = true;
+       
+        yield return new WaitForSeconds(0.1f);
+      
+        imageCoinAnimated = false;
     }
 
 }

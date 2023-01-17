@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4717767741076286778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3103907656295999192}
+  m_Layer: 6
+  m_Name: Bull Boss Component
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3103907656295999192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717767741076286778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6957300004648095954}
+  - {fileID: 9002734780633620720}
+  m_Father: {fileID: 6957300005566284497}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6957300004648095955
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,7 +49,7 @@ GameObject:
   - component: {fileID: 6217604059458187980}
   m_Layer: 6
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Bull Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,12 +61,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6957300004648095955}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6957300005566284497}
+  m_Father: {fileID: 3103907656295999192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6957300004648095953
@@ -189,11 +222,9 @@ GameObject:
   - component: {fileID: 6957300005566284497}
   - component: {fileID: 6957300005566284496}
   - component: {fileID: 76339451419659450}
-  - component: {fileID: 6957300005566284503}
-  - component: {fileID: 2540195198738291874}
   m_Layer: 6
   m_Name: Bull Boss
-  m_TagString: Bull Boss
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,8 +241,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 6957300004648095954}
-  - {fileID: 9002734780633620720}
+  - {fileID: 3103907656295999192}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -230,11 +260,11 @@ MonoBehaviour:
   bullBossHealth: 100
   id: 0
   isSpikeSpawn: 0
+  isChassingPlayer: 0
   objFollow: {fileID: 3447514587096767547, guid: 86fc1073a19293f4291d384671395408, type: 3}
   spike: {fileID: 7283216891242044336}
   body: {fileID: 6957300004648095955}
   targetCircle: {fileID: 5386491969375991882, guid: 5ba1bb9b7e4d62743a3371fd7d7c07b8, type: 3}
-  isChassingPlayer: 0
   isClockWiseRot: 0
   isTargetToPlayer: 0
   delayTimeToChase: 0
@@ -254,76 +284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBullBossDestroyed: 0
   destroyParticle: {fileID: 2894149098264923053, guid: 9e2c629961e373e4facccfed2f7610a3, type: 3}
---- !u!50 &6957300005566284503
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6957300005566284499}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!60 &2540195198738291874
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6957300005566284499}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.0451193, y: 0.57697487}
-      - {x: 0.54682416, y: 0.58045816}
-      - {x: 0.44461966, y: 0.7682018}
-      - {x: 0.21564157, y: 0.78908014}
-      - {x: 0.011327976, y: 1.1661439}
-      - {x: -0.23661959, y: 0.78555536}
-      - {x: -0.45541653, y: 0.76814365}
-      - {x: -0.5367841, y: 0.61977863}
-      - {x: -1.0001445, y: 0.6186483}
-      - {x: -0.76826876, y: 0.23890829}
-      - {x: -0.8626382, y: -0.0016174316}
-      - {x: -0.79886335, y: -0.17514753}
-      - {x: -1.0297794, y: -0.5984421}
-      - {x: -0.53743833, y: -0.612638}
-      - {x: -0.47828144, y: -0.75992906}
-      - {x: -0.21801262, y: -0.7869067}
-      - {x: 0.012762606, y: -1.1587873}
-      - {x: 0.22574328, y: -0.7867522}
-      - {x: 0.4350152, y: -0.75946426}
-      - {x: 0.5349215, y: -0.60888934}
-      - {x: 1.0462018, y: -0.5930042}
-      - {x: 0.7946789, y: -0.15947676}
-      - {x: 0.8730682, y: -0.007171154}
-      - {x: 0.8000168, y: 0.15420145}
 --- !u!1 &7283216891242044336
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,9 +295,12 @@ GameObject:
   - component: {fileID: 9002734780633620720}
   - component: {fileID: 4257146369103555546}
   - component: {fileID: 4785818201369864525}
+  - component: {fileID: 292437226966074394}
+  - component: {fileID: 7983309726440865392}
+  - component: {fileID: 7225218869988614412}
   m_Layer: 6
   m_Name: Spike
-  m_TagString: Untagged
+  m_TagString: Bull Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,10 +314,10 @@ Transform:
   m_GameObject: {fileID: 7283216891242044336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6957300005566284497}
+  m_Father: {fileID: 3103907656295999192}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4257146369103555546
@@ -397,7 +360,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: cfa073a85eb4725468992abdc726b70b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -421,3 +384,106 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb624d2209b6da4895d1cb50f9f09c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &292437226966074394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283216891242044336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ecc31db8580c54b8a4e0ef2edad2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &7983309726440865392
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283216891242044336}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &7225218869988614412
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283216891242044336}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.03, y: -0.61}
+      - {x: 1.05, y: -0.59999996}
+      - {x: 1.05, y: -0.58}
+      - {x: 0.9504567, y: -0.40958214}
+      - {x: 0.8505663, y: -0.2602729}
+      - {x: 0.7944118, y: -0.16254848}
+      - {x: 0.8208357, y: -0.08737609}
+      - {x: 0.8816714, y: 0.018707493}
+      - {x: 0.8080327, y: 0.1529869}
+      - {x: 0.85990983, y: 0.25703713}
+      - {x: 0.97999996, y: 0.4504179}
+      - {x: 1.0017493, y: 0.4930418}
+      - {x: 1.05, y: 0.57}
+      - {x: 1.04, y: 0.59}
+      - {x: 0.5444196, y: 0.5846076}
+      - {x: 0.4230029, y: 0.7590475}
+      - {x: 0.2177779, y: 0.77516675}
+      - {x: 0.083736986, y: 0.9959396}
+      - {x: 0.030669834, y: 1.1010047}
+      - {x: 0.01, y: 1.17}
+      - {x: -0.01825356, y: 1.1482534}
+      - {x: -0.15775363, y: 0.8975555}
+      - {x: -0.2265071, y: 0.77}
+      - {x: -0.42947826, y: 0.7726377}
+      - {x: -0.5252174, y: 0.62214494}
+      - {x: -0.98999995, y: 0.63}
+      - {x: -1.01, y: 0.61}
+      - {x: -0.7529854, y: 0.21115938}
+      - {x: -0.8653912, y: 0.016231865}
+      - {x: -0.7746956, y: -0.15805799}
+      - {x: -0.8812924, y: -0.34733716}
+      - {x: -0.9765403, y: -0.50087464}
+      - {x: -1.04, y: -0.59}
+      - {x: -1.02, y: -0.61}
+      - {x: -0.68391645, y: -0.6017493}
+      - {x: -0.52144885, y: -0.6045749}
+      - {x: -0.4373372, y: -0.75992227}
+      - {x: -0.23787174, y: -0.7621283}
+      - {x: -0.03783285, y: -1.1165403}
+      - {x: -0.006958211, y: -1.1587074}
+      - {x: 0.013916422, y: -1.1426238}
+      - {x: 0.23530494, y: -0.7760335}
+      - {x: 0.28304178, y: -0.7543343}
+      - {x: 0.44342074, y: -0.7690475}
+      - {x: 0.5235763, y: -0.6017493}

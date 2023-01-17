@@ -10423,6 +10423,7 @@ MonoBehaviour:
   isInStartGame: 0
   isStarted: 0
   idLevel: 0
+  totalLevel: 0
   listUIObject:
   - {fileID: 709329492}
   - {fileID: 724659176}
@@ -14257,6 +14258,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2540195198738291874, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4257146369103555546, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -14321,11 +14326,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bull Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 6957300005566284499, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 9002734780633620720, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 28842726084069640, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
 --- !u!1001 &5562937993425989015
 PrefabInstance:

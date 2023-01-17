@@ -106,9 +106,13 @@ public class BullBoss : MonoBehaviour
 
     void bullBossFunction()
     {
-        if (isChassingPlayer)
+        if (bullBossHealth <= 0) 
         {
-
+            TotalCoin.totalCoin.curCoinGet = 100;
+        }
+        if (isTargetToPlayer)
+        {
+            targetCircle.SetActive(true);
             if (indexPlayer == 0)
             {
                 targetCircle.transform.position = player1.transform.position;
@@ -118,17 +122,13 @@ public class BullBoss : MonoBehaviour
                 targetCircle.transform.position = player2.transform.position;
             }
         }
-        if (isChassingPlayer || isTargetToPlayer)
-        {
-            targetCircle.SetActive(true);
-        }
 
 
         if (!isChassingPlayer)
         {
 
 
-            targetCircle.SetActive(false);
+           
             if (indexPlayer == 0)
             {
                 objFollow.transform.position = player1.transform.position;
@@ -139,16 +139,17 @@ public class BullBoss : MonoBehaviour
                 objFollow.transform.position = player2.transform.position;
 
             }
-            if (bullBossHealth >= 45) 
+            if (bullBossHealth >= 25) 
             {
                 if (delayTimeToChase < timer)
                 {
                     delayTimeToChase += Time.deltaTime;
                 }
             }
-            if (bullBossHealth < 45) 
+            if (bullBossHealth < 25) 
             {
-                delayTimeToChase += 5 * Time.deltaTime;
+                delayTimeToChase += 2.5f * Time.deltaTime;
+                transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(2.5f, 2.5f), 1 * Time.deltaTime);
             }
           
         }
@@ -178,58 +179,34 @@ public class BullBoss : MonoBehaviour
             isChassingPlayer = false;
             movementSpeed = 1;
         }
-        if (delayTimeToChase > 5 || bullBossHealth<45)
+        if (delayTimeToChase >= 5 || bullBossHealth<25)
         {
             isSpikeSpawn = true;
         }
-        if (delayTimeToChase >= 7)
+        if (delayTimeToChase >= 8)
         {
             isTargetToPlayer = true;
         }
     }
-    
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public void triggerToObjFollow() 
     {
-        if(collision.gameObject.tag=="Object Follow") 
+        targetCircle.SetActive(false);
+        StartCoroutine(startToTargetPlayer());
+        StartCoroutine(delaySpikeSpawn());
+        isTargetToPlayer = false;
+        if (!isClockWiseRot)
         {
-            targetCircle.SetActive(false);
-            StartCoroutine(startToTargetPlayer());
-            StartCoroutine(delaySpikeSpawn());
-            isTargetToPlayer = false;
-            if (!isClockWiseRot) 
-            {
-                isClockWiseRot = true;
-            }
-            else 
-            {
-                isClockWiseRot = false;
-            }
-            
+            isClockWiseRot = true;
         }
-
-        if (collision.gameObject.tag == "Player 1")
+        else
         {
-            if (!GameOver.gameOver.isGameOver)
-            {
-                Player1Health.player1Health.p1HitByBullBoss();
-
-
-
-            }
-        }
-        if (collision.gameObject.tag == "Player 2")
-        {
-            if (!GameOver.gameOver.isGameOver)
-            {
-                Player2Health.player2Health.p2HitByBullBoss();
-
-
-            }
-
-
+            isClockWiseRot = false;
         }
     }
+
+   
     IEnumerator startToTargetPlayer() 
     {
         yield return new WaitForSeconds(0.5f);
