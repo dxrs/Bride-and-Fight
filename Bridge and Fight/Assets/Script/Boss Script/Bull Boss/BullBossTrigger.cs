@@ -7,10 +7,7 @@ public class BullBossTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if(collision.gameObject.tag=="Object Follow") 
-        {
-            BullBoss.bullBoss.triggerToObjFollow();
-        }
+       
 
         if (collision.gameObject.tag == "Player 1")
         {

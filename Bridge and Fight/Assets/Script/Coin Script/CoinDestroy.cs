@@ -4,19 +4,43 @@ using UnityEngine;
 
 public class CoinDestroy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] ParticleSystem coinDestroyParticle;
+
     bool coinDestroying;
+    bool isDestroyed = false;
+
     void Start()
     {
-        coinDestroying = true;
+        StartCoroutine(delayCoinDestroy());
     }
     private void Update()
     {
         if (coinDestroying) 
         {
-            transform.localScale = Vector2.MoveTowards(transform.localScale, Vector2.zero, 0.15f * Time.deltaTime);
+            transform.localScale = Vector2.MoveTowards(transform.localScale, Vector2.zero, 0.5f * Time.deltaTime);
         }
-        if (transform.localScale.x == 0) { Destroy(gameObject); }
+        if (transform.localScale.x == 0 && !isDestroyed) 
+        { 
+            Destroy(gameObject);
+            isDestroyed = true;
+        }
+        
+    }
+
+    IEnumerator delayCoinDestroy() 
+    {
+        while (true) 
+        {
+            yield return new WaitForSeconds(2);
+            coinDestroying = true;
+        }
+    }
+    private void OnDestroy()
+    {
+        if (isDestroyed) 
+        {
+            Instantiate(coinDestroyParticle, transform.position, Quaternion.identity);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,8 +48,10 @@ public class CoinDestroy : MonoBehaviour
             || collision.gameObject.tag == "Player 2"
             || collision.gameObject.tag=="Coin Colider")
         {
+            
             TotalCoin.totalCoin.curCoinGet += 10;
             Destroy(gameObject);
+            
         }
     }
 

@@ -78,6 +78,7 @@ public class UIEndGame : MonoBehaviour
 
         textInfoLevel.text = "Level " + UIStartGame.uIStartGame.idLevel;
 
+        
        
 
         if (isGoingTransition) 
@@ -155,6 +156,7 @@ public class UIEndGame : MonoBehaviour
     {
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {
+            imgObjectCoin.transform.Rotate(Vector3.forward, 50 * Time.deltaTime);
             //Cursor.visible = true;
             //GameStarting.gameStarting.isGameStarted = false;
             textCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
@@ -174,7 +176,7 @@ public class UIEndGame : MonoBehaviour
             {
                 
                 textTotalCoin.text = "You received " + totalCoin + " Coin";
-                imgObjectCoin.transform.localPosition = new Vector2(-865, imgObjectCoin.transform.localPosition.y);
+                
 
                 if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
                 {
@@ -182,21 +184,18 @@ public class UIEndGame : MonoBehaviour
                     textTotalCoin.enabled = true;
                     textCongrats.enabled = true;
 
-                    textBonusCoin.text = "+ Bonus Coin + " + bonusCoin;
+                    textBonusCoin.text = "Bonus : " + bonusCoin;
 
                     if (!isGetBonusCoin)
                     {
-                        //TotalCoin.totalCoin.curCoinGet = TotalCoin.totalCoin.curCoinGet + bonusCoin;
+                        
                         isGetBonusCoin = true;
                     }
                 }
                 
 
             }
-            else 
-            {
-                imgObjectCoin.transform.localPosition = new Vector2(0, imgObjectCoin.transform.localPosition.y);
-            }
+            
             StartCoroutine(textEndGameFinish());
             textEndGame.text = "VICTORY";
             
@@ -210,7 +209,7 @@ public class UIEndGame : MonoBehaviour
             StartCoroutine(textEndGameFailed());
           
             textEndGame.text = "DEFEAT";
-            //imgObjectCoin.transform.localPosition = new Vector2(0, imgObjectCoin.transform.localPosition.y);
+            
 
             if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
             {

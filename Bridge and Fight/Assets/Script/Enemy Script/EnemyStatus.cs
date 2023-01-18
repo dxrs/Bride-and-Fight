@@ -45,6 +45,7 @@ public class EnemyStatus : MonoBehaviour
         {
             HitEffect.hitEffect.flashOut();
         }
+        if (UIPauseGame.uIPauseGame.isSceneEnded) { Destroy(gameObject); }
     }
 
     public void enemyDestroy()

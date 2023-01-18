@@ -69,7 +69,7 @@ public class UIInGame : MonoBehaviour
 
         if (imageCoinAnimated) 
         {
-            coinImageObj.transform.localScale = Vector2.MoveTowards(coinImageObj.transform.localScale, new Vector2(0.8f, 0.8f), 1 * Time.deltaTime);
+            coinImageObj.transform.localScale = Vector2.MoveTowards(coinImageObj.transform.localScale, new Vector2(1f, 1f), 1 * Time.deltaTime);
         }
         else 
         {

@@ -2944,6 +2944,10 @@ PrefabInstance:
       propertyPath: wallColider.Array.data[1]
       value: 
       objectReference: {fileID: 141809089}
+    - target: {fileID: 3774497340994457762, guid: f3cc0ab9430079f4e807e0ac888de47e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3774497341197868774, guid: f3cc0ab9430079f4e807e0ac888de47e, type: 3}
       propertyPath: followPlayer
       value: 
@@ -3093,6 +3097,10 @@ PrefabInstance:
       propertyPath: postProc
       value: 
       objectReference: {fileID: 1870658042}
+    - target: {fileID: 6002340265665060860, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
+      propertyPath: spawnerObject
+      value: 
+      objectReference: {fileID: 1413849524}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
 --- !u!1001 &7704571635437122411

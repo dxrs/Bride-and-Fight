@@ -45,7 +45,7 @@ public class UIMenuManager : MonoBehaviour
 
     private void Start()
     {
-        
+        Cursor.visible = true;
         buttonEventList();
 
         visualValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[8], 1);

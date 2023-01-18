@@ -259,15 +259,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullBossHealth: 100
   id: 0
+  indexPlayer: 0
   isSpikeSpawn: 0
   isChassingPlayer: 0
+  delayTimeToChase: 0
   objFollow: {fileID: 3447514587096767547, guid: 86fc1073a19293f4291d384671395408, type: 3}
   spike: {fileID: 7283216891242044336}
   body: {fileID: 6957300004648095955}
   targetCircle: {fileID: 5386491969375991882, guid: 5ba1bb9b7e4d62743a3371fd7d7c07b8, type: 3}
   isClockWiseRot: 0
   isTargetToPlayer: 0
-  delayTimeToChase: 0
   maxMoveSpeed: 150
   maxRotateSpeed: 8
 --- !u!114 &76339451419659450

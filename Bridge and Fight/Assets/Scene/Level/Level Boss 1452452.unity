@@ -10467,7 +10467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInGameUI: 0
+  imageCoinAnimated: 0
   timerValue: 0
+  coinImageObj: {fileID: 1101810713}
   isTimerStart: 0
   textTimer: {fileID: 1289874228}
   textCoin: {fileID: 1695392342}
@@ -10519,10 +10521,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInPauseMenu: 0
+  isSceneEnded: 0
   objectRestartExit: {fileID: 464158904}
   setting: {fileID: 1823360909}
   postProc: {fileID: 1870658042}
   sceneTransition: {fileID: 511817537}
+  spawnerObject: {fileID: 0}
   isInSetting: 0
   isAnimatedTransition: 0
   selectorPos:
@@ -14258,6 +14262,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 62802670996159881, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 62802670996159881, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
+      propertyPath: rotationModifier
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 2540195198738291874, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
       propertyPath: m_Enabled
       value: 1

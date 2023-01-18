@@ -11,10 +11,13 @@ public class UIPauseGame : MonoBehaviour
 
     public bool isInPauseMenu;
 
+    public bool isSceneEnded;
+
     [SerializeField] GameObject objectRestartExit;
     [SerializeField] GameObject setting;
     [SerializeField] GameObject postProc;
     [SerializeField] GameObject sceneTransition;
+    [SerializeField] GameObject spawnerObject;
 
     [SerializeField] bool isInSetting;
     [SerializeField] bool isAnimatedTransition;
@@ -85,10 +88,7 @@ public class UIPauseGame : MonoBehaviour
             
         }
 
-        if (isAnimatedTransition) 
-        {
-            
-        }
+       
 
         if(GameStarting.gameStarting.isGameStarted 
             && !GameOver.gameOver.isGameOver 
@@ -211,18 +211,20 @@ public class UIPauseGame : MonoBehaviour
 
             if (buttonPauseSelectedValue == 3) 
             {
+                isSceneEnded = true;
                 isAnimatedTransition = true;
                 GamePaused.gamePaused.isGamePaused = false;
-                PlayerMovement.playerMovement.restartOrExit();
+                Destroy(spawnerObject);
                 SceneManagerCallback.sceneManagerCallback.restartScene();
             }
             if (buttonPauseSelectedValue == 4)
             {
+                isSceneEnded = true;
                 isAnimatedTransition = true;
                 GamePaused.gamePaused.isGamePaused = false;
-                PlayerMovement.playerMovement.restartOrExit();
 
-               SceneManagerCallback.sceneManagerCallback.loadToMenu();
+                Destroy(spawnerObject);
+                StartCoroutine(SceneManagerCallback.sceneManagerCallback.loadToMenu());
             }
 
             if(buttonPauseSelectedValue==3 || buttonPauseSelectedValue == 4) 

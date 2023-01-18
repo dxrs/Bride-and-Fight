@@ -40,6 +40,14 @@ public class Player1Health : MonoBehaviour
         
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag=="Bull Boss") 
+        {
+            playerHealth -= 2 *Time.deltaTime;
+        }
+    }
+
     public void p1TriggerWithNormalEnemy() 
     {
         playerHealth -= 3;

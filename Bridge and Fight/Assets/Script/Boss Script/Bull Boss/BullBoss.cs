@@ -10,8 +10,12 @@ public class BullBoss : MonoBehaviour
     public float bullBossHealth;
 
     public int id;
+    public int indexPlayer;
+
     public bool isSpikeSpawn;
     public bool isChassingPlayer;
+
+    public float delayTimeToChase;
 
     [SerializeField] GameObject objFollow;
     [SerializeField] GameObject spike;
@@ -22,7 +26,7 @@ public class BullBoss : MonoBehaviour
     [SerializeField] bool isClockWiseRot;
     [SerializeField] bool isTargetToPlayer;
 
-    [SerializeField] float delayTimeToChase;
+ 
 
     [SerializeField] float maxMoveSpeed;
 
@@ -32,7 +36,7 @@ public class BullBoss : MonoBehaviour
 
     GameObject player1;
     GameObject player2;
-    int indexPlayer;
+
     float movementSpeed = 1;
     float curRotSpeed = 200;
     float timer = 10;
@@ -192,7 +196,11 @@ public class BullBoss : MonoBehaviour
 
     public void triggerToObjFollow() 
     {
-        targetCircle.SetActive(false);
+        if (!GameOver.gameOver.isGameOver) 
+        {
+            targetCircle.SetActive(false);
+        }
+ 
         StartCoroutine(startToTargetPlayer());
         StartCoroutine(delaySpikeSpawn());
         isTargetToPlayer = false;
