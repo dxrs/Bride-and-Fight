@@ -19,7 +19,9 @@ public class UISelectLevel : MonoBehaviour
     public bool isGoingToStore;
 
     public Button[] listButtonLevel;
-   
+
+    public GameObject sceneTransition;
+
 
     public int[] curValueSelect;
     public int[] levelPurchased;
@@ -32,7 +34,8 @@ public class UISelectLevel : MonoBehaviour
     [SerializeField] GameObject levelSelector;
     [SerializeField] GameObject[] levelSelectorPos;
     [SerializeField] GameObject shopObject;
-    public GameObject sceneTransition;
+    [SerializeField] GameObject objHowToPlay;
+
 
     [SerializeField] Button[] otherButton;
 
@@ -192,6 +195,7 @@ public class UISelectLevel : MonoBehaviour
         sceneTransition.transform.localScale = Vector2.MoveTowards(sceneTransition.transform.localScale,
                 new Vector2(30.0f, 30.0f),
                 100 * Time.deltaTime);
+        StartCoroutine(controlScheme());
     }
 
     public void onClickToMenu() 
@@ -210,5 +214,10 @@ public class UISelectLevel : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         buttonLevelValueSelected = 2;
 
+    }
+    IEnumerator controlScheme() 
+    {
+        yield return new WaitForSeconds(1.2f);
+        objHowToPlay.SetActive(true);
     }
 }

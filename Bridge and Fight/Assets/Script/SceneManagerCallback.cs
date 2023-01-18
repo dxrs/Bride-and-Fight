@@ -37,7 +37,7 @@ public class SceneManagerCallback : MonoBehaviour
     IEnumerator loadingLevel() 
     {
         isGoingToLevel = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(UISelectLevel.uiselectLevel.levelButtonClickedValue);
        
         
@@ -47,7 +47,7 @@ public class SceneManagerCallback : MonoBehaviour
     public IEnumerator loadToLevel1() 
     {
         isGoingToLevel = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Level 1");
     }
 
