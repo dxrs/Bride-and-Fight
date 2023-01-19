@@ -46,6 +46,7 @@ public class ShadowAbility : MonoBehaviour
     float curValueTimer;
     float maxValueTimer;
     string abilityName = "Ghost";
+    bool isSoundStart = true;
     private void Awake()
     {
         shadowAbility = this;
@@ -101,9 +102,10 @@ public class ShadowAbility : MonoBehaviour
             {
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
+                    SoundEffect.soundEffect.audioSources[13].Play();
                     imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
                     shadowAblityCoolDown = curShadowCooldown;
-
+                    isSoundStart = false;
                     barUpValue = 0;
                     textReady.enabled = false;
                     if (!isShadowActivated)
@@ -120,9 +122,10 @@ public class ShadowAbility : MonoBehaviour
             {
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
+                    SoundEffect.soundEffect.audioSources[13].Play();
                     imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
                     shadowAblityCoolDown = curShadowCooldown;
-
+                    isSoundStart = false;
                     barUpValue = 0;
                     textReady.enabled = false;
                     if (!isShadowActivated)
@@ -191,17 +194,17 @@ public class ShadowAbility : MonoBehaviour
             {
                 if (curUpLevelValue != 3) 
                 {
-                    shadowAblityCoolDown -= 0.5f * Time.deltaTime;
+                    shadowAblityCoolDown -= 0.85f * Time.deltaTime;
                 }
                 else
                 {
-                    shadowAblityCoolDown -= 1f * Time.deltaTime;
+                    shadowAblityCoolDown -= 1.3f * Time.deltaTime;
                 }
                
             }
             if (barUpValue < curShadowCooldown)
             {
-                barUpValue += 0.5f * Time.deltaTime;
+                barUpValue += 0.8f * Time.deltaTime;
             }
         }
 
@@ -211,6 +214,11 @@ public class ShadowAbility : MonoBehaviour
             shadowAblityCoolDown = 0;
             imgAbilityIcon.color = new Color(1, 1, 1);
             textReady.enabled = true;
+            if (!isSoundStart)
+            {
+                SoundEffect.soundEffect.audioSources[12].Play();
+                isSoundStart = true;
+            }
         }
     }
     void shadowBar() 

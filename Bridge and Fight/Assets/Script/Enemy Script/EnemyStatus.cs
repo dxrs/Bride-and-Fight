@@ -70,6 +70,7 @@ public class EnemyStatus : MonoBehaviour
             ||collision.gameObject.tag=="Friendly Bot"
             ||collision.gameObject.tag=="Diamond") 
         {
+            CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
             SoundEffect.soundEffect.audioSources[2].Play();
             Destroy(gameObject);
             Instantiate(enemyParticle, transform.position, Quaternion.identity);

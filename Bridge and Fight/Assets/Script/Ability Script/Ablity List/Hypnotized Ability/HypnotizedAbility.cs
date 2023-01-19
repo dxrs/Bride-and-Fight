@@ -45,8 +45,8 @@ public class HypnotizedAbility : MonoBehaviour
     float barUpValue = 0;
     float curMindControlTimer;
     float curValueTimer;
-    float maxValueTimer = 20;
     string abilityName = "Hypnotic";
+    bool isSoundStart = true;
     private void Awake()
     {
         hypnotizedAbility = this;
@@ -117,6 +117,8 @@ public class HypnotizedAbility : MonoBehaviour
             {
                 if(!isUsingAbility && hypnotizedCooldownTimer <= 0)
                 {
+                    
+                    SoundEffect.soundEffect.audioSources[13].Play();
                     imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
                     barUpValue = 0;
                     textReady.enabled = false;
@@ -124,6 +126,7 @@ public class HypnotizedAbility : MonoBehaviour
                    
                     
                     hypnotizedCooldownTimer = 30; //cur cooldown timer
+                    isSoundStart = false;
                     if (!hypnotizedActivated) 
                     {
                         hypnotizedActivated = true;
@@ -137,11 +140,13 @@ public class HypnotizedAbility : MonoBehaviour
             {
                 if (!isUsingAbility && hypnotizedCooldownTimer <= 0)
                 {
+                    SoundEffect.soundEffect.audioSources[13].Play();
                     imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
                     barUpValue = 0;
                     textReady.enabled = false;
                    
                     hypnotizedCooldownTimer = 30;//cur cooldown timer
+                    isSoundStart = false;
                     if (!hypnotizedActivated)
                     {
                         hypnotizedActivated = true;
@@ -200,7 +205,13 @@ public class HypnotizedAbility : MonoBehaviour
             hypnotizedCooldownTimer = 0;
             imgAbilityIcon.color = new Color(1, 1, 1);
             textReady.enabled = true;
+            if (!isSoundStart) 
+            {
+                SoundEffect.soundEffect.audioSources[12].Play();
+                isSoundStart = true;
+            }
         }
+        
     }
 
     void hypnotizedBar() 

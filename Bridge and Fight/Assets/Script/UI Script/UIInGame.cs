@@ -51,10 +51,15 @@ public class UIInGame : MonoBehaviour
         {
             textCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
 
-            if (timerValue < 30)
+            if(!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
             {
-                textAlmostDone.enabled = true;
+                if (timerValue < 30)
+                {
+                    textAlmostDone.enabled = true;
+                    Music.music.audioSources[1].pitch = Mathf.Lerp(Music.music.audioSources[1].pitch,1.15f,1*Time.deltaTime);
+                }
             }
+            
 
 
             timerStart();

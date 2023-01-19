@@ -159,7 +159,7 @@ public class UIEndGame : MonoBehaviour
     {
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {
-
+            Music.music.audioSources[1].pitch = 1f;
             UIStartGame.uIStartGame.isMusicVolumeUp = false;
             imgObjectCoin.transform.Rotate(Vector3.forward, 50 * Time.deltaTime);
             //Cursor.visible = true;

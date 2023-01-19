@@ -286,7 +286,10 @@ public class UIPauseGame : MonoBehaviour
     #region toggle button
     public void toggleVisual() 
     {
-        SoundEffect.soundEffect.audioSources[3].Play();
+        if (GamePaused.gamePaused.isGamePaused)
+        {
+            SoundEffect.soundEffect.audioSources[3].Play();
+        }
         visualValue = checkListToggleButton[0].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[8], visualValue);
         PlayerPrefs.Save();
@@ -310,10 +313,26 @@ public class UIPauseGame : MonoBehaviour
 
     public void toggleMusic() 
     {
-        SoundEffect.soundEffect.audioSources[3].Play();
+        if (GamePaused.gamePaused.isGamePaused) 
+        {
+            SoundEffect.soundEffect.audioSources[3].Play();
+        }
+       
         musicValue = checkListToggleButton[2].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[10], musicValue);
         PlayerPrefs.Save();
+        if (musicValue == 0)
+        {
+            Music.music.objectDisable();
+        }
+        if (musicValue == 1)
+        {
+            Music.music.objectEnable();
+            if (Music.music.id == "Level")
+            {
+                Music.music.audioSources[1].PlayOneShot(Music.music.audioClips[1]);
+            }
+        }
     }
     #endregion
 
