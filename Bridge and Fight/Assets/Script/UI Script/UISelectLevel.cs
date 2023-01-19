@@ -45,6 +45,7 @@ public class UISelectLevel : MonoBehaviour
     public int curLevel;
     int curCoin;
     bool gamePadPressed; // buat gamepad
+    bool isTransition = false;
 
     private void Awake()
     {
@@ -172,7 +173,7 @@ public class UISelectLevel : MonoBehaviour
         
 
         
-        Debug.Log("clicked " + levelButtonClickedValue);
+       
     }
     void levelButtonHighlighted(int value) 
     {
@@ -187,24 +188,36 @@ public class UISelectLevel : MonoBehaviour
         {
             buttonLevelValueSelected = 1;
         }
-        Debug.Log("cursor " + levelButtonHighlightValue);
+       
     }
 
     public void sceneAnimationTransition() 
     {
+       
         sceneTransition.transform.localScale = Vector2.MoveTowards(sceneTransition.transform.localScale,
                 new Vector2(30.0f, 30.0f),
                 100 * Time.deltaTime);
-        StartCoroutine(controlScheme());
+        if (!isGoingToMenu) 
+        {
+            if (!isTransition)
+            {
+                SoundEffect.soundEffect.audioSources[7].Play();
+                isTransition = true;
+            }
+            StartCoroutine(controlScheme());
+        }
+     
     }
 
     public void onClickToMenu() 
     {
         isGoingToMenu = true;
-       
+        SoundEffect.soundEffect.audioSources[0].Play();
+
     }
     public void onClickToStore() 
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         levelButtonHighlightValue = 0;
         isGoingToStore = true;
         UIShop.uIShop.listAbilityButtonEnable();

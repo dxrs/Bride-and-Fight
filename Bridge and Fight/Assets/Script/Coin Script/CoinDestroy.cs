@@ -50,6 +50,7 @@ public class CoinDestroy : MonoBehaviour
         {
             
             TotalCoin.totalCoin.curCoinGet += 10;
+            SoundEffect.soundEffect.audioSources[1].Play();
             Destroy(gameObject);
             
         }

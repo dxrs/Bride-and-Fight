@@ -34,8 +34,6 @@ public class UIShop : MonoBehaviour
 
     
 
-
-
     [Header("UI UPGRADE ABILITY")]
     [SerializeField] Button[] listButtonUpgradeAbility;
 
@@ -51,7 +49,7 @@ public class UIShop : MonoBehaviour
 
     private void Start()
     {
-        coin = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
+        coin = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         totalAbility= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
         eventListener();
         
@@ -148,6 +146,7 @@ public class UIShop : MonoBehaviour
     {
         buttonAbilityClickValue = value;
         isButtonAbilityClicked = true;
+        SoundEffect.soundEffect.audioSources[6].Play();
     }
     void listButtonAbilityHighlighted(int value) 
     {
@@ -173,14 +172,14 @@ public class UIShop : MonoBehaviour
     {
         isButtonAbilityClicked = false;
         listAbilityButtonEnable();
-        
+        SoundEffect.soundEffect.audioSources[0].Play();
     }
 
     public void onClickUpgrade() 
     {
-       
 
-       
+
+        SoundEffect.soundEffect.audioSources[0].Play();
         if (buttonAbilityClickValue == 1) 
         {
             AbilityShadowUpgrade.abilityShadowUpgrade.onClickUpgradeShadow();
@@ -203,6 +202,7 @@ public class UIShop : MonoBehaviour
 
     public void onClickBackToLevel() 
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         UISelectLevel.uiselectLevel.isGoingToStore = false;
         selector.transform.localPosition = selectorPosObj[0].transform.localPosition;
         buttonAbilityHighlightValue = 0;

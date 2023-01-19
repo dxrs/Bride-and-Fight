@@ -10,7 +10,13 @@ public class BullBossBodyTrigger : MonoBehaviour
         {
             if (collision.gameObject.tag == "Bullet")
             {
+                if (!UIPauseGame.uIPauseGame.isSceneEnded) 
+                {
+                    SoundEffect.soundEffect.audioSources[9].PlayOneShot(SoundEffect.soundEffect.audioClips[0]);
+                }
+               
                 HitEffect.hitEffect.flashOut();
+                
 
             }
         }

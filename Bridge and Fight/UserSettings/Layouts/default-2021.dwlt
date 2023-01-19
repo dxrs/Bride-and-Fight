@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 175
+  controlID: 162
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 138
+  controlID: 54
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 174
+  controlID: 161
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 52
+  controlID: 33807
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,22 +416,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Script/Audio Script
+    - Assets/Resources/Prefab/Boss Prefab/Bull Boss
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Script/Audio Script
+  - Assets/Resources/Prefab/Boss Prefab/Bull Boss
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\GITHUB\Bride-and-Fight\Bridge and Fight
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 507c0000
-    m_LastClickedID: 31824
-    m_ExpandedIDs: 00000000e27b0000e47b0000e67b0000e87b0000ea7b0000ec7b0000ee7b0000f07b0000f27b0000f47b0000f67b0000f87b0000fa7b0000fc7b0000fe7b0000007c0000027c0000047c0000067c0000087c00000a7c00000c7c00002a7c0000427c000000ca9a3b
+    scrollPos: {x: 0, y: 83}
+    m_SelectedIDs: 6e780000
+    m_LastClickedID: 30830
+    m_ExpandedIDs: 0000000030780000327800003478000036780000387800003a7800003c7800003e78000040780000427800004478000046780000487800004a7800004c7800004e78000050780000527800005478000056780000587800005a78000066780000747800007e78000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -459,7 +459,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e27b0000e47b0000e67b0000e87b0000ea7b0000ec7b0000ee7b0000f07b0000f27b0000f47b0000f67b0000f87b0000fa7b0000fc7b0000fe7b0000007c0000027c0000047c0000067c0000087c00000a7c00000c7c0000
+    m_ExpandedIDs: 0000000030780000327800003478000036780000387800003a7800003c7800003e78000040780000427800004478000046780000487800004a7800004c7800004e78000050780000527800005478000056780000587800005a780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -587,9 +587,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 48b2fdff76b2fdfff845feff6649feff2259feff3464fffffe66ffffe0d3ffff1ce1fffff2f1fffff4f1ffff72faffff827d0000967d000028c7000030c80000f8c80000
+      m_SelectedIDs: 2225f5ff
+      m_LastClickedID: -711390
+      m_ExpandedIDs: 0c25f5ff1e25f5ff2225f5ff3225f5fffa25f5ff6626f5ff142ff6ff202ff6ff242ff6ff322ff6ffb622f8ffc022f8fffc23f8ff0424f8ff6624f8ff4ef7f8ff50f7f8ff2efaf8ff621cfbff6c1cfbff3020fbff0ebbfbff52bcfbffc8bdfdff38cbfdff42cbfdff50cbfdff9c45ffffa645ffffea46ffff78e7ffff82e7ffff48e8ffff4ae8ffff1ef1ffff78faffff800a0200d80a0200e40a0200fa0a020012770200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -980,9 +980,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 637.19116, y: 556.0434, z: -5.9888425}
+    m_Target: {x: 6.435074, y: -220.02728, z: -13.288957}
     speed: 2
-    m_Value: {x: 637.19116, y: 556.0434, z: -5.9888425}
+    m_Value: {x: 6.435074, y: -220.02728, z: -13.288957}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1033,9 +1033,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 559.5277
+    m_Target: 1374.4681
     speed: 2
-    m_Value: 559.5277
+    m_Value: 1374.4681
   m_Ortho:
     m_Target: 1
     speed: 2

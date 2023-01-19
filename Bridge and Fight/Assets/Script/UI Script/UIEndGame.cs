@@ -45,6 +45,7 @@ public class UIEndGame : MonoBehaviour
     bool isUsingGamepad = false;
     bool isGoingTransition;
     bool isGetBonusCoin = false;
+    bool isOneShot = false;
     
 
     float lerpingTime = 0.5f;
@@ -114,6 +115,7 @@ public class UIEndGame : MonoBehaviour
 
     public void onClickContinue()
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         isGoingTransition = true;
         isCoinDataSaved = true;
         if (curLevelValue <= UIStartGame.uIStartGame.totalLevel) 
@@ -145,6 +147,7 @@ public class UIEndGame : MonoBehaviour
     }
     public void onClickRestart()
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         isGoingTransition = true;
         listEndGameButton[0].interactable = false;
         listEndGameButton[1].interactable = false;
@@ -156,6 +159,8 @@ public class UIEndGame : MonoBehaviour
     {
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {
+
+            UIStartGame.uIStartGame.isMusicVolumeUp = false;
             imgObjectCoin.transform.Rotate(Vector3.forward, 50 * Time.deltaTime);
             //Cursor.visible = true;
             //GameStarting.gameStarting.isGameStarted = false;
@@ -165,10 +170,16 @@ public class UIEndGame : MonoBehaviour
             {
                 isEndGameObjectEnable = true;
             }
+
         }
 
         if (GameFinish.gameFinish.isGameFinished) 
         {
+            if (!isOneShot)
+            {
+                SoundEffect.soundEffect.audioSources[4].Play();
+                isOneShot = true;
+            }
             totalCoin = TotalCoin.totalCoin.curCoinGet + bonusCoin;
             UIStartGame.uIStartGame.listUIObject[3].SetActive(true);
             UIStartGame.uIStartGame.listUIObject[1].SetActive(false);
@@ -203,8 +214,12 @@ public class UIEndGame : MonoBehaviour
 
         if (GameOver.gameOver.isGameOver)
         {
-            
-          
+
+            if (!isOneShot)
+            {
+                SoundEffect.soundEffect.audioSources[5].Play();
+                isOneShot = true;
+            }
             StartCoroutine(delayPopuEndGame());
             StartCoroutine(textEndGameFailed());
           

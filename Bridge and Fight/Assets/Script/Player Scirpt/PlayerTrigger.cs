@@ -48,6 +48,11 @@ public class PlayerTrigger : MonoBehaviour
         if(collision.gameObject.tag=="Bull Boss") 
         {
             Instantiate(playerHitParticle, transform.position, Quaternion.identity);
+            if (!UIPauseGame.uIPauseGame.isSceneEnded) 
+            {
+                SoundEffect.soundEffect.audioSources[10].Play();
+            }
+            
         }
         if (collision.gameObject.tag == "Coin") 
         {

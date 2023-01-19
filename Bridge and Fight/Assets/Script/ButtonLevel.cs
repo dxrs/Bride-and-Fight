@@ -19,7 +19,7 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField] TextMeshProUGUI textLevelCost;
     [SerializeField] TextMeshProUGUI textNotEnoughCoin;
     [SerializeField] Button levelButton;
-
+    
 
 
     bool isPurchased = false;
@@ -89,6 +89,7 @@ public class ButtonLevel : MonoBehaviour
                             }
                             if (coin >= levelCost)
                             {
+                                SoundEffect.soundEffect.audioSources[8].Play();
                                 print("anda membeli level " + id + " dengan harga " + levelCost);
                                 idStatus = 1;
                                 indexButton = idStatus;
