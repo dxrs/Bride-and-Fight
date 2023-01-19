@@ -45,6 +45,7 @@ public class UIEndGame : MonoBehaviour
     bool isUsingGamepad = false;
     bool isGoingTransition;
     bool isGetBonusCoin = false;
+    bool isOneShot = false;
     
 
     float lerpingTime = 0.5f;
@@ -78,6 +79,7 @@ public class UIEndGame : MonoBehaviour
 
         textInfoLevel.text = "Level " + UIStartGame.uIStartGame.idLevel;
 
+        
        
 
         if (isGoingTransition) 
@@ -113,26 +115,31 @@ public class UIEndGame : MonoBehaviour
 
     public void onClickContinue()
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         isGoingTransition = true;
         isCoinDataSaved = true;
-        if (UIStartGame.uIStartGame.idLevel == curLevelValue) 
+        if (curLevelValue <= UIStartGame.uIStartGame.totalLevel) 
         {
-            if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
+            if (UIStartGame.uIStartGame.idLevel == curLevelValue)
+            {
+                if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level")
+                {
+                    if (isCoinDataSaved)
+                    {
+                        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], totalCoin);
+                    }
+                }
+
+            }
+            else
             {
                 if (isCoinDataSaved)
                 {
-                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], totalCoin);
+                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
                 }
             }
-           
         }
-        else 
-        {
-            if (isCoinDataSaved)
-            {
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[0], TotalCoin.totalCoin.curCoinGet);
-            }
-        }
+       
         
         StartCoroutine(loadToSceneSelectLevel());
         listEndGameButton[0].interactable = false;
@@ -140,6 +147,7 @@ public class UIEndGame : MonoBehaviour
     }
     public void onClickRestart()
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         isGoingTransition = true;
         listEndGameButton[0].interactable = false;
         listEndGameButton[1].interactable = false;
@@ -151,6 +159,9 @@ public class UIEndGame : MonoBehaviour
     {
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {
+
+            UIStartGame.uIStartGame.isMusicVolumeUp = false;
+            imgObjectCoin.transform.Rotate(Vector3.forward, 50 * Time.deltaTime);
             //Cursor.visible = true;
             //GameStarting.gameStarting.isGameStarted = false;
             textCoin.text = TotalCoin.totalCoin.curCoinGet.ToString();
@@ -159,10 +170,16 @@ public class UIEndGame : MonoBehaviour
             {
                 isEndGameObjectEnable = true;
             }
+
         }
 
         if (GameFinish.gameFinish.isGameFinished) 
         {
+            if (!isOneShot)
+            {
+                SoundEffect.soundEffect.audioSources[4].Play();
+                isOneShot = true;
+            }
             totalCoin = TotalCoin.totalCoin.curCoinGet + bonusCoin;
             UIStartGame.uIStartGame.listUIObject[3].SetActive(true);
             UIStartGame.uIStartGame.listUIObject[1].SetActive(false);
@@ -170,7 +187,7 @@ public class UIEndGame : MonoBehaviour
             {
                 
                 textTotalCoin.text = "You received " + totalCoin + " Coin";
-                imgObjectCoin.transform.localPosition = new Vector2(-865, imgObjectCoin.transform.localPosition.y);
+                
 
                 if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
                 {
@@ -178,21 +195,18 @@ public class UIEndGame : MonoBehaviour
                     textTotalCoin.enabled = true;
                     textCongrats.enabled = true;
 
-                    textBonusCoin.text = "+ Bonus Coin + " + bonusCoin;
+                    textBonusCoin.text = "Bonus : " + bonusCoin;
 
                     if (!isGetBonusCoin)
                     {
-                        //TotalCoin.totalCoin.curCoinGet = TotalCoin.totalCoin.curCoinGet + bonusCoin;
+                        
                         isGetBonusCoin = true;
                     }
                 }
                 
 
             }
-            else 
-            {
-                imgObjectCoin.transform.localPosition = new Vector2(0, imgObjectCoin.transform.localPosition.y);
-            }
+            
             StartCoroutine(textEndGameFinish());
             textEndGame.text = "VICTORY";
             
@@ -200,13 +214,17 @@ public class UIEndGame : MonoBehaviour
 
         if (GameOver.gameOver.isGameOver)
         {
-            
-          
+
+            if (!isOneShot)
+            {
+                SoundEffect.soundEffect.audioSources[5].Play();
+                isOneShot = true;
+            }
             StartCoroutine(delayPopuEndGame());
             StartCoroutine(textEndGameFailed());
           
             textEndGame.text = "DEFEAT";
-            //imgObjectCoin.transform.localPosition = new Vector2(0, imgObjectCoin.transform.localPosition.y);
+            
 
             if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
             {

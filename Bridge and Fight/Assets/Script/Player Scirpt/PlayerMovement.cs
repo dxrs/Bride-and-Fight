@@ -30,17 +30,18 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (GameFinish.gameFinish.isGameFinished) 
+        
+        if (UIPauseGame.uIPauseGame.isSceneEnded) 
         {
-            //rb.drag =10;
+            rb.drag =10;
         }
         
         
-        if (ShadowAbility.shadowAbility.isShadowActivated) 
+        if (ShadowAbility.shadowAbility.isShadowActivated || UIPauseGame.uIPauseGame.isSceneEnded) 
         {
             cc.enabled = false;
         }
-        else 
+        if(!ShadowAbility.shadowAbility.isShadowActivated && !UIPauseGame.uIPauseGame.isSceneEnded) 
         {
             cc.enabled = true;
         }
@@ -161,11 +162,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void restartOrExit() 
-    {
-        rb.drag = 10;
-        cc.enabled = false;
-    }
+   
     
 
 

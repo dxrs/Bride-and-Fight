@@ -83,7 +83,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 ImageAbilityIcon.sprite = icon[0];
                
                 curCostUpgrade = 230;
-                
+
+                /*
                 if (yourBank < curCostUpgrade || curLevel<2) 
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 2";
@@ -99,7 +100,16 @@ public class AbilityShadowUpgrade : MonoBehaviour
                     textUpReq.text = "Upgrade Requirement : Complete Level 2";
                     buttonUpgrade.interactable = false;
                 }
-
+                */
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
+                    buttonUpgrade.interactable = false;
+                }
 
             }
             if (curShadowLevel == 2)
@@ -113,6 +123,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 ImageAbilityIcon.sprite = icon[1];
 
                 curCostUpgrade = 450;
+
+                /*
                 if (yourBank < curCostUpgrade || curLevel < 3)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 3";
@@ -127,6 +139,17 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 if (yourBank >= curCostUpgrade && curLevel < 3)
                 {
                     textUpReq.text = "Upgrade Requirement : Complete Level 3";
+                    buttonUpgrade.interactable = false;
+                }
+                */
+
+                if (yourBank < curCostUpgrade)
+                {
+                    textUpReq.text = "not enough money";
+                    buttonUpgrade.interactable = false;
+                }
+                if (yourBank >= curCostUpgrade)
+                {
                     buttonUpgrade.interactable = false;
                 }
 

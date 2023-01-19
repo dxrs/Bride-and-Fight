@@ -19,11 +19,10 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField] TextMeshProUGUI textLevelCost;
     [SerializeField] TextMeshProUGUI textNotEnoughCoin;
     [SerializeField] Button levelButton;
-
+    
 
 
     bool isPurchased = false;
-
     int curLevel;
     int indexButton;
     int coin;
@@ -60,7 +59,8 @@ public class ButtonLevel : MonoBehaviour
 
      void purchaseLevel()
     {
-        if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue)
+        
+        if (id == UISelectLevel.uiselectLevel.levelButtonClickedValue )
         {
             if (idStatus == 1)
             {
@@ -68,6 +68,9 @@ public class ButtonLevel : MonoBehaviour
                 {
                     UISelectLevel.uiselectLevel.sceneAnimationTransition();
                     print("masuk ke scene " + id);
+
+                    SceneManagerCallback.sceneManagerCallback.masukKeSceneLevel();
+
                 }
                 
             }
@@ -86,6 +89,7 @@ public class ButtonLevel : MonoBehaviour
                             }
                             if (coin >= levelCost)
                             {
+                                SoundEffect.soundEffect.audioSources[8].Play();
                                 print("anda membeli level " + id + " dengan harga " + levelCost);
                                 idStatus = 1;
                                 indexButton = idStatus;
@@ -216,6 +220,8 @@ public class ButtonLevel : MonoBehaviour
 
         yield return null;
     }
+
+    
 
    
 }

@@ -26,6 +26,7 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] int clickedValue;
 
     [SerializeField] bool isAnimatedPopUp;
+    [SerializeField] bool isInSettingMenu;
 
 
     [Header("TOGGLE")]
@@ -45,7 +46,7 @@ public class UIMenuManager : MonoBehaviour
 
     private void Start()
     {
-        
+        Cursor.visible = true;
         buttonEventList();
 
         visualValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[8], 1);
@@ -54,6 +55,11 @@ public class UIMenuManager : MonoBehaviour
         checkListToggleButton[0].isOn = visualValue == 1;
         checkListToggleButton[1].isOn = sfxValue == 1;
         checkListToggleButton[2].isOn = musicValue == 1;
+
+        if(Music.music.id=="Main Menu") 
+        {
+            Music.music.audioSources[0].PlayOneShot(Music.music.audioClips[0]);
+        }
     }
 
     private void Update()
@@ -83,6 +89,7 @@ public class UIMenuManager : MonoBehaviour
                 if (clickedValue == 2) 
                 {
                     isAnimatedPopUp = true;
+                    isInSettingMenu = true;
                 }
                 if (clickedValue == 4) 
                 {
@@ -113,6 +120,7 @@ public class UIMenuManager : MonoBehaviour
 
         if (isGoingToSelectLevel) 
         {
+            Music.music.audioSources[0].volume = Mathf.Lerp(Music.music.audioSources[0].volume, 0, 2 * Time.deltaTime);
             sceneTransitionObj.transform.localScale = Vector2.MoveTowards(sceneTransitionObj.transform.localScale,
                 transitionObject, 100 * Time.deltaTime);
             StartCoroutine(goingToSelectLevel());
@@ -167,8 +175,10 @@ public class UIMenuManager : MonoBehaviour
     void menuButtonClicked(int value) 
     {
         clickedValue = value;
+        
         if (clickedValue != 3) 
         {
+            SoundEffect.soundEffect.audioSources[0].Play();
             buttonMenuIsClicked = true;
         }
        
@@ -208,6 +218,7 @@ public class UIMenuManager : MonoBehaviour
 
     public void onClickExtToMainMenu() 
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         if (buttonMenuIsClicked) 
         {
             buttonMenuIsClicked = false;
@@ -216,6 +227,7 @@ public class UIMenuManager : MonoBehaviour
 
     public void onClickDeleteData() 
     {
+        SoundEffect.soundEffect.audioSources[0].Play();
         if (buttonMenuIsClicked)
         {
             SaveDataManager.saveDataManager.deleteData();
@@ -228,23 +240,59 @@ public class UIMenuManager : MonoBehaviour
     #region toggle button
     public void toggleVisual()
     {
+        if (isInSettingMenu) 
+        {
+            SoundEffect.soundEffect.audioSources[3].Play();
+        }
+
         visualValue = checkListToggleButton[0].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[8], visualValue);
         PlayerPrefs.Save();
     }
-    public void toggleSFX()
-    {
-        sfxValue = checkListToggleButton[1].isOn ? 1 : 0;
-        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[9], sfxValue);
-        PlayerPrefs.Save();
-    }
-
     public void toggleMusic()
     {
+        if (isInSettingMenu) 
+        {
+            SoundEffect.soundEffect.audioSources[3].Play();
+        }
+  
+
         musicValue = checkListToggleButton[2].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[10], musicValue);
         PlayerPrefs.Save();
+        if (musicValue == 0) 
+        {
+            Music.music.objectDisable();
+        }
+        if (musicValue == 1) 
+        {
+            Music.music.objectEnable();
+            if(Music.music.id=="Main Menu") 
+            {
+                Music.music.audioSources[0].PlayOneShot(Music.music.audioClips[0]);
+            }
+        }
+
     }
+    public void toggleSFX()
+    {
+      
+        sfxValue = checkListToggleButton[1].isOn ? 1 : 0;
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[9], sfxValue);
+        PlayerPrefs.Save();
+        if (sfxValue == 0) 
+        {
+            SoundEffect.soundEffect.objectDisable();
+        }
+        if (sfxValue == 1) 
+        {
+
+            SoundEffect.soundEffect.audioSources[3].Play();
+            SoundEffect.soundEffect.objectEnable();
+        }
+    }
+
+  
     #endregion
 
 }

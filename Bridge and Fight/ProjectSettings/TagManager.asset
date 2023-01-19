@@ -23,6 +23,7 @@ TagManager:
   - Fast Enemy
   - Target Bot
   - Bullet
+  - Coin
   layers:
   - Default
   - TransparentFX

@@ -12,8 +12,10 @@ public class UIStartGame : MonoBehaviour
 
     public bool isInStartGame;
     public bool isStarted;
+    public bool isMusicVolumeUp;
 
     public int idLevel;
+    public int totalLevel;
 
     public GameObject[] listUIObject;
 
@@ -68,6 +70,7 @@ public class UIStartGame : MonoBehaviour
 
     private void Start()
     {
+        totalLevel = 4;
         if(SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
         {
             listAbilityObject.SetActive(true);
@@ -91,6 +94,11 @@ public class UIStartGame : MonoBehaviour
         #endregion
 
         eventListener();
+        if (Music.music.id == "Level")
+        {
+            Music.music.audioSources[1].PlayOneShot(Music.music.audioClips[1]);
+            Music.music.audioSources[1].volume = 0.1f;
+        }
     }
 
     private void Update()
@@ -108,10 +116,21 @@ public class UIStartGame : MonoBehaviour
             StartCoroutine(gameStarting());
         }
 
-       
-
+        if (!UIPauseGame.uIPauseGame.isSceneEnded) 
+        {
+            if (isMusicVolumeUp)
+            {
+                Music.music.audioSources[1].volume = Mathf.Lerp(Music.music.audioSources[1].volume, 0.4f, 2.3f * Time.unscaledDeltaTime);
+            }
+            if (!isMusicVolumeUp)
+            {
+                Music.music.audioSources[1].volume = Mathf.Lerp(Music.music.audioSources[1].volume, 0.1f, 2.3f * Time.unscaledDeltaTime);
+            }
+        }
+        
         if (GameStarting.gameStarting.isGameStarted) 
-        { 
+        {
+           
             listUIObject[0].SetActive(false);
             for (int i = 0; i < player.Length; i++)
             {
@@ -140,6 +159,8 @@ public class UIStartGame : MonoBehaviour
     }
     public void onClickButtonA1()
     {
+        isMusicVolumeUp = true;
+        SoundEffect.soundEffect.audioSources[6].Play();
         isStarted = true;
         curAbilityA = AbilityInventory.abilityInventory.skill_1;
         abilitySelectedValue = curAbilityA;
@@ -152,6 +173,8 @@ public class UIStartGame : MonoBehaviour
 
     public void onClickButtonA2()
     {
+        isMusicVolumeUp = true;
+        SoundEffect.soundEffect.audioSources[6].Play();
         isStarted = true;
         curAbilityB = AbilityInventory.abilityInventory.skill_2;
         abilitySelectedValue = curAbilityB;
@@ -163,8 +186,10 @@ public class UIStartGame : MonoBehaviour
     }
 
     // button di boss level
-    public void onClickContinue() 
+    public void onClickContinue()
     {
+        isMusicVolumeUp = true;
+        SoundEffect.soundEffect.audioSources[0].Play();
         Cursor.visible = false;
         GameStarting.gameStarting.isGameStarted = true;
     }

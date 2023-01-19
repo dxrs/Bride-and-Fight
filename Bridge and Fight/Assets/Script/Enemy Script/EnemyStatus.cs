@@ -24,7 +24,7 @@ public class EnemyStatus : MonoBehaviour
 
     public bool demaged = false;
 
-   
+    bool enemyIsDestroyed;
 
     private void Awake()
     {
@@ -45,33 +45,49 @@ public class EnemyStatus : MonoBehaviour
         {
             HitEffect.hitEffect.flashOut();
         }
+        if (UIPauseGame.uIPauseGame.isSceneEnded) { Destroy(gameObject); }
     }
 
     public void enemyDestroy()
     {
-       
+        enemyIsDestroyed = true;
         Destroy(gameObject);
         Instantiate(enemyParticle, transform.position, Quaternion.identity);
     }
     private void OnDestroy()
     {
-        if (gameObject != null && !GameFinish.gameFinish.isGameFinished && !GameOver.gameOver.isGameOver) 
+        if (enemyIsDestroyed && !GameFinish.gameFinish.isGameFinished && !GameOver.gameOver.isGameOver && !UIPauseGame.uIPauseGame.isSceneEnded) 
         {
             CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
+            SoundEffect.soundEffect.audioSources[2].Play();
         }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2"
             ||collision.gameObject.tag=="Infinity Stone"
-            ||collision.gameObject.tag=="Friendly Bot") 
+            ||collision.gameObject.tag=="Friendly Bot"
+            ||collision.gameObject.tag=="Diamond") 
         {
+            SoundEffect.soundEffect.audioSources[2].Play();
             Destroy(gameObject);
             Instantiate(enemyParticle, transform.position, Quaternion.identity);
         }
         if(collision.gameObject.tag=="Big Ball") 
         {
             StartCoroutine(getTriggerWithBigBall());
+        }
+        if (collision.gameObject.tag == "Bullet") 
+        {
+            if (!UIPauseGame.uIPauseGame.isSceneEnded) 
+            {
+                if (id == 2) 
+                {
+                    SoundEffect.soundEffect.audioSources[9].PlayOneShot(SoundEffect.soundEffect.audioClips[0]);
+                }
+             
+            }
         }
         if(collision.gameObject.tag == "Player 1")
         {

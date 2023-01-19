@@ -11,10 +11,13 @@ public class UIPauseGame : MonoBehaviour
 
     public bool isInPauseMenu;
 
+    public bool isSceneEnded;
+
     [SerializeField] GameObject objectRestartExit;
     [SerializeField] GameObject setting;
     [SerializeField] GameObject postProc;
     [SerializeField] GameObject sceneTransition;
+    [SerializeField] GameObject spawnerObject;
 
     [SerializeField] bool isInSetting;
     [SerializeField] bool isAnimatedTransition;
@@ -62,6 +65,10 @@ public class UIPauseGame : MonoBehaviour
 
     private void Update()
     {
+        if (isSceneEnded) 
+        {
+            Music.music.audioSources[1].volume = Mathf.Lerp(Music.music.audioSources[1].volume, 0, 1 * Time.unscaledDeltaTime);
+        }
         if (GamePaused.gamePaused.isGamePaused) 
         {
 
@@ -85,10 +92,7 @@ public class UIPauseGame : MonoBehaviour
             
         }
 
-        if (isAnimatedTransition) 
-        {
-            
-        }
+       
 
         if(GameStarting.gameStarting.isGameStarted 
             && !GameOver.gameOver.isGameOver 
@@ -98,7 +102,8 @@ public class UIPauseGame : MonoBehaviour
             {
                 if (!GamePaused.gamePaused.isGamePaused)
                 {
-                    
+                    UIStartGame.uIStartGame.isMusicVolumeUp = false;
+                    SoundEffect.soundEffect.audioSources[11].Play();
                     GamePaused.gamePaused.isGamePaused = true;
                     UIStartGame.uIStartGame.listUIObject[2].SetActive(true);
                     UIStartGame.uIStartGame.listUIObject[1].SetActive(false);
@@ -111,6 +116,7 @@ public class UIPauseGame : MonoBehaviour
                 }
                 else
                 {
+                    UIStartGame.uIStartGame.isMusicVolumeUp = true;
                     GamePaused.gamePaused.isGamePaused = false;
                     UIStartGame.uIStartGame.listUIObject[2].SetActive(false);
                     UIStartGame.uIStartGame.listUIObject[1].SetActive(true);
@@ -198,36 +204,42 @@ public class UIPauseGame : MonoBehaviour
 
     void compareButtonCLickValue() 
     {
+        
         if (buttoniSClicked) 
         {
             if (buttonPauseSelectedValue == 1) 
             {
+                UIStartGame.uIStartGame.isMusicVolumeUp = true;
                 GamePaused.gamePaused.isGamePaused = false;
                 UIStartGame.uIStartGame.listUIObject[2].SetActive(false);
                 UIStartGame.uIStartGame.listUIObject[1].SetActive(true);
                 //Cursor.visible = false;
                 buttonPauseHighlightedValue = 1;
+                
             }
 
             if (buttonPauseSelectedValue == 3) 
             {
+                isSceneEnded = true;
                 isAnimatedTransition = true;
                 GamePaused.gamePaused.isGamePaused = false;
-                PlayerMovement.playerMovement.restartOrExit();
+                Destroy(spawnerObject);
                 SceneManagerCallback.sceneManagerCallback.restartScene();
             }
             if (buttonPauseSelectedValue == 4)
             {
+                isSceneEnded = true;
                 isAnimatedTransition = true;
                 GamePaused.gamePaused.isGamePaused = false;
-                PlayerMovement.playerMovement.restartOrExit();
 
-               SceneManagerCallback.sceneManagerCallback.loadToMenu();
+                Destroy(spawnerObject);
+                StartCoroutine(SceneManagerCallback.sceneManagerCallback.loadToMenu());
             }
 
             if(buttonPauseSelectedValue==3 || buttonPauseSelectedValue == 4) 
             {
-                for(int j = 0; j < listPauseButton.Length; j++) 
+                
+                for (int j = 0; j < listPauseButton.Length; j++) 
                 {
                     listPauseButton[j].interactable = false;
                 }
@@ -237,10 +249,12 @@ public class UIPauseGame : MonoBehaviour
 
     void buttonPauseClick(int value) 
     {
-        if(!isInSetting&& buttonPauseHighlightedValue != 2) 
+        SoundEffect.soundEffect.audioSources[0].Play();
+        if (!isInSetting&& buttonPauseHighlightedValue != 2) 
         {
             buttonPauseSelectedValue = value;
             buttoniSClicked = true;
+            
         }
        
        
@@ -272,19 +286,31 @@ public class UIPauseGame : MonoBehaviour
     #region toggle button
     public void toggleVisual() 
     {
+        SoundEffect.soundEffect.audioSources[3].Play();
         visualValue = checkListToggleButton[0].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[8], visualValue);
         PlayerPrefs.Save();
     }
     public void toggleSFX() 
     {
+       
         sfxValue = checkListToggleButton[1].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[9], sfxValue);
         PlayerPrefs.Save();
+        if (sfxValue == 0)
+        {
+            SoundEffect.soundEffect.objectDisable();
+        }
+        if (sfxValue == 1)
+        {
+            SoundEffect.soundEffect.audioSources[3].Play();
+            SoundEffect.soundEffect.objectEnable();
+        }
     }
 
     public void toggleMusic() 
     {
+        SoundEffect.soundEffect.audioSources[3].Play();
         musicValue = checkListToggleButton[2].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[10], musicValue);
         PlayerPrefs.Save();

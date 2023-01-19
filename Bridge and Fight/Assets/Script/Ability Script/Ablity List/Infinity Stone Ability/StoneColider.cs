@@ -23,12 +23,12 @@ public class StoneColider : MonoBehaviour
     private void Awake()
     {
         if (stoneColider == null) { stoneColider = this; }
-        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
+        
     }
 
     private void Start()
     {
-        
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
         cc = GetComponent<CircleCollider2D>();
         if (curLevel == 1)
         {
