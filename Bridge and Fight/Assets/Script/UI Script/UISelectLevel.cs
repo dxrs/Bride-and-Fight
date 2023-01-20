@@ -14,6 +14,8 @@ public class UISelectLevel : MonoBehaviour
     public int levelButtonClickedValue;
     public int levelButtonHighlightValue;
     public int buttonLevelValueSelected;
+    public int curLevel;
+    public int bankValueData;
 
     public bool isLevelButtonClicked;
     public bool isGoingToStore;
@@ -42,7 +44,6 @@ public class UISelectLevel : MonoBehaviour
     [SerializeField] TextMeshProUGUI textCoin;
 
 
-    public int curLevel;
     int curCoin;
     bool gamePadPressed; // buat gamepad
     bool isTransition = false;
@@ -54,6 +55,7 @@ public class UISelectLevel : MonoBehaviour
 
     private void Start()
     {
+        bankValueData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
         curCoin = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         levelButtonHighlightValue = curLevel;

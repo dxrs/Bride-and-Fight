@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class BigBallAbilitySpawner : MonoBehaviour
 {
-    public static BigBallAbilitySpawner bigBallAbilitySpawner;
+
 
 
     [SerializeField] GameObject player;
     [SerializeField] GameObject bigBall;
 
+   
     [SerializeField] ParticleSystem slowRideParticleEffect;
 
+    CircleCollider2D cc;
 
-
-
-
-    private void Awake()
+    private void Start()
     {
-        bigBallAbilitySpawner = this;
+        cc = GetComponent<CircleCollider2D>();
     }
-  
+
+
     private void Update()
     {
        
@@ -31,16 +31,15 @@ public class BigBallAbilitySpawner : MonoBehaviour
              && !GameFinish.gameFinish.isGameFinished
              && UIStartGame.uIStartGame.abilitySelectedValue == 3) 
         {
-            
+           
             if (player != null)
             {
+                cc.enabled = true;
+
                 transform.localPosition = player.transform.position;
             }
         }
-        else 
-        {
-            gameObject.SetActive(false);
-        }
+       
 
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {

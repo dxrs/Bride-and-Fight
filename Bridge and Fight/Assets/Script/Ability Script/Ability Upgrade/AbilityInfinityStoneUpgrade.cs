@@ -42,7 +42,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     private void Start()
     {
         curStoneLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[3]);
-        yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        //yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
         
 
@@ -87,7 +87,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
 
-                curCostUpgrade = 90;
+                curCostUpgrade = 20;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 4)
@@ -106,12 +106,12 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                     buttonUpgrade.interactable = false;
                 }
                 */
-                if (yourBank < curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData < curCostUpgrade)
                 {
                     textUpReq.text = "not enough money";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
@@ -147,12 +147,12 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                     buttonUpgrade.interactable = false;
                 }
                 */
-                if (yourBank < curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData < curCostUpgrade)
                 {
                     textUpReq.text = "not enough money";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
@@ -193,22 +193,26 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     }
     public void onClickUpgradeStone() 
     {
-        if (UIShop.uIShop.buttonAbilityClickValue == 2)
+        if (UIShop.uIShop.isButtonAbilityClicked) 
         {
-           
-            if (yourBank >= curCostUpgrade) 
+            if (UIShop.uIShop.buttonAbilityClickValue == 2)
             {
-                yourBank -= curCostUpgrade;
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], yourBank);
 
-                // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
-                PlayerPrefs.Save();
-            }
-            if (curStoneLevel < 3)
-            {
-                curStoneLevel++;
-            }
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
+                {
+                    UISelectLevel.uiselectLevel.bankValueData -= curCostUpgrade;
+                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], UISelectLevel.uiselectLevel.bankValueData);
 
+                    // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
+                    PlayerPrefs.Save();
+                }
+                if (curStoneLevel < 3)
+                {
+                    curStoneLevel++;
+                }
+
+            }
         }
+     
     }
 }

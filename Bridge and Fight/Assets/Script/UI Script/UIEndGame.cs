@@ -123,17 +123,20 @@ public class UIEndGame : MonoBehaviour
         {
             
 
-            
-            if (curLevelValue == 1)
+            if(UIStartGame.uIStartGame.idLevel == curLevelValue) 
             {
-                totalAbility++;
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+                if (curLevelValue == 1)
+                {
+                    totalAbility++;
+                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+                }
+                if (curLevelValue == 2)
+                {
+                    totalAbility++;
+                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+                }
             }
-            if (curLevelValue == 2) 
-            {
-                totalAbility++;
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
-            }
+          
             
         }
        

@@ -36,7 +36,7 @@ public class ButtonLevel : MonoBehaviour
     private void Start()
     {
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
-        coin= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        //coin= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
 
         getIndexDataButtonValue();
         onStartButtonValue();
@@ -82,19 +82,15 @@ public class ButtonLevel : MonoBehaviour
                     {
                         if (indexButton == 0)
                         {
-                            if (coin < levelCost)
-                            {
-                                //StartCoroutine(textEnable());
-                                print("wah duit anda kurang");
-                            }
-                            if (coin >= levelCost)
+                            
+                            if (UISelectLevel.uiselectLevel.bankValueData >= levelCost)
                             {
                                 SoundEffect.soundEffect.audioSources[8].Play();
                                 print("anda membeli level " + id + " dengan harga " + levelCost);
                                 idStatus = 1;
                                 indexButton = idStatus;
-                                coin -= levelCost;
-                                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], coin);
+                                UISelectLevel.uiselectLevel.bankValueData -= levelCost;
+                                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], UISelectLevel.uiselectLevel.bankValueData);
 
                                 UISelectLevel.uiselectLevel.levelPurchased[i - 2] = 1;
                                 PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[7] + (i - 2),
@@ -218,7 +214,6 @@ public class ButtonLevel : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         textNotEnoughCoin.enabled = false;
 
-        yield return null;
     }
 
     

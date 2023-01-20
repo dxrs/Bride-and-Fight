@@ -39,7 +39,6 @@ public class UIShop : MonoBehaviour
 
     bool isUsingGamepad = false;
     bool isAnimatedPopUp;
-    int coin;
     int totalAbility;
 
     private void Awake()
@@ -49,7 +48,7 @@ public class UIShop : MonoBehaviour
 
     private void Start()
     {
-        coin = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+       
         totalAbility= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
         eventListener();
         
@@ -57,7 +56,7 @@ public class UIShop : MonoBehaviour
 
     private void Update()
     {
-        textCoin.text= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]).ToString(); ;
+        textCoin.text= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]).ToString();
         if (!UISelectLevel.uiselectLevel.isGoingToStore || isButtonAbilityClicked) 
         {
             

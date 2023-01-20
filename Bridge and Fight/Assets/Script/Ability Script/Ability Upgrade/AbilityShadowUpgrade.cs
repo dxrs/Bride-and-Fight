@@ -47,7 +47,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
     private void Start()
     {
         curShadowLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[2]);
-        yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        //yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
 
         
@@ -90,7 +90,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
                
-                curCostUpgrade = 70;
+                curCostUpgrade = 10;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel<2) 
@@ -109,12 +109,12 @@ public class AbilityShadowUpgrade : MonoBehaviour
                     buttonUpgrade.interactable = false;
                 }
                 */
-                if (yourBank < curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData < curCostUpgrade)
                 {
                     textUpReq.text = "not enough money";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
@@ -152,12 +152,12 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 }
                 */
 
-                if (yourBank < curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData < curCostUpgrade)
                 {
                     textUpReq.text = "not enough money";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
@@ -204,31 +204,34 @@ public class AbilityShadowUpgrade : MonoBehaviour
     #endregion
     public void onClickUpgradeShadow() 
     {
+
         
-        
-        if (UIShop.uIShop.buttonAbilityClickValue == 1)
         {
-            print("anda membeli ghost");
-            
-            if (yourBank >= curCostUpgrade)
+            if (UIShop.uIShop.buttonAbilityClickValue == 1)
             {
-                // Proses pengurangan sisa uang yang dimiliki
-                yourBank -= curCostUpgrade;
+                print("anda membeli ghost");
 
-                // Menyimpan data sisa uang yang dimiliki ke dalam PlayerPrefs
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], yourBank);
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
+                {
+                    // Proses pengurangan sisa uang yang dimiliki
+                    UISelectLevel.uiselectLevel.bankValueData -= curCostUpgrade;
 
-                // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
-                PlayerPrefs.Save();
+                    // Menyimpan data sisa uang yang dimiliki ke dalam PlayerPrefs
+                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], UISelectLevel.uiselectLevel.bankValueData);
+
+                    // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
+                    PlayerPrefs.Save();
+                }
+
+                if (curShadowLevel < 3)
+                {
+                    curShadowLevel++;
+                }
+
+
             }
-            
-            if (curShadowLevel < 3) 
-            {
-                curShadowLevel++;
-            }
-            
-            
         }
+       
     }
     
 }

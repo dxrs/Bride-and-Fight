@@ -8442,6 +8442,8 @@ MonoBehaviour:
   levelButtonClickedValue: 0
   levelButtonHighlightValue: 0
   buttonLevelValueSelected: 1
+  curLevel: 2
+  bankValueData: 0
   isLevelButtonClicked: 0
   isGoingToStore: 0
   listButtonLevel:
@@ -8467,7 +8469,6 @@ MonoBehaviour:
   - {fileID: 719432276}
   - {fileID: 3173469}
   textCoin: {fileID: 478836452}
-  curLevel: 2
 --- !u!114 &2004220921
 MonoBehaviour:
   m_ObjectHideFlags: 0

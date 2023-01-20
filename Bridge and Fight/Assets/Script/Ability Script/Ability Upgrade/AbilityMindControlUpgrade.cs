@@ -47,8 +47,9 @@ public class AbilityMindControlUpgrade : MonoBehaviour
 
     private void Start()
     {
+        
         curMindControlLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
-        yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
+        //yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
        
         curTotalAbility= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
 
@@ -126,12 +127,12 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                     buttonUpgrade.interactable = false;
                 }
                 */
-                if (yourBank < curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData < curCostUpgrade)
                 {
                     textUpReq.text = "not enough money";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
@@ -173,12 +174,12 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                     buttonUpgrade.interactable = false;
                 }
                 */
-                if (yourBank < curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData < curCostUpgrade)
                 {
                     textUpReq.text = "not enough money";
                     buttonUpgrade.interactable = false;
                 }
-                if (yourBank >= curCostUpgrade)
+                if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
                 {
                     textUpReq.text = "";
                     buttonUpgrade.interactable = true;
@@ -219,10 +220,10 @@ public class AbilityMindControlUpgrade : MonoBehaviour
         if (UIShop.uIShop.buttonAbilityClickValue == 3)
         {
 
-            if (yourBank >= curCostUpgrade)
+            if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
             {
-                yourBank -= curCostUpgrade;
-                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], yourBank);
+                UISelectLevel.uiselectLevel.bankValueData -= curCostUpgrade;
+                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], UISelectLevel.uiselectLevel.bankValueData);
 
                 // Menyimpan data yang tersimpan di PlayerPrefs ke dalam file penyimpanan secara langsung
                 PlayerPrefs.Save();
