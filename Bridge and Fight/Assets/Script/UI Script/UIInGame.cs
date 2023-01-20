@@ -56,7 +56,12 @@ public class UIInGame : MonoBehaviour
                 if (timerValue < 30)
                 {
                     textAlmostDone.enabled = true;
-                    Music.music.audioSources[1].pitch = Mathf.Lerp(Music.music.audioSources[1].pitch,1.15f,1*Time.deltaTime);
+                    if (Music.music.id == "Level")
+                    {
+                        Music.music.audioSource.pitch = Mathf.Lerp(Music.music.audioSource.pitch, 1.1f, 1 * Time.deltaTime);
+
+                    }
+                  
                 }
             }
             

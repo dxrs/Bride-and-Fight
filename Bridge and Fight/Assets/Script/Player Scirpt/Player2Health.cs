@@ -44,6 +44,14 @@ public class Player2Health : MonoBehaviour
         playerHealth -= 8;
     }
 
+    public void addP2Health()
+    {
+        if (playerHealth <= 30)
+        {
+            playerHealth += 1 * Time.deltaTime;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Player 1") 
@@ -65,4 +73,6 @@ public class Player2Health : MonoBehaviour
             playerHealth -= 2 * Time.deltaTime;
         }
     }
+
+
 }

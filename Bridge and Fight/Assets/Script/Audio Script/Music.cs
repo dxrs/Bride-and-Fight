@@ -6,8 +6,7 @@ public class Music : MonoBehaviour
 {
     public static Music music;
 
-    public AudioSource[] audioSources;
-    public AudioClip[] audioClips;
+    public AudioSource audioSource;
 
     public string id; //-> membedakan music di scene in game, select level, level, level boss
 

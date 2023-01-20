@@ -9,8 +9,11 @@ public class CoinSpawner : MonoBehaviour
     public float spawnTime;
     public float spawnRadius;
     [SerializeField] GameObject radiusObj;
+
+    int curLevel;
     void Start()
     {
+        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
         StartCoroutine(spawnCoin());
     }
 
@@ -18,14 +21,18 @@ public class CoinSpawner : MonoBehaviour
     {
         while (true && SceneManagerStatus.sceneManagerStatus.sceneStats=="Level")
         {
-            if(GameStarting.gameStarting.isGameStarted &&
-                !GameOver.gameOver.isGameOver
-                &&!GameFinish.gameFinish.isGameFinished) 
+            if (UIStartGame.uIStartGame.idLevel == curLevel) 
             {
-                Vector2 spawnPos = radiusObj.transform.position;
-                spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
-                Instantiate(coin, spawnPos, Quaternion.identity);
+                if (GameStarting.gameStarting.isGameStarted &&
+                !GameOver.gameOver.isGameOver
+                && !GameFinish.gameFinish.isGameFinished)
+                {
+                    Vector2 spawnPos = radiusObj.transform.position;
+                    spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
+                    Instantiate(coin, spawnPos, Quaternion.identity);
+                }
             }
+            
            
             yield return new WaitForSeconds(spawnTime);
         }

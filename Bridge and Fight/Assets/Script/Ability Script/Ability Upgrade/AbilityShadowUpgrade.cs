@@ -64,25 +64,33 @@ public class AbilityShadowUpgrade : MonoBehaviour
     }
     void progressUp() 
     {
-        
-       
+
+        if (curShadowLevel == 2) 
+        {
+            imageAbilityCard.sprite = card[1];
+        }
+        if (curShadowLevel == 3) 
+        {
+            imageAbilityCard.sprite = card[2];
+        }
         if(UIShop.uIShop.buttonAbilityClickValue == 1) 
         {
             textAbilityType.text = "Ability Type : Active";
             textDescAbility.text = abilityDesc;
             textUpgradeCost.text = curCostUpgrade.ToString();
-            textAbilityName.text = "GHOST";
+            textAbilityName.text = "GHOST v"+curShadowLevel;
             if (curShadowLevel == 1)
             {
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
+               
                 textInfoAbilityUpgrade[0].text = "Cooldown : 5s -> +0s";
                 textInfoAbilityUpgrade[1].text = "Duration : 11s -> +5s";
+                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[3].text = "";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
                
-                curCostUpgrade = 230;
+                curCostUpgrade = 70;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel<2) 
@@ -108,18 +116,19 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade)
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
 
             }
             if (curShadowLevel == 2)
             {
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
+              
                 textInfoAbilityUpgrade[0].text = "Cooldown : 5s -> +7s";
                 textInfoAbilityUpgrade[1].text = "Duration : 16s -> +4s";
+                textInfoAbilityUpgrade[2].text = "Player now can pick the coin even ghost mode actived";
+                textInfoAbilityUpgrade[3].text = "";
 
-                imageAbilityCard.sprite = card[1];
                 ImageAbilityIcon.sprite = icon[1];
 
                 curCostUpgrade = 450;
@@ -150,7 +159,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade)
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
 
             }
@@ -168,9 +178,10 @@ public class AbilityShadowUpgrade : MonoBehaviour
               
                 textInfoAbilityUpgrade[0].text = "Cooldown : 12s";
                 textInfoAbilityUpgrade[1].text = "Duration : 20s";
-                textInfoAbilityUpgrade[2].text = "Player now can pick the coin even ghost mode actived";
+                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[3].text = "";
 
-                imageAbilityCard.sprite = card[2];
+
                 ImageAbilityIcon.sprite = icon[2];
 
                 

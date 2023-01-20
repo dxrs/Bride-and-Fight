@@ -58,7 +58,9 @@ public class UIMenuManager : MonoBehaviour
 
         if(Music.music.id=="Main Menu") 
         {
-            Music.music.audioSources[0].PlayOneShot(Music.music.audioClips[0]);
+            Music.music.audioSource.Play();
+            Music.music.audioSource.volume = 0.7f;
+            
         }
     }
 
@@ -120,7 +122,11 @@ public class UIMenuManager : MonoBehaviour
 
         if (isGoingToSelectLevel) 
         {
-            Music.music.audioSources[0].volume = Mathf.Lerp(Music.music.audioSources[0].volume, 0, 2 * Time.deltaTime);
+            if(Music.music.id=="Main Menu") 
+            {
+                Music.music.audioSource.volume = Mathf.Lerp(Music.music.audioSource.volume, 0, 2 * Time.deltaTime);
+            }
+          
             sceneTransitionObj.transform.localScale = Vector2.MoveTowards(sceneTransitionObj.transform.localScale,
                 transitionObject, 100 * Time.deltaTime);
             StartCoroutine(goingToSelectLevel());
@@ -269,7 +275,8 @@ public class UIMenuManager : MonoBehaviour
             Music.music.objectEnable();
             if(Music.music.id=="Main Menu") 
             {
-                Music.music.audioSources[0].PlayOneShot(Music.music.audioClips[0]);
+                Music.music.audioSource.Play();
+                Music.music.audioSource.volume = 0.7f;
             }
         }
 

@@ -37,7 +37,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
     int curLevel;
     int curTotalAbility;
 
-    string abilityDesc = "one of the players will have a ring, when the enemy touches the diamond then the enemy will become our friend we called friendly bot and seek and destroy other enemies.";
+    string abilityDesc = "one of the players will have a ring, when the enemy touches the ring then the enemy will become our friend we called friendly bot and seek and destroy other enemies.";
 
 
     private void Awake()
@@ -49,7 +49,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
     {
         curMindControlLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
         yourBank = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
-        curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+       
         curTotalAbility= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
 
         
@@ -58,11 +58,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
     private void Update()
     {
 
-        if (curLevel == 2) 
-        {
-            curTotalAbility = 3;
-            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], curTotalAbility);
-        }
+       
         if (curTotalAbility >= 3 && curMindControlLevel == 1)
         {
             imageAbilityCard.sprite = card[0];
@@ -83,28 +79,36 @@ public class AbilityMindControlUpgrade : MonoBehaviour
 
     void progressUp() 
     {
+        if (curMindControlLevel == 2) 
+        {
+            imageAbilityCard.sprite = card[1];
+        }
+        if (curMindControlLevel == 3) 
+        {
+            imageAbilityCard.sprite = card[2];
+        }
         if (UIShop.uIShop.buttonAbilityClickValue == 3) 
         {
             textAbilityType.text = "Ability Type : Active";
             textDescAbility.text = abilityDesc;
             textUpgradeCost.text = curCostUpgrade.ToString();
-            textAbilityName.text = "HYPNOTIC";
+            textAbilityName.text = "HYPNOTIC v"+curMindControlLevel;
 
             if (curMindControlLevel == 1) 
             {
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
+               
 
                 textInfoAbilityUpgrade[0].text = "Max Bot Health : 1hp  -> +1hp";
                 textInfoAbilityUpgrade[1].text = "Duration : 15 -> +2";
                 textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 5 -> +2 ";
+                textInfoAbilityUpgrade[3].text = "when enemy get hit with bot will add coin as same as players hit the enemies";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
 
               
 
-                curCostUpgrade = 500;
+                curCostUpgrade = 135;
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 13)
                 {
@@ -129,7 +133,8 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade)
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
             }
             if (curMindControlLevel == 2) 
@@ -142,14 +147,15 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 textInfoAbilityUpgrade[0].text = "Max Bot Health : 2hp";
                 textInfoAbilityUpgrade[1].text = "Duration : 17 -> +1";
                 textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 7 -> +3 ";
-                textInfoAbilityUpgrade[3].text = "ring will moving random through the arena";
-                
-                imageAbilityCard.sprite = card[1];
+                textInfoAbilityUpgrade[3].text = "ring of mind control will moving around through the arena";
+
+
+
                 ImageAbilityIcon.sprite = icon[1];
 
                
 
-                curCostUpgrade = 850;
+                curCostUpgrade = 700;
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 20)
                 {
@@ -174,7 +180,8 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade)
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
             }
             if (curMindControlLevel == 3) 
@@ -190,9 +197,9 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                 textInfoAbilityUpgrade[0].text = "Max Bot Health : 2hp";
                 textInfoAbilityUpgrade[1].text = "Duration : 18";
                 textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 10";
-                textInfoAbilityUpgrade[3].text = "When bot hit enemies adding 2hp player's health";
+                textInfoAbilityUpgrade[3].text = "";
 
-                imageAbilityCard.sprite = card[2];
+
                 ImageAbilityIcon.sprite = icon[2];
 
                 buttonUpgrade.interactable = false;

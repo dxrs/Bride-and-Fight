@@ -22,12 +22,13 @@ public class HypnotizedAbility : MonoBehaviour
 
     [SerializeField] float hypnotizedCooldownTimer;
     [SerializeField] float hypnotizeActivatedTimer;
+    [SerializeField] float barUpValue;
 
     [SerializeField] Image imgBar;
     [SerializeField] Image imgAbilityIcon;
 
-
-
+    [SerializeField] CircleCollider2D cc;
+ 
     [SerializeField] TextMeshProUGUI textReady;
 
     [Header("Diamond Object Moving")]
@@ -42,7 +43,7 @@ public class HypnotizedAbility : MonoBehaviour
     int maxEnemyHit;
     int indexPlayer;
     int curUpLevel;
-    float barUpValue = 0;
+    float coolDownFixValue;
     float curMindControlTimer;
     float curValueTimer;
     string abilityName = "Hypnotic";
@@ -56,7 +57,7 @@ public class HypnotizedAbility : MonoBehaviour
         curUpLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]);
         indexPlayer = Random.Range(0, 2);
 
-        
+        coolDownFixValue = 30;
         UIStartGame.uIStartGame.abilityLeftName[2] = abilityName;
         UIStartGame.uIStartGame.abilityRightName[2] = abilityName;
         curUpLevelValue = curUpLevel;
@@ -97,6 +98,7 @@ public class HypnotizedAbility : MonoBehaviour
             && !GameFinish.gameFinish.isGameFinished
             && UIStartGame.uIStartGame.abilitySelectedValue == 2) 
         {
+            ringOfDiamond.SetActive(true);
             ringOfDiamondTransform();
             if (curUpLevelValue == 3) 
             {
@@ -191,13 +193,11 @@ public class HypnotizedAbility : MonoBehaviour
         {
             if (hypnotizedCooldownTimer > 0) 
             {
-                hypnotizedCooldownTimer -= 1.5f * Time.deltaTime;
+                hypnotizedCooldownTimer -= 1f * Time.deltaTime;
+                
             }
 
-            if (barUpValue < 30)
-            {
-                barUpValue += 0.5f * Time.deltaTime;
-            }
+            
         }
 
         if (hypnotizedCooldownTimer <= 0) 
@@ -225,8 +225,14 @@ public class HypnotizedAbility : MonoBehaviour
         }
         else 
         {
-            curValueTimer = barUpValue;
-            imgBar.fillAmount = curValueTimer / hypnotizedCooldownTimer;
+            if(!isUsingAbility && hypnotizedCooldownTimer > 0)
+            {
+                barUpValue += 1f * Time.deltaTime;
+                imgBar.fillAmount = barUpValue / coolDownFixValue;
+                
+            }
+       
+   
         }
        
     }
@@ -245,12 +251,21 @@ public class HypnotizedAbility : MonoBehaviour
 
         if (hypnotizedActivated) 
         {
-            ringOfDiamond.SetActive(true);
+            ringOfDiamond.transform.localScale = Vector2.MoveTowards(ringOfDiamond.transform.localScale, new Vector2(1, 1), 3 * Time.deltaTime);
+            if (ringOfDiamond.transform.localScale.x == 1) 
+            {
+                cc.enabled = true;
+            }
+
+            //ringOfDiamond.SetActive(true);
             ringOfDiamond.transform.Rotate(Vector3.forward, 150 * Time.deltaTime);
         }
         else 
         {
-            ringOfDiamond.SetActive(false);
+            ringOfDiamond.transform.localScale = Vector2.MoveTowards(ringOfDiamond.transform.localScale, new Vector2(0, 0), 5f * Time.deltaTime);
+            cc.enabled = false;
+            ringOfDiamond.transform.Rotate(-Vector3.forward, 150 * Time.deltaTime);
+            //ringOfDiamond.SetActive(false);
         }
     }
 
@@ -274,15 +289,19 @@ public class HypnotizedAbility : MonoBehaviour
         while (true) 
         {
             yield return new WaitForSeconds(1.5f);
-            if (curUpLevelValue >= 2) 
+            if (curUpLevelValue == 3) 
             {
                 if (hypnotizedActivated
                && !GameOver.gameOver.isGameOver
                && GameStarting.gameStarting.isGameStarted)
                 {
-                    targetPos = new Vector3(Random.Range(xMin, xMax),
-                       Random.Range(yMin, yMax), 0);
-                    isMoving = true;
+                    if (ringOfDiamond.transform.localScale.x == 1) 
+                    {
+                        targetPos = new Vector3(Random.Range(xMin, xMax),
+                      Random.Range(yMin, yMax), 0);
+                        isMoving = true;
+                    }
+                   
                 }
             }
            

@@ -66,6 +66,14 @@ public class Player1Health : MonoBehaviour
         playerHealth -= 8;
     }
 
+    public void addP1Health() 
+    {
+        if (playerHealth <= 30) 
+        {
+            playerHealth += 1 * Time.deltaTime;
+        }
+    }
+
 
 
    

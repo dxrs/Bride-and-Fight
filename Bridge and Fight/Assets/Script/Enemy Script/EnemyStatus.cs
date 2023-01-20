@@ -63,6 +63,8 @@ public class EnemyStatus : MonoBehaviour
         }
 
     }
+
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2"
@@ -113,6 +115,7 @@ public class EnemyStatus : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player 2")
         {
+           
             if (!GameOver.gameOver.isGameOver)
             {
                 if (id == 1)
@@ -139,6 +142,21 @@ public class EnemyStatus : MonoBehaviour
             Destroy(gameObject);
             Instantiate(friendlyBot, transform.position, Quaternion.identity);
         }
+        if (collision.gameObject.tag == "Friendly Bot")
+        {
+            if (PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]) >= 2) 
+            {
+                if (id == 1)
+                {
+                    TotalCoin.totalCoin.curCoinGet += 2;
+                }
+                if (id == 2)
+                {
+                    TotalCoin.totalCoin.curCoinGet += 4;
+                }
+            }
+          
+        }
 
         if (collision.gameObject.tag == "Bullet")
         {
@@ -153,6 +171,22 @@ public class EnemyStatus : MonoBehaviour
 
        
         
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag=="Big Ball")
+        {
+            if (PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[11]) >= 2)
+            {
+                if (!GameOver.gameOver.isGameOver)
+                {
+                    Player1Health.player1Health.addP1Health();
+                    Player2Health.player2Health.addP2Health();
+                }
+            }
+           
+        }
     }
 
     IEnumerator getTriggerWithBigBall() 

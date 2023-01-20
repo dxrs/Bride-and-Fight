@@ -54,11 +54,7 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
 
     private void Update()
     {
-        if (curLevel == 3)
-        {
-            curTotalAbility = 4;
-            PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], curTotalAbility);
-        }
+        
         if (curTotalAbility >= 4 && curSlowRideLevel == 1)
         {
             imageAbilityCard.sprite = card[0];
@@ -72,29 +68,39 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
         {
             buttonCardAbility.interactable = false;
         }
+        progressUp();
+        saveDataUpSlowRide();
     }
 
     void progressUp() 
     {
+        if (curSlowRideLevel == 2) 
+        {
+
+            imageAbilityCard.sprite = card[1];
+        }
+        if (curSlowRideLevel == 3) 
+        {
+            imageAbilityCard.sprite = card[2];
+        }
         if (UIShop.uIShop.buttonAbilityClickValue == 4)
         {
             textAbilityType.text = "Ability Type : Passive";
             textDescAbility.text = abilityDesc;
             textUpgradeCost.text = curCostUpgrade.ToString();
-            textAbilityName.text = "SLOW RIDE";
+            textAbilityName.text = "SLOW RIDE v"+curSlowRideLevel;
             if (curSlowRideLevel == 1)
             {
 
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
-
+               
                 textInfoAbilityUpgrade[0].text = "Blast Speed : 4s -> +3s";
                 textInfoAbilityUpgrade[1].text = "Max Blast Scale : 5 -> +5";
-
+                textInfoAbilityUpgrade[2].text = "when enemy get hit by low ball, then will add some health to each players when their health is low";
+                textInfoAbilityUpgrade[3].text = "";
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
 
-                curCostUpgrade = 450;
+                curCostUpgrade = 100;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 6)
@@ -121,21 +127,21 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade) 
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
 
             }
             if (curSlowRideLevel == 2)
             {
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
+            
                 textInfoAbilityUpgrade[0].text = "Blast Speed : 7s -> +3s";
                 textInfoAbilityUpgrade[1].text = "Max Blast Scale : 10 -> +2";
-
-                imageAbilityCard.sprite = card[1];
+                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[3].text = "";
                 ImageAbilityIcon.sprite = icon[1];
 
-                curCostUpgrade = 780;
+                curCostUpgrade = 550;
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 15)
                 {
@@ -161,7 +167,8 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade)
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
 
             }
@@ -179,9 +186,9 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
 
                 textInfoAbilityUpgrade[0].text = "Blast Speed : 10s";
                 textInfoAbilityUpgrade[1].text = "Max Blast Scale : 12";
+                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[3].text = "";
 
-
-                imageAbilityCard.sprite = card[2];
                 ImageAbilityIcon.sprite = icon[2];
 
 

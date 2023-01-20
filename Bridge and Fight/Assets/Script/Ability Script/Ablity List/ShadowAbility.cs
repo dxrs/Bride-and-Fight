@@ -40,6 +40,7 @@ public class ShadowAbility : MonoBehaviour
     
 
     int curLevel;
+    float coolDownFixValue;
     float barUpValue = 0;
     float curShadowCooldown;
     float curShadowTimer;
@@ -61,6 +62,7 @@ public class ShadowAbility : MonoBehaviour
         curUpLevelValue = curLevel;
         upgradeAbilityShadow();
         shadowAbilityTimer = curShadowTimer;
+        coolDownFixValue = curShadowCooldown;
         //curValueTimer = shadowAbilityTimer;
 
         
@@ -194,18 +196,15 @@ public class ShadowAbility : MonoBehaviour
             {
                 if (curUpLevelValue != 3) 
                 {
-                    shadowAblityCoolDown -= 0.85f * Time.deltaTime;
+                    shadowAblityCoolDown -= 1f * Time.deltaTime;
                 }
                 else
                 {
-                    shadowAblityCoolDown -= 1.3f * Time.deltaTime;
+                    shadowAblityCoolDown -= 1f * Time.deltaTime;
                 }
                
             }
-            if (barUpValue < curShadowCooldown)
-            {
-                barUpValue += 0.8f * Time.deltaTime;
-            }
+            
         }
 
         if (shadowAblityCoolDown <= 0) 
@@ -234,9 +233,13 @@ public class ShadowAbility : MonoBehaviour
         }
         else 
         {
-           curValueTimer = barUpValue;
-           imgBar.fillAmount =curValueTimer/curShadowCooldown;
-         
+            if (!isUsingAbility && curShadowCooldown > 0)
+            {
+                barUpValue += 1f * Time.deltaTime;
+                imgBar.fillAmount = barUpValue / coolDownFixValue;
+
+            }
+
         }
         
 

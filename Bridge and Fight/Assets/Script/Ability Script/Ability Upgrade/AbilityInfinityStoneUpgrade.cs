@@ -58,27 +58,36 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
     }
     void progressUp() 
     {
-        
+
+        if (curStoneLevel == 2)
+        {
+
+            imageAbilityCard.sprite = card[1];
+        }
+        if (curStoneLevel == 3) 
+        {
+            imageAbilityCard.sprite = card[2];
+        }
         
         if (UIShop.uIShop.buttonAbilityClickValue == 2) 
         {
             textAbilityType.text = "Ability Type : Passive";
             textDescAbility.text = abilityDesc;
             textUpgradeCost.text = curCostUpgrade.ToString();
-            textAbilityName.text = "INFINITY STONE";
+            textAbilityName.text = "INFINITY STONE v"+curStoneLevel;
             if (curStoneLevel == 1)
             {
 
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
 
                 textInfoAbilityUpgrade[0].text = "Stone Respawn : 10s -> +6.5s";
                 textInfoAbilityUpgrade[1].text = "Max Stone : 2 -> +2";
+                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[3].text = "";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
 
-                curCostUpgrade = 300;
+                curCostUpgrade = 90;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 4)
@@ -104,21 +113,22 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade)
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
 
             }
             if (curStoneLevel == 2) 
             {
-                textInfoAbilityUpgrade[0].enabled = true;
-                textInfoAbilityUpgrade[1].enabled = true;
+              
                 textInfoAbilityUpgrade[0].text = "Stone Respawn : 16.5s -> +10s";
                 textInfoAbilityUpgrade[1].text = "Max Stone : 4 -> +2";
+                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[3].text = "";
 
-                imageAbilityCard.sprite = card[1];
                 ImageAbilityIcon.sprite = icon[1];
 
-                curCostUpgrade = 600;
+                curCostUpgrade = 500;
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 9)
                 {
@@ -144,7 +154,8 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 }
                 if (yourBank >= curCostUpgrade)
                 {
-                    buttonUpgrade.interactable = false;
+                    textUpReq.text = "";
+                    buttonUpgrade.interactable = true;
                 }
 
             }
@@ -162,9 +173,10 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
 
                 textInfoAbilityUpgrade[0].text = "Stone Respawn : 28.5s";
                 textInfoAbilityUpgrade[1].text = "Max Stone : 8";
-               
+                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[3].text = "";
 
-                imageAbilityCard.sprite = card[2];
+
                 ImageAbilityIcon.sprite = icon[2];
 
         

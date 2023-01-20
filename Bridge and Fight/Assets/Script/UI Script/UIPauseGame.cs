@@ -67,7 +67,11 @@ public class UIPauseGame : MonoBehaviour
     {
         if (isSceneEnded) 
         {
-            Music.music.audioSources[1].volume = Mathf.Lerp(Music.music.audioSources[1].volume, 0, 1 * Time.unscaledDeltaTime);
+            if (Music.music.id == "Level") 
+            {
+                Music.music.audioSource.volume = Mathf.Lerp(Music.music.audioSource.volume, 0, 1 * Time.unscaledDeltaTime);
+            }
+            
         }
         if (GamePaused.gamePaused.isGamePaused) 
         {
@@ -330,7 +334,8 @@ public class UIPauseGame : MonoBehaviour
             Music.music.objectEnable();
             if (Music.music.id == "Level")
             {
-                Music.music.audioSources[1].PlayOneShot(Music.music.audioClips[1]);
+                Music.music.audioSource.Play();
+                Music.music.audioSource.volume = 0.4f;
             }
         }
     }

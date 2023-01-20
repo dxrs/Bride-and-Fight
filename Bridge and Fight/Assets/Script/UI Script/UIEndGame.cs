@@ -40,6 +40,7 @@ public class UIEndGame : MonoBehaviour
     #endregion
 
     int curLevelValue;
+    int totalAbility;
 
     bool isCoinDataSaved;
     bool isUsingGamepad = false;
@@ -62,9 +63,9 @@ public class UIEndGame : MonoBehaviour
     {
         TotalCoin.totalCoin.totalCoinGet = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]);
         curLevelValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
+        totalAbility= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[4]);
 
 
-        
         highlightListEndGameButtonValue = 1;
 
         eventListener();
@@ -118,6 +119,24 @@ public class UIEndGame : MonoBehaviour
         SoundEffect.soundEffect.audioSources[0].Play();
         isGoingTransition = true;
         isCoinDataSaved = true;
+        if (GameFinish.gameFinish.isGameFinished) 
+        {
+            
+
+            
+            if (curLevelValue == 1)
+            {
+                totalAbility++;
+                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+            }
+            if (curLevelValue == 2) 
+            {
+                totalAbility++;
+                PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+            }
+            
+        }
+       
         if (curLevelValue <= UIStartGame.uIStartGame.totalLevel) 
         {
             if (UIStartGame.uIStartGame.idLevel == curLevelValue)
@@ -159,7 +178,11 @@ public class UIEndGame : MonoBehaviour
     {
         if(GameFinish.gameFinish.isGameFinished || GameOver.gameOver.isGameOver) 
         {
-            Music.music.audioSources[1].pitch = 1f;
+            if (Music.music.id=="Level") 
+            {
+                Music.music.audioSource.pitch = 1f;
+            }
+            
             UIStartGame.uIStartGame.isMusicVolumeUp = false;
             imgObjectCoin.transform.Rotate(Vector3.forward, 50 * Time.deltaTime);
             //Cursor.visible = true;

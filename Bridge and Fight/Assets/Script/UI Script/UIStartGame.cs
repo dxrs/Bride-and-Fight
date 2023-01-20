@@ -96,8 +96,8 @@ public class UIStartGame : MonoBehaviour
         eventListener();
         if (Music.music.id == "Level")
         {
-            Music.music.audioSources[1].PlayOneShot(Music.music.audioClips[1]);
-            Music.music.audioSources[1].volume = 0.1f;
+            Music.music.audioSource.Play();
+            Music.music.audioSource.volume = 0.1f;
         }
     }
 
@@ -116,15 +116,15 @@ public class UIStartGame : MonoBehaviour
             StartCoroutine(gameStarting());
         }
 
-        if (!UIPauseGame.uIPauseGame.isSceneEnded) 
+        if (!UIPauseGame.uIPauseGame.isSceneEnded && Music.music.id=="Level") 
         {
             if (isMusicVolumeUp)
             {
-                Music.music.audioSources[1].volume = Mathf.Lerp(Music.music.audioSources[1].volume, 0.4f, 2.3f * Time.unscaledDeltaTime);
+                Music.music.audioSource.volume = Mathf.Lerp(Music.music.audioSource.volume, 0.4f, 2.3f * Time.unscaledDeltaTime);
             }
             if (!isMusicVolumeUp)
             {
-                Music.music.audioSources[1].volume = Mathf.Lerp(Music.music.audioSources[1].volume, 0.1f, 2.3f * Time.unscaledDeltaTime);
+                Music.music.audioSource.volume = Mathf.Lerp(Music.music.audioSource.volume, 0.1f, 2.3f * Time.unscaledDeltaTime);
             }
         }
         

@@ -57,7 +57,7 @@ public class UIShop : MonoBehaviour
 
     private void Update()
     {
-        textCoin.text=coin.ToString();
+        textCoin.text= PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[1]).ToString(); ;
         if (!UISelectLevel.uiselectLevel.isGoingToStore || isButtonAbilityClicked) 
         {
             
@@ -179,7 +179,7 @@ public class UIShop : MonoBehaviour
     {
 
 
-        SoundEffect.soundEffect.audioSources[0].Play();
+        SoundEffect.soundEffect.audioSources[8].Play();
         if (buttonAbilityClickValue == 1) 
         {
             AbilityShadowUpgrade.abilityShadowUpgrade.onClickUpgradeShadow();
