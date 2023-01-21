@@ -40,7 +40,7 @@ public class PlayerTrigger : MonoBehaviour
             {
                 if (TotalCoin.totalCoin.curCoinGet > 0)
                 {
-                    TotalCoin.totalCoin.curCoinGet -= 5;
+                    TotalCoin.totalCoin.curCoinGet -= 2;
                 }
                 Instantiate(playerHitParticle, transform.position, Quaternion.identity);
             }

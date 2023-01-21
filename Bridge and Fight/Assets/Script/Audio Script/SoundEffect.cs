@@ -8,8 +8,8 @@ public class SoundEffect : MonoBehaviour
 
     public AudioSource[] audioSources;
     public AudioClip[] audioClips;
- 
-    [SerializeField] int soundValueData;
+
+    public int soundValueData;
 
     [SerializeField] GameObject objectSoundEffect;
 
@@ -21,34 +21,40 @@ public class SoundEffect : MonoBehaviour
     private void Start()
     {
         soundValueData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[9]);
+        if (soundValueData == 1)
+        {
+            for (int i = 0; i < audioSources.Length; i++)
+            {
+                audioSources[i].mute = false;
+            }
+        }
+        if (soundValueData == 0)
+        {
+            for (int i = 0; i < audioSources.Length; i++)
+            {
+                audioSources[i].mute = true;
+            }
+        }
     }
 
    
-    private void OnEnable()
-    {
-        if (soundValueData == 1) 
-        {
-            objectSoundEffect.SetActive(true);
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (soundValueData == 0) 
-        {
-            objectSoundEffect.SetActive(false);
-        }
-    }
+    
 
     public void objectEnable() 
     {
         
-        objectSoundEffect.SetActive(true);
+        for(int i = 0; i < audioSources.Length; i++) 
+        {
+            audioSources[i].mute = false;
+        }
     }
     public void objectDisable() 
     {
-       
-        objectSoundEffect.SetActive(false);
+
+        for (int i = 0; i < audioSources.Length; i++)
+        {
+            audioSources[i].mute = true;
+        }
     }
 }
 

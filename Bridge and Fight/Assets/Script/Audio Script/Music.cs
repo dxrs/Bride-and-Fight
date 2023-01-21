@@ -21,30 +21,36 @@ public class Music : MonoBehaviour
     private void Start()
     {
         musicValueData = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[10]);
+        if (musicValueData == 1)
+        {
+            audioSource.enabled = true;
+
+        }
+        if (musicValueData == 0)
+        {
+            audioSource.enabled = false;
+
+        }
     }
 
     private void OnEnable()
     {
-        if (musicValueData == 1)
-        {
-            objectMusic.SetActive(true);
-        }
+       
     }
 
     private void OnDisable()
     {
-        if (musicValueData == 0)
-        {
-            objectMusic.SetActive(false);
-        }
+        
     }
 
     public void objectEnable()
     {
-        objectMusic.SetActive(true);
+        audioSource.enabled = true;
+
     }
     public void objectDisable()
     {
-        objectMusic.SetActive(false);
+        audioSource.enabled = false;
+
     }
 }

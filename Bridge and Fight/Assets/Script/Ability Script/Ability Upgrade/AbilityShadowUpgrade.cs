@@ -209,7 +209,6 @@ public class AbilityShadowUpgrade : MonoBehaviour
         {
             if (UIShop.uIShop.buttonAbilityClickValue == 1)
             {
-                print("anda membeli ghost");
 
                 if (UISelectLevel.uiselectLevel.bankValueData >= curCostUpgrade)
                 {
