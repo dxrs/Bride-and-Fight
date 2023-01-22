@@ -165,6 +165,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7704571635020226261, guid: 8eb3d2bb8c7c0ca48b7b3fac640bb087, type: 3}
+      propertyPath: m_Antialiasing
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7704571635390947315, guid: 8eb3d2bb8c7c0ca48b7b3fac640bb087, type: 3}
       propertyPath: maxZoom
       value: 8
@@ -1876,7 +1880,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 3f55e84446b98b3499f3833c8bf90c7e, type: 2}
+  sharedProfile: {fileID: 11400000, guid: fde1fa7d2f7ae3746b995c27a8846d61, type: 2}
 --- !u!4 &1325182921
 Transform:
   m_ObjectHideFlags: 0

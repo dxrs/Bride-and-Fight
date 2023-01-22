@@ -2754,7 +2754,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 3f55e84446b98b3499f3833c8bf90c7e, type: 2}
+  sharedProfile: {fileID: 11400000, guid: fde1fa7d2f7ae3746b995c27a8846d61, type: 2}
 --- !u!4 &1870658044
 Transform:
   m_ObjectHideFlags: 0
@@ -3348,7 +3348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060858, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: timerValue
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060859, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: player.Array.data[0]
@@ -3379,6 +3379,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7704571635020226261, guid: 8eb3d2bb8c7c0ca48b7b3fac640bb087, type: 3}
+      propertyPath: m_Antialiasing
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7704571635390947315, guid: 8eb3d2bb8c7c0ca48b7b3fac640bb087, type: 3}
       propertyPath: camTarget.Array.data[0]
       value: 
