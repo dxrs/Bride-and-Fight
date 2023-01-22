@@ -39,7 +39,7 @@ public class CoinDestroy : MonoBehaviour
     {
         if (isDestroyed) 
         {
-            Instantiate(coinDestroyParticle, transform.position, Quaternion.identity);
+           
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +48,7 @@ public class CoinDestroy : MonoBehaviour
             || collision.gameObject.tag == "Player 2"
             || collision.gameObject.tag=="Coin Colider")
         {
-            
+            Instantiate(coinDestroyParticle, transform.position, Quaternion.identity);
             TotalCoin.totalCoin.curCoinGet += 10;
             SoundEffect.soundEffect.audioSources[1].Play();
             Destroy(gameObject);

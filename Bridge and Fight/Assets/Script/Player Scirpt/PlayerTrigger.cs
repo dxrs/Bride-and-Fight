@@ -9,6 +9,10 @@ public class PlayerTrigger : MonoBehaviour
     public bool isP1_ColtoCamEdge, isP2_ColtoCamEdge;
     public bool colObstacle_p1, colObstacle_p2;
 
+    [SerializeField] bool isLightColorChange;
+
+    [SerializeField] SpriteRenderer lightPlayer;
+
     [SerializeField] ParticleSystem playerHitParticle;
 
     [SerializeField] string[] enemyTag;
@@ -20,7 +24,31 @@ public class PlayerTrigger : MonoBehaviour
     {
         if (playerTrigger == null) { playerTrigger = this; }
     }
-    
+
+    private void Update()
+    {
+        if (UIStartGame.uIStartGame.abilitySelectedValue == 3)
+        {
+            lightPlayer.enabled = true;
+            if (isLightColorChange)
+            {
+                lightPlayer.color = Color.Lerp(new Color(lightPlayer.color.r, lightPlayer.color.g, lightPlayer.color.b, lightPlayer.color.a),
+               new Color(lightPlayer.color.r, lightPlayer.color.g, lightPlayer.color.b, 1), 5 * Time.deltaTime);
+            }
+            else
+            {
+                lightPlayer.color = Color.Lerp(new Color(lightPlayer.color.r, lightPlayer.color.g, lightPlayer.color.b, lightPlayer.color.a),
+                new Color(lightPlayer.color.r, lightPlayer.color.g, lightPlayer.color.b, 0.2f), 3 * Time.deltaTime);
+
+            }
+        }
+        else 
+        {
+            lightPlayer.enabled = false;
+        }
+       
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Camera Edge") 
@@ -38,12 +66,19 @@ public class PlayerTrigger : MonoBehaviour
         {
             if (collision.gameObject.tag == enemyTag[j]) 
             {
-                if (TotalCoin.totalCoin.curCoinGet > 0)
+                if (TotalCoin.totalCoin.curCoinGet > 0 && 
+                    UIStartGame.uIStartGame.idLevel == 
+                    PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
                 {
                     TotalCoin.totalCoin.curCoinGet -= 2;
                 }
                 Instantiate(playerHitParticle, transform.position, Quaternion.identity);
+
+                
+                StartCoroutine(colorLight());
             }
+
+            
         }
         if(collision.gameObject.tag=="Bull Boss") 
         {
@@ -77,5 +112,14 @@ public class PlayerTrigger : MonoBehaviour
             }
         }
         
+    }
+
+    IEnumerator colorLight() 
+    {
+        isLightColorChange = true;
+       
+        yield return new WaitForSeconds(0.6f);
+        
+        isLightColorChange = false;
     }
 }
