@@ -1513,7 +1513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyWaitToSpawn
-      value: 9.5
+      value: 7.1
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: spawnRadiusObject
@@ -1521,7 +1521,7 @@ PrefabInstance:
       objectReference: {fileID: 1641223036}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemySpawnTimerValue
-      value: 90
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyIsWaitingToSpawn
@@ -1809,7 +1809,7 @@ PrefabInstance:
       objectReference: {fileID: 1641223036}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemySpawnTimerValue
-      value: 120
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyIsWaitingToSpawn
@@ -3348,7 +3348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060858, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: timerValue
-      value: 180
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060859, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: player.Array.data[0]

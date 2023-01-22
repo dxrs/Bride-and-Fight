@@ -1591,7 +1591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: xy
-  sineSpeed: 1
+  sineSpeed: 0.2
   sinePower: 5
   isRandomPosOffset: 0
 --- !u!1 &820361617
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: -xy
-  sineSpeed: 1
+  sineSpeed: 0.2
   sinePower: 5
   isRandomPosOffset: 0
 --- !u!1 &1066093090
@@ -2370,7 +2370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: x-y
-  sineSpeed: 1
+  sineSpeed: 0.2
   sinePower: 5
   isRandomPosOffset: 0
 --- !u!1 &1203133517
@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: xy
-  sineSpeed: 1
+  sineSpeed: 0.2
   sinePower: 5
   isRandomPosOffset: 0
 --- !u!1 &1429248010
@@ -2763,7 +2763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: -x-y
-  sineSpeed: 1
+  sineSpeed: 0.2
   sinePower: 5
   isRandomPosOffset: 0
 --- !u!1 &1468209337
@@ -3292,7 +3292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060858, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: timerValue
-      value: 90
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060859, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: player.Array.data[0]

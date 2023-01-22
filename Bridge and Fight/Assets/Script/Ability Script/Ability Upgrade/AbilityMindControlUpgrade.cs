@@ -99,7 +99,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
             {
                
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health : 1hp  -> +1hp";
+                textInfoAbilityUpgrade[0].text = "Max Bot Health : 1hp";
                 textInfoAbilityUpgrade[1].text = "Duration : 15 -> +2";
                 textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 5 -> +2 ";
                 textInfoAbilityUpgrade[3].text = "when enemy get hit with bot will add coin as same as players hit the enemies";
@@ -109,7 +109,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
 
               
 
-                curCostUpgrade = 135;
+                curCostUpgrade = 130;
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 13)
                 {
@@ -145,7 +145,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
 
-                textInfoAbilityUpgrade[0].text = "Max Bot Health : 2hp";
+                textInfoAbilityUpgrade[0].text = "Max Bot Health : 1hp -> +1hp";
                 textInfoAbilityUpgrade[1].text = "Duration : 17 -> +1";
                 textInfoAbilityUpgrade[2].text = "Max Enemy Hit  : 7 -> +3 ";
                 textInfoAbilityUpgrade[3].text = "ring of mind control will moving around through the arena";
@@ -156,7 +156,7 @@ public class AbilityMindControlUpgrade : MonoBehaviour
 
                
 
-                curCostUpgrade = 700;
+                curCostUpgrade = 320;
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 20)
                 {

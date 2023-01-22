@@ -35,7 +35,7 @@ public class FriendlyBot : MonoBehaviour
         {
             nyawa = 1;
         }
-        if (curUpLevel == 2) 
+        if (curUpLevel == 3) 
         {
             nyawa = 2;
         }
@@ -92,6 +92,7 @@ public class FriendlyBot : MonoBehaviour
     {
         if (collision.gameObject.tag == "Normal Enemy" || collision.gameObject.tag == "Medium Enemy")
         {
+            /*
             if (curUpLevel >= 3) 
             {
                 if (Player1Health.player1Health.playerHealth < 50)
@@ -106,7 +107,7 @@ public class FriendlyBot : MonoBehaviour
                 else if (Player2Health.player2Health.playerHealth >= 50) { Player2Health.player2Health.playerHealth = 50; }
             }
            
-
+            */
             nyawa--;
             
         }

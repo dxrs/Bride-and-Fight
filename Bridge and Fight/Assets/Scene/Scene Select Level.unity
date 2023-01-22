@@ -5483,7 +5483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  levelCost: 100
+  levelCost: 2
   idStatus: 0
   buttonLevelStatus:
   - {fileID: 2039585397}
@@ -6961,7 +6961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
-  levelCost: 100
+  levelCost: 2
   idStatus: 0
   buttonLevelStatus:
   - {fileID: 809703140}
@@ -8826,7 +8826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
-  levelCost: 100
+  levelCost: 2
   idStatus: 0
   buttonLevelStatus:
   - {fileID: 1065718796}

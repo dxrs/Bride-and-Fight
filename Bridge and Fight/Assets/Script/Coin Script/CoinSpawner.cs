@@ -21,20 +21,25 @@ public class CoinSpawner : MonoBehaviour
     {
         while (true && SceneManagerStatus.sceneManagerStatus.sceneStats=="Level")
         {
-            if (UIStartGame.uIStartGame.idLevel == curLevel) 
-            {
-                if (GameStarting.gameStarting.isGameStarted &&
+            if (GameStarting.gameStarting.isGameStarted &&
                 !GameOver.gameOver.isGameOver
                 && !GameFinish.gameFinish.isGameFinished)
-                {
-                    Vector2 spawnPos = radiusObj.transform.position;
-                    spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
-                    Instantiate(coin, spawnPos, Quaternion.identity);
-                }
+            {
+                Vector2 spawnPos = radiusObj.transform.position;
+                spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
+                Instantiate(coin, spawnPos, Quaternion.identity);
             }
-            
-           
-            yield return new WaitForSeconds(spawnTime);
+            if (UIStartGame.uIStartGame.idLevel == curLevel) 
+            {
+                yield return new WaitForSeconds(spawnTime);
+            }
+            if (UIStartGame.uIStartGame.idLevel != curLevel)
+            {
+                yield return new WaitForSeconds(spawnTime * 2);
+            }
+
+
+
         }
     }
 }

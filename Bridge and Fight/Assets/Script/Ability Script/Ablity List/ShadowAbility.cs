@@ -263,14 +263,14 @@ public class ShadowAbility : MonoBehaviour
                 curShadowCooldown = 11.0f;
                 break;
             case 2:
-                curShadowTimer = 10;
+                curShadowTimer = 7;
                
                 curShadowCooldown = 11.0f;
                 break;
             case 3:
-                curShadowTimer = 12.5f;
+                curShadowTimer = 7f;
                 
-                curShadowCooldown = 20.0f;
+                curShadowCooldown = 8f;
                 break;
         }
     }

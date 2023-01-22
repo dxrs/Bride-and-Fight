@@ -94,14 +94,14 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
             {
 
                
-                textInfoAbilityUpgrade[0].text = "Blast Speed : 4s -> +3s";
-                textInfoAbilityUpgrade[1].text = "Max Blast Scale : 5 -> +5";
-                textInfoAbilityUpgrade[2].text = "when enemy get hit by low ball, then will add some health to each players when their health is low";
+                textInfoAbilityUpgrade[0].text = "Slowdown Time : 4s";
+                textInfoAbilityUpgrade[1].text = "Slowdown Amount : 1.5 -> +0.5";
+                textInfoAbilityUpgrade[2].text = "when enemy get hit by low ball, then will add some health to each players when their health is below 30%";
                 textInfoAbilityUpgrade[3].text = "";
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
 
-                curCostUpgrade = 100;
+                curCostUpgrade = 130;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 6)
@@ -136,13 +136,13 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
             if (curSlowRideLevel == 2)
             {
             
-                textInfoAbilityUpgrade[0].text = "Blast Speed : 7s -> +3s";
-                textInfoAbilityUpgrade[1].text = "Max Blast Scale : 10 -> +2";
-                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[0].text = "Slowdown Time : 4s -> +2.5s";
+                textInfoAbilityUpgrade[1].text = "Slowdown Amount : 2";
+                textInfoAbilityUpgrade[2].text = "Health Persecond : 1";
                 textInfoAbilityUpgrade[3].text = "";
                 ImageAbilityIcon.sprite = icon[1];
 
-                curCostUpgrade = 550;
+                curCostUpgrade = 220;
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 15)
                 {
@@ -185,9 +185,9 @@ public class AbilitySlowRideUpgrade : MonoBehaviour
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
 
-                textInfoAbilityUpgrade[0].text = "Blast Speed : 10s";
-                textInfoAbilityUpgrade[1].text = "Max Blast Scale : 12";
-                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[0].text = "Slowdown Time : 6.5s";
+                textInfoAbilityUpgrade[1].text = "Slowdown Amount : 2";
+                textInfoAbilityUpgrade[2].text = "Health Persecond : 1";
                 textInfoAbilityUpgrade[3].text = "";
 
                 ImageAbilityIcon.sprite = icon[2];

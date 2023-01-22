@@ -82,15 +82,15 @@ public class AbilityShadowUpgrade : MonoBehaviour
             if (curShadowLevel == 1)
             {
                
-                textInfoAbilityUpgrade[0].text = "Cooldown : 5s -> +0s";
-                textInfoAbilityUpgrade[1].text = "Duration : 11s -> +5s";
-                textInfoAbilityUpgrade[2].text = "";
+                textInfoAbilityUpgrade[0].text = "Duration : 5s -> +2s";
+                textInfoAbilityUpgrade[1].text = "Cooldown : 11s";
+                textInfoAbilityUpgrade[2].text = "Player can collect the coins when ghost mode actived";
                 textInfoAbilityUpgrade[3].text = "";
 
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
                
-                curCostUpgrade = 70;
+                curCostUpgrade = 110;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel<2) 
@@ -124,14 +124,14 @@ public class AbilityShadowUpgrade : MonoBehaviour
             if (curShadowLevel == 2)
             {
               
-                textInfoAbilityUpgrade[0].text = "Cooldown : 5s -> +7s";
-                textInfoAbilityUpgrade[1].text = "Duration : 16s -> +4s";
-                textInfoAbilityUpgrade[2].text = "Player now can pick the coin even ghost mode actived";
+                textInfoAbilityUpgrade[0].text = "Duration : 7s";
+                textInfoAbilityUpgrade[1].text = "Cooldown : 11s -> -3s";
+                textInfoAbilityUpgrade[2].text = "";
                 textInfoAbilityUpgrade[3].text = "";
 
                 ImageAbilityIcon.sprite = icon[1];
 
-                curCostUpgrade = 450;
+                curCostUpgrade = 220;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 3)
@@ -176,8 +176,8 @@ public class AbilityShadowUpgrade : MonoBehaviour
                     textInfoAbilityUpgrade[j].enabled = true;
                 }
               
-                textInfoAbilityUpgrade[0].text = "Cooldown : 12s";
-                textInfoAbilityUpgrade[1].text = "Duration : 20s";
+                textInfoAbilityUpgrade[0].text = "Duration : 7s";
+                textInfoAbilityUpgrade[1].text = "Cooldown : 8s";
                 textInfoAbilityUpgrade[2].text = "";
                 textInfoAbilityUpgrade[3].text = "";
 

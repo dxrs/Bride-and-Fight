@@ -132,11 +132,7 @@ public class ButtonLevel : MonoBehaviour
                     idStatus = 1;
                     
                 }
-                else
-                {
-                    idStatus = 0;
-                    
-                }
+               
             }
         }
     }
