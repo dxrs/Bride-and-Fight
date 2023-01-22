@@ -73,28 +73,32 @@ public class UIPauseGame : MonoBehaviour
             }
             
         }
-        if (GamePaused.gamePaused.isGamePaused) 
+        if (!GameOver.gameOver.isGameOver) 
         {
-
-            
-            if (!GameOver.gameOver.isGameOver) 
+            if (GamePaused.gamePaused.isGamePaused)
             {
-                Time.timeScale = 0;
-                
+
+
+                if (!GameOver.gameOver.isGameOver)
+                {
+                    Time.timeScale = 0;
+
+                }
+            }
+            else
+            {
+                buttoniSClicked = false;
+
+                if (!GameOver.gameOver.isGameOver)
+                {
+                    Time.timeScale = 1;
+
+                }
+
+
             }
         }
-        else 
-        {
-            buttoniSClicked = false;
-
-            if (!GameOver.gameOver.isGameOver) 
-            {
-                Time.timeScale = 1;
-                
-            }
-           
-            
-        }
+       
 
        
 

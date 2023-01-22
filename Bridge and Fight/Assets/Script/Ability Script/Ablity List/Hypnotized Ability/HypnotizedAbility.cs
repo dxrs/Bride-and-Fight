@@ -109,6 +109,11 @@ public class HypnotizedAbility : MonoBehaviour
             hypnotizedBar();
            
         }
+
+        if(GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished) 
+        {
+            Destroy(ringOfDiamond);
+        }
     }
 
     void abilityInput() 

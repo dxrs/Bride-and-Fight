@@ -45,7 +45,7 @@ public class UIInGame : MonoBehaviour
             
         }
 
-        StartCoroutine(slowMotion());
+     
        
         if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
         {
@@ -91,16 +91,7 @@ public class UIInGame : MonoBehaviour
     }
 
 
-    IEnumerator slowMotion() 
-    {
-        if (GameOver.gameOver.isGameOver) 
-        {
-            Time.timeScale = 0.5f;
-            yield return new WaitForSeconds(1);
-            Time.timeScale = 1;
-        }
-        yield return null;
-    }
+    
     void timerStart() 
     {
         if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 

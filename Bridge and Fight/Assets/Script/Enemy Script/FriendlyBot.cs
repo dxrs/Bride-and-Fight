@@ -81,10 +81,10 @@ public class FriendlyBot : MonoBehaviour
 
     GameObject getRandomTarget()
     {
-       
+      
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Target Bot");
 
-        
+    
         int randomIndex = Random.Range(0, targets.Length);
         return targets[randomIndex];
     }

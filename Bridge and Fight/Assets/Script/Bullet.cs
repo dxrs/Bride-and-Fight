@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         }
        
         if(GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished 
-            || ShadowAbility.shadowAbility.isShadowActivated)
+            || ShadowAbility.shadowAbility.isShadowActivated )
         {
             Destroy(this.gameObject);
         }
@@ -32,7 +32,16 @@ public class Bullet : MonoBehaviour
             gameObject.SetActive(false);
         }
         else { gameObject.SetActive(true); }
+
+        if (!BulletConnect.bulletConnect.isConnected) 
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(0, 0), 15 * Time.deltaTime);
+          
+        }
+       
     }
+
+   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
