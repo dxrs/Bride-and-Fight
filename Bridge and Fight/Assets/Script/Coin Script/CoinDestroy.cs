@@ -24,6 +24,11 @@ public class CoinDestroy : MonoBehaviour
             Destroy(gameObject);
             isDestroyed = true;
         }
+
+        if(GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished) 
+        {
+            Destroy(gameObject);
+        }
         
     }
 
