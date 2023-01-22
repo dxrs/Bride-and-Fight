@@ -19,8 +19,8 @@ public class SlowRideAbility : MonoBehaviour
         curAbilityLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[11]);
         if (curAbilityLevel == 1) 
         {
-            maxScale = new Vector2(5, 5);
-            blastSpeed = 4;
+            maxScale = new Vector2(15, 15);
+            blastSpeed = 15;
         }
         if (curAbilityLevel == 2)
         {
@@ -42,7 +42,7 @@ public class SlowRideAbility : MonoBehaviour
 
         if (bigBlaster.transform.localScale.x >= maxScale.x) 
         {
-            Destroy(gameObject,4.5f);
+            Destroy(gameObject,2);
         }
     }
 

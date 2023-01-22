@@ -90,7 +90,7 @@ public class AbilityShadowUpgrade : MonoBehaviour
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
                
-                curCostUpgrade = 10;
+                curCostUpgrade = 70;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel<2) 

@@ -87,7 +87,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
                 imageAbilityCard.sprite = card[0];
                 ImageAbilityIcon.sprite = icon[0];
 
-                curCostUpgrade = 20;
+                curCostUpgrade = 90;
 
                 /*
                 if (yourBank < curCostUpgrade || curLevel < 4)

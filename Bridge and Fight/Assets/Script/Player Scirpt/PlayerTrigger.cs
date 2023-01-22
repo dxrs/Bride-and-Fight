@@ -38,7 +38,9 @@ public class PlayerTrigger : MonoBehaviour
         {
             if (collision.gameObject.tag == enemyTag[j]) 
             {
-                if (TotalCoin.totalCoin.curCoinGet > 0)
+                if (TotalCoin.totalCoin.curCoinGet > 0 && 
+                    UIStartGame.uIStartGame.idLevel == 
+                    PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
                 {
                     TotalCoin.totalCoin.curCoinGet -= 2;
                 }
