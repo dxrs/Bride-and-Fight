@@ -2778,7 +2778,7 @@ PrefabInstance:
     - target: {fileID: 6002340265665060860, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: postProc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1025682439}
     - target: {fileID: 6002340265665060860, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2854,6 +2854,10 @@ PrefabInstance:
     - target: {fileID: 1290094622428962450, guid: 2e08b4d6adff5c2449974c14b275e12f, type: 3}
       propertyPath: m_Name
       value: Obstcale C
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290094622428962476, guid: 2e08b4d6adff5c2449974c14b275e12f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1290094622428962477, guid: 2e08b4d6adff5c2449974c14b275e12f, type: 3}
       propertyPath: m_RootOrder
