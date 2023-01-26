@@ -83,10 +83,14 @@ public class FriendlyBot : MonoBehaviour
     {
       
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Target Bot");
+        if (targets.Length > 0) 
+        {
 
+            int randomIndex = Random.Range(0, targets.Length);
+            return targets[randomIndex];
+        }
+        return null;
     
-        int randomIndex = Random.Range(0, targets.Length);
-        return targets[randomIndex];
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

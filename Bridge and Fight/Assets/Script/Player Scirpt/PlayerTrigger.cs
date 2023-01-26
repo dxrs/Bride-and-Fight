@@ -14,10 +14,15 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] SpriteRenderer lightPlayer;
 
     [SerializeField] ParticleSystem playerHitParticle;
+    [SerializeField] ParticleSystem slowRideParticleEffect;
 
     [SerializeField] string[] enemyTag;
-    
-  
+
+    [SerializeField] GameObject bigBall;
+
+
+
+
 
     [SerializeField] int numbPlayer;
     private void Awake()
@@ -72,10 +77,17 @@ public class PlayerTrigger : MonoBehaviour
                 {
                     TotalCoin.totalCoin.curCoinGet -= 2;
                 }
+
+                if(UIStartGame.uIStartGame.abilitySelectedValue == 3) 
+                {
+                    StartCoroutine(colorLight());
+                    Instantiate(bigBall, transform.localPosition, Quaternion.identity);
+                    Instantiate(slowRideParticleEffect, transform.localPosition, Quaternion.identity);
+                }
                 Instantiate(playerHitParticle, transform.position, Quaternion.identity);
 
                 
-                StartCoroutine(colorLight());
+                
             }
 
             

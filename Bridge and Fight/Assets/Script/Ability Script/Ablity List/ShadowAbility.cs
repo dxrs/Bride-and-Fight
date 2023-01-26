@@ -250,7 +250,7 @@ public class ShadowAbility : MonoBehaviour
     #region upgrade ability shadow
     void upgradeAbilityShadow() 
     {
-        if (curUpLevelValue >= 3) 
+        if (curUpLevelValue >= 2) 
         {
             coinColider[0].SetActive(true);
             coinColider[1].SetActive(true);

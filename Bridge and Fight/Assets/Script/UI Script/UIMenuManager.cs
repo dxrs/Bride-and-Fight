@@ -15,8 +15,12 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] GameObject sceneTransitionObj;
     [SerializeField] GameObject objectSetting;
     [SerializeField] GameObject objectCredit;
+    [SerializeField] GameObject confirmDeleteData;
+    [SerializeField] GameObject objectClearData;
 
     [SerializeField] Button[] menuButton;
+    [SerializeField] Button[] buttonConfirmDeleteData;
+    [SerializeField] Button clearData;
 
     [SerializeField] Vector2[] selectorPos;
     
@@ -55,8 +59,11 @@ public class UIMenuManager : MonoBehaviour
         checkListToggleButton[0].isOn = visualValue == 1;
         checkListToggleButton[1].isOn = sfxValue == 1;
         checkListToggleButton[2].isOn = musicValue == 1;
-
-        if(Music.music.id=="Main Menu") 
+        for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
+        {
+            buttonConfirmDeleteData[j].interactable = true;
+        }
+        if (Music.music.id=="Main Menu") 
         {
             Music.music.audioSource.Play();
             Music.music.audioSource.volume = 0.7f;
@@ -228,6 +235,13 @@ public class UIMenuManager : MonoBehaviour
         if (buttonMenuIsClicked) 
         {
             buttonMenuIsClicked = false;
+            confirmDeleteData.SetActive(false);
+            objectClearData.SetActive(true);
+            clearData.interactable = true;
+            for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
+            {
+                buttonConfirmDeleteData[j].interactable = false;
+            }
         }
     }
 
@@ -236,11 +250,41 @@ public class UIMenuManager : MonoBehaviour
         SoundEffect.soundEffect.audioSources[0].Play();
         if (buttonMenuIsClicked)
         {
-            SaveDataManager.saveDataManager.deleteData();
-            visualValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[8], 1);
-            sfxValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[9], 1);
-            musicValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[10], 1);
+            confirmDeleteData.SetActive(true);
+            objectClearData.SetActive(false);
+            clearData.interactable = false;
+            for(int j = 0; j < buttonConfirmDeleteData.Length; j++) 
+            {
+                buttonConfirmDeleteData[j].interactable = true;
+            }
+         
         }
+    }
+
+    public void onClickNo() 
+    {
+        confirmDeleteData.SetActive(false);
+        objectClearData.SetActive(true);
+        clearData.interactable = true;
+        for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
+        {
+            buttonConfirmDeleteData[j].interactable = false;
+        }
+    }
+    public void onClickYes()
+    {
+        confirmDeleteData.SetActive(false);
+        objectClearData.SetActive(true);
+        clearData.interactable = true;
+        for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
+        {
+            buttonConfirmDeleteData[j].interactable = false;
+        }
+
+        SaveDataManager.saveDataManager.deleteData();
+        visualValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[8], 1);
+        sfxValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[9], 1);
+        musicValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[10], 1);
     }
 
     #region toggle button
@@ -250,7 +294,13 @@ public class UIMenuManager : MonoBehaviour
         {
             SoundEffect.soundEffect.audioSources[3].Play();
         }
-
+        confirmDeleteData.SetActive(false);
+        objectClearData.SetActive(true);
+        clearData.interactable = true;
+        for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
+        {
+            buttonConfirmDeleteData[j].interactable = false;
+        }
         visualValue = checkListToggleButton[0].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[8], visualValue);
         PlayerPrefs.Save();
@@ -261,8 +311,14 @@ public class UIMenuManager : MonoBehaviour
         {
             SoundEffect.soundEffect.audioSources[3].Play();
         }
-  
 
+        confirmDeleteData.SetActive(false);
+        objectClearData.SetActive(true);
+        clearData.interactable = true;
+        for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
+        {
+            buttonConfirmDeleteData[j].interactable = false;
+        }
         musicValue = checkListToggleButton[2].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[10], musicValue);
         PlayerPrefs.Save();
@@ -283,7 +339,13 @@ public class UIMenuManager : MonoBehaviour
     }
     public void toggleSFX()
     {
-      
+        confirmDeleteData.SetActive(false);
+        objectClearData.SetActive(true);
+        clearData.interactable = true;
+        for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
+        {
+            buttonConfirmDeleteData[j].interactable = false;
+        }
         sfxValue = checkListToggleButton[1].isOn ? 1 : 0;
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[9], sfxValue);
         PlayerPrefs.Save();
