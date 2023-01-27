@@ -1232,10 +1232,12 @@ MonoBehaviour:
   isLightColorChange: 0
   lightPlayer: {fileID: 1304702217}
   playerHitParticle: {fileID: 4376017807099830539, guid: f42bec4734d242642898c9de67ba547a, type: 3}
+  slowRideParticleEffect: {fileID: 7022248684522614426, guid: 1a6822aeef74fe941a5675162c267023, type: 3}
   enemyTag:
   - Normal Enemy
   - Medium Enemy
   - Hard Enemy
+  bigBall: {fileID: 2028293959308499384, guid: e99f41f258536d141b7671bd7b107f0d, type: 3}
   numbPlayer: 1
 --- !u!114 &924001000
 MonoBehaviour:
@@ -2201,10 +2203,12 @@ MonoBehaviour:
   isLightColorChange: 0
   lightPlayer: {fileID: 1563933990}
   playerHitParticle: {fileID: 4010479885397470980, guid: ed8762de807931e47accf0be95dc6426, type: 3}
+  slowRideParticleEffect: {fileID: 7022248684522614426, guid: 1a6822aeef74fe941a5675162c267023, type: 3}
   enemyTag:
   - Normal Enemy
   - Medium Enemy
   - Hard Enemy
+  bigBall: {fileID: 2028293959308499384, guid: e99f41f258536d141b7671bd7b107f0d, type: 3}
   numbPlayer: 1
 --- !u!114 &1356375045
 MonoBehaviour:
