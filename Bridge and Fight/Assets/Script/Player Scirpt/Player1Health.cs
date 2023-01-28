@@ -50,11 +50,11 @@ public class Player1Health : MonoBehaviour
 
     public void p1TriggerWithNormalEnemy() 
     {
-        playerHealth -= 3;
+        playerHealth -= 4;
     }
     public void p1TriggerWithMediumEnemy() 
     {
-        playerHealth -= 6;
+        playerHealth -= 7;
     }
     public void p1SuicideKill() 
     {
@@ -63,7 +63,11 @@ public class Player1Health : MonoBehaviour
 
     public void p1HitByBullBoss() 
     {
-        playerHealth -= 8;
+        playerHealth -= 9;
+    }
+    public void p1HitByBullBossSpike()
+    {
+        playerHealth -= 5;
     }
 
     public void addP1Health() 

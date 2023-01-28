@@ -24,6 +24,7 @@ TagManager:
   - Target Bot
   - Bullet
   - Coin
+  - Bull Boss Spike
   layers:
   - Default
   - TransparentFX

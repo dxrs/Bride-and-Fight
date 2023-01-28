@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 7225218869988614412}
   m_Layer: 6
   m_Name: Spike
-  m_TagString: Bull Boss
+  m_TagString: Bull Boss Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

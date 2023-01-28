@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class BullBossSpike : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class BullBossSpike : MonoBehaviour
             transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(0, 0), 0.5f * Time.deltaTime);
         }
 
-        if (transform.localScale.x <= 0) 
+        if (transform.localScale.x < 1) 
         {
             pc.enabled = false;
         }
@@ -33,5 +34,32 @@ public class BullBossSpike : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player 1")
+        {
+            CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
+            if (!GameOver.gameOver.isGameOver)
+            {
+                Player1Health.player1Health.p1HitByBullBossSpike();
+
+
+
+            }
+        }
+        if (collision.gameObject.tag == "Player 2")
+        {
+            CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
+            if (!GameOver.gameOver.isGameOver)
+            {
+                Player2Health.player2Health.p2HitByBullBossSpike();
+
+
+            }
+
+
+        }
+    }
+
+
 }
