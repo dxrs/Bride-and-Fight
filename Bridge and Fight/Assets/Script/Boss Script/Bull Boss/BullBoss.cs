@@ -223,7 +223,7 @@ public class BullBoss : MonoBehaviour
 
     IEnumerator delaySpikeSpawn() 
     {
-        if (bullBossHealth >= 45) 
+        if (bullBossHealth >= 25) 
         {
             yield return new WaitForSeconds(1.5f);
             isSpikeSpawn = false;

@@ -99,13 +99,18 @@ public class EnemyStatus : MonoBehaviour
     {
         if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2"
             ||collision.gameObject.tag=="Infinity Stone"
-            ||collision.gameObject.tag=="Friendly Bot"
-            ||collision.gameObject.tag=="Diamond") 
+            ||collision.gameObject.tag=="Friendly Bot") 
         {
             CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
             SoundEffect.soundEffect.audioSources[2].Play();
             Destroy(gameObject);
             Instantiate(enemyParticle, transform.position, Quaternion.identity);
+        }
+        if (collision.gameObject.tag == "Diamond") 
+        {
+            CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
+            SoundEffect.soundEffect.audioSources[14].Play();
+            Destroy(gameObject);
         }
         if(collision.gameObject.tag=="Big Ball") 
         {

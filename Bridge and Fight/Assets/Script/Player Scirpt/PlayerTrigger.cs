@@ -92,7 +92,7 @@ public class PlayerTrigger : MonoBehaviour
 
             
         }
-        if(collision.gameObject.tag=="Bull Boss") 
+        if(collision.gameObject.tag=="Bull Boss" || collision.gameObject.tag=="Bull Boss Spike") 
         {
             Instantiate(playerHitParticle, transform.position, Quaternion.identity);
             if (!UIPauseGame.uIPauseGame.isSceneEnded) 

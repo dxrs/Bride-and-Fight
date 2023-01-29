@@ -48,6 +48,7 @@ public class HypnotizedAbility : MonoBehaviour
     float curValueTimer;
     string abilityName = "Hypnotic";
     bool isSoundStart = true;
+ 
     private void Awake()
     {
         hypnotizedAbility = this;
@@ -254,23 +255,26 @@ public class HypnotizedAbility : MonoBehaviour
             ringOfDiamond.transform.position = player[1].transform.position;
         }
 
-        if (hypnotizedActivated) 
+        if (hypnotizedActivated)
         {
             ringOfDiamond.transform.localScale = Vector2.MoveTowards(ringOfDiamond.transform.localScale, new Vector2(1, 1), 3 * Time.deltaTime);
+            
+          
             if (ringOfDiamond.transform.localScale.x == 1) 
             {
                 cc.enabled = true;
+             
             }
 
-            //ringOfDiamond.SetActive(true);
+            ringOfDiamond.SetActive(true);
             ringOfDiamond.transform.Rotate(Vector3.forward, 150 * Time.deltaTime);
         }
         else 
         {
-            ringOfDiamond.transform.localScale = Vector2.MoveTowards(ringOfDiamond.transform.localScale, new Vector2(0, 0), 5f * Time.deltaTime);
+           
             cc.enabled = false;
             ringOfDiamond.transform.Rotate(-Vector3.forward, 150 * Time.deltaTime);
-            //ringOfDiamond.SetActive(false);
+            ringOfDiamond.SetActive(false);
         }
     }
 
