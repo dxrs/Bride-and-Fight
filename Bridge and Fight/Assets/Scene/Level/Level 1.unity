@@ -1531,6 +1531,10 @@ PrefabInstance:
       propertyPath: enemyIsWaitingToSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
+      propertyPath: farmingEnemyWaitToSpawn
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
 --- !u!4 &844144188 stripped
@@ -1818,6 +1822,10 @@ PrefabInstance:
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyIsWaitingToSpawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
+      propertyPath: farmingEnemyWaitToSpawn
+      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
@@ -3030,6 +3038,10 @@ PrefabInstance:
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemySpawnTimeValue
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
+      propertyPath: farmingEnemyWaitToSpawn
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a815e82d79453df4088faa87f8f0da48, type: 3}

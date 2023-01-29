@@ -12,11 +12,12 @@ public class SceneManagerCallback : MonoBehaviour
 
     private void Awake()
     {
-        sceneManagerCallback = this;
+        if (sceneManagerCallback == null) { sceneManagerCallback = this; }
+        idLevelPerSceneIndex();
     }
     private void Start()
     {
-        idLevelPerSceneIndex();
+      
       
     }
   

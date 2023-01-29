@@ -29,6 +29,7 @@ public class UIInGame : MonoBehaviour
     float curTimerFarming = 60;
 
     TimeSpan timerCount;
+ 
 
     private void Awake()
     {
@@ -36,19 +37,22 @@ public class UIInGame : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(timerStarted());
+
         if (UIStartGame.uIStartGame.idLevel == PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
         {
             timerValue = curTimerGame;
         }
-        if(UIStartGame.uIStartGame.idLevel != PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
+        if (UIStartGame.uIStartGame.idLevel != PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
         {
             timerValue = curTimerFarming;
         }
+        StartCoroutine(timerStarted());
+       
     }
     private void Update()
     {
-        if(GameStarting.gameStarting.isGameStarted && !GamePaused.gamePaused.isGamePaused
+      
+        if (GameStarting.gameStarting.isGameStarted && !GamePaused.gamePaused.isGamePaused
             &&!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
         {
             UIStartGame.uIStartGame.listUIObject[1].SetActive(true);
@@ -132,8 +136,9 @@ public class UIInGame : MonoBehaviour
     {
         while (true) 
         {
-            if (isTimerStart) 
+            if (isTimerStart)
             {
+               
                 timerValue -= Time.deltaTime;
                 timerCount = TimeSpan.FromSeconds(timerValue);
                 string timer = timerCount.ToString("mm':'ss':'ff");

@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float enemyRadiusValue;
     [SerializeField] float enemySpawnTimerValue;
     [SerializeField] float enemyWaitToSpawn;
+    [SerializeField] float farmingEnemyWaitToSpawn;
 
     [SerializeField] bool enemyIsWaitingToSpawn;
 
@@ -20,6 +21,17 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(enemyIsSpawning());
+    }
+
+    private void Update()
+    {
+        if(UIStartGame.uIStartGame.idLevel != PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
+        {
+            if (enemyIsWaitingToSpawn) 
+            {
+                enemyIsWaitingToSpawn = false;
+            }
+        }
     }
 
 
@@ -49,7 +61,16 @@ public class EnemySpawner : MonoBehaviour
                     
                 }
             }
-            yield return new WaitForSeconds(enemyWaitToSpawn);
+
+            if(UIStartGame.uIStartGame.idLevel == PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
+            {
+                yield return new WaitForSeconds(enemyWaitToSpawn);
+            }
+            if (UIStartGame.uIStartGame.idLevel != PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]))
+            {
+                yield return new WaitForSeconds(farmingEnemyWaitToSpawn);
+            }
+            
            
         }
     }
