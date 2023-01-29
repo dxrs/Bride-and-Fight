@@ -186,6 +186,6 @@ MonoBehaviour:
   - {fileID: 0}
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.5
-  minZoom: 15
+  minZoom: 18
   maxZoom: 8
-  zoomLimiter: 20
+  zoomLimiter: 23

@@ -108,7 +108,9 @@ MonoBehaviour:
   id: 1
   randomTarget: 0
   enemyParticle: {fileID: 5721495691635234713, guid: 82e0705e3a0f3d14781f1bcb39dfe5ea, type: 3}
+  hitWallParticle: {fileID: 4376017807099830539, guid: c060c2ba7dd7b264db0234dd056a1686, type: 3}
   friendlyBot: {fileID: 5352820808154553183, guid: aac7f70b66faecd47bc210d8348e3edc, type: 3}
+  slowedDownTime: 0
   demaged: 0
 --- !u!114 &7874351370666177775
 MonoBehaviour:

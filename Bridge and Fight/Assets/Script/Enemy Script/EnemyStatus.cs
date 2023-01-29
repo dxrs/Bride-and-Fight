@@ -15,6 +15,7 @@ public class EnemyStatus : MonoBehaviour
     public int randomTarget;
 
     [SerializeField] ParticleSystem enemyParticle;
+    [SerializeField] ParticleSystem hitWallParticle;
 
     [SerializeField] GameObject friendlyBot;
 
@@ -46,6 +47,7 @@ public class EnemyStatus : MonoBehaviour
         }
         if(curSlowRideLevel == 2)
         {
+            slowedDownTime = 4;
             slowSpeed = 2;
         }
         if (curSlowRideLevel == 3)
@@ -58,6 +60,7 @@ public class EnemyStatus : MonoBehaviour
     {
         if(enemyHealth <= 0)
         {
+           
             enemyDestroy();
         }
         
@@ -88,6 +91,14 @@ public class EnemyStatus : MonoBehaviour
     {
         if (enemyIsDestroyed && !GameFinish.gameFinish.isGameFinished && !GameOver.gameOver.isGameOver && !UIPauseGame.uIPauseGame.isSceneEnded) 
         {
+            if (id == 1) 
+            {
+                TotalCoin.totalCoin.curCoinGet += 2;
+            }
+            if (id == 2) 
+            {
+                TotalCoin.totalCoin.curCoinGet += 4;
+            }
             CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
             SoundEffect.soundEffect.audioSources[2].Play();
         }
@@ -116,6 +127,10 @@ public class EnemyStatus : MonoBehaviour
         {
             StartCoroutine(getTriggerWithBigBall());
             StartCoroutine(addPlayerHealth());
+        }
+        if (collision.gameObject.tag == "Wall") 
+        {
+            Instantiate(hitWallParticle, transform.position, Quaternion.identity);
         }
         if (collision.gameObject.tag == "Bullet") 
         {
@@ -196,6 +211,10 @@ public class EnemyStatus : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
+            if (id == 1 || id==2) 
+            {
+                enemyHealth -= 1;
+            }
             HitEffect hitEffect = gameObject.GetComponent<HitEffect>();
             if (hitEffect != null && !ShadowAbility.shadowAbility.isShadowActivated) 
             {

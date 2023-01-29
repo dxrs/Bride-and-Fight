@@ -22,7 +22,8 @@ public class Bullet : MonoBehaviour
         }
        
         if(GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished 
-            || ShadowAbility.shadowAbility.isShadowActivated )
+            || ShadowAbility.shadowAbility.isShadowActivated 
+            )
         {
             Destroy(this.gameObject);
         }
@@ -33,11 +34,12 @@ public class Bullet : MonoBehaviour
         }
         else { gameObject.SetActive(true); }
 
-        if (!BulletConnect.bulletConnect.isConnected) 
+        if (!BulletConnect.bulletConnect.isConnected ) 
         {
             transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(0, 0), 15 * Time.deltaTime);
-          
+
         }
+       
        
     }
 

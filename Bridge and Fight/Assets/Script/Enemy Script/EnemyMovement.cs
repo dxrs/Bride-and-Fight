@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
-    [SerializeField]ParticleSystem enemyParticle;
 
 
 
@@ -106,13 +105,7 @@ public class EnemyMovement : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (direction * enemyStatus.enemyMoveSpeed * Time.deltaTime));
     }
 
-    private void OnDestroy()
-    {
-        if (isEnemyDestroyed) 
-        {
-            Instantiate(enemyParticle, transform.position, Quaternion.identity);
-        }
-    }
+   
    
 
 }

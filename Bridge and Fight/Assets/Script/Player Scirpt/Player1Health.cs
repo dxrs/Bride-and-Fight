@@ -63,18 +63,18 @@ public class Player1Health : MonoBehaviour
 
     public void p1HitByBullBoss() 
     {
-        playerHealth -= 9;
+        playerHealth -= 7.5f;
     }
     public void p1HitByBullBossSpike()
     {
-        playerHealth -= 5;
+        playerHealth -= 2;
     }
 
     public void addP1Health() 
     {
-        if (playerHealth <= 30) 
+        if (playerHealth==Mathf.Clamp(playerHealth,1,30)) 
         {
-            playerHealth += 1 * Time.deltaTime;
+            playerHealth += 0.3f * Time.deltaTime;
         }
     }
 

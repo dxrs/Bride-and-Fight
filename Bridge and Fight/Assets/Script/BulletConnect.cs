@@ -27,7 +27,7 @@ public class BulletConnect : MonoBehaviour
     }
     private void Update()
     {
-        if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
+        if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished)
         {
             if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance)
             {
@@ -39,6 +39,8 @@ public class BulletConnect : MonoBehaviour
             }
         }
        
+        
+       
     }
    
 
@@ -46,16 +48,21 @@ public class BulletConnect : MonoBehaviour
     {
         
 
-        while (true) 
+        while (true)
         {
-            if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished) 
+            if (!GameOver.gameOver.isGameOver && !GameFinish.gameFinish.isGameFinished)
             {
-                if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance
-                && !LineOfRay.lineOfRay.isTouchObstcale)
+                if (Vector2.Distance(transform.position, targetBullet.transform.position) < distance)
                 {
-                    Instantiate(bullet, shootPoint.transform.position, Quaternion.identity);
+                    if (!LineOfRay.lineOfRay.isTouchObstcale)
+                    {
+                        Instantiate(bullet, shootPoint.transform.position, Quaternion.identity);
+                    }
                 }
             }
+           
+           
+           
             
             
             yield return new WaitForSeconds(waitTimeToSpawn);

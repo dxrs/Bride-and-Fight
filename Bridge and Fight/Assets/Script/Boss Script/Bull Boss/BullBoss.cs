@@ -152,8 +152,8 @@ public class BullBoss : MonoBehaviour
             }
             if (bullBossHealth < 25) 
             {
-                delayTimeToChase += 2.5f * Time.deltaTime;
-                transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(2.5f, 2.5f), 1 * Time.deltaTime);
+                delayTimeToChase += 2f * Time.deltaTime;
+                transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(2.35f, 2.35f), 1 * Time.deltaTime);
             }
           
         }

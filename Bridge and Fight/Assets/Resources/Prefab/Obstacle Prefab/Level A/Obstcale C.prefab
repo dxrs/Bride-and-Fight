@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1290094622428962477}
   - component: {fileID: 1290094622428962476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstcale C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8627593357934531357}
   - component: {fileID: 7076715240292575852}
   - component: {fileID: 8601566975827492762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: obstacle
   m_Icon: {fileID: 0}

@@ -30,6 +30,10 @@ public class BullBossDestroy : MonoBehaviour
         if (isBullBossDestroyed) 
         {
             Instantiate(destroyParticle, transform.position, Quaternion.identity);
+            if (PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]) == 4) 
+            {
+                TotalCoin.totalCoin.curCoinGet += 100;
+            }
         }
     }
 }

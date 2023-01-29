@@ -244,11 +244,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMoveSpeed: 2
-  enemyHealth: 10
+  enemyHealth: 50
   id: 2
   randomTarget: 0
   enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
+  hitWallParticle: {fileID: 4376017807099830539, guid: c060c2ba7dd7b264db0234dd056a1686, type: 3}
   friendlyBot: {fileID: 5352820808154553183, guid: aac7f70b66faecd47bc210d8348e3edc, type: 3}
+  slowedDownTime: 0
   demaged: 0
 --- !u!114 &4934226245832131129
 MonoBehaviour:

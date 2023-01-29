@@ -40,6 +40,10 @@ public class BullBossBodyTrigger : MonoBehaviour
                 }
                
                 HitEffect.hitEffect.flashOut();
+                if (!BullBoss.bullBoss.isChassingPlayer) 
+                {
+                    BullBoss.bullBoss.bullBossHealth -= 0.5f;
+                }
                 
 
             }

@@ -11,7 +11,6 @@ public class LineOfRay : MonoBehaviour
 
     public bool isTouchObstcale;
 
-    public Transform target;
     public Transform[] lineTargets;
     public LayerMask layerMask;
 
@@ -48,19 +47,20 @@ public class LineOfRay : MonoBehaviour
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.red);
                 isTouchObstcale = true;
             }
+            /*
             else if (hit.collider.gameObject.tag == "Medium Enemy" && BulletConnect.bulletConnect.isConnected)
             {
                 
                 Debug.DrawLine(lineTargets[0].transform.position, lineTargets[1].position, Color.blue);
-                enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
-                enemyStatus.enemyHealth -= 10 * Time.deltaTime;
+               // enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
+                //enemyStatus.enemyHealth -= 10 * Time.deltaTime;
 
                 
                 
-                if (enemyStatus.enemyHealth <= 0) 
-                {
-                    TotalCoin.totalCoin.curCoinGet += 4;
-                }
+                //if (enemyStatus.enemyHealth <= 0) 
+              //  {
+                    //TotalCoin.totalCoin.curCoinGet += 4;
+              //  }
                
 
             }
@@ -70,17 +70,18 @@ public class LineOfRay : MonoBehaviour
 
                 if (!BullBoss.bullBoss.isChassingPlayer) 
                 {
-                    BullBoss.bullBoss.bullBossHealth -= 2 * Time.deltaTime;
+                    //BullBoss.bullBoss.bullBossHealth -= 2 * Time.deltaTime;
                 }
                 
                
             }
             else if (hit.collider.gameObject.tag == "Normal Enemy" && BulletConnect.bulletConnect.isConnected)
             {
-                enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
-                enemyStatus.enemyHealth -= 10;
-                TotalCoin.totalCoin.curCoinGet += 2;
-            } 
+                //enemyStatus = hit.collider.gameObject.GetComponent<EnemyStatus>();
+                //enemyStatus.enemyHealth -= 10;
+                //TotalCoin.totalCoin.curCoinGet += 2;
+            }
+            */
           
             else
             {
