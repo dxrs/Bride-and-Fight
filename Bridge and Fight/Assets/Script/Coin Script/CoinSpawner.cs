@@ -14,7 +14,11 @@ public class CoinSpawner : MonoBehaviour
     void Start()
     {
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
-        StartCoroutine(spawnCoin());
+        if (UIStartGame.uIStartGame.idLevel == curLevel) 
+        {
+            StartCoroutine(spawnCoin());
+        }
+       
     }
 
     IEnumerator spawnCoin()
@@ -33,10 +37,7 @@ public class CoinSpawner : MonoBehaviour
             {
                 yield return new WaitForSeconds(spawnTime);
             }
-            if (UIStartGame.uIStartGame.idLevel != curLevel)
-            {
-                yield return new WaitForSeconds(5);
-            }
+           
 
 
 

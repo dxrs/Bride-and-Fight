@@ -13,7 +13,7 @@ public class SceneManagerCallback : MonoBehaviour
     private void Awake()
     {
         if (sceneManagerCallback == null) { sceneManagerCallback = this; }
-        idLevelPerSceneIndex();
+        
     }
     private void Start()
     {
@@ -26,7 +26,7 @@ public class SceneManagerCallback : MonoBehaviour
     {
         if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
         {
-            UIStartGame.uIStartGame.idLevel = SceneManager.GetActiveScene().buildIndex;
+            //UIStartGame.uIStartGame.idLevel = SceneManager.GetActiveScene().buildIndex;
         }
        
     }
