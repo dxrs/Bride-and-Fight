@@ -13,6 +13,7 @@ public class UIInGame : MonoBehaviour
     public bool imageCoinAnimated;
 
     public float timerValue;
+    
 
     public GameObject coinImageObj;
 
@@ -24,7 +25,8 @@ public class UIInGame : MonoBehaviour
 
     [SerializeField] Image imageCoin;
 
-    
+    [SerializeField] float curTimerGame;
+    float curTimerFarming = 60;
 
     TimeSpan timerCount;
 
@@ -35,6 +37,14 @@ public class UIInGame : MonoBehaviour
     private void Start()
     {
         StartCoroutine(timerStarted());
+        if (UIStartGame.uIStartGame.idLevel == PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
+        {
+            timerValue = curTimerGame;
+        }
+        if(UIStartGame.uIStartGame.idLevel != PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
+        {
+            timerValue = curTimerFarming;
+        }
     }
     private void Update()
     {

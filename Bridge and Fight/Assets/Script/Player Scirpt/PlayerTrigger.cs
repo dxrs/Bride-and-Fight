@@ -75,7 +75,7 @@ public class PlayerTrigger : MonoBehaviour
                     UIStartGame.uIStartGame.idLevel == 
                     PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6])) 
                 {
-                    TotalCoin.totalCoin.curCoinGet -= 2;
+                    TotalCoin.totalCoin.curCoinGet -= 4;
                 }
 
                 if(UIStartGame.uIStartGame.abilitySelectedValue == 3) 

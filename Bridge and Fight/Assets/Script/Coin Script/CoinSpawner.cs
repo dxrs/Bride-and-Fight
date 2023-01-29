@@ -35,7 +35,7 @@ public class CoinSpawner : MonoBehaviour
             }
             if (UIStartGame.uIStartGame.idLevel != curLevel)
             {
-                yield return new WaitForSeconds(spawnTime * 2);
+                yield return new WaitForSeconds(5);
             }
 
 

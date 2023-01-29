@@ -7583,13 +7583,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInGameUI: 0
   imageCoinAnimated: 0
-  timerValue: 120
+  timerValue: 0
   coinImageObj: {fileID: 6002340265108802960}
   isTimerStart: 0
   textTimer: {fileID: 6002340265054448317}
   textCoin: {fileID: 6002340265706415071}
   textAlmostDone: {fileID: 6002340265289096892}
   imageCoin: {fileID: 6002340265108802962}
+  curTimerGame: 0
 --- !u!114 &6002340265665060860
 MonoBehaviour:
   m_ObjectHideFlags: 0
