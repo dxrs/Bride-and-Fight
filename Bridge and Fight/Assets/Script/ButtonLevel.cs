@@ -204,10 +204,21 @@ public class ButtonLevel : MonoBehaviour
 
     #endregion
 
+    public void onClickButtonLevel() 
+    {
+        if(id == UISelectLevel.uiselectLevel.levelButtonHighlightValue) 
+        {
+            if(UISelectLevel.uiselectLevel.bankValueData < levelCost) 
+            {
+                StartCoroutine(textEnable());
+            }
+        }
+    }
+
     IEnumerator textEnable() 
     {
         textNotEnoughCoin.enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
         textNotEnoughCoin.enabled = false;
 
     }

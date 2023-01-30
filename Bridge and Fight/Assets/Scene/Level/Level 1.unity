@@ -1533,7 +1533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: farmingEnemyWaitToSpawn
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
@@ -1825,7 +1825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: farmingEnemyWaitToSpawn
-      value: 4.5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
@@ -1891,7 +1891,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserParticle: {fileID: 4496310345284304777, guid: 29dc9d22d47b63d479319e8cc9f8fae6, type: 3}
   isTouchObstcale: 0
-  target: {fileID: 0}
   lineTargets:
   - {fileID: 570875241}
   - {fileID: 289938755}

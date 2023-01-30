@@ -53,6 +53,8 @@ public class FriendlyBot : MonoBehaviour
             else
             {
                 target = getRandomTarget();
+                
+                
             }
 
 
