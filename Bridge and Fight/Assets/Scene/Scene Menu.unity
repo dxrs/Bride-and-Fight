@@ -3910,7 +3910,9 @@ MonoBehaviour:
   buttonConfirmDeleteData:
   - {fileID: 1380324230}
   - {fileID: 1854046247}
-  clearData: {fileID: 341731907}
+  buttonClearData: {fileID: 341731907}
+  buttonExitSetting: {fileID: 258626436}
+  textConfrimClearData: {fileID: 1729497919}
   selectorPos:
   - {x: -580, y: -77}
   - {x: -580, y: -163}

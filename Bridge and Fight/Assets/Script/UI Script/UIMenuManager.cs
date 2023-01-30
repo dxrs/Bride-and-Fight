@@ -20,7 +20,10 @@ public class UIMenuManager : MonoBehaviour
 
     [SerializeField] Button[] menuButton;
     [SerializeField] Button[] buttonConfirmDeleteData;
-    [SerializeField] Button clearData;
+    [SerializeField] Button buttonClearData;
+    [SerializeField] Button buttonExitSetting;
+
+    [SerializeField] TextMeshProUGUI textConfrimClearData;
 
     [SerializeField] Vector2[] selectorPos;
     
@@ -237,7 +240,7 @@ public class UIMenuManager : MonoBehaviour
             buttonMenuIsClicked = false;
             confirmDeleteData.SetActive(false);
             objectClearData.SetActive(true);
-            clearData.interactable = true;
+            buttonClearData.interactable = true;
             for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
             {
                 buttonConfirmDeleteData[j].interactable = false;
@@ -252,7 +255,8 @@ public class UIMenuManager : MonoBehaviour
         {
             confirmDeleteData.SetActive(true);
             objectClearData.SetActive(false);
-            clearData.interactable = false;
+            buttonClearData.interactable = false;
+            
             for(int j = 0; j < buttonConfirmDeleteData.Length; j++) 
             {
                 buttonConfirmDeleteData[j].interactable = true;
@@ -265,7 +269,7 @@ public class UIMenuManager : MonoBehaviour
     {
         confirmDeleteData.SetActive(false);
         objectClearData.SetActive(true);
-        clearData.interactable = true;
+        buttonClearData.interactable = true;
         for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
         {
             buttonConfirmDeleteData[j].interactable = false;
@@ -273,18 +277,40 @@ public class UIMenuManager : MonoBehaviour
     }
     public void onClickYes()
     {
-        confirmDeleteData.SetActive(false);
-        objectClearData.SetActive(true);
-        clearData.interactable = true;
+     
+        textConfrimClearData.text = "Clearing data";
+        buttonExitSetting.interactable = false;
         for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
         {
             buttonConfirmDeleteData[j].interactable = false;
         }
+        for(int j = 0; j < checkListToggleButton.Length; j++) 
+        {
+            checkListToggleButton[j].interactable = false;
+        }
+        StartCoroutine(delayButtonClearDataEnable());
+       
+        
+    }
 
+    IEnumerator delayButtonClearDataEnable()
+    {
+        
+
+        yield return new WaitForSeconds(1);
         SaveDataManager.saveDataManager.deleteData();
         visualValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[8], 1);
         sfxValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[9], 1);
         musicValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[10], 1);
+        for (int j = 0; j < checkListToggleButton.Length; j++)
+        {
+            checkListToggleButton[j].interactable = true;
+        }
+        buttonExitSetting.interactable = true;
+        textConfrimClearData.text = "You're about to clear save data";
+        confirmDeleteData.SetActive(false);
+        objectClearData.SetActive(true);
+        buttonClearData.interactable = true;
     }
 
     #region toggle button
@@ -296,7 +322,7 @@ public class UIMenuManager : MonoBehaviour
         }
         confirmDeleteData.SetActive(false);
         objectClearData.SetActive(true);
-        clearData.interactable = true;
+        buttonClearData.interactable = true;
         for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
         {
             buttonConfirmDeleteData[j].interactable = false;
@@ -314,7 +340,7 @@ public class UIMenuManager : MonoBehaviour
 
         confirmDeleteData.SetActive(false);
         objectClearData.SetActive(true);
-        clearData.interactable = true;
+        buttonClearData.interactable = true;
         for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
         {
             buttonConfirmDeleteData[j].interactable = false;
@@ -341,7 +367,7 @@ public class UIMenuManager : MonoBehaviour
     {
         confirmDeleteData.SetActive(false);
         objectClearData.SetActive(true);
-        clearData.interactable = true;
+        buttonClearData.interactable = true;
         for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
         {
             buttonConfirmDeleteData[j].interactable = false;
