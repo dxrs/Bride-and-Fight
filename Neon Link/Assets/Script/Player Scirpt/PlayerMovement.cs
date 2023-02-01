@@ -81,6 +81,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(-transform.up * movePower);
             }
+            Vector2 inputDir = Vector2.zero;
+            inputDir.x = Input.GetAxis("AnalogLeftHorizontal");
+            inputDir.y = -Input.GetAxis("AnalogLeftVertical");
+            rb.AddForce(inputDir * movePower);
         }
         else
         {
@@ -103,18 +107,15 @@ public class PlayerMovement : MonoBehaviour
                     rb.AddForce(-transform.up * movePower);
                 }
             }
-            else 
-            {
-                Vector2 inputDir = Vector2.zero;
-                inputDir.x = Input.GetAxis("AnalogLeftHorizontal");
-                inputDir.y = -Input.GetAxis("AnalogLeftVertical");
-                rb.AddForce(inputDir * movePower);
-            }
-            
-            
-            
-          
-            
+            Vector2 inputDir = Vector2.zero;
+            inputDir.x = Input.GetAxis("AnalogRightHorizontal");
+            inputDir.y = -Input.GetAxis("AnalogRightVertical");
+            rb.AddForce(inputDir * movePower);
+
+
+
+
+
         }
     }
 

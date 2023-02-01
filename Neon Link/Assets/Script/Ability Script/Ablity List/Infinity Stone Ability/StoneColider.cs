@@ -133,7 +133,7 @@ public class StoneColider : MonoBehaviour
                 if (curStoneValue < 1)
                 {
 
-                    Player1Health.player1Health.p1TriggerWithNormalEnemy();
+                    //Player1Health.player1Health.p1TriggerWithNormalEnemy();
 
                 }
             }
@@ -142,7 +142,7 @@ public class StoneColider : MonoBehaviour
                 if (curStoneValue < 1)
                 {
 
-                    Player2Health.player2Health.p2TriggerWithNormalEnemy();
+                   // Player2Health.player2Health.p2TriggerWithNormalEnemy();
 
                 }
                
@@ -162,7 +162,7 @@ public class StoneColider : MonoBehaviour
                 if (curStoneValue < 1)
                 {
 
-                    Player1Health.player1Health.p1TriggerWithMediumEnemy();
+                    //Player1Health.player1Health.p1TriggerWithMediumEnemy();
 
                 }
                
@@ -172,7 +172,7 @@ public class StoneColider : MonoBehaviour
                 if (curStoneValue < 1)
                 {
 
-                    Player2Health.player2Health.p2TriggerWithMediumEnemy();
+                    //Player2Health.player2Health.p2TriggerWithMediumEnemy();
 
                 }
               

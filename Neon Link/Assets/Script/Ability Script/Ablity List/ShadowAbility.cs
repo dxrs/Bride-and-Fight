@@ -100,7 +100,7 @@ public class ShadowAbility : MonoBehaviour
     {
         if (PlayerNumber.playerNumber.isSoloMode) 
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Abutton"))
             {
                 if (!isUsingAbility && shadowAblityCoolDown <= 0)
                 {
@@ -118,26 +118,7 @@ public class ShadowAbility : MonoBehaviour
                 }
             }
         }
-        if(!PlayerNumber.playerNumber.isSoloMode)
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Abutton")) 
-            {
-                if (!isUsingAbility && shadowAblityCoolDown <= 0)
-                {
-                    SoundEffect.soundEffect.audioSources[13].Play();
-                    imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
-                    shadowAblityCoolDown = curShadowCooldown;
-                    isSoundStart = false;
-                    barUpValue = 0;
-                    textReady.enabled = false;
-                    if (!isShadowActivated)
-                    {
-                        isShadowActivated = true;
-
-                    }
-                }
-            }
-        }
+        
        
        
         shadowActivated();

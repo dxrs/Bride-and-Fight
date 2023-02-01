@@ -121,7 +121,7 @@ public class HypnotizedAbility : MonoBehaviour
     {
         if (PlayerNumber.playerNumber.isSoloMode) 
         {
-            if (Input.GetKeyDown(KeyCode.Space)) 
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Abutton")) 
             {
                 if(!isUsingAbility && hypnotizedCooldownTimer <= 0)
                 {
@@ -142,26 +142,7 @@ public class HypnotizedAbility : MonoBehaviour
                 }
             }
         }
-        else 
-        {
-            if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Abutton")) 
-            {
-                if (!isUsingAbility && hypnotizedCooldownTimer <= 0)
-                {
-                    SoundEffect.soundEffect.audioSources[13].Play();
-                    imgAbilityIcon.color = new Color(0.2f, 0.2f, 0.2f);
-                    barUpValue = 0;
-                    textReady.enabled = false;
-                   
-                    hypnotizedCooldownTimer = 30;//cur cooldown timer
-                    isSoundStart = false;
-                    if (!hypnotizedActivated)
-                    {
-                        hypnotizedActivated = true;
-                    }
-                }
-            }
-        }
+        
 
         hypnotizedActive();
         hypnotizedNotActive();

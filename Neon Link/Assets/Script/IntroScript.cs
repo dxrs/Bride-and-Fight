@@ -39,7 +39,7 @@ public class IntroScript : MonoBehaviour
 
     IEnumerator loadToMenu()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("Scene Menu");
     }
 }

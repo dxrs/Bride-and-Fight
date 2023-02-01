@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 1751225119}
     - target: {fileID: 6957300005566284496, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
       propertyPath: bullBossHealth
-      value: 50
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6957300005566284497, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
       propertyPath: m_RootOrder
