@@ -79,7 +79,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
             {
 
 
-                textInfoAbilityUpgrade[0].text = "Stone Respawn : 10s -> +6.5s";
+                textInfoAbilityUpgrade[0].text = "Stone Respawn : 15s -> +6.5s";
                 textInfoAbilityUpgrade[1].text = "Max Stone : 2 -> +2";
                 textInfoAbilityUpgrade[2].text = "";
                 textInfoAbilityUpgrade[3].text = "";
@@ -121,7 +121,7 @@ public class AbilityInfinityStoneUpgrade : MonoBehaviour
             if (curStoneLevel == 2) 
             {
               
-                textInfoAbilityUpgrade[0].text = "Stone Respawn : 16.5s -> +10s";
+                textInfoAbilityUpgrade[0].text = "Stone Respawn : 21.5s -> +10s";
                 textInfoAbilityUpgrade[1].text = "Max Stone : 4 -> +2";
                 textInfoAbilityUpgrade[2].text = "";
                 textInfoAbilityUpgrade[3].text = "";

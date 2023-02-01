@@ -29,6 +29,7 @@ public class CoinSpawner : MonoBehaviour
                 !GameOver.gameOver.isGameOver
                 && !GameFinish.gameFinish.isGameFinished)
             {
+                yield return new WaitForSeconds(3);
                 Vector2 spawnPos = radiusObj.transform.position;
                 spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
                 Instantiate(coin, spawnPos, Quaternion.identity);

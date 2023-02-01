@@ -14,8 +14,8 @@ public class StoneColider : MonoBehaviour
     [SerializeField] float delayTime;
     
 
-    public float timerCountp1;
-    protected float timerCountp2;
+    [SerializeField] float stoneTimerSpawn;
+   
 
     int curLevel;
     CircleCollider2D cc;
@@ -32,15 +32,18 @@ public class StoneColider : MonoBehaviour
         cc = GetComponent<CircleCollider2D>();
         if (curLevel == 1)
         {
+            stoneTimerSpawn = 12;
             curStoneValue = 2;
 
         }
         if (curLevel == 2)
         {
+            stoneTimerSpawn = 21.5f;
             curStoneValue = 4;
         }
         if (curLevel == 3)
         {
+            stoneTimerSpawn = 30.5f;
             curStoneValue = 8;
         }
 
@@ -61,10 +64,10 @@ public class StoneColider : MonoBehaviour
             if (curStoneValue > InfinityStoneAbility.infinityStone.maxStoneValue) { curStoneValue = InfinityStoneAbility.infinityStone.maxStoneValue; }
             if (curStoneValue <= InfinityStoneAbility.infinityStone.maxStoneValue)
             {
-                timerCountp1 += Time.deltaTime;
-                if (timerCountp1 >= delayTime)
+                stoneTimerSpawn += 0.35f* Time.deltaTime;
+                if (stoneTimerSpawn >= delayTime)
                 {
-                    timerCountp1 = 0f;
+                    stoneTimerSpawn = 0f;
                     curStoneValue++;
                 }
                 /*
@@ -118,20 +121,67 @@ public class StoneColider : MonoBehaviour
     {
         if(collision.gameObject.tag=="Normal Enemy") 
         {
-            timerCountp1 = 0f;
+            stoneTimerSpawn = 0f;
             //timerCountp2 = 0f;
             if (curStoneValue > 0) 
             {
                 curStoneValue--;
             }
+            if (id == 1)
+            {
+               
+                if (curStoneValue < 1)
+                {
+
+                    Player1Health.player1Health.p1TriggerWithNormalEnemy();
+
+                }
+            }
+            if (id == 2)
+            {
+                if (curStoneValue < 1)
+                {
+
+                    Player2Health.player2Health.p2TriggerWithNormalEnemy();
+
+                }
+               
+            }
+
         }
         if(collision.gameObject.tag=="Medium Enemy") 
         {
-            timerCountp1 = 0f;
+            stoneTimerSpawn = 0f;
             //timerCountp2 = 0f;
             if (curStoneValue > 0)
             {
                 curStoneValue-=2;
+            }
+            if (id == 1)
+            {
+                if (curStoneValue < 1)
+                {
+
+                    Player1Health.player1Health.p1TriggerWithMediumEnemy();
+
+                }
+               
+            }
+            if (id == 2)
+            {
+                if (curStoneValue < 1)
+                {
+
+                    Player2Health.player2Health.p2TriggerWithMediumEnemy();
+
+                }
+              
+            }
+            if (curStoneValue < 1)
+            {
+               
+
+
             }
         }
 

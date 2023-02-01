@@ -83,15 +83,15 @@ public class InfinityStoneAbility : MonoBehaviour
         switch (curUpLevelValue) 
         {
             case 1:
-                stoneTimerSpawn = 10;
+               // stoneTimerSpawn = 10;
                 maxStoneValue = 2;
                 break;
             case 2:
-                stoneTimerSpawn = 16.5f;
+               // stoneTimerSpawn = 16.5f;
                 maxStoneValue = 4;
                 break;
             case 3:
-                stoneTimerSpawn = 28.5f;
+                //stoneTimerSpawn = 28.5f;
                 maxStoneValue = 8;
                 break;
         }

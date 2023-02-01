@@ -208,7 +208,7 @@ public class ButtonLevel : MonoBehaviour
     {
         if(id == UISelectLevel.uiselectLevel.levelButtonHighlightValue) 
         {
-            if(UISelectLevel.uiselectLevel.bankValueData < levelCost) 
+            if(UISelectLevel.uiselectLevel.bankValueData < levelCost && idStatus==0) 
             {
                 StartCoroutine(textEnable());
             }
