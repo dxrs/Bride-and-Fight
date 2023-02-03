@@ -44,15 +44,27 @@ public class PlayerMovement : MonoBehaviour
         {
             cc.enabled = true;
         }
-        if (numbOfPlayer == 1) 
+        if (numbOfPlayer == 1)
         {
             if (Input.GetKeyUp(KeyCode.D)
            || Input.GetKeyUp(KeyCode.A)
            || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
             {
-                isBreaking = true;
-                
+                if (!isHitObstacle)
+                {
+                    isBreaking = true;
 
+                }
+                else
+                {
+                    //isBreaking = false;
+                }
+
+
+            }
+            if (isHitObstacle) 
+            {
+                if (isBreaking) { isBreaking = false; }
             }
         }
         if (numbOfPlayer == 2)
@@ -61,12 +73,27 @@ public class PlayerMovement : MonoBehaviour
                 || Input.GetKeyUp(KeyCode.DownArrow)
                 || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
             {
-                isBreaking = true;
+                if (!isHitObstacle)
+                {
+                    isBreaking = true;
+
+                }
+                else 
+                {
+                    //isBreaking = false;
+                }
+              
 
 
             }
+            if (isHitObstacle)
+            {
+                if (isBreaking) { isBreaking = false; }
+            }
 
         }
+       
+     
        
 
 
