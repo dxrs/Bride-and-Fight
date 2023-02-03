@@ -257,8 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 15
+  movePower: 8.5
   numbOfPlayer: 2
+  isBreaking: 0
+  isHitObstacle: 0
 --- !u!114 &128164993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1352,8 +1354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 15
+  movePower: 8.5
   numbOfPlayer: 1
+  isBreaking: 0
+  isHitObstacle: 0
 --- !u!114 &813679846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1913,7 +1917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1413849525
 MonoBehaviour:
   m_ObjectHideFlags: 0

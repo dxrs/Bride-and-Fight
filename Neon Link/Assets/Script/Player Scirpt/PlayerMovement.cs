@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,13 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement playerMovement;
 
     public float movePower;
-    public float linearDragValue;
+
    
     [SerializeField] int numbOfPlayer;
+    [SerializeField] bool isBreaking;
+    [SerializeField] bool isHitObstacle;
 
-
-    float minLinearDrag = 0;
-    float maxLinearDrag = 2f;
 
     Rigidbody2D rb;
     CircleCollider2D cc;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         cc = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        rb.drag = 10F;
+        //rb.drag = 10F;
 
     }
     private void Update()
@@ -44,9 +44,32 @@ public class PlayerMovement : MonoBehaviour
         {
             cc.enabled = true;
         }
+        if (numbOfPlayer == 1) 
+        {
+            if (Input.GetKeyUp(KeyCode.D)
+           || Input.GetKeyUp(KeyCode.A)
+           || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
+            {
+                isBreaking = true;
+                
+
+            }
+        }
+        if (numbOfPlayer == 2)
+        {
+            if (Input.GetKeyUp(KeyCode.UpArrow)
+                || Input.GetKeyUp(KeyCode.DownArrow)
+                || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                isBreaking = true;
+
+
+            }
+
+        }
        
-        
-       
+
+
     }
     private void FixedUpdate()
     {
@@ -59,13 +82,9 @@ public class PlayerMovement : MonoBehaviour
         {
            
         }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) ||
-            Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D)
-            || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)
-            || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow)) 
-        {
-            //rb.drag = Mathf.Lerp(rb.drag, maxLinearDrag, 3 * Time.deltaTime);
-        }
+       
+        
+       
     }
     
    
@@ -75,23 +94,43 @@ public class PlayerMovement : MonoBehaviour
     {
         if (numbOfPlayer == 1)
         {
+            if (isBreaking && !isHitObstacle) 
+            {
+                rb.drag = math.lerp(rb.drag,3, 1*Time.deltaTime);
+            }
+            else if (!isBreaking && !isHitObstacle)
+            {
+                rb.drag = 0;
+            }else if(!isBreaking && isHitObstacle) 
+            {
+                rb.drag = 2;
+            }
             if (Input.GetKey(KeyCode.D))
             {
                 rb.AddForce(transform.right * movePower);
+                //rb.drag = 0;
+                isBreaking = false;
+             
+                //linearDragValue = Mathf.Lerp(minLinearDrag, maxLinearDrag, 3 * Time.deltaTime);
                 
             }
             if (Input.GetKey(KeyCode.A))
             {
                 rb.AddForce(-transform.right * movePower);
-                
+                isBreaking = false;
+              
             }
             if (Input.GetKey(KeyCode.W))
             {
+                isBreaking = false;
+                
                 rb.AddForce(transform.up * movePower);
                
             }
             if (Input.GetKey(KeyCode.S))
             {
+                isBreaking = false;
+               
                 rb.AddForce(-transform.up * movePower);
                
             }
@@ -102,27 +141,39 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            if (isBreaking && !isHitObstacle)
+            {
+                rb.drag = math.lerp(rb.drag, 3, 1 * Time.deltaTime);
+            }
+            else if (!isBreaking && !isHitObstacle)
+            {
+                rb.drag = 0;
+            }
+            else if (!isBreaking && isHitObstacle)
+            {
+                rb.drag = 2;
+            }
             if (PlayerNumber.playerNumber.isSoloMode)
             {
                 if (Input.GetKey(KeyCode.RightArrow))
                 {
                     rb.AddForce(transform.right * movePower);
-                    
+                    isBreaking = false;
                 }
                 if (Input.GetKey(KeyCode.LeftArrow))
                 {
                     rb.AddForce(-transform.right * movePower);
-                    
+                    isBreaking = false;
                 }
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
                     rb.AddForce(transform.up * movePower);
-                    
+                    isBreaking = false;
                 }
                 if (Input.GetKey(KeyCode.DownArrow))
                 {
                     rb.AddForce(-transform.up * movePower);
-                    
+                    isBreaking = false;
                 }
             }
             Vector2 inputDir = Vector2.zero;
@@ -142,18 +193,19 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
        
-        if (collision.gameObject.tag == "obstacle") 
+        if (collision.gameObject.tag == "obstacle")
         {
-            
-            if (numbOfPlayer == 1) 
+            if (numbOfPlayer == 1)
             {
-                
-                rb.drag = 3.5f;
+                isHitObstacle = true;
+                //isBreaking = true;
             }
+           
+           
             if (numbOfPlayer == 2) 
             {
                 
-                rb.drag = 3.5f;
+                //rb.drag = 2;
             }
             
         }
@@ -166,16 +218,17 @@ public class PlayerMovement : MonoBehaviour
        
         if (collision.gameObject.tag == "obstacle") 
         {
-            
-            if (numbOfPlayer == 1) 
+            if (numbOfPlayer == 1)
             {
-               
-                rb.drag = 10;
+                isHitObstacle = false;
+                //isBreaking = false;
             }
+           
+           
             if (numbOfPlayer == 2) 
             {
                
-                rb.drag = 10;
+               // rb.drag = 0;
             }
             
         }
