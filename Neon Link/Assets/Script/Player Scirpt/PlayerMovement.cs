@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.drag = 0;
             }else if(!isBreaking && isHitObstacle) 
             {
-                rb.drag = 2;
+                rb.drag = 4;
             }
             if (Input.GetKey(KeyCode.D))
             {
@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (!isBreaking && isHitObstacle)
             {
-                rb.drag = 2;
+                rb.drag = 4;
             }
             if (PlayerNumber.playerNumber.isSoloMode)
             {
@@ -204,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
            
             if (numbOfPlayer == 2) 
             {
-                
+                isHitObstacle = true;
                 //rb.drag = 2;
             }
             
@@ -227,8 +227,8 @@ public class PlayerMovement : MonoBehaviour
            
             if (numbOfPlayer == 2) 
             {
-               
-               // rb.drag = 0;
+                isHitObstacle = false;
+                // rb.drag = 0;
             }
             
         }
