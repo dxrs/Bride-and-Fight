@@ -22,11 +22,12 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] Button[] buttonConfirmDeleteData;
     [SerializeField] Button buttonClearData;
     [SerializeField] Button buttonExitSetting;
+    [SerializeField] Button buttonLink;
 
     [SerializeField] TextMeshProUGUI textConfrimClearData;
 
     [SerializeField] Vector2[] selectorPos;
-    
+
 
     [SerializeField] int[] curButtonValue;
     [SerializeField] int highLightButtonValue;
@@ -66,17 +67,17 @@ public class UIMenuManager : MonoBehaviour
         {
             buttonConfirmDeleteData[j].interactable = true;
         }
-        if (Music.music.id=="Main Menu") 
+        if (Music.music.id == "Main Menu")
         {
             Music.music.audioSource.Play();
             Music.music.audioSource.volume = 0.7f;
-            
+
         }
     }
 
     private void Update()
     {
-        if (!buttonMenuIsClicked) 
+        if (!buttonMenuIsClicked)
         {
             for (int x = 0; x < selectorPos.Length; x++)
             {
@@ -87,9 +88,9 @@ public class UIMenuManager : MonoBehaviour
                 }
             }
         }
-        
 
-       
+
+
         for (int i = 0; i < menuButton.Length; i++)
         {
             if (buttonMenuIsClicked)
@@ -98,26 +99,26 @@ public class UIMenuManager : MonoBehaviour
                 {
                     isGoingToSelectLevel = true;
                 }
-                if (clickedValue == 2) 
+                if (clickedValue == 2)
                 {
                     isAnimatedPopUp = true;
                     isInSettingMenu = true;
                 }
-                if (clickedValue == 4) 
+                if (clickedValue == 4)
                 {
                     Application.Quit();
                 }
                 menuButton[i].interactable = false;
 
             }
-            else 
+            else
             {
                 isAnimatedPopUp = false;
                 menuButton[i].interactable = true;
             }
         }
 
-        if (!buttonMenuIsClicked) 
+        if (!buttonMenuIsClicked)
         {
             if (highLightButtonValue == 3)
             {
@@ -128,15 +129,15 @@ public class UIMenuManager : MonoBehaviour
                 objectCredit.SetActive(false);
             }
         }
-       
 
-        if (isGoingToSelectLevel) 
+
+        if (isGoingToSelectLevel)
         {
-            if(Music.music.id=="Main Menu") 
+            if (Music.music.id == "Main Menu")
             {
                 Music.music.audioSource.volume = Mathf.Lerp(Music.music.audioSource.volume, 0, 2 * Time.deltaTime);
             }
-          
+
             sceneTransitionObj.transform.localScale = Vector2.MoveTowards(sceneTransitionObj.transform.localScale,
                 transitionObject, 100 * Time.deltaTime);
             StartCoroutine(goingToSelectLevel());
@@ -172,9 +173,9 @@ public class UIMenuManager : MonoBehaviour
         }
     }
 
-    void buttonEventList() 
+    void buttonEventList()
     {
-        for(int i = 0; i < menuButton.Length; i++) 
+        for (int i = 0; i < menuButton.Length; i++)
         {
             int buttonValue = curButtonValue[i];
 
@@ -188,25 +189,25 @@ public class UIMenuManager : MonoBehaviour
         }
     }
 
-    void menuButtonClicked(int value) 
+    void menuButtonClicked(int value)
     {
         clickedValue = value;
-        
-        if (clickedValue != 3) 
+
+        if (clickedValue != 3)
         {
             SoundEffect.soundEffect.audioSources[0].Play();
             buttonMenuIsClicked = true;
         }
-       
+
     }
 
-    void menuButtonHighlighted(int value) 
+    void menuButtonHighlighted(int value)
     {
-        if (!buttonMenuIsClicked) 
+        if (!buttonMenuIsClicked)
         {
             highLightButtonValue = value;
         }
-        
+
     }
 
     void animatedPopUp()
@@ -223,19 +224,19 @@ public class UIMenuManager : MonoBehaviour
         }
     }
 
-    IEnumerator goingToSelectLevel() 
+    IEnumerator goingToSelectLevel()
     {
-        if (sceneTransitionObj.transform.localScale.x >= 30) 
+        if (sceneTransitionObj.transform.localScale.x >= 30)
         {
             yield return new WaitForSeconds(2);
             SceneManagerCallback.sceneManagerCallback.keSceneSelectLevel();
         }
     }
 
-    public void onClickExtToMainMenu() 
+    public void onClickExtToMainMenu()
     {
         SoundEffect.soundEffect.audioSources[0].Play();
-        if (buttonMenuIsClicked) 
+        if (buttonMenuIsClicked)
         {
             buttonMenuIsClicked = false;
             confirmDeleteData.SetActive(false);
@@ -248,7 +249,7 @@ public class UIMenuManager : MonoBehaviour
         }
     }
 
-    public void onClickDeleteData() 
+    public void onClickDeleteData()
     {
         SoundEffect.soundEffect.audioSources[0].Play();
         if (buttonMenuIsClicked)
@@ -256,13 +257,26 @@ public class UIMenuManager : MonoBehaviour
             confirmDeleteData.SetActive(true);
             objectClearData.SetActive(false);
             buttonClearData.interactable = false;
-            
-            for(int j = 0; j < buttonConfirmDeleteData.Length; j++) 
+
+            for (int j = 0; j < buttonConfirmDeleteData.Length; j++)
             {
                 buttonConfirmDeleteData[j].interactable = true;
             }
-         
+
         }
+    }
+
+    public void onClickLinkButton() 
+    {
+        Application.OpenURL("https://linktr.ee/last_game?fbclid=PAAaZt_tncPvf6lxuPSh1n54lRW227VbXAK5-Wcu3viqicnbmVFj63rkasau4");
+    }
+
+    //NANTI DI HAPUS
+    public void onClickCheatButton() 
+    {
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], 4);
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[6], 4);
+        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], 9999);
     }
 
     public void onClickNo() 

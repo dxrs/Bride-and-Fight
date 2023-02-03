@@ -62,7 +62,7 @@ public class SaveDataManager : MonoBehaviour
             PlayerPrefs.SetInt(listDataName[6], 1);
         }
 
-        //planet
+        //level purchase
         if (!PlayerPrefs.HasKey(listDataName[7]))
         {
             PlayerPrefs.SetInt(listDataName[7], 1);
