@@ -28,10 +28,17 @@ public class UIStartGame : MonoBehaviour
 
     public string[] abilityLeftName;
     public string[] abilityRightName;
+    [SerializeField] string[] strDescLeft;
+    [SerializeField] string[] strDescRight;
 
     [SerializeField] Image imageAbilityLeft;
     [SerializeField] Image imageAbilityRight;
     [SerializeField] Image imageAbilitySelected;
+
+    [SerializeField] TextMeshProUGUI textLeftDesc;
+    [SerializeField] TextMeshProUGUI textRightDesc;
+
+    
 
    
 
@@ -216,10 +223,14 @@ public class UIStartGame : MonoBehaviour
         if (highlightListAbilityButtonValue == 1)
         {
             selector.transform.localPosition = new Vector2(-215,-20);
+            textLeftDesc.enabled = true;
+            textRightDesc.enabled = false;
         }
         else
         {
             selector.transform.localPosition = new Vector2(215, -20);
+            textLeftDesc.enabled = false;
+            textRightDesc.enabled = true;
         }
     }
 
@@ -237,9 +248,32 @@ public class UIStartGame : MonoBehaviour
         imageAbilityLeft.sprite = Resources.Load<Sprite>("Sprite/Ability Card/A" + AbilityInventory.abilityInventory.skill_1);
         imageAbilityRight.sprite = Resources.Load<Sprite>("Sprite/Ability Card/A" + AbilityInventory.abilityInventory.skill_2);
 
+        if (AbilityInventory.abilityInventory.skill_1 == 0) 
+        {
+            //textLeftDesc.text = strDescLeft[0];
+        }
+        if (AbilityInventory.abilityInventory.skill_1 == 1)
+        {
+            //textLeftDesc.text = strDescLeft[1];
+        }
 
-       
-
+        for (int k = 0; k < AbilityInventory.abilityInventory.maxTotalSkill; k++) 
+        {
+            if (AbilityInventory.abilityInventory.skill_1 == k)
+            {
+                textLeftDesc.text = strDescLeft[k];
+                break;
+            }
+           
+        }
+        for(int k = 0; k < AbilityInventory.abilityInventory.maxTotalSkill; k++)
+        {
+            if (AbilityInventory.abilityInventory.skill_2 == k)
+            {
+                textRightDesc.text = strDescRight[k];
+                break;
+            }
+        }
         
     }
     #endregion

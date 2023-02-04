@@ -444,7 +444,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserParticle: {fileID: 4496310345284304777, guid: 29dc9d22d47b63d479319e8cc9f8fae6, type: 3}
   isTouchObstcale: 0
-  target: {fileID: 0}
   lineTargets:
   - {fileID: 403482825}
   - {fileID: 820361618}
@@ -556,7 +555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &193807923
 Transform:
   m_ObjectHideFlags: 0
@@ -678,8 +677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 7.5
+  movePower: 8.5
   numbOfPlayer: 1
+  isBreaking: 0
+  isHitObstacle: 0
 --- !u!1001 &293840762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2090,7 +2091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1120984378
 Transform:
   m_ObjectHideFlags: 0
@@ -2212,8 +2213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53eb07294093a4c8feca86faf3c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 7.5
+  movePower: 8.5
   numbOfPlayer: 2
+  isBreaking: 0
+  isHitObstacle: 0
 --- !u!1 &1181329910
 GameObject:
   m_ObjectHideFlags: 0

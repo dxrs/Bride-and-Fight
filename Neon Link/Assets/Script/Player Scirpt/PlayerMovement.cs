@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         cc = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        //rb.drag = 10F;
+
 
     }
     private void Update()
@@ -50,48 +50,35 @@ public class PlayerMovement : MonoBehaviour
            || Input.GetKeyUp(KeyCode.A)
            || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
             {
-                if (!isHitObstacle)
-                {
-                    isBreaking = true;
-
-                }
-                else
-                {
-                    //isBreaking = false;
-                }
-
+                isBreaking = true;
+               
 
             }
-            if (isHitObstacle) 
-            {
-                if (isBreaking) { isBreaking = false; }
-            }
+           
+          
         }
+        
         if (numbOfPlayer == 2)
         {
             if (Input.GetKeyUp(KeyCode.UpArrow)
                 || Input.GetKeyUp(KeyCode.DownArrow)
                 || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
             {
+               
                 if (!isHitObstacle)
                 {
-                    isBreaking = true;
 
+                    isBreaking = true;
                 }
-                else 
-                {
-                    //isBreaking = false;
-                }
+               
               
 
 
             }
-            if (isHitObstacle)
-            {
-                if (isBreaking) { isBreaking = false; }
-            }
+          
 
         }
+       
        
      
        
@@ -128,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
             else if (!isBreaking && !isHitObstacle)
             {
                 rb.drag = 0;
-            }else if(!isBreaking && isHitObstacle) 
+            }else if( isHitObstacle) 
             {
                 rb.drag = 4;
             }
@@ -137,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(transform.right * movePower);
                 //rb.drag = 0;
                 isBreaking = false;
+                if (!isHitObstacle) {  }
+                
              
                 //linearDragValue = Mathf.Lerp(minLinearDrag, maxLinearDrag, 3 * Time.deltaTime);
                 
@@ -145,19 +134,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(-transform.right * movePower);
                 isBreaking = false;
-              
+                if (!isHitObstacle) {  }
             }
             if (Input.GetKey(KeyCode.W))
             {
+               
+                if (!isHitObstacle) {  }
                 isBreaking = false;
-                
                 rb.AddForce(transform.up * movePower);
                
             }
             if (Input.GetKey(KeyCode.S))
             {
-                isBreaking = false;
                
+                if (!isHitObstacle) {  }
+                isBreaking = false;
                 rb.AddForce(-transform.up * movePower);
                
             }
@@ -176,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.drag = 0;
             }
-            else if (!isBreaking && isHitObstacle)
+            else if ( isHitObstacle)
             {
                 rb.drag = 4;
             }
