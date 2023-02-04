@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool isBreaking;
     [SerializeField] bool isHitObstacle;
 
+    [SerializeField]
+    int maxSpeed;
+
 
     Rigidbody2D rb;
     CircleCollider2D cc;
@@ -27,15 +30,12 @@ public class PlayerMovement : MonoBehaviour
 
         cc = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-
+        //rb.drag = 10F;
 
     }
     private void Update()
     {
-        
-       
-        
-        
+        print(rb.velocity);
         if (ShadowAbility.shadowAbility.isShadowActivated || UIPauseGame.uIPauseGame.isSceneEnded) 
         {
             cc.enabled = false;
@@ -51,59 +51,30 @@ public class PlayerMovement : MonoBehaviour
            || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
             {
                 isBreaking = true;
-               
-
             }
-           
-          
         }
-        
         if (numbOfPlayer == 2)
         {
             if (Input.GetKeyUp(KeyCode.UpArrow)
                 || Input.GetKeyUp(KeyCode.DownArrow)
                 || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
             {
-               
-                if (!isHitObstacle)
-                {
-
-                    isBreaking = true;
-                }
-               
-              
-
-
+                isBreaking = true;
             }
-          
-
         }
-       
-       
-     
-       
-
-
     }
     private void FixedUpdate()
     {
         if (!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted)
         {
-
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
             physicsControl();
         }
         if (UIPauseGame.uIPauseGame.isSceneEnded)
         {
            
         }
-       
-        
-       
     }
-    
-   
-    
-
     void physicsControl()
     {
         if (numbOfPlayer == 1)
@@ -115,40 +86,32 @@ public class PlayerMovement : MonoBehaviour
             else if (!isBreaking && !isHitObstacle)
             {
                 rb.drag = 0;
-            }else if( isHitObstacle) 
+            }else if(isHitObstacle) 
             {
                 rb.drag = 4;
             }
             if (Input.GetKey(KeyCode.D))
             {
                 rb.AddForce(transform.right * movePower);
-                //rb.drag = 0;
-                isBreaking = false;
-                if (!isHitObstacle) {  }
-                
-             
-                //linearDragValue = Mathf.Lerp(minLinearDrag, maxLinearDrag, 3 * Time.deltaTime);
-                
+                isBreaking = false;               
             }
             if (Input.GetKey(KeyCode.A))
             {
                 rb.AddForce(-transform.right * movePower);
                 isBreaking = false;
-                if (!isHitObstacle) {  }
+              
             }
             if (Input.GetKey(KeyCode.W))
             {
-               
-                if (!isHitObstacle) {  }
                 isBreaking = false;
+                
                 rb.AddForce(transform.up * movePower);
                
             }
             if (Input.GetKey(KeyCode.S))
             {
-               
-                if (!isHitObstacle) {  }
                 isBreaking = false;
+               
                 rb.AddForce(-transform.up * movePower);
                
             }
@@ -167,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.drag = 0;
             }
-            else if ( isHitObstacle)
+            else if (!isBreaking && isHitObstacle)
             {
                 rb.drag = 4;
             }
