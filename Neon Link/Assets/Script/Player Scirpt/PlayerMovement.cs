@@ -50,21 +50,7 @@ public class PlayerMovement : MonoBehaviour
            || Input.GetKeyUp(KeyCode.A)
            || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
             {
-                if (!isHitObstacle)
-                {
-                    isBreaking = true;
-
-                }
-                else
-                {
-                    //isBreaking = false;
-                }
-
-
-            }
-            if (isHitObstacle) 
-            {
-                if (isBreaking) { isBreaking = false; }
+                isBreaking = true;
             }
         }
         if (numbOfPlayer == 2)
@@ -73,24 +59,8 @@ public class PlayerMovement : MonoBehaviour
                 || Input.GetKeyUp(KeyCode.DownArrow)
                 || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
             {
-                if (!isHitObstacle)
-                {
-                    isBreaking = true;
-
-                }
-                else 
-                {
-                    //isBreaking = false;
-                }
-              
-
-
+                isBreaking = true;
             }
-            if (isHitObstacle)
-            {
-                if (isBreaking) { isBreaking = false; }
-            }
-
         }
     }
     private void FixedUpdate()
@@ -104,14 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
            
         }
-       
-        
-       
     }
-    
-   
-    
-
     void physicsControl()
     {
         if (numbOfPlayer == 1)
@@ -123,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             else if (!isBreaking && !isHitObstacle)
             {
                 rb.drag = 0;
-            }else if(!isBreaking && isHitObstacle) 
+            }else if(isHitObstacle) 
             {
                 rb.drag = 4;
             }
