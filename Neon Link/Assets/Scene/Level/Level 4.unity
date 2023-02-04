@@ -11713,6 +11713,7 @@ MonoBehaviour:
   numbOfPlayer: 1
   isBreaking: 0
   isHitObstacle: 0
+  maxSpeed: 0
 --- !u!1 &1537418905
 GameObject:
   m_ObjectHideFlags: 0
@@ -12450,15 +12451,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2602686031839514282, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686031839514282, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686031839514282, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686031839514282, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -12470,15 +12471,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2602686031858934703, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686031858934703, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686031858934703, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686031858934703, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -12486,15 +12487,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2602686032371814190, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686032371814190, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686032371814190, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686032371814190, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -12810,6 +12811,7 @@ MonoBehaviour:
   numbOfPlayer: 2
   isBreaking: 0
   isHitObstacle: 0
+  maxSpeed: 0
 --- !u!1 &2056835355
 GameObject:
   m_ObjectHideFlags: 0
