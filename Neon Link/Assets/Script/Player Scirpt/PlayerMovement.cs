@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-
+        movePower = 15;
+        maxSpeed = 10;
         cc = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         //rb.drag = 10F;

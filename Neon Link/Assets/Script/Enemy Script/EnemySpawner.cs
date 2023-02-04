@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (enemyIsWaitingToSpawn) 
             {
-                enemyIsWaitingToSpawn = false;
+               // enemyIsWaitingToSpawn = false;
             }
         }
     }
