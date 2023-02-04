@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool isBreaking;
     [SerializeField] bool isHitObstacle;
 
+    [SerializeField]
+    int maxSpeed;
+
 
     Rigidbody2D rb;
     CircleCollider2D cc;
@@ -32,10 +35,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        
-       
-        
-        
+        print(rb.velocity);
         if (ShadowAbility.shadowAbility.isShadowActivated || UIPauseGame.uIPauseGame.isSceneEnded) 
         {
             cc.enabled = false;
@@ -92,17 +92,12 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-       
-     
-       
-
-
     }
     private void FixedUpdate()
     {
         if (!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted)
         {
-
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
             physicsControl();
         }
         if (UIPauseGame.uIPauseGame.isSceneEnded)
@@ -135,11 +130,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 rb.AddForce(transform.right * movePower);
-                //rb.drag = 0;
-                isBreaking = false;
-             
-                //linearDragValue = Mathf.Lerp(minLinearDrag, maxLinearDrag, 3 * Time.deltaTime);
-                
+                isBreaking = false;               
             }
             if (Input.GetKey(KeyCode.A))
             {
