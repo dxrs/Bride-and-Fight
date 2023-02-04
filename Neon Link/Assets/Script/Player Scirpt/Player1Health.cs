@@ -13,6 +13,8 @@ public class Player1Health : MonoBehaviour
 
     float curHealthBarValue;
     float maxHealthBarValue = 50;
+    [SerializeField]
+    GameObject healPaerticle;
 
     private void Awake()
     {
@@ -24,6 +26,10 @@ public class Player1Health : MonoBehaviour
         {
             TotalCoin.totalCoin.curCoinGet = 0;
             GameOver.gameOver.isGameOver = true;
+        }
+        if(playerHealth >= 30)
+        {
+            healPaerticle.SetActive(false);
         }
 
         curHealthBarValue = playerHealth;
@@ -72,8 +78,10 @@ public class Player1Health : MonoBehaviour
 
     public void addP1Health() 
     {
+        // taro disini script nya
         if (playerHealth==Mathf.Clamp(playerHealth,1,30)) 
         {
+            healPaerticle.SetActive(true);
             playerHealth += 0.3f * Time.deltaTime;
         }
     }
