@@ -155,7 +155,7 @@ public class BullBoss : MonoBehaviour
             if (bullBossHealth < 25) 
             {
               
-                transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(2.35f, 2.35f), 1 * Time.deltaTime);
+                //transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(2.35f, 2.35f), 1 * Time.deltaTime);
             }
           
         }

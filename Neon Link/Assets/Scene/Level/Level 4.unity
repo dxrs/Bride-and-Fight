@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 1751225119}
     - target: {fileID: 6957300005566284496, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
       propertyPath: bullBossHealth
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6957300005566284497, guid: 3f2ade67bd3eb834eb25e09e277fb332, type: 3}
       propertyPath: m_RootOrder
@@ -12498,6 +12498,22 @@ PrefabInstance:
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2602686032371814190, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602686033112713629, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602686033112713629, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602686033112713629, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602686033112713629, guid: a489bd652fb051c4d85d93eb2df57180, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}

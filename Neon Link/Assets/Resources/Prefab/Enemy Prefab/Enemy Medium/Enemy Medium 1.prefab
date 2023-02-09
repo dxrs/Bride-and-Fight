@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMoveSpeed: 2
-  enemyHealth: 50
+  enemyHealth: 35
   id: 2
   randomTarget: 0
   enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
@@ -264,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad05cf0398e1ec4e9430d44cc81f3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyParticle: {fileID: 2894149098264923053, guid: 3f90e7c737d269f4e9e5add72d6a2fdf, type: 3}
 --- !u!114 &411142897697385654
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,8 +16,11 @@ public class UIStartGame : MonoBehaviour
 
     public int idLevel;
     public int totalLevel;
+    public int levelFarmingValue;
 
     public GameObject[] listUIObject;
+
+    
 
     [SerializeField] GameObject listAbilityObject;
     [SerializeField] GameObject bossObjectUI;
@@ -78,8 +81,9 @@ public class UIStartGame : MonoBehaviour
     private void Start()
     {
         totalLevel = 4;
-        if(SceneManagerStatus.sceneManagerStatus.sceneStats == "Level") 
+        if(SceneManagerStatus.sceneManagerStatus.sceneStats == "Level")
         {
+            levelFarmingValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]) - idLevel;
             listAbilityObject.SetActive(true);
         }
         else 
@@ -95,6 +99,7 @@ public class UIStartGame : MonoBehaviour
         {
             listUIObject[j].SetActive(false);
         }
+       
         highlightListAbilityButtonValue = 1;
         #region start ability selector
         startAbilitySelector();

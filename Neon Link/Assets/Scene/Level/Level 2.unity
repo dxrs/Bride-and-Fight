@@ -736,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 1654357274}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemySpawnTimerValue
-      value: 100
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyIsWaitingToSpawn
@@ -1268,6 +1268,7 @@ MonoBehaviour:
   numbOfPlayer: 2
   isBreaking: 0
   isHitObstacle: 0
+  maxSpeed: 0
 --- !u!1 &960199487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,6 +2264,7 @@ MonoBehaviour:
   numbOfPlayer: 1
   isBreaking: 0
   isHitObstacle: 0
+  maxSpeed: 0
 --- !u!1 &1475746646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2630,7 +2632,7 @@ PrefabInstance:
       objectReference: {fileID: 1654357274}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemySpawnTimerValue
-      value: 135
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyIsWaitingToSpawn
@@ -2816,7 +2818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060858, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: curTimerGame
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060859, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: idLevel

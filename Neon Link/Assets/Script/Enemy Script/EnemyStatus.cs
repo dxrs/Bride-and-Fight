@@ -89,19 +89,41 @@ public class EnemyStatus : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (enemyIsDestroyed && !GameFinish.gameFinish.isGameFinished && !GameOver.gameOver.isGameOver && !UIPauseGame.uIPauseGame.isSceneEnded) 
+        if (enemyIsDestroyed && !GameFinish.gameFinish.isGameFinished && !GameOver.gameOver.isGameOver && !UIPauseGame.uIPauseGame.isSceneEnded)
         {
-            if (id == 1) 
+            if (SceneManagerStatus.sceneManagerStatus.sceneStats == "Level")
             {
-                TotalCoin.totalCoin.curCoinGet += 2;
+                if (UIStartGame.uIStartGame.levelFarmingValue <= 1)
+                {
+                    if (id == 1)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 2;
+                    }
+                    if (id == 2)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 4;
+                    }
+                }
+                if (UIStartGame.uIStartGame.levelFarmingValue > 1)
+                {
+                    if (id == 1)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 1;
+                    }
+                    if (id == 2)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 2;
+                    }
+                }
+
             }
-            if (id == 2) 
-            {
-                TotalCoin.totalCoin.curCoinGet += 4;
-            }
+
             CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
             SoundEffect.soundEffect.audioSources[2].Play();
+
         }
+        
+        
 
     }
 
@@ -197,13 +219,27 @@ public class EnemyStatus : MonoBehaviour
         {
             if (PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[5]) >= 2) 
             {
-                if (id == 1)
+                if (UIStartGame.uIStartGame.levelFarmingValue <= 1)
                 {
-                    TotalCoin.totalCoin.curCoinGet += 2;
+                    if (id == 1)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 2;
+                    }
+                    if (id == 2)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 4;
+                    }
                 }
-                if (id == 2)
+                if (UIStartGame.uIStartGame.levelFarmingValue > 1)
                 {
-                    TotalCoin.totalCoin.curCoinGet += 4;
+                    if (id == 1)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 1;
+                    }
+                    if (id == 2)
+                    {
+                        TotalCoin.totalCoin.curCoinGet += 2;
+                    }
                 }
             }
           
