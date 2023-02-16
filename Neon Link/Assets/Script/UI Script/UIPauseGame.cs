@@ -239,9 +239,9 @@ public class UIPauseGame : MonoBehaviour
                 isSceneEnded = true;
                 isAnimatedTransition = true;
                 GamePaused.gamePaused.isGamePaused = false;
-
+       
                 Destroy(spawnerObject);
-                StartCoroutine(SceneManagerCallback.sceneManagerCallback.loadToMenu());
+                StartCoroutine(loadToSelectLevel());
             }
 
             if(buttonPauseSelectedValue==3 || buttonPauseSelectedValue == 4) 
@@ -253,6 +253,13 @@ public class UIPauseGame : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator loadToSelectLevel() 
+    {
+        yield return new WaitForSeconds(3);
+
+        SceneManagerCallback.sceneManagerCallback.keSceneSelectLevel();
     }
 
     void buttonPauseClick(int value) 

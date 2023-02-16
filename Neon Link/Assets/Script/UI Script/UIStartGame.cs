@@ -80,7 +80,7 @@ public class UIStartGame : MonoBehaviour
 
     private void Start()
     {
-        totalLevel = 4;
+        totalLevel = 10;
         if(SceneManagerStatus.sceneManagerStatus.sceneStats == "Level")
         {
             levelFarmingValue = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]) - idLevel;

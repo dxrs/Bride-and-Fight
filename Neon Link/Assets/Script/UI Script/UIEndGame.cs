@@ -19,6 +19,7 @@ public class UIEndGame : MonoBehaviour
     [SerializeField] TextMeshProUGUI textRemainingTime;
     [SerializeField] TextMeshProUGUI textInfoLevel;
     [SerializeField] TextMeshProUGUI textCongrats;
+    [SerializeField] TextMeshProUGUI textAbilityUnlock;
 
     [SerializeField] int bonusCoin;
     [SerializeField] int totalCoin;
@@ -41,6 +42,7 @@ public class UIEndGame : MonoBehaviour
 
     int curLevelValue;
     int totalAbility;
+    int[] listLevelAbilityUnlock = { 1, 2 };
 
     bool isCoinDataSaved;
     bool isUsingGamepad = false;
@@ -73,6 +75,7 @@ public class UIEndGame : MonoBehaviour
         textRemainingTime.enabled = false;
         textTotalCoin.enabled = false;
         textCongrats.enabled = false;
+        textAbilityUnlock.enabled = false;
     }
 
     private void Update()
@@ -99,6 +102,7 @@ public class UIEndGame : MonoBehaviour
 
     IEnumerator loadToSceneSelectLevel() 
     {
+        //WARNING
         TotalCoin.totalCoin.totalCoinGet = TotalCoin.totalCoin.totalCoinGet +
             PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[1], TotalCoin.totalCoin.totalCoinGet);
@@ -125,21 +129,30 @@ public class UIEndGame : MonoBehaviour
 
             if(UIStartGame.uIStartGame.idLevel == curLevelValue) 
             {
+                foreach(int index in listLevelAbilityUnlock) 
+                {
+                    if (index == curLevelValue) 
+                    {
+                        totalAbility++;
+                        PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+                    }
+                }
                 if (curLevelValue == 1)
                 {
-                    totalAbility++;
-                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+                    //totalAbility++;
+                   // PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
                 }
                 if (curLevelValue == 2)
                 {
-                    totalAbility++;
-                    PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
+                    //totalAbility++;
+                   // PlayerPrefs.SetInt(SaveDataManager.saveDataManager.listDataName[4], totalAbility);
                 }
             }
           
             
         }
-       
+        
+        //WARNING
         if (curLevelValue <= UIStartGame.uIStartGame.totalLevel) 
         {
             if (UIStartGame.uIStartGame.idLevel == curLevelValue)
@@ -220,6 +233,17 @@ public class UIEndGame : MonoBehaviour
                     textBonusCoin.enabled = true;
                     textTotalCoin.enabled = true;
                     textCongrats.enabled = true;
+                    foreach (int index in listLevelAbilityUnlock)
+                    {
+                       
+                        if (index == curLevelValue)
+                        {
+                            textAbilityUnlock.enabled = true;
+
+                        }
+                    }
+                  
+                    
 
                     textBonusCoin.text = "Bonus : " + bonusCoin;
 

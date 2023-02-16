@@ -11,7 +11,7 @@ public class CursorSystem : MonoBehaviour
     }
     private void Update()
     {
-        if (GameStarting.gameStarting.isGameStarted) 
+        if (GameStarting.gameStarting.isGameStarted && !UIPauseGame.uIPauseGame.isSceneEnded) 
         {
             if(GameOver.gameOver.isGameOver || GameFinish.gameFinish.isGameFinished || GamePaused.gamePaused.isGamePaused) 
             {
@@ -21,6 +21,10 @@ public class CursorSystem : MonoBehaviour
             {
                 Cursor.visible=false;
             }
+        }
+        if (UIPauseGame.uIPauseGame.isSceneEnded) 
+        {
+            Cursor.visible = true;
         }
     }
 }

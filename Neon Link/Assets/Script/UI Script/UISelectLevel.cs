@@ -59,7 +59,7 @@ public class UISelectLevel : MonoBehaviour
         curLevel = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[6]);
         curCoin = PlayerPrefs.GetInt(SaveDataManager.saveDataManager.listDataName[0]);
         levelButtonHighlightValue = curLevel;
-
+        Cursor.visible = true;
         eventController();
       
     }
