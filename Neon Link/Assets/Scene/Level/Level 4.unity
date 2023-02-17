@@ -6014,6 +6014,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6002340265665060859, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
+      propertyPath: levelType
+      value: survive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002340265665060859, guid: 5eb2a67632ebf3d43bca0ce5c52d351b, type: 3}
       propertyPath: player.Array.data[0]
       value: 
       objectReference: {fileID: 1350686150}

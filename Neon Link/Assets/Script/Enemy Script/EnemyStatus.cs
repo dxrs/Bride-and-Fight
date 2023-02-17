@@ -210,6 +210,12 @@ public class EnemyStatus : MonoBehaviour
             
         }
 
+        if(collision.gameObject.tag=="Player 3") 
+        {
+            CameraShaker.Instance.ShakeOnce(4, 4, .1f, 1);
+            Destroy(gameObject);
+        }
+
         if (collision.gameObject.tag == "Diamond") 
         {
             Destroy(gameObject);

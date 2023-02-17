@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
 
     GameObject player1;
     GameObject player2;
+    GameObject player3;
 
     int indexPlayer;
 
@@ -37,8 +38,9 @@ public class EnemyMovement : MonoBehaviour
 
         player1 = GameObject.FindGameObjectWithTag("Player 1");
         player2 = GameObject.FindGameObjectWithTag("Player 2");
-        
-        
+        player3 = GameObject.FindGameObjectWithTag("Player 3");
+
+
         indexPlayer = Random.Range(0, 2);
     }
 
@@ -59,27 +61,42 @@ public class EnemyMovement : MonoBehaviour
             Destroy(gameObject);
         }
 
-
-        if (player1 != null && player2 != null)
+        if (UIStartGame.uIStartGame.levelType == "survive") 
         {
-            if (!ShadowAbility.shadowAbility.isShadowActivated && !GameOver.gameOver.isGameOver) 
+            if (player1 != null && player2 != null)
             {
-                if (indexPlayer == 0)
+                if (!ShadowAbility.shadowAbility.isShadowActivated && !GameOver.gameOver.isGameOver)
                 {
-                    dir = player1.transform.position - transform.position;
+                    if (indexPlayer == 0)
+                    {
+                        dir = player1.transform.position - transform.position;
+                    }
+                    if (indexPlayer == 1)
+                    {
+                        dir = player2.transform.position - transform.position;
+                    }
                 }
-                if (indexPlayer == 1)
-                {
-                    dir = player2.transform.position - transform.position;
-                }
-            }
-          
 
+
+            }
+            else
+            {
+                return;
+            }
         }
-        else
+
+        if (UIStartGame.uIStartGame.levelType == "protect") 
         {
-            return;
+            if (player3 != null) 
+            {
+                dir = player3.transform.position - transform.position;
+            }
+            else
+            {
+                return;
+            }
         }
+       
        
 
        

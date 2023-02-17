@@ -18,6 +18,8 @@ public class UIStartGame : MonoBehaviour
     public int totalLevel;
     public int levelFarmingValue;
 
+    public string levelType;
+
     public GameObject[] listUIObject;
 
     
