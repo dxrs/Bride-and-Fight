@@ -14,7 +14,7 @@ public class Player3Trigger : MonoBehaviour
     {
         if (player3Body.localScale.x <= 0) 
         {
-            Destroy(gameObject);
+            
             GameOver.gameOver.isGameOver = true;
         }
         if (GameOver.gameOver.isGameOver) 
@@ -40,11 +40,18 @@ public class Player3Trigger : MonoBehaviour
                 player3Body.localScale += new Vector3(0.001f, 0.001f, 0.001f);
             }
         }
+        if(collision.gameObject.tag=="Player 1" || collision.gameObject.tag=="Player 2") 
+
+        {
+            player3Body.localScale = new Vector2(0, 0);
+            GameOver.gameOver.isGameOver = true;
+            Instantiate(player3Particle, transform.position, Quaternion.identity);
+        }
 
         if(collision.gameObject.tag=="Normal Enemy") 
         {
             Instantiate(player3Particle, transform.position, Quaternion.identity);
-            player3Body.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            player3Body.localScale -= new Vector3(0.25f, 0.25f, 0.1f);
         }
     }
 }

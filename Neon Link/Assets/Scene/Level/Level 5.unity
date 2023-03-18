@@ -3039,14 +3039,14 @@ PrefabInstance:
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemy
       value: 
-      objectReference: {fileID: 2925462774602308856, guid: a3d7895c809ad44439879b1115780545, type: 3}
+      objectReference: {fileID: 8121647616304929916, guid: d0cc6e58169adb14ebc3ca4331f8a425, type: 3}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyRadiusValue
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: enemyWaitToSpawn
-      value: 4.6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2696233487335739329, guid: a815e82d79453df4088faa87f8f0da48, type: 3}
       propertyPath: spawnRadiusObject
