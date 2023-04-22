@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement playerMovement;
+    //public static PlayerMovement playerMovement;
 
     public float movePower;
 
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        if (playerMovement == null) { playerMovement = this; }
+        //if (playerMovement == null) { playerMovement = this; }
     }
     private void Start()
     {
