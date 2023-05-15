@@ -1,0 +1,34 @@
+{
+    "name": "Player 1 Input",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "e7c27ef4-8e2c-4eff-8424-72865d5b04f3",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "ec781128-36f0-44a2-bb09-3d80eee36d57",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5948007a-bcca-4559-af57-048083a3e3ce",
+                    "path": "<XInputController>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
