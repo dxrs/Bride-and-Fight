@@ -3,42 +3,57 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Player1Movement : MonoBehaviour
+public class Player1Movement : MonoBehaviour 
 {
-    public static Player1Movement player1Movement;
-
-    [SerializeField] float movePower;
-
-    [SerializeField] int maxSpeed;
+    
 
     [SerializeField] bool isBreaking;
     [SerializeField] bool isHitObstacle;
 
-    Rigidbody2D rb;
-    CircleCollider2D cc;
+    float movePower;
 
-    private void Awake()
-    {
-        if (player1Movement == null) { player1Movement = this; }
-    }
+    int maxSpeed;
+
+    Rigidbody2D rb;
+
+    CircleCollider2D cc;
 
     private void Start()
     {
-        cc = GetComponent<CircleCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
-    }
+        movePower = 15f;
+        maxSpeed = 10;
 
+        rb = GetComponent<Rigidbody2D>();
+        cc = GetComponent<CircleCollider2D>();
+    }
     private void Update()
     {
-        if (UIPauseGame.uIPauseGame.isSceneEnded) 
-        {
+        oldInputBreaking(); //memanggil fungsi pengereman
+    }
 
-        }
-        else 
+    private void FixedUpdate()
+    {
+        if (!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted)
         {
-            
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+            oldInputMovementControl(); //memanggil fungsi movement
         }
+    }
 
+    #region fungsi pengereman
+
+    private void oldInputBreaking() 
+    {
+        if(ShadowAbility.shadowAbility.isShadowActivated ||
+            UIPauseGame.uIPauseGame.isSceneEnded) 
+        {
+            cc.enabled = false;
+        }
+        if(!ShadowAbility.shadowAbility.isShadowActivated &&
+            !UIPauseGame.uIPauseGame.isSceneEnded) 
+        {
+            cc.enabled = true;
+        }
         if (Input.GetKeyUp(KeyCode.D)
           || Input.GetKeyUp(KeyCode.A)
           || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
@@ -47,97 +62,11 @@ public class Player1Movement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if(!GameFinish.gameFinish.isGameFinished && GameStarting.gameStarting.isGameStarted) 
-        {
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
-            playerBreaking();
-            controlSystemP1();
-        }
-    }
+    #endregion
 
-    private void controlSystemP1() 
-    {
-        if (ControlSystem.controlSystem.isSinglePlayer) 
-        {
-            // maen sendiri
+    #region fungsi movement controller
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.AddForce(transform.right * movePower);
-                isBreaking = false;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                rb.AddForce(-transform.right * movePower);
-                isBreaking = false;
-
-            }
-            if (Input.GetKey(KeyCode.W))
-            {
-                isBreaking = false;
-
-                rb.AddForce(transform.up * movePower);
-
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                isBreaking = false;
-
-                rb.AddForce(-transform.up * movePower);
-
-            }
-            
-            if (Input.GetAxis("AnalogLeftHorizontal") != 0 || Input.GetAxis("AnalogLeftVertical") != 0) 
-            {
-                Vector2 inputDir = Vector2.zero;
-                inputDir.x = Input.GetAxis("AnalogLeftHorizontal");
-                inputDir.y = -Input.GetAxis("AnalogLeftVertical");
-                rb.AddForce(inputDir * movePower);
-                print("konek"); 
-            }
-            else 
-            {
-                print("kgrgrgr");
-                // kalo gamepad 1 tidak konek 
-            }
-
-          
-        }
-        else 
-        {
-            // maen berdua
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.AddForce(transform.right * movePower);
-                isBreaking = false;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                rb.AddForce(-transform.right * movePower);
-                isBreaking = false;
-
-            }
-            if (Input.GetKey(KeyCode.W))
-            {
-                isBreaking = false;
-
-                rb.AddForce(transform.up * movePower);
-
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                isBreaking = false;
-
-                rb.AddForce(-transform.up * movePower);
-
-            }
-        }
-    }
-
-    void playerBreaking() 
+    private void oldInputMovementControl() 
     {
         if (isBreaking && !isHitObstacle)
         {
@@ -151,7 +80,38 @@ public class Player1Movement : MonoBehaviour
         {
             rb.drag = 4;
         }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(transform.right * movePower);
+            isBreaking = false;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(-transform.right * movePower);
+            isBreaking = false;
+
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            isBreaking = false;
+
+            rb.AddForce(transform.up * movePower);
+
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            isBreaking = false;
+
+            rb.AddForce(-transform.up * movePower);
+
+        }
+        Vector2 inputDir = Vector2.zero;
+        inputDir.x = Input.GetAxis("AnalogLeftHorizontal");
+        inputDir.y = -Input.GetAxis("AnalogLeftVertical");
+        rb.AddForce(inputDir * movePower);
     }
+
+    #endregion
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -169,5 +129,5 @@ public class Player1Movement : MonoBehaviour
         }
     }
 
-
 }
+
